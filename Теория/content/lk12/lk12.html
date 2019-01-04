@@ -1,0 +1,4974 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Булевы функции</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts11
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts14
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts15
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts16
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts17
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts18
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts19
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts20
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts21
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts22
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts23
+{
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts24
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts25
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts26
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+}
+.rvps3
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: center;
+ text-indent: 19px;
+ margin: 0px 139px 8px 208px;
+}
+.rvps11
+{
+ text-align: center;
+ margin: 0px 0px 8px 0px;
+}
+.rvps12
+{
+ text-align: center;
+ margin: 8px 0px 8px 0px;
+}
+.rvps13
+{
+ text-align: center;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: center;
+ text-indent: 19px;
+ margin: 0px 148px 8px 170px;
+}
+.rvps32
+{
+ text-align: center;
+ text-indent: 19px;
+ margin: 0px 148px 8px 170px;
+}
+.rvps33
+{
+ text-align: center;
+ margin: 0px 0px 8px 0px;
+}
+.rvps34
+{
+ margin: 0px 0px 0px 264px;
+}
+.rvps35
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps36
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps37
+{
+ text-align: center;
+ text-indent: 19px;
+ page-break-after: avoid;
+ margin: 0px 110px 8px 322px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 19px;
+ page-break-after: avoid;
+ margin: 0px 0px 8px 133px;
+}
+.rvps39
+{
+ text-align: right;
+ page-break-after: avoid;
+}
+.rvps40
+{
+ text-align: center;
+ page-break-after: avoid;
+}
+.rvps41
+{
+ margin: 0px 0px 0px 108px;
+}
+.rvps42
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps43
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps44
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps45
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps46
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps47
+{
+ text-align: right;
+ margin: 0px 55px 8px 0px;
+}
+.rvps48
+{
+ text-align: center;
+ margin: 0px 0px 8px 0px;
+}
+.rvps49
+{
+ text-align: center;
+}
+.rvps50
+{
+ text-align: center;
+}
+.rvps51
+{
+}
+.rvps52
+{
+}
+.rvps53
+{
+ text-align: center;
+ text-indent: -11px;
+}
+.rvps54
+{
+ text-align: center;
+ text-indent: -7px;
+}
+.rvps55
+{
+ text-indent: -7px;
+}
+.rvps56
+{
+ text-align: center;
+ text-indent: -13px;
+}
+.rvps57
+{
+ text-align: center;
+ text-indent: -7px;
+}
+.rvps58
+{
+ margin: 0px 0px 0px 60px;
+}
+.rvps59
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps60
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps61
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps62
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps63
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps64
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps65
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps66
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps67
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps68
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps69
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps70
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps71
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps72
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps73
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps74
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps75
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps76
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps77
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps78
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps79
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps80
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps81
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps82
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps83
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps84
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps85
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps86
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps87
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps88
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps89
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps90
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps91
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps92
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps93
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps94
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps95
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps96
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps97
+{
+ text-align: justify;
+ text-indent: 19px;
+ margin: 0px 0px 0px 95px;
+}
+.rvps98
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps99
+{
+ text-align: justify;
+ text-indent: 48px;
+ line-height: 1.50;
+}
+.rvps100
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps101
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps102
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps103
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps104
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps105
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<h2   class=rvps3><span  class=rvts0><span  class=rvts6>Г  л  а  в  а&nbsp;
+12</span></span></h2> 
+<p class=rvps2><span class=rvts7>Булевы функции</span></p>
+<p class=rvps4><span class=rvts6><br></span></p>
+<p     class=rvps5><span     class=rvts7>12.1. Способы    задания
+булевой функции</span></p> 
+<p><span class=rvts6><br></span></p>
+<p         class=rvps6><span         class=rvts6>Пусть         </span><span
+class=rvts8>х</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts9>2</span><span class=rvts6>, ... , </span><span
+class=rvts8>х</span><span  class=rvts10>n</span><span class=rvts6> </span><span
+class=rvts11>–</span><span    class=rvts6>   некоторые   </span><span
+class=rvts8>булевы      переменные</span><span     class=rvts6>,
+т. е.   переменные,  принимающие  значение  из
+множества  {0, 1}. Упорядоченную совокупность
+булевых   переменных  (</span><span  class=rvts8>х</span><span
+class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>х</span><span class=rvts9>2</span><span
+class=rvts6>, ... , </span><span class=rvts8>х</span><span
+class=rvts10>n</span><span  class=rvts6>)  можно рассматривать
+как   </span><span   class=rvts8>n</span><span   class=rvts11>‑</span><span
+class=rvts6>компонентный     </span><span     class=rvts8>булев
+вектор</span><span  class=rvts6>  </span><span class=rvts12>х</span><span
+class=rvts6>.  Число компонент вектора определяет
+его               длину,               или               </span><span
+class=rvts8>размерность</span><span        class=rvts6>.       При
+фиксации       значений       всех      переменных
+получается             </span><span             class=rvts8>набор
+значений</span><span   class=rvts6>  переменных  (</span><span
+class=rvts8>х</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts9>2</span><span class=rvts6>, ..., </span><span
+class=rvts8>х</span><span       class=rvts10>n</span><span       class=rvts6>),
+задаваемый  булевым  вектором  длины  </span><span
+class=rvts8>n</span><span       class=rvts6>,       состоящим      из
+констант      0      и      1.      Очевидно,     2</span><span
+class=rvts13>п</span><span               class=rvts6>              </span><span
+class=rvts11>–</span><span   class=rvts6>   число   всех   таких
+векторов.  Они образуют </span><span class=rvts8>булево
+пространство</span><span          class=rvts6>.         </span><span
+class=rvts8>Булевой       функцией</span><span       class=rvts6>
+называется   функция  </span><span  class=rvts8>f </span><span
+class=rvts6>: {0, 1}</span><span class=rvts13>n</span><span
+class=rvts6> </span><span  class=rvts14>→</span><span  class=rvts6> {0, 1}.
+Областью     определения     булевой    функции
+является      булево     пространство     </span><span
+class=rvts8>М </span><span class=rvts6>= {0, 1}</span><span
+class=rvts13>n</span><span   class=rvts6>,   областью   значений
+</span><span    class=rvts11>–</span><span   class=rvts6>   множество
+{0, 1}.</span></p> 
+<p  class=rvps7><span  class=rvts6>Задание  булевой функции
+</span><span    class=rvts8>f</span><span   class=rvts6>   на   булевом
+пространстве  </span><span  class=rvts8>М</span><span  class=rvts6>
+делит       его      на      две      части:      </span><span
+class=rvts8>M</span><span  class=rvts10>f</span><span class=rvts15>1</span><span
+class=rvts6>      </span><span     class=rvts11>–</span><span     class=rvts6>
+область,  где функция принимает значение 1, и
+</span><span         class=rvts8>M</span><span        class=rvts10>f</span><span
+class=rvts15>0</span><span               class=rvts6>               </span><span
+class=rvts11>–</span><span  class=rvts6> область, где функция
+принимает    значение    0.   Множество   </span><span
+class=rvts8>M</span><span  class=rvts10>f</span><span class=rvts15>1</span><span
+class=rvts6>                  называется                  </span><span
+class=rvts8>характеристическим
+множеством</span><span    class=rvts6>   функции   </span><span
+class=rvts8>f</span><span class=rvts6>.</span></p> 
+<p   class=rvps8><span  class=rvts6>Универсальным  способом
+задания    для    любой    дискретной    функции
+является      табличный      способ.      Таблица,
+представляющая      функцию     и     называемая
+</span><span    class=rvts8>таблицей    истинности</span><span
+class=rvts6>,  имеет  два  столбца.  В левом столбце
+перечислены        все        наборы        значений
+аргументов,     в     правом     столбце    </span><span
+class=rvts11>–</span><span  class=rvts6>  соответствующие  им
+значения  функции. Примером задания булевой
+функции  от  трех  аргументов  является табл.
+12.1.</span></p> 
+<p class=rvps9><span class=rvts6><br></span></p>
+<p class=rvps10><span class=rvts16>Таблица 12.1</span></p>
+<p     class=rvps11><span    class=rvts16>Задание    функции&nbsp;
+</span><span        class=rvts17>f</span><span        class=rvts16>(</span><span
+class=rvts17>x</span><span       class=rvts18>1</span><span       class=rvts16>,
+</span><span        class=rvts17>x</span><span        class=rvts18>2</span><span
+class=rvts16>,              </span><span              class=rvts17>x</span><span
+class=rvts18>3</span><span class=rvts16>)</span></p> 
+<div     class=rvps13><div     align=center><table     border=1    cellpadding=2
+cellspacing=-1 style="border-width: 0px; border-collapse: collapse;"> 
+<tr valign=top>
+<td  width=31  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-right:  none;"><p  class=rvps12><span
+class=rvts17>x</span><span class=rvts18>1</span></p> 
+</td>
+<td  width=17  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-right:  none;  border-left:  none;"><p
+class=rvps12><span class=rvts17>x</span><span class=rvts18>2</span></p> 
+</td>
+<td  width=27  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-left:   none;"><p  class=rvps12><span
+class=rvts17>x</span><span class=rvts18>3</span></p> 
+</td>
+<td  width=82  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;  border-style: solid;"><p class=rvps12><span class=rvts17>f</span><span
+class=rvts16>(</span><span class=rvts17>x</span><span
+class=rvts18>1</span><span              class=rvts16>,              </span><span
+class=rvts17>x</span><span       class=rvts18>2</span><span       class=rvts16>,
+</span><span        class=rvts17>x</span><span        class=rvts18>3</span><span
+class=rvts16>)</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=31  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;  border-style:  solid;  border-right:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts16>0</span></p> 
+</td>
+<td  width=17  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-right:   none;  border-bottom:  none;
+border-left: none;"><p class=rvps1><span class=rvts16>0</span></p> 
+</td>
+<td  width=27  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:  solid;  border-bottom:  none;  border-left:  none;"><p
+class=rvps1><span class=rvts16>0</span></p> 
+</td>
+<td  width=82  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-bottom:  none;"><p  class=rvps1><span
+class=rvts16>0</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=31  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts16>0</span></p> 
+</td>
+<td  width=17  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts16>0</span></p> 
+</td>
+<td  width=27  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts16>1</span></p> 
+</td>
+<td  width=82  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts16>1</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=31  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts16>0</span></p> 
+</td>
+<td  width=17  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts16>1</span></p> 
+</td>
+<td  width=27  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts16>0</span></p> 
+</td>
+<td  width=82  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts16>1</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=31  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts16>0</span></p> 
+</td>
+<td  width=17  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts16>1</span></p> 
+</td>
+<td  width=27  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts16>1</span></p> 
+</td>
+<td  width=82  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts16>1</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=31  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts16>1</span></p> 
+</td>
+<td  width=17  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts16>0</span></p> 
+</td>
+<td  width=27  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts16>0</span></p> 
+</td>
+<td  width=82  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts16>0</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=31  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts16>1</span></p> 
+</td>
+<td  width=17  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts16>0</span></p> 
+</td>
+<td  width=27  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts16>1</span></p> 
+</td>
+<td  width=82  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts16>1</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=31  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts16>1</span></p> 
+</td>
+<td  width=17  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts16>1</span></p> 
+</td>
+<td  width=27  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts16>0</span></p> 
+</td>
+<td  width=82  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts16>0</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=31  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:  none;  border-right:  none;"><p
+class=rvps1><span class=rvts16>1</span></p> 
+</td>
+<td  width=17  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-left: none;"><p class=rvps1><span class=rvts16>1</span></p> 
+</td>
+<td  width=27  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;  border-left:  none;"><p
+class=rvps1><span class=rvts16>1</span></p> 
+</td>
+<td  width=82  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;"><p   class=rvps1><span
+class=rvts16>1</span></p> 
+</td>
+</tr>
+</table>
+</div></div>
+<p class=rvps14><span class=rvts6><br></span></p>
+<p    class=rvps15><span    class=rvts6>Для   задания   булевой
+функции  можно  ограничиться  перечислением
+элементов          ее          характеристического
+множества             </span><span            class=rvts8>M</span><span
+class=rvts10>f</span><span        class=rvts15>1</span><span       class=rvts6>.
+Множество             </span><span            class=rvts8>M</span><span
+class=rvts10>f</span><span        class=rvts15>1</span><span        class=rvts6>
+задается  булевой  матрицей,  строки которой
+представляют    элементы    этого   множества.
+Следующая   матрица,   задающая   приведенную
+выше          функцию,          является         </span><span
+class=rvts8>матричным     способом</span><span     class=rvts6>
+представления булевой функции:</span></p> 
+<p class=rvps16><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=75   height=143   alt=""  style="padding  :  1px;"
+src="lk12/img1.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p            class=rvps18><span            class=rvts6>Компактность
+представления характеристического
+множества             </span><span            class=rvts8>M</span><span
+class=rvts10>f</span><span  class=rvts15>1</span><span  class=rvts6>  можно
+повысить,  используя  </span><span class=rvts8>троичные
+векторы</span><span   class=rvts6>,  компоненты  которых
+могут  принимать  в  качестве своих значений
+кроме  символов  0  и  1  также  символ  «</span><span
+class=rvts11>–</span><span    class=rvts6>».    В    этом   случае
+значения  булевой  функции будут задаваться
+не  на  отдельных  элементах, а на интервалах
+пространства            переменных            </span><span
+class=rvts8>х</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts9>2</span><span class=rvts6>, ..., </span><span
+class=rvts8>х</span><span  class=rvts10>n</span><span  class=rvts6>. Чтобы
+определить      понятие     интервала     булева
+пространства,     введем    отношение    </span><span
+class=rvts14>≤</span><span      class=rvts6>      на      множестве
+булевых векторов.</span></p> 
+<p   class=rvps19><span   class=rvts6>Булевы  векторы  </span><span
+class=rvts12>а</span><span class=rvts6> = (</span><span
+class=rvts8>а</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts8>а</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts8>а</span><span    class=rvts10>п</span><span    class=rvts6>)    и
+</span><span      class=rvts12>b</span><span      class=rvts6> = (</span><span
+class=rvts8>b</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>b</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>b</span><span
+class=rvts10>п</span><span       class=rvts6>)       находятся      в
+отношении    </span><span   class=rvts14>≤</span><span   class=rvts6>
+(</span><span       class=rvts12>а</span><span       class=rvts6> </span><span
+class=rvts14>≤</span><span class=rvts6> </span><span
+class=rvts12>b</span><span  class=rvts6>) и говорят, что </span><span
+class=rvts12>а</span><span      class=rvts6>      меньше     </span><span
+class=rvts12>b</span><span       class=rvts6>,       если       </span><span
+class=rvts8>а</span><span class=rvts10>i</span><span
+class=rvts6> </span><span class=rvts14>≤</span><span
+class=rvts6> </span><span  class=rvts8>b</span><span class=rvts10>i</span><span
+class=rvts6>    для   любого   </span><span  class=rvts8>i</span><span
+class=rvts6> = 1, 2, … , </span><span class=rvts8>п</span><span
+class=rvts6>,    в    противном   случае   они   </span><span
+class=rvts8>несравнимы</span><span   class=rvts6>.   При   этом
+считается,    что    0 </span><span    class=rvts14>≤</span><span
+class=rvts6> 1.    Тогда   </span><span   class=rvts8>интервалом
+булева          пространства</span><span          class=rvts6>
+называется     множество     векторов,     среди
+которых   есть   минимальный  и  максимальный
+векторы,    а    также    все   векторы,   меньшие
+максимального     и    большие    минимального.
+Интервал          представляется          троичным
+вектором,   который   задает   множество  всех
+булевых     векторов,     получаемых     заменой
+символа  «</span><span  class=rvts11>–</span><span class=rvts6>» на
+1 или 0.</span></p> 
+<p   class=rvps20><span   class=rvts8>Троичная</span><span  class=rvts6>
+матрица   </span><span   class=rvts8>эквивалентна</span><span
+class=rvts6>  булевой  матрице,  получаемой  из нее
+заменой      каждой      троичной     строки     на
+представляемую    ею   совокупность   булевых
+строк        с        последующим        устранением
+повторяющихся     строк.    Приведенная    выше
+булева  матрица  оказывается  эквивалентной
+троичной матрице</span></p> 
+<p class=rvps21><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=76   height=73   alt=""   style="padding  :  1px;"
+src="lk12/img2.jpg"><span class=rvts6>,</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p  class=rvps2><span  class=rvts6>которая  представляет ту
+же    булеву   функцию   </span><span   class=rvts8>f</span><span
+class=rvts13> </span><span  class=rvts6>(</span><span class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>,</span><span class=rvts15> </span><span
+class=rvts8>x</span><span   class=rvts9>2</span><span  class=rvts6>,</span><span
+class=rvts15> </span><span  class=rvts8>x</span><span class=rvts9>3</span><span
+class=rvts6>).    Такой    способ    задания    булевой
+функции           называют           еще          </span><span
+class=rvts8>интервальным</span><span class=rvts6>.
+Представление    булевой   функции   троичной
+матрицей   не  однозначно,  т. е.  для  одной  и
+той  же  булевой  матрицы  существует в общем
+случае  не  одна  эквивалентная  ей  троичная
+матрица.</span></p> 
+<p   class=rvps22><span   class=rvts6>Две   троичные   матрицы
+</span><span    class=rvts8>эквивалентны</span><span   class=rvts6>,
+если    они    эквивалентны   одной   и   той   же
+булевой        матрице,       т. е.       если       они
+представляют      одну     и     ту     же     булеву
+функцию.</span></p> 
+<p  class=rvps23><span class=rvts8>Векторное задание</span><span
+class=rvts6>  булевой  функции представляет собой
+булев       вектор,       компоненты       которого
+соответствуют            наборам            значений
+аргументов.    Эти    наборы   упорядочиваются
+обычно   согласно   порядку   чисел,  двоичные
+коды         которых         они         представляют.
+Рассмотренная  выше  булева  функция  </span><span
+class=rvts8>f</span><span   class=rvts6>(</span><span  class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts9>2</span><span  class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts9>3</span><span       class=rvts6>)       представляется
+вектором            (0</span><span           class=rvts15> </span><span
+class=rvts6>1</span><span  class=rvts15> </span><span class=rvts6>1</span><span
+class=rvts15> </span><span class=rvts6>1</span><span
+class=rvts15> </span><span class=rvts6>0</span><span
+class=rvts15> </span><span class=rvts6>1</span><span
+class=rvts15> </span><span class=rvts6>0</span><span
+class=rvts15> </span><span   class=rvts6>1),  показывающим,  что
+функция   принимает   значение   0  на  наборах
+(0</span><span       class=rvts15> </span><span       class=rvts6>0</span><span
+class=rvts15> </span><span            class=rvts6>0),            (1</span><span
+class=rvts15> </span><span class=rvts6>0</span><span
+class=rvts15> </span><span            class=rvts6>0),            (1</span><span
+class=rvts15> </span><span class=rvts6>1</span><span
+class=rvts15> </span><span    class=rvts6>0)   и   значение   1   на
+наборах             (0</span><span            class=rvts15> </span><span
+class=rvts6>0</span><span       class=rvts15> </span><span      class=rvts6>1),
+(0</span><span       class=rvts15> </span><span       class=rvts6>1</span><span
+class=rvts15> </span><span            class=rvts6>0),            (0</span><span
+class=rvts15> </span><span class=rvts6>1</span><span
+class=rvts15> </span><span            class=rvts6>1),            (1</span><span
+class=rvts15> </span><span class=rvts6>0</span><span
+class=rvts15> </span><span            class=rvts6>1),            (1</span><span
+class=rvts15> </span><span class=rvts6>1</span><span
+class=rvts15> </span><span   class=rvts6>1).  Заметим,  что  этот
+вектор   совпадает  с  правым  столбцом  табл.
+12.1.</span></p> 
+<p   class=rvps24><span   class=rvts6>Если  значения  булевой
+функции     определены     для     всех    2</span><span
+class=rvts13>n</span><span    class=rvts6>    наборов    значений
+вектора   </span><span  class=rvts12>x</span><span  class=rvts6>,  она
+называется         </span><span         class=rvts8>полностью
+определенной</span><span    class=rvts6>,    в   противном
+случае      </span><span     class=rvts11>–</span><span     class=rvts6>
+</span><span                 class=rvts8>не                 полностью
+определенной</span><span     class=rvts6>,    или    </span><span
+class=rvts8>частичной</span><span   class=rvts6>.  Задание  не
+полностью    определенной   булевой   функции
+</span><span     class=rvts8>f</span><span    class=rvts6>    разбивает
+булево    пространство    на    три   множества:
+кроме   </span><span  class=rvts8>M</span><span  class=rvts10>f</span><span
+class=rvts15>1</span><span          class=rvts6>         и         </span><span
+class=rvts8>M</span><span  class=rvts10>f</span><span class=rvts15>0</span><span
+class=rvts6>  в нем присутствует множество </span><span
+class=rvts8>M</span><span class=rvts10>f </span><span
+class=rvts19>–</span><span      class=rvts6>,      где     значения
+функции    </span><span   class=rvts8>f</span><span   class=rvts6>   не
+определены.  Для  задания  частичной булевой
+функции   необходимо   задать  не  менее  двух
+множеств.  Обычно  это  </span><span  class=rvts8>M</span><span
+class=rvts10>f</span><span     class=rvts15>1</span><span     class=rvts6>    и
+</span><span         class=rvts8>M</span><span        class=rvts10>f</span><span
+class=rvts15>0</span><span class=rvts6>.</span></p> 
+<p  class=rvps25><span  class=rvts6>Далее  будет  рассмотрен
+</span><span  class=rvts8>алгебраический  способ</span><span
+class=rvts6> задания булевой функции.</span></p> 
+<p class=rvps26><span class=rvts6><br></span></p>
+<p  class=rvps2><span  class=rvts7>12.2. Элементарные  булевы
+функции и алгебраические формы</span></p> 
+<p class=rvps27><span class=rvts6><br></span></p>
+<p  class=rvps28><span  class=rvts6>Рассматривая  векторную
+форму     задания    булевой    функции,    легко
+определить  число булевых функций от </span><span
+class=rvts8>п</span><span    class=rvts6>   переменных   </span><span
+class=rvts11>–</span><span    class=rvts6>    это    число    всех
+2</span><span  class=rvts13>n</span><span  class=rvts6>-компонентных
+булевых  векторов, т. е. </span><img width=31 height=28 alt=""
+style="padding  :  1px;"  src="lk12/img3.jpg"><span  class=rvts6>.  Однако
+это   число   учитывает   также   функции  и  от
+меньшего   числа  аргументов.  Любую  функцию
+от  </span><span  class=rvts8>п</span><span class=rvts6> аргументов
+можно  считать  функцией  от  большего  числа
+аргументов.    Для   этого   вводится   понятие
+</span><span class=rvts8>существенной
+зависимости</span><span       class=rvts6>       и      </span><span
+class=rvts8>несущественной зависимости</span><span
+class=rvts6>.      Функция     </span><span     class=rvts8>f</span><span
+class=rvts6>(</span><span  class=rvts8>х</span><span  class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts9>2</span><span class=rvts6>, ... , </span><span
+class=rvts8>х</span><span        class=rvts10>n</span><span       class=rvts6>)
+существенно   зависит   от  аргумента  </span><span
+class=rvts8>х</span><span        class=rvts10>i</span><span       class=rvts6>,
+если</span></p> 
+<p    class=rvps12><span   class=rvts8>f</span><span   class=rvts6>(</span><span
+class=rvts8>х</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts9>2</span><span class=rvts6>, ... , </span><span
+class=rvts8>х</span><span class=rvts10>i</span><span
+class=rvts9> </span><span class=rvts20>–</span><span
+class=rvts9> 1</span><span class=rvts6>,</span><span
+class=rvts8> </span><span class=rvts6>0, </span><span
+class=rvts8>х</span><span class=rvts10>i </span><span
+class=rvts9>+ 1</span><span class=rvts6>,</span><span
+class=rvts8> </span><span class=rvts6>… , </span><span
+class=rvts8>х</span><span class=rvts10>n</span><span
+class=rvts6>) </span><span class=rvts14>≠</span><span
+class=rvts6> </span><span  class=rvts8>f</span><span  class=rvts6>(</span><span
+class=rvts8>х</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts9>2</span><span class=rvts6>, ... , </span><span
+class=rvts8>х</span><span class=rvts10>i </span><span
+class=rvts20>–</span><span class=rvts9> 1</span><span
+class=rvts6>,</span><span class=rvts8> </span><span
+class=rvts6>1, </span><span class=rvts8>х</span><span
+class=rvts10>i </span><span class=rvts9>+ 1</span><span
+class=rvts6>,</span><span class=rvts8> </span><span
+class=rvts6>… , </span><span class=rvts8>х</span><span
+class=rvts10>n</span><span class=rvts6>).</span></p> 
+<p      class=rvps2><span      class=rvts6>Переменная     </span><span
+class=rvts8>х</span><span  class=rvts10>i</span><span  class=rvts6> в этом
+случае                  называется                  </span><span
+class=rvts8>существенным аргументом</span><span
+class=rvts6>.   В   противном   случае  она  является
+</span><span  class=rvts8>несущественным</span><span  class=rvts6>
+или                </span><span                class=rvts8>фиктивным
+аргументом</span><span class=rvts6>.</span></p> 
+<p  class=rvps29><span  class=rvts6>Элементарными  булевыми
+функциями  являются  функции от одной и двух
+переменных.      Число     функций     от     одной
+переменной    равно   </span><img   width=28   height=28   alt=""
+style="padding   :   1px;"  src="lk12/img4.jpg"><span  class=rvts6>= 4.  Эти
+функции  представлены в табл. 12.2. Две из них,
+</span><span  class=rvts8>f</span><span  class=rvts9>0</span><span  class=rvts6>
+и      </span><span     class=rvts8>f</span><span     class=rvts9>3</span><span
+class=rvts6>,     являются     константами     0     и    1,
+переменная  </span><span class=rvts8>x</span><span class=rvts6> для
+них   является   несущественным   аргументом.
+Функция  </span><span class=rvts8>f</span><span class=rvts9>1</span><span
+class=rvts6>   также  является  тривиальной,  любое
+ее     значение     совпадает     со     значением
+аргумента:            </span><span            class=rvts8>f</span><span
+class=rvts9>1</span><span   class=rvts6>(</span><span  class=rvts8>x</span><span
+class=rvts6>) = </span><span      class=rvts8>x</span><span      class=rvts6>.
+Нетривиальной   функцией   является  функция
+</span><span         class=rvts8>f</span><span         class=rvts9>2</span><span
+class=rvts6>(</span><span class=rvts8>x</span><span
+class=rvts6>) =</span><span class=rvts21>&not;</span><span
+class=rvts8>x</span><span    class=rvts6>,   называемая   </span><span
+class=rvts8>отрицанием</span><span  class=rvts6>,  или </span><span
+class=rvts8>инверсией</span><span  class=rvts6>.  Ее значение
+всегда  противоположно  значению  аргумента
+</span><span   class=rvts8>x</span><span   class=rvts6>.   Из  табл. 12.2
+видно,  что </span><span class=rvts21>&not;</span><span class=rvts6>0 = 1
+и</span><span class=rvts21>&not;</span><span class=rvts6>1 = 0.</span></p> 
+<p  class=rvps30><span  class=rvts6>В табл. 12.3 приведены все
+булевы      функции</span><span      class=rvts8>     f</span><span
+class=rvts10>i </span><span class=rvts6>(</span><span
+class=rvts8>х</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts9>2</span><span  class=rvts6>)  от двух аргументов. В
+левом    столбце   показаны   их   выражения   в
+терминах   нескольких  функций,  принятых  за
+основные.</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps31><span class=rvts16><br></span></p>
+<p class=rvps32><span class=rvts16>Таблица 12.2</span></p>
+<p     class=rvps33><span    class=rvts16>Булевы    функции    от
+одного аргумента</span></p> 
+<div      class=rvps34><table      border=1     cellpadding=4     cellspacing=-1
+style="border-width: 0px; border-collapse: collapse;"> 
+<tr valign=top>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:      solid;      border-right:     none;"><p     class=rvps1><span
+class=rvts16><br></span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;     border-right:    none;    border-left:    none;"><p
+class=rvps1><span class=rvts17>x</span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:      solid;      border-left:      none;"><p     class=rvps1><span
+class=rvts16><br></span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:      solid;     border-bottom:     none;"><p     class=rvps1><span
+class=rvts16>0</span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:      solid;     border-bottom:     none;"><p     class=rvps1><span
+class=rvts16>1</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  colspan=3  width=57  valign=top  style="border-width  :  1px; border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span      class=rvts17>f</span><span     class=rvts18>0</span><span
+class=rvts16> = 0</span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:      solid;     border-bottom:     none;"><p     class=rvps1><span
+class=rvts16>0</span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:      solid;     border-bottom:     none;"><p     class=rvps1><span
+class=rvts16>0</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  colspan=3  width=57  valign=top  style="border-width  :  1px; border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span      class=rvts17>f</span><span     class=rvts18>1</span><span
+class=rvts16> = </span><span class=rvts17>x</span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;     border-top:    none;    border-bottom:    none;"><p
+class=rvps1><span class=rvts16>0</span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;     border-top:    none;    border-bottom:    none;"><p
+class=rvps1><span class=rvts16>1</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  colspan=3  width=57  valign=top  style="border-width  :  1px; border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span      class=rvts17>f</span><span     class=rvts18>2</span><span
+class=rvts16> =</span><span class=rvts21>&not;</span><span
+class=rvts17>x</span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;     border-top:    none;    border-bottom:    none;"><p
+class=rvps1><span class=rvts16>1</span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;     border-top:    none;    border-bottom:    none;"><p
+class=rvps1><span class=rvts16>0</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  colspan=3  width=57  valign=top  style="border-width  :  1px; border-color:
+#000000;    border-style:   solid;   border-top:   none;"><p   class=rvps1><span
+class=rvts17>f</span><span class=rvts18>3</span><span
+class=rvts16> = 1</span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:      solid;      border-top:      none;"><p      class=rvps1><span
+class=rvts16>1</span></p> 
+</td>
+<td  width=10  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:      solid;      border-top:      none;"><p      class=rvps1><span
+class=rvts16>1</span></p> 
+</td>
+</tr>
+</table>
+</div>
+<p class=rvps35><span class=rvts6><br></span></p>
+<p class=rvps36><span class=rvts6><br></span></p>
+<p class=rvps37><span class=rvts16>Таблица 12.3</span></p>
+<p  class=rvps38><span  class=rvts16>Булевы  функции  от двух
+аргументов</span></p> 
+
+<center><img src="lk12/t1.png"></center>
+
+<p    class=rvps43><span   class=rvts6>Элементарные   функции
+имеют   особое   значение   в   теории  булевых
+функций,  поскольку каждая из них может быть
+выражена     одноместной     или    двухместной
+алгебраической    операцией.   Все   операции,
+представленные     в     табл. 12.3,    составляют
+</span><span  class=rvts8>алгебру  логики</span><span class=rvts6>.
+Любая    булева    функция    от   любого   числа
+аргументов      может      быть      представлена
+формулой        алгебры       логики.       Формулу,
+содержащую  более  чем  одну  операцию, можно
+рассматривать                  как                  </span><span
+class=rvts8>суперпозицию</span><span class=rvts6>
+элементарных   функций.   Под   суперпозицией
+функций    понимается   использование   одних
+функций    в    качестве    аргументов    других
+функций.  Для  булевых  функций  это является
+возможным    благодаря   совпадению   области
+значений  функций  с  областями  значений  их
+аргументов.        Таким       образом,       </span><span
+class=rvts8>алгебраическое задание</span><span
+class=rvts6>  булевой  функции представляет собой
+формулу,   по  которой  вычисляется  значение
+этой           функции.          Понятие          </span><span
+class=rvts8>формулы</span><span      class=rvts6>      определим
+индуктивно следующим образом:</span></p> 
+<p       class=rvps44><span       class=rvts6>1) каждый      символ
+переменной есть формула;</span></p> 
+<p        class=rvps45><span        class=rvts6>2) если        </span><span
+class=rvts8>А</span><span          class=rvts6>         и         </span><span
+class=rvts8>В</span><span               class=rvts6>               </span><span
+class=rvts11>–</span><span       class=rvts6>       формулы,       то
+формулами  являются  </span><span  class=rvts14>&not;</span><span
+class=rvts8>А</span><span         class=rvts6>         и         (</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts14>∗</span><span class=rvts6> </span><span
+class=rvts8>В</span><span        class=rvts6>),       где       </span><span
+class=rvts14>∗</span><span              class=rvts6>              </span><span
+class=rvts11>–</span><span     class=rvts6>     любая    операция
+алгебры логики;</span></p> 
+<p       class=rvps46><span       class=rvts6>3) других      формул
+нет.</span></p> 
+<p      class=rvps43><span      class=rvts6>Для      установления
+порядка   выполнения   операций   в   формулах
+используются  скобки. При отсутствии скобок
+порядок          устанавливается          согласно
+приоритетам   операций.  Первым  приоритетом
+обладает       операция      отрицания,      затем
+выполняется  </span><span  class=rvts14>∧</span><span class=rvts6>.
+Третьим    приоритетом    обладают    операции
+</span><span    class=rvts14>∨</span><span    class=rvts6>   и   </span><span
+class=rvts14>⊕</span><span           class=rvts6>,          четвертым
+приоритетом  </span><span  class=rvts11>–</span><span  class=rvts6>
+операции  ~  и  </span><span class=rvts14>→</span><span class=rvts6>.
+Для    упрощения    написания   формул   иногда
+символ     конъюнкции    опускается.    Процесс
+вычисления      значений      функции      </span><span
+class=rvts8>f</span><span   class=rvts6>(</span><span  class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts9>2</span><span  class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts9>3</span><span   class=rvts6>) = </span><img   width=184  height=28
+alt=""  style="padding  : 1px;" src="lk12/img5.jpg"><span class=rvts6> по ее
+формуле   покажем   с   помощью   табл. 12.4,  где
+последовательность столбцов
+соответствует          порядку          выполнения
+операций.</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps47><span class=rvts16>Таблица 12.4</span></p>
+<p        class=rvps48><span        class=rvts16>Вычисление       по
+формуле</span></p> 
+
+<center><img src="lk12/t2.png"></center>
+
+<p class=rvps1><span class=rvts24><br></span></p>
+<p  class=rvps59><span class=rvts6>Две разные формулы могут
+представлять   одну  и  ту  же  функцию.  Такие
+формулы                 называются                 </span><span
+class=rvts8>равносильными</span><span     class=rvts6>.    Если
+</span><span    class=rvts8>А</span><span    class=rvts6>    и    </span><span
+class=rvts8>В</span><span               class=rvts6>               </span><span
+class=rvts11>–</span><span        class=rvts6>        равносильные
+формулы,        то        </span><span       class=rvts8>А</span><span
+class=rvts6> = </span><span    class=rvts8>В</span><span   class=rvts6>.   В
+этом    случае,   если   </span><span   class=rvts8>А</span><span
+class=rvts6>  является  частью  другой  формулы, то
+вместо     нее     можно     подставить     </span><span
+class=rvts8>В</span><span   class=rvts6>,   в   результате  чего
+получится            формула,           равносильная
+исходной.</span></p> 
+<p     class=rvps43><span    class=rvts6>Алгебра,    содержащая
+только  три  операции </span><span class=rvts21>&not;</span><span
+class=rvts16>          </span><span          class=rvts6>,          </span><span
+class=rvts14>∧</span><span         class=rvts6>         и        </span><span
+class=rvts14>∨</span><span   class=rvts6>,  называется  </span><span
+class=rvts8>булевой</span><span   class=rvts6>,  так  же  как  и
+формула,          представляющая         некоторую
+композицию  этих  операций.  Легко проверить
+по    табл.    12.3   следующие   основные   законы
+булевой алгебры.</span></p> 
+
+<img src="lk12/f.png">
+
+<p  class=rvps43><span  class=rvts6>Здесь действует принцип
+двойственности,     т. е.    для    каждой    пары
+формул,  представляющих  тот  или иной закон,
+справедливо  следующее утверждение: одна из
+формул    получается    из    другой    взаимной
+заменой     всех     символов    конъюнкции    на
+символы    дизъюнкции,    всех    нулей   </span><span
+class=rvts11>–</span><span   class=rvts6>   на  единицы  и  всех
+единиц   </span><span   class=rvts11>–</span><span   class=rvts6>   на
+нули.</span></p> 
+<p  class=rvps43><span class=rvts6>На основании этих формул
+выводятся следующие соотношения.</span></p> 
+<p class=rvps43><span class=rvts6><br></span></p>
+<p  class=rvps83><span  class=rvts8>Закон  поглощения</span><span
+class=rvts6>:</span></p> 
+<p   class=rvps84><span   class=rvts8>х</span><span  class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts8>у </span><span class=rvts14>=</span><span
+class=rvts6> </span><span  class=rvts8>х</span><span class=rvts6>;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;               &nbsp;</span><span               class=rvts8>х</span><span
+class=rvts6> (</span><span class=rvts8>х</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts6> </span><span  class=rvts8>у</span><span class=rvts6>)</span><span
+class=rvts8> </span><span class=rvts14>=</span><span
+class=rvts6> </span><span class=rvts8>х</span><span class=rvts6>.</span></p> 
+<p class=rvps85><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Действительно,</span></p>
+<p class=rvps86><span class=rvts6><br></span></p>
+<p   class=rvps87><span   class=rvts8>х</span><span  class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts8>у </span><span class=rvts14>=</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts6> 1 </span><span class=rvts14>∨</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts6> </span><span class=rvts8>у </span><span
+class=rvts14>=</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> (1 </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>у</span><span  class=rvts6>)</span><span class=rvts8> </span><span
+class=rvts14>=</span><span class=rvts6> </span><span
+class=rvts8>х</span><span             class=rvts6>1 =             </span><span
+class=rvts8>х</span><span class=rvts6>;</span></p> 
+<p   class=rvps88><span  class=rvts8>х</span><span  class=rvts6> (</span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>у</span><span  class=rvts6>)</span><span class=rvts8> </span><span
+class=rvts14>=</span><span class=rvts6> </span><span
+class=rvts8>х х</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts8>у</span><span class=rvts6> </span><span
+class=rvts14>=</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts8>у </span><span class=rvts14>=</span><span
+class=rvts6> </span><span class=rvts8>х</span><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p        class=rvps89><span       class=rvts8>Закон       простого
+склеивания</span><span class=rvts6>:</span></p> 
+<p   class=rvps90><span   class=rvts8>х</span><span  class=rvts6> </span><span
+class=rvts8>у</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts21>&not;</span><span
+class=rvts8>у</span><span class=rvts6> </span><span
+class=rvts14>=</span><span class=rvts6> </span><span
+class=rvts8>х</span><span  class=rvts6>;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6>(</span><span class=rvts8>х</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts6> </span><span class=rvts8>у</span><span
+class=rvts6>) (</span><span class=rvts8>х</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts21>&not;</span><span class=rvts8>у</span><span
+class=rvts6>) </span><span class=rvts14>=</span><span
+class=rvts6> </span><span class=rvts8>х</span><span class=rvts6>.</span></p> 
+<p class=rvps91><span class=rvts6><br></span></p>
+<p  class=rvps2><span  class=rvts6>Левая  формула выводится
+с       помощью       закона      дистрибутивности
+конъюнкции        относительно       дизъюнкции:
+</span><span        class=rvts8>х</span><span        class=rvts6> </span><span
+class=rvts8>у</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts21>&not;</span><span
+class=rvts8>у</span><span class=rvts6> </span><span
+class=rvts14>=</span><span class=rvts6> </span><span
+class=rvts8>х</span><span  class=rvts6>(</span><span class=rvts8>у</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts21>&not;</span><span class=rvts8>у</span><span
+class=rvts6>) </span><span class=rvts14>=</span><span
+class=rvts6> </span><span   class=rvts8>х</span><span   class=rvts6>.   Для
+вывода  правой  формулы достаточно раскрыть
+скобки  и  применить законы идемпотентности
+и поглощения.</span></p> 
+<p class=rvps92><span class=rvts6><br></span></p>
+<p      class=rvps93><span     class=rvts8>Закон     обобщенного
+склеивания</span><span class=rvts6>:</span></p> 
+<p   class=rvps94><span   class=rvts8>х</span><span  class=rvts6> </span><span
+class=rvts8>у</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>х</span><span  class=rvts6> </span><span class=rvts8>z</span><span
+class=rvts6> </span><span class=rvts14>=</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts6> </span><span class=rvts8>у</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts21>&not;</span><span class=rvts8>х</span><span
+class=rvts6> </span><span  class=rvts8>z</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>y</span><span  class=rvts6> </span><span  class=rvts8>z</span><span
+class=rvts6>.</span></p> 
+<p class=rvps95><span class=rvts6><br></span></p>
+<p     class=rvps2><span     class=rvts6>Эту     формулу    можно
+вывести следующим образом:</span></p> 
+<p class=rvps96><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>х</span><span   class=rvts6> </span><span
+class=rvts8>у</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>х</span><span  class=rvts6> </span><span class=rvts8>z</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts6> </span><span  class=rvts8>y</span><span class=rvts6> </span><span
+class=rvts8>z</span><span  class=rvts6> </span><span class=rvts14>=</span><span
+class=rvts6> </span><span  class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts8>y</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>x</span><span  class=rvts6> </span><span  class=rvts8>z</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts6> </span><span  class=rvts8>y</span><span class=rvts6> </span><span
+class=rvts8>z </span><span  class=rvts6>(</span><span class=rvts8>x</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts21>&not;</span><span class=rvts8>x</span><span
+class=rvts6>) </span><span        class=rvts14>=</span><span       class=rvts6>
+</span><span         class=rvts8>x</span><span        class=rvts6> </span><span
+class=rvts8>y</span><span class=rvts6> (1 </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>z</span><span class=rvts6>) </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>x</span><span  class=rvts6> </span><span  class=rvts8>z</span><span
+class=rvts6> (1 </span><span class=rvts14>∨</span><span
+class=rvts6> </span><span  class=rvts8>y</span><span  class=rvts6>)</span><span
+class=rvts8> </span><span class=rvts14>=</span><span
+class=rvts6> </span><span  class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts8>y</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>x</span><span  class=rvts6> </span><span  class=rvts8>z</span><span
+class=rvts6>,</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p  class=rvps2><span  class=rvts6>а если подставить </span><span
+class=rvts8>у</span><span class=rvts6> = 1, то получим</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>х</span><span   class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>х</span><span  class=rvts6> </span><span class=rvts8>z</span><span
+class=rvts6> = </span><span class=rvts8>х</span><span
+class=rvts6> 1 </span><span class=rvts14>∨</span><span
+class=rvts21>&not;</span><span class=rvts8>х</span><span
+class=rvts6> </span><span  class=rvts8>z</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> 1 </span><span
+class=rvts8>z</span><span  class=rvts6> </span><span class=rvts14>=</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts6> </span><span class=rvts8>z.</span></p> 
+<p class=rvps1><span class=rvts8><br></span></p>
+<p   class=rvps43><span   class=rvts6>Все   операции   алгебры
+логики     можно     выразить     через     булевы
+операции.  Справедливость  следующих формул
+можно      доказать     простой     подстановкой
+значений из табл. 12.3:</span></p> 
+<p class=rvps43><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>х</span><span   class=rvts6> </span><span
+class=rvts14>⊕</span><span class=rvts6> </span><span
+class=rvts8>у</span><span class=rvts6> = </span><span
+class=rvts8>x</span><span class=rvts21>&not;</span><span
+class=rvts8>y</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>x</span><span  class=rvts6> </span><span  class=rvts8>y</span><span
+class=rvts6>;</span></p> 
+<p  class=rvps1><span  class=rvts8>х</span><span  class=rvts6> ~ </span><span
+class=rvts8>у</span><span class=rvts6> =</span><span
+class=rvts21>&not;</span><span class=rvts8>x</span><span
+class=rvts21>&not;</span><span class=rvts8>y</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts6> </span><span  class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts8>y</span><span class=rvts6>;</span></p> 
+<p   class=rvps1><span   class=rvts8>х</span><span   class=rvts6> </span><span
+class=rvts14>→</span><span class=rvts6> </span><span
+class=rvts8>у</span><span class=rvts6> =</span><span
+class=rvts21>&not;</span><span class=rvts8>x</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts6> </span><span class=rvts8>y</span><span class=rvts6>.</span></p> 
+<p class=rvps43><span class=rvts6><br></span></p>
+<p       class=rvps43><span       class=rvts6>Пользуясь      этими
+формулами,     построим     булево    выражение,
+эквивалентное             формуле             ((</span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts14>→</span><span class=rvts6> </span><span
+class=rvts8>у</span><span class=rvts6>) </span><span
+class=rvts14>∨</span><span class=rvts6> (</span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts14>⊕</span><span class=rvts6> </span><span
+class=rvts8>z</span><span class=rvts6>))</span><span
+class=rvts21>&not;</span><span class=rvts8>y</span><span
+class=rvts6>:</span></p> 
+<p class=rvps43><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts6>((</span><span   class=rvts8>х</span><span
+class=rvts6> </span><span class=rvts14>→</span><span
+class=rvts6> </span><span class=rvts8>у</span><span
+class=rvts6>) </span><span class=rvts14>∨</span><span
+class=rvts6> (</span><span class=rvts8>х</span><span
+class=rvts6> </span><span class=rvts14>⊕</span><span
+class=rvts6> </span><span  class=rvts8>z</span><span class=rvts6>))</span><span
+class=rvts21>&not;</span><span class=rvts8>y</span><span
+class=rvts6> = (</span><span class=rvts21>&not;</span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>y</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>x</span><span class=rvts21>&not;</span><span
+class=rvts8>z</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>x</span><span  class=rvts6> </span><span  class=rvts8>z</span><span
+class=rvts6>)</span><span class=rvts21>&not;</span><span
+class=rvts8>y</span><span class=rvts6> = (</span><span
+class=rvts21>&not;</span><span class=rvts8>x</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts6> </span><span  class=rvts8>y</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>z</span><span class=rvts6>)</span><span
+class=rvts21>&not;</span><span class=rvts8>y</span><span
+class=rvts16> =</span><span class=rvts21>&not;</span><span
+class=rvts8>x</span><span class=rvts21>&not;</span><span
+class=rvts8>y</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>y</span><span class=rvts21>&not;</span><span
+class=rvts8>z</span><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p class=rvps43><span class=rvts25><br></span></p>
+<p        class=rvps2><span        class=rvts7>12.3. Интерпретации
+булевой алгебры</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p         class=rvps43><span         class=rvts6>Рассматриваемая
+абстрактная    булева    алгебра    имеет    ряд
+интерпретаций,   используемых   в   различных
+приложениях.</span></p> 
+<p        class=rvps43><span       class=rvts8>Булева       алгебра
+множеств</span><span    class=rvts6>    описана    в   гл. 1.
+Здесь      значениями      переменных      служат
+подмножества     универсального     множества
+</span><span  class=rvts8>U</span><span  class=rvts6>. Константам 1 и
+0        соответствуют        множества       </span><span
+class=rvts8>U</span><span          class=rvts6>          и         </span><span
+class=rvts14>∅</span><span    class=rvts6>.   Все   соотношения,
+приведенные   в  гл. 1,  совпадут  с  основными
+законами  абстрактной булевой алгебры, если
+операцию  дополнения  множества заменить на
+операцию    отрицания,    а    операции   </span><span
+class=rvts14>∩</span><span         class=rvts6>         и        </span><span
+class=rvts14>∪</span><span     class=rvts6>     (пересечения     и
+объединения               множеств)              </span><span
+class=rvts11>–</span><span   class=rvts6>   соответственно  на
+операции   </span><span   class=rvts14>∧</span><span  class=rvts6>  и
+</span><span  class=rvts14>∨</span><span class=rvts6> (конъюнкции и
+дизъюнкции).</span></p> 
+<p          class=rvps43><span          class=rvts6>Интерпретацией
+абстрактной     булевой     алгебры    является
+также</span><span  class=rvts8>  алгебра  событий</span><span
+class=rvts6>,          используемая          в         теории
+вероятностей.   Алгебру  событий  составляют
+семейство           подмножеств           множества
+элементарных  событий  </span><span class=rvts8>U</span><span
+class=rvts6>       и       определяемые      над      этими
+подмножествами  операции  отрицания (</span><span
+class=rvts14>¬</span><span  class=rvts6>), объединения (</span><span
+class=rvts14>∪</span><span     class=rvts6>)     и     пересечения
+(</span><span     class=rvts14>∩</span><span     class=rvts6>).     Любое
+событие  может  произойти  или  не  произойти
+(наступить   или   не   наступить).  Отсутствие
+события      </span><span     class=rvts8>А</span><span     class=rvts6>
+обозначается    как    </span><span   class=rvts14>¬</span><span
+class=rvts8>А</span><span  class=rvts6>.  Событие, состоящее в
+наступлении        обоих       событий       </span><span
+class=rvts8>А</span><span          class=rvts6>         и         </span><span
+class=rvts8>В</span><span   class=rvts6>,   называется   </span><span
+class=rvts8>произведением  </span><span  class=rvts6>событий
+</span><span    class=rvts8>А</span><span    class=rvts6>    и    </span><span
+class=rvts8>В</span><span      class=rvts6>     и     обозначается
+</span><span        class=rvts8>А</span><span        class=rvts6> </span><span
+class=rvts14>∩</span><span class=rvts6> </span><span
+class=rvts8>В</span><span        class=rvts6>        или        </span><span
+class=rvts8>АВ</span><span  class=rvts6>.  Событие,  состоящее
+в   наступлении   хотя  бы  одного  из  событий
+</span><span    class=rvts8>А</span><span    class=rvts6>    и    </span><span
+class=rvts8>В</span><span   class=rvts6>,   называется   </span><span
+class=rvts8>суммой  </span><span  class=rvts6>событий  </span><span
+class=rvts8>А</span><span          class=rvts6>         и         </span><span
+class=rvts8>В</span><span      class=rvts6>     и     обозначается
+</span><span        class=rvts8>А</span><span        class=rvts6> </span><span
+class=rvts14>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6>.</span></p> 
+<p           class=rvps43><span           class=rvts6>Еще          одной
+интерпретацией            является            </span><span
+class=rvts8>алгебра переключательных
+схем</span><span  class=rvts6>. Переменным этой алгебры
+соответствуют   элементы   переключательной
+схемы      </span><span      class=rvts11>–</span><span      class=rvts6>
+переключатели.   Переключательный   элемент,
+состояние  которого представляется булевой
+переменной</span><span   class=rvts8>   а</span><span   class=rvts6>,
+может  быть  замкнут,  тогда через него течет
+ток  и  </span><span  class=rvts8>а</span><span  class=rvts6> </span><span
+class=rvts14>=</span><span  class=rvts6> 1.  Если  он разомкнут,
+то     тока     нет    и    </span><span    class=rvts8>а</span><span
+class=rvts6> </span><span   class=rvts14>=</span><span   class=rvts6> 0.  По
+состояниям   переключателей   в  схеме  можно
+определить,   проходит   ли   по  данной  схеме
+ток.     На     рис. 12.1, </span><span     class=rvts8>а</span><span
+class=rvts6>        изображено        последовательное
+соединение    двух    переключателей    </span><span
+class=rvts8>а</span><span          class=rvts6>         и         </span><span
+class=rvts8>b</span><span   class=rvts6>.   Данная  схема  будет
+пропускать  ток  в  том и только в том случае,
+когда    оба   переключателя   замкнуты,   т. е.
+если</span><span   class=rvts8>   a</span><span   class=rvts6> </span><span
+class=rvts14>∧</span><span class=rvts6> </span><span
+class=rvts8>b</span><span  class=rvts6> </span><span class=rvts14>=</span><span
+class=rvts6> 1.  На  рис. 12.1, </span><span  class=rvts8>б</span><span
+class=rvts6>  изображено параллельное соединение
+переключателей       </span><span       class=rvts8>а</span><span
+class=rvts6>  и  </span><span  class=rvts8>b</span><span  class=rvts6>.  Ток
+будет  протекать,  если  замкнут хотя бы один
+из  переключателей,  т. е.  если</span><span class=rvts8>
+a</span><span       class=rvts6> </span><span      class=rvts14>∨</span><span
+class=rvts6> </span><span  class=rvts8>b</span><span class=rvts6> </span><span
+class=rvts14>=</span><span class=rvts6> 1.</span></p> 
+<p       class=rvps43><span       class=rvts6>Два      или      более
+переключателей     можно     условно    связать
+таким    образом,    чтобы   они   замыкались   и
+размыкались            одновременно.           Такие
+переключатели  обычно  обозначаются одним и
+тем    же   символом.   Каждому   переключателю
+можно    поставить    в   соответствие   другой
+переключатель  так,  чтобы  когда один из них
+замкнут,  другой  был разомкнут. Если один из
+них          обозначить          буквой          </span><span
+class=rvts8>а</span><span    class=rvts6>,   то   другой   примет
+обозначение         </span><span         class=rvts21>&not;</span><span
+class=rvts8>а</span><span   class=rvts6>.   В  схеме  на  рис. 12.2
+пойдет    ток,   если   и   только   если   </span><span
+class=rvts8>а b</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>b</span><span class=rvts21>&not;</span><span
+class=rvts8>c</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts21>&not;</span><span
+class=rvts8>a</span><span class=rvts21>&not;</span><span
+class=rvts8>b</span><span  class=rvts6> </span><span class=rvts14>=</span><span
+class=rvts6> 1.    Левая    часть    этого    уравнения
+представляет структуру схемы.</span></p>
+
+
+<center><img src="lk12/d1.png"></center>
+
+
+<p       class=rvps1><span       class=rvts16>Рис. 12.1.      Примеры
+соединения          переключателей:         </span><span
+class=rvts17>а)</span><span class=rvts16>
+последовательное;</span></p> 
+<p       class=rvps1><span       class=rvts17>б)</span><span      class=rvts16>
+параллельное</span></p> 
+<p class=rvps43><span class=rvts6><br></span></p>
+<p         class=rvps43><span         class=rvts6>Другим        типом
+переключательной  схемы  является  схема  из
+электронных     логических    элементов,    где
+булевы          переменные          представляются
+сигналами    в   виде   высокого   или   низкого
+потенциала,  а  элементы  (рис. 12.3)  реализуют
+операции      отрицания,&nbsp;      конъюнкции     и
+дизъюнкции.</span></p> 
+
+<center><img src="lk12/d2.png"></center>
+
+<p        class=rvps1><span       class=rvts16>Рис. 12.2.       Пример
+переключательной схемы</span></p> 
+<p class=rvps43><span class=rvts16><br></span></p>
+<p        class=rvps98><span        class=rvts6>Если        высокому
+потенциалу   поставить   в  соответствие  1,  а
+низкому  </span><span  class=rvts11>–</span><span  class=rvts6> 0, то
+на   выходе   элемента   дизъюнкции   окажется
+высокий  потенциал  тогда,  когда  хотя  бы на
+одном    из    входов   элемента   присутствует
+высокий      потенциал.      Низкий     потенциал
+появится  на  выходе  элемента, когда оба его
+входа будут иметь низкий потенциал.</span></p> 
+
+<center><img src="lk12/d3.png"></center>
+
+<p     class=rvps1><span     class=rvts16>Рис. 12.3.    Логические
+элементы,     реализующие    операции    </span><span
+class=rvts21>&not;</span><span         class=rvts16>         ,        </span><span
+class=rvts21>∧</span><span         class=rvts16>        и        </span><span
+class=rvts21>∨</span></p> 
+<p class=rvps100><span class=rvts6><br></span></p>
+<p    class=rvps101><span    class=rvts6>На    выходе   элемента
+конъюнкции    создастся   высокий   потенциал
+тогда  и  только  тогда,  когда  оба  его входа
+будут иметь высокий потенциал.</span></p> 
+<p       class=rvps102><span       class=rvts6>Выход       элемента
+отрицания  примет  высокий потенциал в том и
+только  том  случае, когда на его входе будет
+низкий потенциал.</span></p> 
+
+<center><img src="lk12/d4.png"></center>
+
+<p        class=rvps1><span        class=rvts16>Рис. 12.4.       Схема,
+реализующая  операцию  «сложение  по  модулю
+два»</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps105><span   class=rvts6>Отдельные   логические
+элементы   можно  соединять  в  схемы,  причем
+структура   схемы   представляется  при  этом
+выражением    булевой   алгебры.   Так,   схема,
+реализующая     сложение     по     модулю    два,
+показана      на      рис. 12.4.      Ее      структура
+представлена     правой     частью    равенства
+</span><span         class=rvts8>a</span><span        class=rvts6> </span><span
+class=rvts14>⊕</span><span class=rvts6> </span><span
+class=rvts8>b</span><span  class=rvts6> </span><span class=rvts14>=</span><span
+class=rvts6> </span><span class=rvts8>a</span><span
+class=rvts21>&not;</span><span class=rvts8>b</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts21>&not;</span><span class=rvts8>a</span><span
+class=rvts6> </span><span class=rvts8>b</span><span class=rvts6>.</span></p> 
+<p            class=rvps43><span           class=rvts6>В           </span><span
+class=rvts8>исчислении высказываний</span><span
+class=rvts6>  переменными  являются высказывания,
+принимающие  истинные  или  ложные значения,
+которые   соответствуют   константам   1   и   0.
+Символы   операций   и  их  названия  в  данном
+случае   совпадают   не   случайно.  На  основе
+исчисления    высказываний   можно   выделить
+</span><span               class=rvts8>булеву               алгебру
+высказываний</span><span         class=rvts6>,        которая
+является        одной        из        интерпретаций
+абстрактной               булевой              алгебры.
+Высказывание</span><span class=rvts21>&not;</span><span
+class=rvts8>a</span><span     class=rvts6>    истинно    тогда    и
+только   тогда,  когда  </span><span  class=rvts8>а</span><span
+class=rvts6>  ложно.  Оно  читается  как  «не </span><span
+class=rvts8>а</span><span   class=rvts6>»  или  «не  верно,  что
+</span><span              class=rvts8>а</span><span             class=rvts6>».
+Высказывание          </span><span         class=rvts8>a</span><span
+class=rvts6> </span><span class=rvts14>∧</span><span
+class=rvts6> </span><span        class=rvts8>b</span><span        class=rvts6>,
+читаемое  как  «</span><span  class=rvts8>a</span><span class=rvts6>
+и   </span><span   class=rvts8>b</span><span   class=rvts6>»,   истинно
+тогда   и   только   тогда,  когда  истинны  оба
+высказывания  </span><span class=rvts8>a</span><span class=rvts6> и
+</span><span  class=rvts8>b</span><span  class=rvts6>.  Высказывание
+</span><span         class=rvts8>a</span><span        class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>b</span><span  class=rvts6>  читается  как «</span><span
+class=rvts8>a</span><span         class=rvts6>        или        </span><span
+class=rvts8>b</span><span   class=rvts6>».   Оно   истинно,  если
+хотя    бы    одно    из    высказываний    </span><span
+class=rvts8>a</span><span          class=rvts6>          и         </span><span
+class=rvts8>b</span><span  class=rvts6>  истинно, и ложно, если
+оба высказывания ложны.</span></p> 
+<p  class=rvps43><span  class=rvts6>Другие операции алгебры
+логики  также  могут  иметь  интерпретации  в
+исчислении  высказываний.  Союз  «или» может
+быть         использован         при        прочтении
+высказывания          </span><span         class=rvts8>a</span><span
+class=rvts6> </span><span class=rvts14>⊕</span><span
+class=rvts6> </span><span  class=rvts8>b</span><span class=rvts6>. Наряду
+с  «</span><span  class=rvts8>a</span><span class=rvts6> либо </span><span
+class=rvts8>b</span><span  class=rvts6>»  его можно читать как
+«или    </span><span    class=rvts8>a</span><span    class=rvts6>,    или
+</span><span  class=rvts8>b</span><span  class=rvts6>».  Оно истинно,
+когда  истинно  только  одно из высказываний
+</span><span     class=rvts8>a</span><span    class=rvts6>    и    </span><span
+class=rvts8>b</span><span   class=rvts6>,   и   ложно,  когда  оба
+высказывания     истинны     или     оба    ложны.
+Высказывание          </span><span         class=rvts8>a</span><span
+class=rvts6> ~ </span><span       class=rvts8>b</span><span       class=rvts6>
+истинно     тогда    и    только    тогда,    когда
+значения   истинности   высказываний  </span><span
+class=rvts8>a</span><span          class=rvts6>          и         </span><span
+class=rvts8>b</span><span      class=rvts6>      совпадают.      Это
+высказывание       может       быть      прочитано
+следующим   образом:   «</span><span  class=rvts8>a</span><span
+class=rvts6>   равносильно   </span><span   class=rvts8>b</span><span
+class=rvts6>»,  «</span><span class=rvts8>a</span><span class=rvts6>, если
+и  только если </span><span class=rvts8>b</span><span class=rvts6>»,
+«</span><span     class=rvts8>a</span><span    class=rvts6>    тогда    и
+только   тогда,   когда  </span><span  class=rvts8>b</span><span
+class=rvts6>».   Импликация   </span><span  class=rvts8>a</span><span
+class=rvts6> </span><span class=rvts14>→</span><span
+class=rvts6> </span><span         class=rvts8>b</span><span        class=rvts6>
+читается   как   «если   </span><span  class=rvts8>a</span><span
+class=rvts6>,   то   </span><span   class=rvts8>b</span><span  class=rvts6>».
+Это     высказывание    ложно,    когда    </span><span
+class=rvts8>а</span><span    class=rvts6>   истинно,   а   </span><span
+class=rvts8>b</span><span     class=rvts6>     ложно.     Во     всех
+остальных случаях оно истинно.</span></p> 
+<p class=rvps43><span class=rvts6><br></span></p>
+<p><span  class=rvts7>12.4. Представление  операций над
+булевыми    функциями    операциями    над    их
+характеристическими множествами</span></p> 
+<p class=rvps43><span class=rvts6><br></span></p>
+<p  class=rvps43><span  class=rvts6>Пусть  некоторые  булевы
+функции  </span><span class=rvts8>f</span><span class=rvts9>1</span><span
+class=rvts6>          и          </span><span         class=rvts8>f</span><span
+class=rvts9>2</span><span    class=rvts6>    заданы    с   помощью
+характеристических   множеств   </span><img   width=36
+height=32  alt="" style="padding : 1px;" src="lk12/img10.jpg"><span class=rvts6>
+и    </span><img    width=39    height=32   alt=""   style="padding   :   1px;"
+src="lk12/img11.jpg"><span     class=rvts6>.     Чтобы     получить
+характеристическое   множество   результата
+некоторой          операции         над         </span><span
+class=rvts8>f</span><span      class=rvts9>1</span><span     class=rvts6>     и
+</span><span  class=rvts8>f</span><span  class=rvts9>2</span><span class=rvts6>,
+надо            выполнить            соответствующую
+теоретико-множественную       операцию      над
+</span><img     width=36     height=32    alt=""    style="padding    :    1px;"
+src="lk12/img12.jpg"><span   class=rvts6>   и  </span><img  width=39  height=32
+alt=""   style="padding   :   1px;"   src="lk12/img13.jpg"><span   class=rvts6>,
+привлекая,  если  это  необходимо,  множества
+</span><img     width=39     height=35    alt=""    style="padding    :    1px;"
+src="lk12/img14.jpg"><span   class=rvts6>   и  </span><img  width=40  height=35
+alt=""   style="padding   :   1px;"   src="lk12/img15.jpg"><span   class=rvts6>,
+которые    являются   дополнениями   множеств
+</span><img     width=36     height=32    alt=""    style="padding    :    1px;"
+src="lk12/img16.jpg"><span   class=rvts6>   и  </span><img  width=39  height=32
+alt=""   style="padding   :   1px;"   src="lk12/img17.jpg"><span   class=rvts6>.
+Таким образом,</span></p> 
+
+<img src="lk12/f2.png">
+
+<p class=rvps2><span class=rvts6><br></span></p>
+<h2   class=rvps3><span  class=rvts0><span  class=rvts6>Г  л  а  в  а&nbsp;
+13</span></span></h2> 
+<h5    class=rvps4><span    class=rvts0><span   class=rvts7>Нормальные
+формы</span></span></h5> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p        class=rvps6><span        class=rvts7>13.1. Дизъюнктивные
+нормальные формы</span></p> 
+<p      class=rvps7><span      class=rvts6>Переменные     </span><span
+class=rvts8>х</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts8>х</span><span   class=rvts10>п</span><span  class=rvts6>  и  их
+инверсии                   назовем                   </span><span
+class=rvts8>литералами</span><span    class=rvts6>   и   введем
+обозначение          </span><span          class=rvts8>а</span><span
+class=rvts11>σ</span><span        class=rvts6>,       где       </span><span
+class=rvts8>а</span><span class=rvts11>σ</span><span
+class=rvts8> </span><span class=rvts6>= </span><span
+class=rvts8>а</span><span       class=rvts6>,       если       </span><span
+class=rvts12>σ</span><span       class=rvts6> = 1,       и      </span><span
+class=rvts8>а</span><span class=rvts11>σ</span><span
+class=rvts8> </span><span class=rvts6>=</span><span
+class=rvts13>&not;</span><span  class=rvts8>а</span><span  class=rvts6>, если
+</span><span    class=rvts12>σ</span><span   class=rvts6> = 0.   </span><span
+class=rvts8>Элементарной     конъюнкцией    K</span><span
+class=rvts10>i</span><span             class=rvts6>             является
+многоместная  конъюнкция попарно различных
+литералов,      т. е.     </span><span     class=rvts8>K</span><span
+class=rvts10>i</span><span   class=rvts6> = </span><img   width=101  height=36
+alt=""   style="padding   :  1px;"  src="lk13/img1.jpg"><span  class=rvts6>.  К
+элементарным  конъюнкциям  относятся  также
+одиночные   литералы   и   константа  1  </span><span
+class=rvts14>–</span><span          class=rvts6>         конъюнкция,
+состоящая  из  пустого  множества литералов.
+Число     литералов     </span><span     class=rvts8>r</span><span
+class=rvts6>  элементарной конъюнкции называется
+ее     </span><span     class=rvts8>рангом</span><span     class=rvts6>.
+Элементарная  конъюнкция называется </span><span
+class=rvts8>полной</span><span    class=rvts6>    относительно
+переменных            </span><span           class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>,  </span><span class=rvts8>x</span><span
+class=rvts9>2</span><span         class=rvts6>,         …,        </span><span
+class=rvts8>x</span><span   class=rvts10>n</span><span   class=rvts6>,  если
+она   содержит  символы  всех  переменных  (со
+знаком  отрицания  или  без  него). Ранг таких
+конъюнкций     равен    </span><span    class=rvts8>n</span><span
+class=rvts6>.</span></p> 
+<p            class=rvps2><span           class=rvts8>Дизъюнктивная
+нормальная  форма</span><span  class=rvts6> (ДНФ) </span><span
+class=rvts14>–</span><span  class=rvts6>  это  выражение  вида
+</span><img     width=23     height=52    alt=""    style="padding    :    1px;"
+src="lk13/img2.jpg"><span  class=rvts8>K</span><span  class=rvts10>i</span><span
+class=rvts6>,     т. е.     дизъюнкция     элементарных
+конъюнкций.         Примером        дизъюнктивной
+нормальной      формы     является     выражение
+</span><span         class=rvts8>х</span><span        class=rvts9>1</span><span
+class=rvts13>&not;</span><span class=rvts8>х</span><span
+class=rvts9>2</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span  class=rvts9>2</span><span class=rvts6> </span><span
+class=rvts8>х</span><span  class=rvts9>3</span><span class=rvts6> </span><span
+class=rvts8>х</span><span  class=rvts9>4</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts13>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>1</span><span class=rvts6> </span><span
+class=rvts8>х</span><span    class=rvts9>3</span><span   class=rvts6>,   где
+две     конъюнкции    имеют    ранг    2    и    одна
+конъюнкция   </span><span   class=rvts14>–</span><span  class=rvts6>
+ранг  3.  Одна  элементарная конъюнкция также
+может считаться ДНФ.</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p        class=rvps2><span        class=rvts7>13.2. Дизъюнктивное
+разложение Шеннона</span></p> 
+<p class=rvps8><span class=rvts6><br></span></p>
+<p         class=rvps9><span        class=rvts6>Т е о р е м а&nbsp;
+Ш е н н о н а.  Любая  булева функция</span><span
+class=rvts8>  f</span><span  class=rvts6>(</span><span class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>,</span><span class=rvts16> </span><span
+class=rvts8>x</span><span   class=rvts9>2</span><span  class=rvts6>,</span><span
+class=rvts16> </span><span             class=rvts6>…,            </span><span
+class=rvts8>x</span><span  class=rvts10>n</span><span  class=rvts6>)</span><span
+class=rvts8>    </span><span    class=rvts6>при    любом    </span><span
+class=rvts8>т          </span><span         class=rvts6>(1         </span><span
+class=rvts15>≤</span><span              class=rvts6>              </span><span
+class=rvts8>m</span><span                class=rvts6>               </span><span
+class=rvts15>≤</span><span              class=rvts6>              </span><span
+class=rvts8>n</span><span        class=rvts6>)        может        быть
+представлена в следующем виде:</span></p> 
+<p    class=rvps10><span   class=rvts8>f</span><span   class=rvts6>(</span><span
+class=rvts8>x</span><span   class=rvts9>1</span><span  class=rvts6>,</span><span
+class=rvts16> </span><span  class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>,</span><span      class=rvts16> </span><span      class=rvts6>…,
+</span><span  class=rvts8>x</span><span class=rvts10>n</span><span class=rvts6>)
+=</span><img    width=173    height=48    alt=""    style="padding    :    1px;"
+src="lk13/img3.jpg"><span   class=rvts8>f</span><span  class=rvts6>(</span><span
+class=rvts12>σ</span><span        class=rvts9>1</span><span       class=rvts6>,
+</span><span        class=rvts12>σ</span><span        class=rvts9>2</span><span
+class=rvts6>,      …      ,      </span><span      class=rvts12>σ</span><span
+class=rvts10>m</span><span  class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts10>m</span><span   class=rvts9>+1</span><span   class=rvts6>,   …  ,
+</span><span         class=rvts8>x</span><span        class=rvts10>n</span><span
+class=rvts6>),     </span><span     class=rvts6>     &nbsp;     &nbsp;    &nbsp;
+&nbsp;</span><span class=rvts6>(13.1)</span></p> 
+<p   class=rvps6><span  class=rvts6>где  дизъюнкция  берется
+по     всевозможным    2</span><span    class=rvts17>m</span><span
+class=rvts6>  наборам  значений переменных </span><span
+class=rvts8>x</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>x</span><span
+class=rvts10>m</span><span class=rvts6>.</span></p> 
+<p     class=rvps11><span     class=rvts6>Для    доказательства
+теоремы   подставим   в  обе  части  равенства
+(13.1)         произвольный         набор         (</span><span
+class=rvts12>α</span><span        class=rvts9>1</span><span       class=rvts6>,
+</span><span        class=rvts12>α</span><span        class=rvts9>2</span><span
+class=rvts6>,        …,        </span><span        class=rvts12>α</span><span
+class=rvts10>n</span><span  class=rvts6>) значений всех </span><span
+class=rvts8>n</span><span   class=rvts6>  переменных.  Заметим,
+что    </span><span   class=rvts8>x</span><span   class=rvts18>σ</span><span
+class=rvts6>  =  1  только  при  </span><span class=rvts8>x</span><span
+class=rvts6>  =  </span><span  class=rvts12>σ</span><span  class=rvts6> и из
+всех       2</span><span       class=rvts17>m</span><span       class=rvts6>
+конъюнкций  </span><img  width=100  height=32  alt="" style="padding :
+1px;"    src="lk13/img4.jpg"><span    class=rvts6>    правой    части
+формулы  (13.1)  значение 1 примет единственная
+конъюнкция,  а  именно та, для которой </span><span
+class=rvts12>σ</span><span class=rvts9>1</span><span
+class=rvts6> = </span><span class=rvts12>α</span><span
+class=rvts9>1</span><span               class=rvts6>,               </span><span
+class=rvts12>σ</span><span class=rvts9>2</span><span
+class=rvts6> = </span><span class=rvts12>α</span><span
+class=rvts9>2</span><span           class=rvts6>, … ,           </span><span
+class=rvts12>σ</span><span class=rvts10>m</span><span
+class=rvts6> = </span><span class=rvts12>α</span><span
+class=rvts10>m</span><span            class=rvts6>.           Остальные
+конъюнкции   будут   равны  0.  Отсюда  получим
+тождество</span></p> 
+<p   class=rvps12><span   class=rvts19>f</span><span  class=rvts20>(</span><span
+class=rvts21>α</span><span       class=rvts22>1</span><span      class=rvts23>,
+</span><span        class=rvts24>α</span><span       class=rvts25>2</span><span
+class=rvts26>,      …      ,      </span><span     class=rvts27>α</span><span
+class=rvts28>n</span><span     class=rvts29>)</span><span     class=rvts6>     =
+</span><img     width=107    height=32    alt=""    style="padding    :    1px;"
+src="lk13/img5.jpg"><span  class=rvts8>f</span><span class=rvts16> </span><span
+class=rvts6>(</span><span class=rvts30>α</span><span
+class=rvts31>1</span><span              class=rvts32>,              </span><span
+class=rvts33>α</span><span   class=rvts34>2</span><span  class=rvts35>,  …  ,
+</span><span        class=rvts36>α</span><span       class=rvts10>m</span><span
+class=rvts6>,              </span><span              class=rvts12>α</span><span
+class=rvts10>m</span><span   class=rvts9>+1</span><span   class=rvts6>,   …  ,
+</span><span        class=rvts12>α</span><span       class=rvts10>n</span><span
+class=rvts6>).</span></p> 
+<p      class=rvps13><span     class=rvts6>Представление     (13.1)
+называется     </span><span     class=rvts8>дизъюнктивным
+разложением   функции</span><span   class=rvts6>  </span><span
+class=rvts8>f</span><span  class=rvts17> </span><span class=rvts6>(</span><span
+class=rvts8>x</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>x</span><span
+class=rvts10>n</span><span  class=rvts6>) по переменным </span><span
+class=rvts8>x</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>x</span><span
+class=rvts10>m</span><span       class=rvts6>.      Получаемые      в
+результате    подстановки   констант   </span><span
+class=rvts12>α</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts12>α</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts12>α</span><span       class=rvts10>т</span><span       class=rvts6>
+вместо    переменных    </span><span   class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts8>x</span><span         class=rvts10>m</span><span        class=rvts6>
+функции  </span><span class=rvts8>f</span><span class=rvts6>(</span><span
+class=rvts12>α</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts12>α</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts12>α</span><span class=rvts10>m</span><span
+class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts10>m</span><span class=rvts9>+1</span><span
+class=rvts6>, …, </span><span class=rvts8>x</span><span
+class=rvts10>n</span><span          class=rvts6>),          являющиеся
+коэффициентами   разложения,  не  зависят  от
+переменных            </span><span           class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts8>x</span><span class=rvts10>m</span><span class=rvts6>.</span></p> 
+<p    class=rvps14><span    class=rvts6>Из    теоремы    Шеннона
+непосредственно    вытекают   два   следующих
+утверждения,  соответствующие  двум крайним
+значениям     числа     </span><span    class=rvts8>т</span><span
+class=rvts6>:   </span><span  class=rvts8>т</span><span  class=rvts6> = 1  и
+</span><span       class=rvts8>т</span><span      class=rvts6> = </span><span
+class=rvts8>п</span><span class=rvts6>.</span></p> 
+<p         class=rvps15><span         class=rvts6>Любая        булева
+функция</span><span  class=rvts8> f</span><span class=rvts6>(</span><span
+class=rvts8>x</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>x</span><span
+class=rvts10>n</span><span  class=rvts6>)</span><span  class=rvts8> </span><span
+class=rvts6>при     любом     </span><span     class=rvts8>i</span><span
+class=rvts6> = 1, 2, … , </span><span class=rvts8>n</span><span
+class=rvts6>  может быть представлена в следующем
+виде:</span></p> 
+<p    class=rvps12><span   class=rvts8>f</span><span   class=rvts6>(</span><span
+class=rvts8>x</span><span   class=rvts9>1</span><span  class=rvts6>,</span><span
+class=rvts16> </span><span  class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>,</span><span class=rvts16> </span><span
+class=rvts6>…</span><span class=rvts16> </span><span
+class=rvts6>,</span><span  class=rvts16> </span><span class=rvts8>x</span><span
+class=rvts10>n</span><span          class=rvts6>)         =         </span><span
+class=rvts8>x</span><span  class=rvts10>i</span><span  class=rvts6> </span><span
+class=rvts8>f</span><span   class=rvts6>(</span><span  class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>,  </span><span class=rvts8>x</span><span
+class=rvts9>2</span><span       class=rvts6>,       …      ,      </span><span
+class=rvts8>x</span><span  class=rvts10>i</span><span class=rvts9>-1</span><span
+class=rvts6>,          1,         </span><span         class=rvts8>x</span><span
+class=rvts10>i</span><span   class=rvts9>+1</span><span   class=rvts6>,   …  ,
+</span><span  class=rvts8>x</span><span class=rvts10>n</span><span class=rvts6>)
+</span><span      class=rvts15>∨</span><span      class=rvts13>&not;</span><span
+class=rvts8>x</span><span  class=rvts10>i</span><span  class=rvts6> </span><span
+class=rvts8>f</span><span   class=rvts6>(</span><span  class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>,  </span><span class=rvts8>x</span><span
+class=rvts9>2</span><span       class=rvts6>,       …      ,      </span><span
+class=rvts8>x</span><span  class=rvts10>i</span><span class=rvts9>-1</span><span
+class=rvts6>,          0,         </span><span         class=rvts8>x</span><span
+class=rvts10>i</span><span   class=rvts9>+1</span><span   class=rvts6>,   …  ,
+</span><span         class=rvts8>x</span><span        class=rvts10>n</span><span
+class=rvts6>).</span></p> 
+<p         class=rvps16><span         class=rvts6>Любая        булева
+функция</span><span  class=rvts8> f</span><span class=rvts6>(</span><span
+class=rvts8>x</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>x</span><span
+class=rvts10>n</span><span  class=rvts6>)</span><span  class=rvts8> </span><span
+class=rvts6>может  быть  представлена в следующем
+виде:</span></p> 
+<p    class=rvps10><span   class=rvts8>f</span><span   class=rvts6>(</span><span
+class=rvts8>x</span><span   class=rvts9>1</span><span  class=rvts6>,</span><span
+class=rvts16> </span><span  class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>,</span><span class=rvts16> </span><span
+class=rvts6>…</span><span class=rvts16> </span><span
+class=rvts6>,</span><span  class=rvts16> </span><span class=rvts8>x</span><span
+class=rvts10>n</span><span   class=rvts6>)   =</span><img   width=168  height=48
+alt=""        style="padding       :       1px;"       src="lk13/img6.jpg"><span
+class=rvts8>f</span><span  class=rvts6>(</span><span class=rvts12>σ</span><span
+class=rvts9>1</span><span               class=rvts6>,               </span><span
+class=rvts12>σ</span><span   class=rvts9>2</span><span   class=rvts6>,   …  ,
+</span><span        class=rvts12>σ</span><span       class=rvts10>n</span><span
+class=rvts6>).</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>        &nbsp;        &nbsp;        &nbsp;        &nbsp;</span><span
+class=rvts6>(13.2)</span></p> 
+<p    class=rvps17><span    class=rvts6>Последнее    выражение
+является           представлением           булевой
+функции</span><span  class=rvts8> f</span><span class=rvts6>(</span><span
+class=rvts8>x</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>x</span><span
+class=rvts10>n</span><span         class=rvts6>)         в         </span><span
+class=rvts8>совершенной дизъюнктивной
+нормальной  форме </span><span class=rvts6>(СДНФ). Здесь
+</span><span         class=rvts8>f</span><span         class=rvts6>(</span><span
+class=rvts12>σ</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts12>σ</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts12>σ</span><span       class=rvts10>n</span><span       class=rvts6>)
+является    значением    функции    на    наборе
+значений  аргументов (</span><span class=rvts12>σ</span><span
+class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts12>σ</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts12>σ</span><span
+class=rvts10>n</span><span   class=rvts6>),   т. е.   константой  0
+или 1. </span></p> 
+<p   class=rvps18><span   class=rvts6>Легко   построить  СДНФ,
+представляющую        произвольную        булеву
+функцию,   заданную   в  табличной  форме.  Для
+этого   достаточно  выделить  наборы  (</span><span
+class=rvts12>σ</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts12>σ</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts12>σ</span><span   class=rvts10>n</span><span   class=rvts6>),   на
+которых  функция  принимает значение 1, и для
+каждого    из    них    ввести    в   СДНФ   полную
+элементарную       конъюнкцию,      где      любая
+переменная            </span><span           class=rvts8>x</span><span
+class=rvts10>i</span><span      class=rvts6>     присутствует     с
+отрицанием,    если    </span><span    class=rvts12>σ</span><span
+class=rvts10>i</span><span  class=rvts6>  =  0,  и  без  отрицания,
+если   </span><span  class=rvts12>σ</span><span  class=rvts10>i</span><span
+class=rvts6> = 1.</span></p> 
+<p    class=rvps19><span    class=rvts6>Очевидно,    для   любой
+булевой     функции     </span><span     class=rvts8>f</span><span
+class=rvts6>(</span><span   class=rvts8>x</span><span  class=rvts9>1</span><span
+class=rvts6>, </span><span  class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>, …,            </span><span            class=rvts8>x</span><span
+class=rvts10>n</span><span   class=rvts6>),   кроме  константы  0,
+существует  единственная  СДНФ  (с точностью
+до  порядка литералов и конъюнкций). Поэтому
+данная      форма      представления      булевой
+функции                   является                   </span><span
+class=rvts8>канонической</span><span class=rvts6>.
+Например,     СДНФ     для     функции    от    трех
+аргументов,      заданной      табл. 13.1,     имеет
+следующий вид:</span></p> 
+<p   class=rvps20><span   class=rvts37>f</span><span   class=rvts6>(</span><span
+class=rvts8>x</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>x</span><span  class=rvts9>2</span><span  class=rvts6>, </span><span
+class=rvts8>x</span><span   class=rvts9>3</span><span  class=rvts6>)</span><span
+class=rvts38>     </span><span     class=rvts39> </span><span    class=rvts40>=
+</span><span       class=rvts41>&not;</span><span       class=rvts42>x</span><span
+class=rvts43>1</span><span class=rvts44> </span><span
+class=rvts45>х</span><span class=rvts46>2</span><span
+class=rvts47>&not;</span><span class=rvts48>х</span><span
+class=rvts49>3</span><span               class=rvts50>              </span><span
+class=rvts51> </span><span class=rvts52>∨</span><span
+class=rvts53> </span><span              class=rvts54>              </span><span
+class=rvts55>x</span><span class=rvts56>1</span><span
+class=rvts57>&not;</span><span class=rvts58>х</span><span
+class=rvts59>2</span><span class=rvts60>&not;</span><span
+class=rvts61>х</span><span class=rvts62>3</span><span
+class=rvts63> </span><span class=rvts64>∨</span><span
+class=rvts65> </span><span class=rvts66>x</span><span
+class=rvts67>1</span><span class=rvts68>&not;</span><span
+class=rvts69>х</span><span class=rvts70>2</span><span
+class=rvts71> </span><span class=rvts72>х</span><span
+class=rvts73>3</span><span class=rvts74> </span><span
+class=rvts75>.</span></p> 
+<p class=rvps21><span class=rvts6><br></span></p>
+<p class=rvps22><span class=rvts76>Таблица 13.1</span></p>
+<p  class=rvps23><span  class=rvts76>Задание  функции </span><span
+class=rvts77>f</span><span class=rvts78> </span><span
+class=rvts76>(</span><span class=rvts77>x</span><span
+class=rvts76>,</span><span class=rvts79> </span><span
+class=rvts77>y</span><span class=rvts76>,</span><span
+class=rvts79> </span><span class=rvts77>z</span><span
+class=rvts76>)</span></p> 
+<div     class=rvps24><div     align=center><table     border=1    cellpadding=2
+cellspacing=-1 style="border-width: 0px; border-collapse: collapse;"> 
+<tr valign=top>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-right:   none;"><p  class=rvps1><span
+class=rvts77>x</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-right:  none;  border-left:  none;"><p
+class=rvps1><span class=rvts77>y</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-left:   none;"><p   class=rvps1><span
+class=rvts77>z</span></p> 
+</td>
+<td  width=79  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;  border-style:  solid;"><p class=rvps1><span class=rvts77>f</span><span
+class=rvts78> </span><span class=rvts76>(</span><span
+class=rvts77>x</span><span class=rvts76>,</span><span
+class=rvts79> </span><span class=rvts77>y</span><span
+class=rvts76>,</span><span class=rvts79> </span><span
+class=rvts77>z</span><span class=rvts76>)</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;  border-style:  solid;  border-right:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts76>0</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-right:   none;  border-bottom:  none;
+border-left: none;"><p class=rvps1><span class=rvts76>0</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:  solid;  border-bottom:  none;  border-left:  none;"><p
+class=rvps1><span class=rvts76>0</span></p> 
+</td>
+<td  width=79  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-bottom:  none;"><p  class=rvps1><span
+class=rvts76>0</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts76>0</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts76>0</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts76>1</span></p> 
+</td>
+<td  width=79  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts76>0</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts76>0</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts76>1</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts76>0</span></p> 
+</td>
+<td  width=79  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts76>1</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts76>0</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts76>1</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts76>1</span></p> 
+</td>
+<td  width=79  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts76>0</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts76>1</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts76>0</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts76>0</span></p> 
+</td>
+<td  width=79  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts76>1</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts76>1</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts76>0</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts76>1</span></p> 
+</td>
+<td  width=79  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts76>1</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom: none;"><p class=rvps1><span class=rvts76>1</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-bottom:      none;      border-left:      none;"><p     class=rvps1><span
+class=rvts76>1</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;   border-bottom:   none;
+border-left: none;"><p class=rvps1><span class=rvts76>0</span></p> 
+</td>
+<td  width=79  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;  border-top:  none;  border-bottom:  none;"><p
+class=rvps1><span class=rvts76>0</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:  none;  border-right:  none;"><p
+class=rvps1><span class=rvts76>1</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;   border-right:   none;
+border-left: none;"><p class=rvps1><span class=rvts76>1</span></p> 
+</td>
+<td  width=13  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;   border-style:   solid;   border-top:   none;  border-left:  none;"><p
+class=rvps1><span class=rvts76>1</span></p> 
+</td>
+<td  width=79  height=1  valign=top  style="border-width  :  1px;  border-color:
+#000000;    border-style:   solid;   border-top:   none;"><p   class=rvps1><span
+class=rvts76>0</span></p> 
+</td>
+</tr>
+</table>
+</div></div>
+<p class=rvps25><span class=rvts6><br></span></p>
+<p          class=rvps26><span          class=rvts6>Константа         1
+представляется     в     виде     СДНФ,    которая
+содержит          все         различные         полные
+элементарные  конъюнкции,  которые называют
+</span><span class=rvts8>конституентами
+единицы</span><span       class=rvts6>      (в      литературе
+используется        также       термин       </span><span
+class=rvts8>минтерм</span><span  class=rvts6>).  Конституента
+единицы       принимает       значение       1      на
+единственном              наборе              значений
+переменных.</span></p> 
+<p class=rvps27><span class=rvts6><br></span></p>
+<p        class=rvps2><span        class=rvts7>13.3. Конъюнктивные
+нормальные формы</span></p> 
+<p class=rvps28><span class=rvts6><br></span></p>
+<p            class=rvps29><span            class=rvts8>Элементарной
+дизъюнкцией   D</span><span  class=rvts10>i</span><span  class=rvts6>
+является  многоместная  конъюнкция  попарно
+различных        литералов,        т. е.       </span><span
+class=rvts8>D</span><span class=rvts10>i</span><span
+class=rvts6> = </span><img  width=160  height=36 alt="" style="padding : 1px;"
+src="lk13/img7.jpg"><span      class=rvts6>.     К     элементарным
+дизъюнкциям    относятся    также    одиночные
+литералы        и        константа        0       </span><span
+class=rvts14>–</span><span          class=rvts6>         дизъюнкция,
+состоящая  из  пустого  множества литералов.
+Число     литералов     </span><span     class=rvts8>r</span><span
+class=rvts6>  элементарной дизъюнкции называется
+ее     </span><span     class=rvts8>рангом</span><span     class=rvts6>.
+Элементарная  дизъюнкция называется </span><span
+class=rvts8>полной</span><span    class=rvts6>    относительно
+переменных            </span><span           class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>,  </span><span class=rvts8>x</span><span
+class=rvts9>2</span><span         class=rvts6>,         …,        </span><span
+class=rvts8>x</span><span   class=rvts10>n</span><span   class=rvts6>,  если
+она   содержит  символы  всех  переменных  (со
+знаком  отрицания  или  без  него). Ранг таких
+дизъюнкций     равен    </span><span    class=rvts8>n</span><span
+class=rvts6>.</span></p> 
+<p           class=rvps30><span           class=rvts8>Конъюнктивная
+нормальная  форма</span><span  class=rvts6> (КНФ) </span><span
+class=rvts14>–</span><span  class=rvts6>  это  выражение  вида
+</span><img     width=23     height=52    alt=""    style="padding    :    1px;"
+src="lk13/img8.jpg"><span  class=rvts8>D</span><span  class=rvts10>i</span><span
+class=rvts6>,     т. е.     конъюнкция     элементарных
+дизъюнкций.         Примером        конъюнктивной
+нормальной      формы     является     выражение
+(</span><span        class=rvts8>х</span><span        class=rvts9>2</span><span
+class=rvts6> </span><span class=rvts15>∨</span><span
+class=rvts13>&not;</span><span class=rvts8>х</span><span
+class=rvts9>3</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span  class=rvts9>4</span><span class=rvts6>)(</span><span
+class=rvts8>х</span><span  class=rvts9>1</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts13>&not;</span><span
+class=rvts8>х</span><span   class=rvts9>2</span><span  class=rvts6>).  Одна
+элементарная      дизъюнкция     также     может
+считаться КНФ.</span></p> 
+<p      class=rvps31><span     class=rvts6>Согласно     принципу
+двойственности      выражение      (13.1)      можно
+преобразовать     в     следующее     выражение,
+которое также справедливо:</span></p> 
+<p    class=rvps12><span   class=rvts8>f</span><span   class=rvts6>(</span><span
+class=rvts8>x</span><span   class=rvts9>1</span><span  class=rvts6>,</span><span
+class=rvts16> </span><span  class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>,</span><span      class=rvts16> </span><span      class=rvts6>…,
+</span><span  class=rvts8>x</span><span class=rvts10>n</span><span class=rvts6>)
+=</span><img    width=267    height=49    alt=""    style="padding    :    1px;"
+src="lk13/img9.jpg"><span   class=rvts8>f</span><span  class=rvts6>(</span><span
+class=rvts12>σ</span><span        class=rvts9>1</span><span       class=rvts6>,
+</span><span        class=rvts12>σ</span><span        class=rvts9>2</span><span
+class=rvts6>,      …      ,      </span><span      class=rvts12>σ</span><span
+class=rvts10>m</span><span  class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts10>m</span><span   class=rvts9>+1</span><span   class=rvts6>,   …  ,
+</span><span         class=rvts8>x</span><span        class=rvts10>n</span><span
+class=rvts6>)).</span></p> 
+<p   class=rvps2><span  class=rvts6>Эта  формула  называется
+</span><span    class=rvts8>конъюнктивным    разложением
+функции</span><span  class=rvts6>  </span><span class=rvts8>f</span><span
+class=rvts17> </span><span  class=rvts6>(</span><span class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts8>x</span><span    class=rvts10>n</span><span    class=rvts6>)    по
+переменным            </span><span           class=rvts8>x</span><span
+class=rvts9>1</span><span  class=rvts6>, </span><span class=rvts8>x</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts8>x</span><span        class=rvts10>m</span><span        class=rvts6>.
+Справедливость  ее  может  быть доказана так
+же,  как  справедливость  формулы  (13.1). Так же
+крайними          случаями          конъюнктивного
+разложения   являются   разложение  по  одной
+переменной  и  по всем переменным. Последнее
+называется       </span><span       class=rvts8>совершенной
+конъюнктивной     нормальной     формой</span><span
+class=rvts6> (СКНФ) и имеет вид</span></p> 
+<p    class=rvps12><span   class=rvts8>f</span><span   class=rvts6>(</span><span
+class=rvts8>x</span><span   class=rvts9>1</span><span  class=rvts6>,</span><span
+class=rvts16> </span><span  class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>,</span><span      class=rvts16> </span><span      class=rvts6>…,
+</span><span  class=rvts8>x</span><span class=rvts10>n</span><span class=rvts6>)
+=</span><img    width=261    height=49    alt=""    style="padding    :    1px;"
+src="lk13/img10.jpg"><span  class=rvts8>f</span><span  class=rvts6>(</span><span
+class=rvts12>σ</span><span        class=rvts9>1</span><span       class=rvts6>,
+</span><span        class=rvts12>σ</span><span        class=rvts9>2</span><span
+class=rvts6>,      …      ,      </span><span      class=rvts12>σ</span><span
+class=rvts10>n</span><span class=rvts6>)).</span></p> 
+<p    class=rvps32><span    class=rvts6>СКНФ,   представляющую
+произвольную  булеву  функцию, так же, как ее
+СДНФ,     легко     построить     по    табличному
+заданию    этой   функции.   Согласно   формуле
+достаточно       выделить      наборы      (</span><span
+class=rvts12>σ</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts12>σ</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts12>σ</span><span   class=rvts10>n</span><span   class=rvts6>),   на
+которых  функция  принимает  значение 0 (если
+</span><span         class=rvts8>f</span><span         class=rvts6>(</span><span
+class=rvts12>σ</span><span class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts12>σ</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts12>σ</span><span    class=rvts10>n</span><span   class=rvts6>) = 1,
+то  весь  сомножитель  (</span><img  width=177 height=33 alt=""
+style="padding     :     1px;"     src="lk13/img11.jpg"><span     class=rvts6>1)
+обращается  в  1),  и для каждого из них ввести
+в  СДНФ  полную элементарную дизъюнкцию, где
+любая     переменная    </span><span    class=rvts8>x</span><span
+class=rvts10>i</span><span      class=rvts6>     присутствует     с
+отрицанием,    если    </span><span    class=rvts12>σ</span><span
+class=rvts10>i</span><span  class=rvts6>  =  1,  и  без  отрицания,
+если   </span><span  class=rvts12>σ</span><span  class=rvts10>i</span><span
+class=rvts6> = 0.</span></p> 
+<p    class=rvps33><span    class=rvts6>Очевидно,    для   любой
+булевой     функции     </span><span     class=rvts8>f</span><span
+class=rvts6>(</span><span   class=rvts8>x</span><span  class=rvts9>1</span><span
+class=rvts6>, </span><span  class=rvts8>x</span><span class=rvts9>2</span><span
+class=rvts6>, …,            </span><span            class=rvts8>x</span><span
+class=rvts10>n</span><span   class=rvts6>),   кроме  константы  1,
+существует  единственная  СКНФ  (с точностью
+до  порядка  литералов  и дизъюнкций). Так же,
+как  СДНФ,  эта  форма  представления булевой
+функции                   является                   </span><span
+class=rvts8>канонической</span><span  class=rvts6>.  СКНФ для
+функции,    которую   задает   табл. 13.1,   имеет
+следующий вид:</span></p> 
+<p class=rvps34><span class=rvts6><br></span></p>
+<p    class=rvps1><span   class=rvts6>(</span><span   class=rvts8>х</span><span
+class=rvts9>1</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span  class=rvts9>2</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span  class=rvts9>3</span><span class=rvts6>)(</span><span
+class=rvts8>х</span><span  class=rvts9>1</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span  class=rvts9>2</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts13>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>3</span><span class=rvts6>)(</span><span
+class=rvts8>х</span><span  class=rvts9>1</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts13>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>2</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts13>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>3</span><span class=rvts6>)(</span><span
+class=rvts13>&not;</span><span class=rvts8>х</span><span
+class=rvts9>1</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts13>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>2</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span  class=rvts9>3</span><span class=rvts6>)(</span><span
+class=rvts13>&not;</span><span class=rvts8>х</span><span
+class=rvts9>1</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts13>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>2</span><span class=rvts6> </span><span
+class=rvts15>∨</span><span class=rvts13>&not;</span><span
+class=rvts8>х</span><span class=rvts9>3</span><span class=rvts6>).</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p          class=rvps35><span          class=rvts6>Константа         0
+представляется     в     виде     СКНФ,    которая
+содержит          все         различные         полные
+элементарные  дизъюнкции,  которые называют
+</span><span    class=rvts8>конституентами    нуля</span><span
+class=rvts6>   (в   литературе   используется  также
+термин        </span><span        class=rvts8>макстерм</span><span
+class=rvts6>).      Конституента     нуля     принимает
+значение  0  на единственном наборе значений
+переменных.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts14
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts15
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts16
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts17
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts18
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts19
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts20
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts21
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts22
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts23
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts24
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+ vertical-align: super;
+}
+span.rvts25
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts26
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts27
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts28
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts29
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts30
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts31
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts32
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts33
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts34
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts35
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts36
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts37
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts38
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts39
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts40
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts41
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts42
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts43
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts44
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts45
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts46
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts47
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts48
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts49
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts50
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts51
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts52
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts53
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts54
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts55
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts56
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts57
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts58
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts59
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts60
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts61
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts62
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts63
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts64
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts65
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts66
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts67
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts68
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts69
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts70
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts71
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts72
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts73
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts74
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts75
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts76
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts77
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts78
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts79
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts80
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts81
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts82
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts83
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts84
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts85
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts86
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts87
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts88
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts89
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts90
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts91
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts92
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts93
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts94
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts95
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts96
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts97
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts98
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts99
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts100
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts101
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts102
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts103
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts104
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts105
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts106
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts107
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts108
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts109
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts110
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts111
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts112
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts113
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts114
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts115
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts116
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts117
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts118
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts119
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts120
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts121
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts122
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts123
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts124
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts125
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts126
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts127
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts128
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts129
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts130
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts131
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts132
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts133
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts134
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts135
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts136
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts137
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts138
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts139
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts140
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts141
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts142
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts143
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts144
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts145
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts146
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts147
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts148
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts149
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts150
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts151
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts152
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts153
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts154
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts155
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts156
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts157
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts158
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts159
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts160
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts161
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts162
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts163
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts164
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts165
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts166
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts167
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts168
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts169
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts170
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts171
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts172
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts173
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts174
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts175
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts176
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts177
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts178
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts179
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts180
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts181
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts182
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts183
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts184
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts185
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts186
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts187
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts188
+{
+ font-size: 16pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts189
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts190
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts191
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts192
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts193
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts194
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts195
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts196
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+}
+.rvps3
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-indent: 19px;
+}
+.rvps9
+{
+ text-indent: 19px;
+}
+.rvps10
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 530px;
+}
+.rvps11
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 530px;
+}
+.rvps12
+{
+ text-align: center;
+ text-indent: 38px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-indent: 19px;
+}
+.rvps22
+{
+ text-align: center;
+ text-indent: 38px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-indent: 19px;
+}
+.rvps29
+{
+ text-align: center;
+ text-indent: 38px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-indent: 19px;
+}
+.rvps36
+{
+ text-align: center;
+ text-indent: 38px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps37
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps41
+{
+ margin: 0px 0px 0px 183px;
+}
+.rvps42
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps43
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps44
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps45
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps46
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps47
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps48
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps49
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps50
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps51
+{
+ text-align: center;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps52
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps53
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps54
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps55
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps56
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps57
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps58
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps59
+{
+ margin: 0px 0px 0px 240px;
+}
+.rvps60
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps61
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps62
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps63
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps64
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps65
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps66
+{
+ margin: 0px 0px 0px 231px;
+}
+.rvps67
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps68
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps69
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<h2   class=rvps3><span  class=rvts0><span  class=rvts6>Г  л  а  в  а&nbsp;
+14</span></span></h2> 
+<p              class=rvps2><span             class=rvts7>Графическое
+представление      булева     пространства     и
+булевых функций</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p class=rvps5><span class=rvts7>14.1. Булев гиперкуб</span></p>
+<p><span class=rvts6><br></span></p>
+<p     class=rvps6><span    class=rvts6>Булево    пространство
+</span><span       class=rvts8>М</span><span       class=rvts6>      можно
+представить  в  виде графа, вершины которого
+соответствуют   элементам   пространства,   а
+ребра  представляют </span><span class=rvts8>отношение
+соседства</span><span   class=rvts6>   между  элементами
+пространства.       Два      вектора      являются
+соседними,   если   они   отличаются   друг   от
+друга   значением  только  одной  компоненты.
+Например,   векторы   (1</span><span   class=rvts9> </span><span
+class=rvts6>0</span><span  class=rvts9> </span><span  class=rvts6>0</span><span
+class=rvts9> </span><span        class=rvts6>1)        и        (1</span><span
+class=rvts9> </span><span  class=rvts6>1</span><span class=rvts9> </span><span
+class=rvts6>0</span><span       class=rvts9> </span><span       class=rvts6>1),
+значения   одноименных   компонент   которых,
+кроме  одной  второй  компоненты,  совпадают,
+являются        соседними.        Данный        граф,
+представляющий       </span><span       class=rvts8>п</span><span
+class=rvts6>-мерное   булево   пространство,  имеет
+2</span><span    class=rvts10>п</span><span    class=rvts6>   вершин   и
+</span><span         class=rvts8>п</span><span        class=rvts6>2</span><span
+class=rvts10>п</span><span class=rvts9> </span><span
+class=rvts11>–</span><span       class=rvts9> 1</span><span      class=rvts6>
+ребер.   Он  называется  </span><span  class=rvts8>полным
+булевым   графом</span><span   class=rvts6>,   или  </span><span
+class=rvts8>п</span><span   class=rvts6>-</span><span  class=rvts8>мерным
+гиперкубом</span><span        class=rvts6>.       Рассмотрим
+построение  такого  гиперкуба для различных
+значений размерности пространства.</span></p> 
+<p     class=rvps7><span    class=rvts6>Одномерный    гиперкуб
+состоит  из  двух  вершин,  связанных  ребром.
+Одной     из     этих     вершин     приписывается
+константа  0,  другой  </span><span  class=rvts12>–</span><span
+class=rvts6>  константа 1, которые являются кодами
+данных   вершин.   Чтобы   получить  двумерный
+гиперкуб,   надо  продублировать  одномерный
+гиперкуб     и     каждую    вершину    исходного
+гиперкуба   соединить   ребром   с  ее  дублем.
+Коды      вершин     построенного     двумерного
+гиперкуба    получаются   добавлением   нулей
+справа  к  кодам  вершин исходного гиперкуба
+и   единиц   </span><span  class=rvts12>–</span><span  class=rvts6>  к
+кодам  дублей вершин. Аналогично получаются
+трехмерный         гиперкуб,        четырехмерный
+гиперкуб     и     т.     д.     Последовательность
+гиперкубов          от          одномерного          до
+четырехмерного            представлена            на
+рис. 14.1.</span></p> 
+<center><img src="lk14/img14.1.jpg"></center>
+<h1      class=rvps12><span      class=rvts0><span     class=rvts13>Рис.14.1.
+Графическое          представление          булева
+пространства:          </span></span><span         class=rvts0><span
+class=rvts14>а)</span></span><span        class=rvts0><span       class=rvts13>
+одномерное;            </span></span><span           class=rvts0><span
+class=rvts14>б)</span></span><span class=rvts0><span
+class=rvts13> двумерное;     </span></span><span     class=rvts0><span
+class=rvts14>в) </span></span><span class=rvts0><span
+class=rvts13>трехмерное;     </span></span><span     class=rvts0><span
+class=rvts14>г)</span></span><span        class=rvts0><span       class=rvts13>
+четырехмерное</span></span></h1> 
+<p class=rvps13><span class=rvts6><br></span></p>
+<p     class=rvps14><span     class=rvts6>Сформулируем    общее
+правило  увеличения  размерности гиперкуба:
+для    перехода    от    </span><span    class=rvts8>т</span><span
+class=rvts6>-мерного       гиперкуба       к      (</span><span
+class=rvts8>т</span><span      class=rvts6> + 1)-мерному      надо
+исходный             </span><span             class=rvts8>т</span><span
+class=rvts6>-мерный   гиперкуб   продублировать   и
+каждую      вершину      исходного      гиперкуба
+соединить  ребром  с  ее дублем. В полученном
+гиперкубе  к  кодам  вершин исходного </span><span
+class=rvts8>т</span><span     class=rvts6>-мерного    гиперкуба
+добавляются    справа   нули,   а   к   кодам   их
+дублей      </span><span     class=rvts12>–</span><span     class=rvts6>
+единицы.</span></p> 
+<p  class=rvps15><span  class=rvts6>В  гиперкубе  выделяются
+гиперграни,  которые  являются порожденными
+подграфами,          представляющими         собой
+гиперкубы       меньшей      размерности,      чем
+рассматриваемый   гиперкуб.  Это  может  быть
+отдельное        ребро,       двумерная       грань,
+трехмерный        куб       и       т. п.       Подграф,
+представляющий     гипергрань,    порождается
+множеством   вершин,  составляющих  интервал
+булева пространства.</span></p> 
+<p class=rvps16><span class=rvts6><br></span></p>
+<p        class=rvps17><span       class=rvts7>14.2. Представление
+булевых функций на гиперкубе</span></p> 
+<p class=rvps18><span class=rvts6><br></span></p>
+<p   class=rvps19><span   class=rvts6>Любой  интервал  булева
+пространства  является  характеристическим
+множеством        функции,        выражаемой       в
+алгебраической   форме   одной  элементарной
+конъюнкцией.   Например,   конъюнкции  </span><span
+class=rvts15>х</span><span class=rvts16>1</span><span
+class=rvts17>&not;</span><span class=rvts18>х</span><span
+class=rvts19>3</span><span class=rvts20> </span><span
+class=rvts21>х</span><span       class=rvts22>4</span><span       class=rvts23>
+соответствует     интервал     четырехмерного
+пространства,      представляемый     троичным
+вектором            </span><span            class=rvts6>(1 </span><span
+class=rvts12>–</span><span       class=rvts6> 0 1).       Интервалу
+приписывается  ранг той конъюнкции, которую
+он представляет.</span></p> 
+<p    class=rvps20><span    class=rvts6>На   гиперкубе   булева
+функция               </span><span              class=rvts8>f</span><span
+class=rvts24> </span><span class=rvts6>(</span><span
+class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts25>2</span><span class=rvts6>, ... , </span><span
+class=rvts8>х</span><span        class=rvts26>n</span><span       class=rvts6>)
+задается                выделением               вершин,
+представляющих                элементы                ее
+характеристического      множества      </span><span
+class=rvts8>M</span><span  class=rvts26>f</span><span  class=rvts9>1</span><span
+class=rvts6>.   Например,   задание  функции  </span><span
+class=rvts8>f</span><span  class=rvts24> </span><span class=rvts6>(</span><span
+class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts25>2</span><span class=rvts6>, ... , </span><span
+class=rvts8>х</span><span  class=rvts26>n</span><span class=rvts6>)</span><span
+class=rvts27> </span><span class=rvts6>=</span><span
+class=rvts28>&not;</span><span class=rvts29>х</span><span
+class=rvts30>1</span><span class=rvts31>&not;</span><span
+class=rvts32>х</span><span class=rvts33>2</span><span
+class=rvts34> </span><span class=rvts35>х</span><span
+class=rvts36>3</span><span class=rvts37> </span><span
+class=rvts38>∨</span><span class=rvts39>&not;</span><span
+class=rvts40>х</span><span class=rvts41>1</span><span
+class=rvts42> </span><span class=rvts43>х</span><span
+class=rvts44>2</span><span class=rvts45>&not;</span><span
+class=rvts46>х</span><span class=rvts47>3</span><span
+class=rvts48> </span><span class=rvts49>∨</span><span
+class=rvts50>&not;</span><span class=rvts51>х</span><span
+class=rvts52>1</span><span class=rvts53> </span><span
+class=rvts54>х</span><span class=rvts55>2</span><span
+class=rvts56> </span><span class=rvts57>х</span><span
+class=rvts58>3</span><span class=rvts59> </span><span
+class=rvts60>∨</span><span class=rvts61> </span><span
+class=rvts62>х</span><span class=rvts63>1</span><span
+class=rvts64>&not;</span><span class=rvts65>х</span><span
+class=rvts66>2</span><span class=rvts67> </span><span
+class=rvts68>х</span><span class=rvts69>3</span><span
+class=rvts70> </span><span class=rvts71>∨</span><span
+class=rvts72> </span><span class=rvts73>х</span><span
+class=rvts74>1</span><span class=rvts75> </span><span
+class=rvts76>х</span><span class=rvts77>2</span><span
+class=rvts78> </span><span class=rvts79>х</span><span
+class=rvts80>3</span><span  class=rvts81>  может  быть показано
+светлыми    кружками,   как   </span><span   class=rvts6>на
+рис. 14.2.</span></p> 
+<center><img src ="lk14/img14.2.jpg"></center>
+<h1      class=rvps22><span      class=rvts0><span     class=rvts13>Рис.14.2.
+Трехмерный    гиперкуб   с   заданной   на   нем
+булевой функцией</span></span></h1> 
+<p class=rvps23><span class=rvts6><br></span></p>
+<p        class=rvps24><span       class=rvts6>В       изображенном
+гиперкубе   легко  заметить  две  гиперграни,
+составляющие             множество             </span><span
+class=rvts8>M</span><span  class=rvts26>f</span><span  class=rvts9>1</span><span
+class=rvts6>.      Они      представляют      интервалы,
+задаваемые    троичными    векторами   (</span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span     class=rvts6> 1)     и     (0 1 </span><span
+class=rvts12>–</span><span   class=rvts6>),   которые  являются
+характеристическими множествами
+элементарных            конъюнкций            </span><span
+class=rvts8>х</span><span     class=rvts25>3</span><span     class=rvts6>    и
+</span><span       class=rvts82>&not;</span><span      class=rvts83>х</span><span
+class=rvts84>1</span><span class=rvts85> </span><span
+class=rvts86>х</span><span       class=rvts87>2</span><span       class=rvts88>
+соответственно</span><span       class=rvts6>.      Поэтому
+рассматриваемую  функцию  можно  задать  как
+</span><span        class=rvts8>f</span><span        class=rvts24> </span><span
+class=rvts6>(</span><span  class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts25>2</span><span class=rvts6>, </span><span
+class=rvts8>х</span><span  class=rvts25>3</span><span class=rvts6>)</span><span
+class=rvts89> </span><span class=rvts6>=</span><span
+class=rvts90> </span><span class=rvts91>х</span><span
+class=rvts92>3</span><span class=rvts93> </span><span
+class=rvts94>∨</span><span class=rvts95>&not;</span><span
+class=rvts96>х</span><span class=rvts97>1</span><span
+class=rvts98> </span><span class=rvts99>х</span><span
+class=rvts100>2</span><span  class=rvts6>. Выполнение простого
+склеивания  над  исходной  формулой дает тот
+же   результат.   Таким  образом,  графическое
+представление      булевой      функции      дает
+возможность   непосредственно   получить  ее
+задание в виде компактной формулы.</span></p> 
+<p   class=rvps25><span  class=rvts6>Справедливость  формул,
+выведенных           в           гл. 12,          наглядно
+демонстрируется        на        гиперкубе.       На
+рис. 14.3</span><span  class=rvts8>а</span><span  class=rvts6>  видно,
+что      ребра,      представляемые     векторами
+(0 1 </span><span      class=rvts12>–</span><span      class=rvts6>)      и
+(1 1 </span><span          class=rvts12>–</span><span         class=rvts6>),
+образуют       гипергрань       более      высокой
+размерности,       представляемую      вектором
+(</span><span     class=rvts12>–</span><span     class=rvts6> 1 </span><span
+class=rvts12>–</span><span  class=rvts6>).  Это  соответствует
+простому                склеиванию:               </span><span
+class=rvts101>&not;</span><span class=rvts102>х</span><span
+class=rvts103>1</span><span class=rvts104> </span><span
+class=rvts105>х</span><span class=rvts106>2</span><span
+class=rvts107> </span><span class=rvts108>∨</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>1</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts109> </span><span
+class=rvts6>=</span><span class=rvts110> </span><span
+class=rvts111>х</span><span class=rvts112>2</span><span
+class=rvts113>.</span></p> 
+<p       class=rvps26><span      class=rvts6>На      рис. 14.3</span><span
+class=rvts8>б</span><span  class=rvts6>  видно,  что  интервал,
+соответствующий         конъюнкции         </span><span
+class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>2</span><span   class=rvts6>,   поглощает   элемент
+булева       пространства,      соответствующий
+конъюнкции           </span><span           class=rvts8>х</span><span
+class=rvts25>1</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts25>2</span><span
+class=rvts114>&not;</span><span class=rvts115>х</span><span
+class=rvts116>3</span><span        class=rvts117>.       Тем       самым
+демонстрируется      п</span><span      class=rvts6>ростое
+поглощение,    выражаемое    формулой   </span><span
+class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>2</span><span class=rvts118> </span><span
+class=rvts119>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>2</span><span class=rvts120>&not;</span><span
+class=rvts121>х</span><span class=rvts122>3</span><span
+class=rvts123> </span><span class=rvts6>= </span><span
+class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>2</span><span class=rvts6>.</span></p> 
+<p            class=rvps27><span           class=rvts6>Рис. 14.3</span><span
+class=rvts8>в</span><span        class=rvts6>        демонстрирует
+формулу    обобщенного    склеивания:   </span><span
+class=rvts124>&not;</span><span class=rvts125>х</span><span
+class=rvts126>1</span><span class=rvts127>&not;</span><span
+class=rvts128>х</span><span class=rvts129>2</span><span
+class=rvts130> </span><span class=rvts131>∨</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>1</span><span class=rvts132>&not;</span><span
+class=rvts8>х</span><span class=rvts25>3</span><span
+class=rvts133> </span><span class=rvts6>=</span><span
+class=rvts134>&not;</span><span class=rvts135>х</span><span
+class=rvts136>1</span><span class=rvts137>&not;</span><span
+class=rvts138>х</span><span class=rvts139>2</span><span
+class=rvts140> </span><span class=rvts141>∨</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>1</span><span class=rvts142>&not;</span><span
+class=rvts8>х</span><span class=rvts25>3</span><span
+class=rvts6> </span><span class=rvts143>∨</span><span
+class=rvts144>&not;</span><span class=rvts145>х</span><span
+class=rvts146>2</span><span class=rvts147>&not;</span><span
+class=rvts8>х</span><span       class=rvts25>3</span><span      class=rvts148>.
+Продукт    обобщенного    склеивания    </span><span
+class=rvts6>(0 </span><span    class=rvts12>–</span><span    class=rvts6> 0)
+поглощается      совокупностью      интервалов
+(0 0 </span><span  class=rvts12>–</span><span class=rvts6>) и (</span><span
+class=rvts12>–</span><span class=rvts6> 1 0).</span></p>
+<center><img src="lk14/img14.3.jpg"></center>
+<h1      class=rvps29><span      class=rvts0><span     class=rvts13>Рис.14.3.
+Графическое       представление       некоторых
+формул       булевой       алгебры:      </span></span><span
+class=rvts0><span      class=rvts14>а)</span></span><span     class=rvts0><span
+class=rvts13> простое      склеивание;     </span></span><span
+class=rvts0><span      class=rvts14>б)</span></span><span     class=rvts0><span
+class=rvts13> простое      поглощение;     </span></span><span
+class=rvts0><span      class=rvts14>в)</span></span><span     class=rvts0><span
+class=rvts13> обобщенное склеивание</span></span></h1> 
+<p class=rvps30><span class=rvts6><br></span></p>
+<p class=rvps31><span class=rvts6><br></span></p>
+<p  class=rvps32><span  class=rvts7>14.3. Развертка гиперкуба
+на плоскости. Карта Карно</span></p> 
+<p class=rvps33><span class=rvts6><br></span></p>
+<p  class=rvps34><span  class=rvts6>Как  видно  из  рис. 14.1,  с
+увеличением            размерности            булева
+пространства              его              графическое
+представление    в    виде   гиперкуба   быстро
+становится   трудным  для  восприятия.  Более
+удобным   является   развертка  гиперкуба  на
+плоскости.       Пример       такой       развертки
+трехмерного   гиперкуба,   которая   получена
+удалением    двух    ребер    и    расположением
+верхних  и  нижних  ребер  в две параллельных
+линии,    показан    на    рис. 14.4.   На   этом   же
+рисунке  представлена  также функция </span>
+<center><img src = "lk14/img14.4.jpg"></center>
+<h1      class=rvps36><span      class=rvts0><span     class=rvts13>Рис.14.4.
+Трехмерный   гиперкуб   и   его   развертка  на
+плоскости</span></span></h1> 
+<p class=rvps37><span class=rvts6><br></span></p>
+<p  class=rvps38><span class=rvts6>Еще более удобной формой
+представления         булева         пространства
+является      двумерная      таблица,     которую
+принято     называть     </span><span    class=rvts8>картой
+Карно</span><span  class=rvts6>. Карта Карно имеет ту же
+структуру,   что   и   развертка  гиперкуба  на
+плоскости.  Каждая  ее  клетка соответствует
+элементу     булева     пространства.     Булеву
+функцию  можно задать расположением нулей и
+единиц   в   клетках   в   соответствии  с  теми
+значениями,   которые  принимает  функция  на
+соответствующих          элементах          булева
+пространства.     Другим    способом    задания
+булевой   функции   на  карте  Карно  является
+разметка           клеток,          соответствующих
+элементам  множества  </span><span  class=rvts8>М</span><span
+class=rvts26>f</span><span    class=rvts9>1</span><span   class=rvts6>.   При
+этом    клетки,    соответствующие   элементам
+множества            </span><span            class=rvts8>М</span><span
+class=rvts26>f</span><span        class=rvts9>0</span><span        class=rvts6>,
+остаются  пустыми. Оба способа представлены
+на    рис. 14.5,   где   показан   пример   задания
+функции               </span><span              class=rvts8>f</span><span
+class=rvts24> </span><span class=rvts6>(</span><span
+class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6>, </span><span class=rvts8>х</span><span
+class=rvts25>2</span><span class=rvts6>, </span><span
+class=rvts8>х</span><span  class=rvts25>3</span><span class=rvts6>)</span><span
+class=rvts167> </span><span class=rvts6>=</span><span
+class=rvts168> </span><span class=rvts169>х</span><span
+class=rvts170>1</span><span class=rvts171> </span><span
+class=rvts172>х</span><span class=rvts173>2</span><span
+class=rvts174> </span><span class=rvts175>∨</span><span
+class=rvts176>&not;</span><span class=rvts177>х</span><span
+class=rvts178>1</span><span class=rvts179>&not;</span><span
+class=rvts180>х</span><span class=rvts181>2</span><span
+class=rvts182> </span><span class=rvts183>х</span><span
+class=rvts184>3</span><span     class=rvts6>.     Коды     строк     и
+столбцов,    из   которых   составляются   коды
+клеток,    представлены    отрезками    прямых.
+Отрезок  вертикальной  прямой  возле  нижней
+строки   показывает,  что  переменная  </span><span
+class=rvts8>х</span><span  class=rvts25>1</span><span  class=rvts6> в коде
+этой    строки    имеет    значение    1,    а    его
+отсутствие  у  верхней  строки говорит, что в
+ее          коде          </span><span          class=rvts8>х</span><span
+class=rvts25>1</span><span        class=rvts6> = 0.       Аналогично
+горизонтальные         отрезки         показывают
+значения  переменных  </span><span  class=rvts8>х</span><span
+class=rvts25>2</span><span          class=rvts6>         и         </span><span
+class=rvts8>х</span><span     class=rvts25>3</span><span     class=rvts6>    в
+кодах столбцов.</span></p> 
+<center><img src="lk14/img14.5.jpg"></center>
+<p  class=rvps1><span  class=rvts13>Рис. 14.5. Задание булевой
+функции с помощью карты Карно</span></p> 
+<p class=rvps43><span class=rvts6><br></span></p>
+<p     class=rvps44><span     class=rvts6>Удобство    работы    с
+картами  Карно  обеспечивается  применением
+</span><span   class=rvts8>кода   Грея</span><span  class=rvts6>  для
+кодирования ее строк и столбцов.</span></p> 
+<p  class=rvps45><span  class=rvts6>Пусть надо закодировать
+в  коде  Грея  последовательность  некоторых
+объектов,         число         которых         </span><span
+class=rvts8>N</span><span   class=rvts6>.  Коды  этих  объектов,
+так   же  как  и  коды  в  виде  двоичных  чисел,
+являются   булевыми   векторами.   Длина  кода
+</span><span   class=rvts8>п</span><span   class=rvts6>  должна  быть
+такой,         чтобы        выполнялось        </span><span
+class=rvts8>N</span><span class=rvts6> </span><span
+class=rvts143>≤</span><span class=rvts6> 2</span><span
+class=rvts10>п</span><span        class=rvts6>,       или       </span><span
+class=rvts8>п</span><span class=rvts6> = </span><span
+class=rvts143>⎡</span><span class=rvts6>log</span><span
+class=rvts25>2</span><span class=rvts8>N</span><span
+class=rvts143>⎤</span><span       class=rvts6>,       где      </span><span
+class=rvts143>⎡</span><span class=rvts8>а</span><span
+class=rvts143>⎤</span><span              class=rvts6>             </span><span
+class=rvts12>–</span><span  class=rvts6>  ближайшее  к  </span><span
+class=rvts8>а</span><span   class=rvts6>  сверху  целое  число.
+Первому       объекту      присваивается      код,
+состоящий      только      из      нулей      </span><span
+class=rvts12>–</span><span   class=rvts6>  0 0 … 0.  Далее  коды
+определяются по следующему правилу.</span></p> 
+<p        class=rvps46><span        class=rvts6>Для        получения
+следующего  кода  берется  последний  код и в
+нем   меняется   значение   той   самой  правой
+компоненты,    изменение    значения   которой
+приводит к новому коду.</span></p> 
+<p      class=rvps47><span      class=rvts6>Коды     соседних     в
+последовательности   объектов  оказываются,
+таким      образом,      отличающимися     только
+значением одной компоненты.</span></p> 
+<p        class=rvps48><span        class=rvts6>Другой        способ
+построения     кода     Грея     заключается     в
+следующем.                 Сначала                берется
+последовательность                из                двух
+однокомпонентных   кодов:  (0),  (1).  Приписав  к
+этой    последовательности    те    же   коды   в
+обратном    порядке,   получим   (0),   (1),   (1),   (0).
+Добавляем   слева   0   к   элементам   исходной
+последовательности          и          1         </span><span
+class=rvts12>–</span><span     class=rvts6>     к     приписанной.
+Получим     (0 0),     (0 1),     (1 1),     (1 0).    К    этой
+последовательности   приписываем   (1 0),  (1 1),
+(0 1),  (0 0)  и снова добавляем к исходной части
+слева        0,        к        приписанной        </span><span
+class=rvts12>–</span><span   class=rvts6>   1.   Получаем   (0 0 0),
+(0 0 1),  (0 1 1),  (0 1 0),  (1 1 0),  (1 1 1), (1 0 1), (1 0 0).
+Эти  действия  повторяем  нужное  число раз в
+зависимости     от     количества    кодируемых
+объектов.</span></p> 
+<p  class=rvps49><span  class=rvts6>Благодаря коду Грея, два
+соседних  элемента  булева пространства или
+два    соседних    интервала   расположены   на
+карте    Карно   симметрично   некоторой   оси,
+т. е.  отношение  соседства элементов булева
+пространства    представляется    отношением
+симметрии     в     карте    Карно.    На    рис. 14.6
+показана  шестимерная  карта  Карно  с  осями
+симметрии.  Оси  симметрии проходят в местах
+изменения    значений    переменных   в   кодах
+строк   и   столбцов.   Каждая  ось  имеет  свою
+</span><span  class=rvts8>зону  симметрии</span><span class=rvts6>,
+ширина      которой      определяется      </span><span
+class=rvts8>рангом</span><span class=rvts6> оси.</span></p> 
+<p      class=rvps50><span     class=rvts6>Оси,     связанной     с
+переменной,   наиболее  часто  меняющей  свое
+значение  в  последовательности кодов строк
+(или   столбцов),  придается  ранг  1.  Если  ось
+связана  с  переменной,  которая  меняет свое
+значение       в      два      раза      меньше,      ей
+приписывается   ранг   2,  если  в  четыре  раза
+меньше,  </span><span class=rvts12>–</span><span class=rvts6> ранг 3
+и  т. д.  Ширина  оси  симметрии  ранга  </span><span
+class=rvts8>k</span><span       class=rvts6>       равна      2</span><span
+class=rvts10>k</span><span class=rvts6> (рис. 14.6).</span></p> 
+<p class=rvps2><span class=rvts187><br></span></p>
+<p>
+<center><img src="lk14/img1.jpg"></center></p> 
+<p class=rvps2><span class=rvts188><br></span></p>
+<p class=rvps1><span class=rvts187><br></span></p>
+<h2  class=rvps51><span  class=rvts0><span class=rvts13>Рис. 14.6. Зоны
+симметрии карты Карно</span></span></h2> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps52><span   class=rvts6>По   карте   Карно  легко
+построить  упрощенную  ДНФ  функции, которая
+задана  с  помощью этой карты. Для этого надо
+выделить    интервалы,   на   которых   функция
+принимает   значение   1.  На  карте  Карно  они
+представлены         единичными        областями,
+симметричными      относительно      некоторых
+осей.   Каждый  интервал  должен  быть  </span><span
+class=rvts8>максимальным</span><span   class=rvts6>,  т. е.  не
+быть    собственным   подмножеством   другого
+интервала.        Элементарная        конъюнкция,
+соответствующая     такому     интервалу,     не
+содержит   переменных,   с   которыми  связаны
+данные     оси.     Если     на    всем    интервале
+некоторая  переменная </span><span class=rvts8>х</span><span
+class=rvts6>  имеет  значение  0,  то  она  берется  с
+отрицанием, если 1, то без отрицания.</span></p> 
+<p  class=rvps53><span  class=rvts6>Рекомендуется  в  первую
+очередь        выделять       те       максимальные
+интервалы,     где     имеется     элемент,     для
+которого    данный    максимальный    интервал
+является    единственным,    его    содержащим.
+Такие       интервалы       называются      </span><span
+class=rvts8>обязательными</span><span        class=rvts6>,       а
+соответствующие           элементы           </span><span
+class=rvts12>–</span><span              class=rvts6>              </span><span
+class=rvts8>определяющими</span><span class=rvts6>.</span></p> 
+<p      class=rvps54><span     class=rvts6>Если     пользоваться
+«жадным»  способом,  т. е.  стараться покрыть
+одним  интервалом  как  можно  большее  число
+элементов,    то    в    полученной    ДНФ   может
+оказаться         избыточная         элементарная
+конъюнкция,    как,    например,    для   функции
+</span><span         class=rvts8>f</span><span         class=rvts6>(</span><span
+class=rvts8>x</span><span  class=rvts25>1</span><span class=rvts6> </span><span
+class=rvts8>x</span><span  class=rvts25>2</span><span class=rvts6> </span><span
+class=rvts8>x</span><span  class=rvts25>3</span><span class=rvts6> </span><span
+class=rvts8>x</span><span class=rvts25>4</span><span
+class=rvts6>) = </span><span class=rvts8>x</span><span
+class=rvts25>1</span><span class=rvts186>&not;</span><span
+class=rvts8>x</span><span  class=rvts25>2</span><span class=rvts6> </span><span
+class=rvts8>x</span><span  class=rvts25>3</span><span class=rvts6> </span><span
+class=rvts143>∨</span><span class=rvts6> </span><span
+class=rvts8>x</span><span  class=rvts25>1</span><span class=rvts6> </span><span
+class=rvts8>x</span><span  class=rvts25>2</span><span class=rvts6> </span><span
+class=rvts8>x</span><span  class=rvts25>4</span><span class=rvts6> </span><span
+class=rvts143>∨</span><span class=rvts186>&not;</span><span
+class=rvts8>x</span><span  class=rvts25>1</span><span class=rvts6> </span><span
+class=rvts8>x</span><span  class=rvts25>2</span><span class=rvts6> </span><span
+class=rvts8>x</span><span  class=rvts25>3</span><span class=rvts6> </span><span
+class=rvts143>∨</span><span class=rvts186>&not;</span><span
+class=rvts8>x</span><span class=rvts25>1</span><span
+class=rvts186>&not;</span><span class=rvts8>x</span><span
+class=rvts25>2</span><span  class=rvts6> </span><span class=rvts8>x</span><span
+class=rvts25>4</span><span       class=rvts6>,      представленной
+картой    Карно   на   рис. 14.7.   Самый   большой
+интервал,       представленный      конъюнкцией
+</span><span       class=rvts189>х</span><span      class=rvts190>3</span><span
+class=rvts191> </span><span class=rvts192>х</span><span
+class=rvts193>4</span><span        class=rvts194>,        покрывается
+остальными   интервалами,  поэтому  является
+избыточным.</span></p> 
+<p     class=rvps55><span     class=rvts6>Примером    получения
+упрощенной  ДНФ  является  получение  ее  для
+функции,   представленной   картой   Карно  на
+рис. 14.8,       где       определяющие      элементы
+отмечены  кружками.  ДНФ  этой  функции имеет
+вид </span></p> 
+<p class=rvps56><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>х</span><span   class=rvts25>2</span><span
+class=rvts186>&not;</span><span class=rvts8>х</span><span
+class=rvts25>3</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts25>4</span><span
+class=rvts186>&not;</span><span class=rvts8>х</span><span
+class=rvts25>6</span><span class=rvts6> </span><span
+class=rvts143>∨</span><span class=rvts186>&not;</span><span
+class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>3</span><span class=rvts186>&not;</span><span
+class=rvts8>х</span><span class=rvts25>4</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>5</span><span class=rvts6> </span><span
+class=rvts143>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts25>2</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>3</span><span class=rvts186>&not;</span><span
+class=rvts8>х</span><span class=rvts25>4</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>5</span><span class=rvts6> </span><span
+class=rvts143>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts25>2</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>3</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts25>5</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>6</span><span class=rvts6> </span><span
+class=rvts143>∨</span><span class=rvts186>&not;</span><span
+class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>3</span><span class=rvts13> </span><span
+class=rvts8>х</span><span class=rvts25>4</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>6</span><span class=rvts6> </span><span
+class=rvts143>∨</span><span class=rvts186>&not;</span><span
+class=rvts8>х</span><span class=rvts25>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>2</span><span class=rvts186>&not;</span><span
+class=rvts8>х</span><span class=rvts25>3</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts25>5</span><span class=rvts186>&not;</span><span
+class=rvts8>х</span><span class=rvts25>6</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p      class=rvps2><span     class=rvts6>Эта     ДНФ     является
+минимальной,         поскольку        из        шести
+интервалов,   покрывающих  множество  </span><span
+class=rvts8>М</span><span  class=rvts26>f</span><span class=rvts9>1</span><span
+class=rvts6>, пять являются обязательными.</span></p> 
+<center><img src="lk14/img14.7.jpg"></center>
+<p  class=rvps1><span  class=rvts13>Рис. 14.7.  Область  </span><span
+class=rvts14>М</span><span class=rvts195>f</span><span
+class=rvts196>1</span><span         class=rvts13>с         избыточным
+максимальным интервалом</span></p> 
+<center><img src="lk14/img14.8.jpg"></center>
+<p  class=rvps1><span  class=rvts13>Рис. 14.8. Задание булевой
+функции с помощью карты Карно.</span></p> 
+<p      class=rvps1><span     class=rvts13>Кружками     отмечены
+определяющие элементы</span></p> 
+<p class=rvps68><span class=rvts6><br></span></p>
+
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body>
+</html>

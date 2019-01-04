@@ -1,0 +1,3255 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Основные      понятия      теории
+множеств</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts13
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts14
+{
+ font-size: 9pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ vertical-align: super;
+}
+span.rvts15
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'GoudyHandtooled BT';
+}
+span.rvts17
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts18
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts19
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts20
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts21
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 8px 0px 8px 0px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 8px 0px 8px 0px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps22
+{
+ text-indent: 38px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps36
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps37
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps41
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps42
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps43
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps44
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps45
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps46
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps47
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps48
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps49
+{
+ text-align: right;
+}
+.rvps50
+{
+ text-indent: 38px;
+}
+.rvps51
+{
+ text-indent: 38px;
+}
+.rvps52
+{
+ text-indent: 38px;
+}
+.rvps53
+{
+ margin: 0px 0px 0px 96px;
+}
+.rvps54
+{
+ text-align: center;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps55
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps56
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps57
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps58
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps59
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps60
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps61
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps62
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps63
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps64
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps65
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps66
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps67
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps68
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps69
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps70
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps71
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps72
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps73
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps74
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps75
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps76
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps77
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps78
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps79
+{
+ text-align: justify;
+ text-indent: 38px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps80
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps81
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps82
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps83
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps84
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps85
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps86
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps87
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps88
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps89
+{
+ text-align: justify;
+}
+.rvps90
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps91
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps92
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps93
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps94
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps95
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps96
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps97
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps98
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 1</span></p>
+<p><span      class=rvts7>Основные      понятия      теории
+множеств</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p class=rvps3><span class=rvts7>1.1. Определения</span></p>
+<p class=rvps4><span class=rvts6><br></span></p>
+<p           class=rvps5><span          class=rvts6>Под          </span><span
+class=rvts8>множеством</span><span      class=rvts6>      обычно
+понимается  совокупность или набор каких-то
+объектов,  имеющих  что-то  общее,  и  при этом
+каждый  из  них чем-то отличается от другого.
+Например,  множество  людей,  присутствующих
+на   каком-то   мероприятии,  множество  домов
+некоторого   района   города  и  т. п.  Понятие
+множества    является    одним    из    основных
+понятий    математики.    Таким    же   является
+понятие             </span><span             class=rvts8>элемента
+множества</span><span     class=rvts6>.     Это     исходные
+понятия,  и  поэтому точного определения для
+них   нет.   Принадлежность   элемента  </span><span
+class=rvts8>а</span><span    class=rvts6>    множеству    </span><span
+class=rvts8>М</span><span    class=rvts6>    обозначается    как
+</span><span        class=rvts8>а</span><span        class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>М</span><span   class=rvts6>.   Если   же  некоторый
+элемент   </span><span   class=rvts8>а</span><span   class=rvts6>   не
+принадлежит              множеству              </span><span
+class=rvts8>М</span><span  class=rvts6>,  то  это обозначается
+как    </span><span   class=rvts8>а</span><span   class=rvts6> </span><span
+class=rvts9>∉</span><span class=rvts6> </span><span
+class=rvts8>М</span><span        class=rvts6>        или        </span><span
+class=rvts8>а</span><span class=rvts10>&not;</span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>М</span><span class=rvts6>.</span></p> 
+<p   class=rvps6><span   class=rvts6>Любое   множество  может
+быть  элементом  другого  множества, которое
+также    может    быть   элементом   некоторого
+множества,    и    т. д.    (множество   множеств,
+множество  множеств множеств и т. д.). Иногда
+для        большего        благозвучия        вместо
+словосочетания       «множество       множеств»
+употребляют   «совокупность   множеств»  или
+«семейство множеств». </span></p> 
+<p       class=rvps7><span      class=rvts6>Множество      </span><span
+class=rvts8>А</span><span     class=rvts6>     является    </span><span
+class=rvts8>подмножеством</span><span class=rvts6>
+множества    </span><span    class=rvts8>В</span><span   class=rvts6>,
+если        всякий        элемент       из       </span><span
+class=rvts8>А</span><span          class=rvts6>          принадлежит
+множеству    </span><span    class=rvts8>В</span><span   class=rvts6>.
+Этот          факт         обозначается         </span><span
+class=rvts8>А </span><span class=rvts9>⊆</span><span
+class=rvts6> </span><span        class=rvts8>В</span><span        class=rvts6>
+(</span><span      class=rvts9>⊆</span><span     class=rvts6>     </span><span
+class=rvts9>−</span><span  class=rvts6>  знак  включения). При
+этом      говорят,     что     множество     </span><span
+class=rvts8>В</span><span               class=rvts6>               </span><span
+class=rvts8>содержит</span><span   class=rvts6>,   или   </span><span
+class=rvts8>покрывает</span><span    class=rvts6>,   множество
+</span><span    class=rvts8>А</span><span    class=rvts6>.   Множества
+</span><span    class=rvts8>А</span><span    class=rvts6>    и    </span><span
+class=rvts8>В</span><span       class=rvts6>      равны      (</span><span
+class=rvts8>А </span><span class=rvts6>= </span><span
+class=rvts8>В</span><span       class=rvts6>),       если      </span><span
+class=rvts8>А </span><span class=rvts9>⊆</span><span
+class=rvts6> </span><span     class=rvts8>В</span><span     class=rvts6>    и
+</span><span       class=rvts8>В </span><span      class=rvts9>⊆</span><span
+class=rvts6> </span><span        class=rvts8>А</span><span       class=rvts6>.
+Множество,  не  имеющее  ни  одного  элемента,
+называется      </span><span      class=rvts8>пустым</span><span
+class=rvts6>          и          обозначается          </span><span
+class=rvts9>∅</span><span      class=rvts6>.      Оно      является
+подмножеством     любого     множества,     т. е.
+</span><span        class=rvts9>∅</span><span       class=rvts6> </span><span
+class=rvts9>⊆</span><span class=rvts6> </span><span
+class=rvts8>М</span><span   class=rvts6>   для   любого   </span><span
+class=rvts8>М</span><span  class=rvts6>.  Пустое  множество,  а
+также   само   </span><span   class=rvts8>М</span><span   class=rvts6>
+являются      </span><span      class=rvts8>несобственными
+подмножествами</span><span     class=rvts6>     множества
+</span><span class=rvts8>М</span><span class=rvts6>.</span></p> 
+<p          class=rvps8><span          class=rvts6>Если         </span><span
+class=rvts8>А </span><span class=rvts9>⊆</span><span
+class=rvts6> </span><span     class=rvts8>В</span><span     class=rvts6>    и
+</span><span       class=rvts8>А </span><span      class=rvts9>≠</span><span
+class=rvts6> </span><span    class=rvts8>В</span><span   class=rvts6>   для
+некоторого    непустого    множества    </span><span
+class=rvts8>А</span><span         class=rvts6>,        то        </span><span
+class=rvts8>А</span><span     class=rvts6>     является    </span><span
+class=rvts8>собственным подмножеством</span><span
+class=rvts6>    множества    </span><span    class=rvts8>В</span><span
+class=rvts6>,    и    это   обозначается   как   </span><span
+class=rvts8>А </span><span class=rvts9>⊂</span><span
+class=rvts6> </span><span        class=rvts8>В</span><span        class=rvts6>
+(</span><span      class=rvts9>⊂</span><span     class=rvts6>     </span><span
+class=rvts9>−</span><span      class=rvts6>      знак     строгого
+включения).</span></p> 
+<p  class=rvps9><span  class=rvts6>Не  следует  путать знаки
+</span><span    class=rvts9>⊂</span><span    class=rvts6>    и   </span><span
+class=rvts9>∈</span><span               class=rvts6>,               когда
+рассматриваются        множества       множеств.
+Например,         зрительный         зал         можно
+рассматривать  как  множество  рядов  </span><span
+class=rvts8>М</span><span   class=rvts6>,   каждый  из  которых,
+</span><span        class=rvts8>М</span><span        class=rvts11>i</span><span
+class=rvts6>,     представляется     как     множество
+кресел.       Тогда      </span><span      class=rvts8>М</span><span
+class=rvts11>i</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>М</span><span    class=rvts6>    и   для   отдельного
+кресла  </span><span class=rvts8>т</span><span class=rvts11>j</span><span
+class=rvts6>          можно          записать          </span><span
+class=rvts8>т</span><span class=rvts11>j</span><span
+class=rvts6> </span><span class=rvts9>∈</span><span
+class=rvts6> </span><span class=rvts8>М</span><span
+class=rvts11>i</span><span   class=rvts6>.   Тот   же  зрительный
+зал  можно представить как множество </span><span
+class=rvts8>М</span><span  class=rvts10>′</span><span  class=rvts6>  всех
+находящихся  в  нем кресел. Тогда для того же
+</span><span  class=rvts8>М</span><span class=rvts11>i</span><span class=rvts6>
+имеет        место       </span><span       class=rvts8>М</span><span
+class=rvts11>i</span><span class=rvts6> </span><span
+class=rvts9>⊂</span><span class=rvts6> </span><span
+class=rvts8>М</span><span class=rvts10>′</span><span
+class=rvts6>.</span></p> 
+<p        class=rvps10><span       class=rvts6>Множество       всех
+подмножеств   некоторого   множества  </span><span
+class=rvts8>М</span><span    class=rvts6>   называется   </span><span
+class=rvts8>булеаном</span><span        class=rvts6>.       Булеан
+обозначается              символом             2</span><span
+class=rvts12>М</span><span  class=rvts6>.  Среди его элементов
+находятся        само        множество        </span><span
+class=rvts8>М</span><span     class=rvts6>,    а    также    пустое
+множество            </span><span           class=rvts9>∅</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps11><span  class=rvts6>Множества бывают </span><span
+class=rvts8>конечными</span><span  class=rvts6> (содержащими
+конечное      число     элементов)     и     </span><span
+class=rvts8>бесконечными</span><span class=rvts6>.
+Параметром,         характеризующим        размер
+множества,                 является                </span><span
+class=rvts8>мощность</span><span        class=rvts6>        </span><span
+class=rvts8>множества</span><span          class=rvts6>.         Для
+конечного  множества  </span><span  class=rvts8>М</span><span
+class=rvts6>  мощностью является число элементов,
+которое     обозначается    символом    |</span><span
+class=rvts8>М</span><span            class=rvts6>|.            Мощность
+бесконечного             множества             </span><span
+class=rvts13>–</span><span      class=rvts6>     более     сложное
+понятие.          Оно          выражается         через
+соответствие.</span></p> 
+<p      class=rvps12><span      class=rvts6>Мощность      булеана
+множества    </span><span    class=rvts8>М</span><span    class=rvts6>
+равна  2</span><span class=rvts14>|</span><span class=rvts12>М</span><span
+class=rvts14>|</span><span       class=rvts6>.       Действительно,
+2</span><span      class=rvts14>∅</span><span      class=rvts15> </span><span
+class=rvts9>=</span><span class=rvts6> {</span><span
+class=rvts9>∅</span><span       class=rvts6>},       т. е.       число
+элементов  булеана  пустого  множества  есть
+2</span><span       class=rvts15>0 </span><span       class=rvts9>=</span><span
+class=rvts6> 1,       а       добавление       к       </span><span
+class=rvts8>М</span><span      class=rvts6>      одного      нового
+элемента  каждый  раз  увеличивает  мощность
+его     булеана     вдвое     (прежние    элементы
+булеана    при    этом   сохраняются,   а   новые
+получаются   из   прежних  добавлением  к  ним
+данного нового элемента).</span></p> 
+<p   class=rvps13><span   class=rvts6>Если  множества  </span><span
+class=rvts8>А</span><span          class=rvts6>         и         </span><span
+class=rvts8>В</span><span               class=rvts6>               </span><span
+class=rvts8>равномощны</span><span        class=rvts6>,       т. е.
+|</span><span     class=rvts8>А</span><span     class=rvts6>| = |</span><span
+class=rvts8>В</span><span  class=rvts6>|,  то  между ними можно
+установить           </span><span           class=rvts8>взаимно
+однозначное     соответствие</span><span    class=rvts6>.
+Каждому  элементу  из  </span><span  class=rvts8>А</span><span
+class=rvts6>  ставится  в  соответствие элемент из
+</span><span   class=rvts8>В</span><span   class=rvts6>,  и  наоборот.
+Для      бесконечных      множеств      отношение
+равномощности       устанавливается       путем
+нахождения           взаимно           однозначного
+соответствия между их элементами.</span></p> 
+<p   class=rvps14><span   class=rvts6>Примерами  бесконечных
+множеств     служат:    </span><span    class=rvts16>N</span><span
+class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {1, 2, … }      </span><span     class=rvts13>–</span><span
+class=rvts6>  множество натуральных чисел, </span><span
+class=rvts16>Z</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> { … , </span><span class=rvts13>–</span><span
+class=rvts6> 2, </span><span class=rvts13>–</span><span
+class=rvts6> 1, 0, 1, 2, … }  </span><span  class=rvts13>–</span><span
+class=rvts6>     множество    целых    чисел,    </span><span
+class=rvts16>R</span><span               class=rvts6>               </span><span
+class=rvts13>–</span><span           class=rvts6>           множество
+действительных     чисел     (рациональные     и
+иррациональные числа).</span></p> 
+<p  class=rvps15><span class=rvts6>Множества, равномощные с
+множеством   </span><span   class=rvts16>N</span><span   class=rvts6>,
+называются    </span><span    class=rvts8>счетными</span><span
+class=rvts6>.  Для  того  чтобы  выяснить,  является
+ли          некоторое         множество         </span><span
+class=rvts8>М</span><span   class=rvts6>  счетным,  надо  найти
+способ    установить    взаимно    однозначное
+соответствие   между   </span><span  class=rvts8>М</span><span
+class=rvts6>  и  </span><span class=rvts16>N</span><span class=rvts6>, т. е.
+пронумеровать   элементы   множества  </span><span
+class=rvts8>М</span><span class=rvts6>.</span></p> 
+<p class=rvps16><span
+class=rvts6>У т в е р ж д е н и е  1.1. Любое
+бесконечное   подмножество   </span><span   class=rvts8>N
+</span><span             class=rvts6>множества             </span><span
+class=rvts16>N</span><span class=rvts6> счетно.</span></p> 
+<p    class=rvps17><span    class=rvts6>Действительно,   пусть
+</span><span         class=rvts8>N</span><span        class=rvts6> </span><span
+class=rvts9>⊂</span><span class=rvts6> </span><span
+class=rvts16>N</span><span    class=rvts6>.   Выберем   в   </span><span
+class=rvts8>N</span><span  class=rvts6>  наименьший  элемент и
+обозначим      его      </span><span      class=rvts8>п</span><span
+class=rvts17>1</span><span    class=rvts6>.   Удалим   из   </span><span
+class=rvts8>N</span><span      class=rvts6>      элемент     </span><span
+class=rvts8>п</span><span   class=rvts17>1</span><span   class=rvts6>  и  из
+оставшихся      элементов      выберем      снова
+наименьший,     который     обозначим     </span><span
+class=rvts8>п</span><span  class=rvts17>2</span><span class=rvts6>, и т. д.
+Таким  образом,  можно  себе представить, что
+все      элементы     бесконечного     множества
+</span><span     class=rvts8>N</span><span     class=rvts6>     окажутся
+пронумерованными.</span></p> 
+<p class=rvps18><span
+class=rvts6>У т в е р ж д е н и е  1.2.
+Множество    </span><span    class=rvts16>P</span><span    class=rvts6>
+положительных          рациональных          чисел
+счетно.</span></p> 
+<p     class=rvps19><span     class=rvts6>Любое    рациональное
+число  можно  представить  в виде правильной
+или   неправильной   дроби  </span><img  width=15  height=31
+alt=""  style="padding  :  1px;"  src="lk1/img1.jpg"><span  class=rvts6>, где
+</span><span    class=rvts8>а</span><span    class=rvts6>    и    </span><span
+class=rvts8>b</span><span                class=rvts6>               </span><span
+class=rvts13>–</span><span   class=rvts6>  натуральные  числа.
+Образуем        внутри       множества       </span><span
+class=rvts16>P</span><span      class=rvts6>      классы      </span><span
+class=rvts8>Р</span><span class=rvts17>1</span><span
+class=rvts6> = {</span><img  width=12  height=31 alt="" style="padding : 1px;"
+src="lk1/img2.jpg"><span  class=rvts6>}, </span><span class=rvts8>Р</span><span
+class=rvts17>2</span><span   class=rvts6> = {</span><img   width=15  height=33
+alt=""  style="padding : 1px;" src="lk1/img3.jpg"><span class=rvts6>,</span><img
+width=15   height=33  alt=""  style="padding  :  1px;"  src="lk1/img4.jpg"><span
+class=rvts6>},              </span><span              class=rvts8>Р</span><span
+class=rvts17>3</span><span   class=rvts6> = {</span><img   width=13  height=32
+alt=""  style="padding : 1px;" src="lk1/img5.jpg"><span class=rvts6>,</span><img
+width=15   height=33  alt=""  style="padding  :  1px;"  src="lk1/img6.jpg"><span
+class=rvts6>,</span><img   width=13  height=32  alt=""  style="padding  :  1px;"
+src="lk1/img7.jpg"><span   class=rvts6>}, … .   Здесь  в  </span><span
+class=rvts8>i</span><span     class=rvts6>-м     классе     (</span><span
+class=rvts8>i</span><span  class=rvts6> </span><span  class=rvts9>=</span><span
+class=rvts6> 1, 2, …)  собраны все </span><img width=15 height=29
+alt=""  style="padding  :  1px;"  src="lk1/img8.jpg"><span  class=rvts6>, для
+которых               </span><span              class=rvts8>a</span><span
+class=rvts6> + </span><span class=rvts8>b</span><span
+class=rvts6> = </span><span    class=rvts8>i</span><span   class=rvts6> + 1.
+Выстроим    последовательность    из   дробей,
+принадлежащих              классам              </span><span
+class=rvts8>P</span><span        class=rvts11>i</span><span        class=rvts6>,
+сохраняя   порядок  нумерации  этих  классов.
+Дроби,    принадлежащие    одному   и   тому   же
+классу,    упорядочиваются    по   возрастанию
+числителя   </span><span  class=rvts8>а</span><span  class=rvts6>.  В
+полученной  последовательности любая дробь
+</span><img     width=15     height=31    alt=""    style="padding    :    1px;"
+src="lk1/img9.jpg"><span    class=rvts6>   снабжается   номером
+1 + 2 + … + (</span><span class=rvts8>i</span><span
+class=rvts6> </span><span class=rvts13>–</span><span
+class=rvts6> 1) + </span><span     class=rvts8>a</span><span    class=rvts6>.
+Следовательно,            множество           </span><span
+class=rvts16>P</span><span class=rvts6> счетно.</span></p> 
+<p    class=rvps20><span    class=rvts6>Примером    несчетного
+множества       является       множество      всех
+действительных   чисел   отрезка  [0, 1].  Такое
+множество        имеет        название        </span><span
+class=rvts8>континуум</span><span       class=rvts6>.      Булеан
+бесконечного  счетного  множества  также  не
+является счетным множеством.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p    class=rvps21><span    class=rvts7>1.2.    Способы    задания
+множеств</span></p> 
+<p class=rvps22><span class=rvts6><br></span></p>
+<p            class=rvps23><span            class=rvts8>Перечисление
+элементов</span><span    class=rvts6>.    Это   простейший
+способ      задания      конечного     множества.
+Например,         если        множество        </span><span
+class=rvts8>А</span><span  class=rvts6>  состоит из элементов
+</span><span        class=rvts8>а</span><span        class=rvts17>1</span><span
+class=rvts6>, </span><span class=rvts8>а</span><span
+class=rvts17>2</span><span class=rvts6>, … , </span><span
+class=rvts8>а</span><span    class=rvts11>п</span><span   class=rvts6>,   то
+можно      записать     </span><span     class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {</span><span class=rvts8>а</span><span
+class=rvts17>1</span><span class=rvts6>, </span><span
+class=rvts8>а</span><span class=rvts17>2</span><span
+class=rvts6>, … , </span><span class=rvts8>а</span><span
+class=rvts11>п</span><span class=rvts6>}.</span></p> 
+<p      class=rvps24><span      class=rvts8>Указание      свойств
+элементов</span><span  class=rvts6>.  При  таком способе
+задается   одно   или   несколько  свойств,  по
+которым       определяется       принадлежность
+элементов  к  данному множеству. Если </span><span
+class=rvts8>Р</span><span  class=rvts6>(</span><span class=rvts8>х</span><span
+class=rvts6>)  означает,  что </span><span class=rvts8>х</span><span
+class=rvts6>        обладает       свойством       </span><span
+class=rvts8>Р</span><span         class=rvts6>,        то        </span><span
+class=rvts8>А</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {</span><span class=rvts8>х</span><span
+class=rvts6> / </span><span class=rvts8>Р</span><span
+class=rvts6>(</span><span   class=rvts8>х</span><span  class=rvts6>)}  есть
+множество  всех  тех  и только тех элементов,
+которые       обладают       свойством      </span><span
+class=rvts8>Р</span><span    class=rvts6>.    Например,    </span><span
+class=rvts8>М</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {</span><span class=rvts8>х</span><span
+class=rvts6> / </span><span class=rvts8>х</span><span
+class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> 2</span><span class=rvts12>k</span><span
+class=rvts6>, </span><span class=rvts8>k</span><span
+class=rvts6> </span><span class=rvts9>∈</span><span
+class=rvts6> </span><span        class=rvts16>N</span><span       class=rvts6>}
+</span><span    class=rvts13>–</span><span   class=rvts6>   множество
+всех  чисел,  каждое из которых представляет
+собой число 2 в натуральной степени.</span></p> 
+<p             class=rvps25><span             class=rvts8>Индуктивный
+способ</span><span   class=rvts6>.   Задается   некоторая
+порождающая  процедура,  которая определяет
+способ   получения   элементов  множества  из
+уже   полученных   элементов.   Например,   для
+бесконечного             множества             </span><span
+class=rvts8>М</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {1, 2, 4, 8, 16, …}   такой   определяющей
+процедурой  является  следующая:  1)  1 </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>М</span><span     class=rvts6>;     2)     если    </span><span
+class=rvts8>т</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>М</span><span        class=rvts6>,        то        2</span><span
+class=rvts8>т</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>М</span><span class=rvts6>.</span></p> 
+<p          class=rvps26><span          class=rvts8>Алгебраический
+способ</span><span    class=rvts6>.    При    этом   способе
+дается  формула,  по  которой  можно получить
+множество   из   других   множеств   с  помощью
+алгебраических операций над ними.</span></p> 
+<p              class=rvps27><span              class=rvts8>Визуальное
+представление       множеств</span><span      class=rvts6>.
+Множества  изображаются на плоскости в виде
+фигур,                   называемых                  </span><span
+class=rvts8>диаграммами           Эйлера           </span><span
+class=rvts18>–</span><span   class=rvts8>Венна</span><span  class=rvts6>.
+Этот     способ     используется    обычно    для
+наглядной      демонстрации     операций     над
+множествами        или        отношений        между
+множествами.  Пример  использования данного
+способа     будет     приведен    при    описании
+операций над множествами.</span></p> 
+<p    class=rvps28><span   class=rvts8>Булевы   векторы</span><span
+class=rvts6>.  При рассмотрении конечных множеств
+вводится   универсальное  множество  (</span><span
+class=rvts8>универсум</span><span class=rvts6>),
+обозначаемое   обычно  </span><span  class=rvts8>U</span><span
+class=rvts6>,    и    всякое   множество,   подлежащее
+рассмотрению,      считается     подмножеством
+множества    </span><span    class=rvts8>U</span><span    class=rvts6>.
+Тогда          любое          множество          </span><span
+class=rvts8>М</span><span       class=rvts6>       представляется
+вектором   с   |</span><span   class=rvts8>U</span><span  class=rvts6>|
+компонентами,        которые       соответствуют
+элементам   множества  </span><span  class=rvts8>U</span><span
+class=rvts6>.   Компонента  этого  вектора  равна  1,
+если  соответствующий  элемент  принадлежит
+множеству  </span><span  class=rvts8>М</span><span  class=rvts6>, и 0
+</span><span  class=rvts13>–</span><span  class=rvts6>  в  противном
+случае.       Пусть       </span><span      class=rvts8>U</span><span
+class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {</span><span class=rvts8>a</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts6>, </span><span class=rvts8>c</span><span
+class=rvts6>, </span><span class=rvts8>d</span><span
+class=rvts6>, </span><span     class=rvts8>e</span><span    class=rvts6>}    и
+</span><span        class=rvts8>М</span><span        class=rvts6> </span><span
+class=rvts9>=</span><span  class=rvts6> {</span><span class=rvts8>a</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts6>, </span><span  class=rvts8>d</span><span class=rvts6>}. Тогда
+</span><span  class=rvts8>М</span><span  class=rvts6>  представится
+вектором    11010.    Векторы   00000   и   11111   задают
+соответственно    пустое   множество   </span><span
+class=rvts9>∅</span><span     class=rvts6>    и    универсальное
+множество             </span><span            class=rvts8>U</span><span
+class=rvts6>.</span></p> 
+<p class=rvps29><span class=rvts6><br></span></p>
+<p      class=rvps30><span      class=rvts7>1.3.     Операции     над
+множествами</span></p> 
+<p class=rvps31><span class=rvts6><br></span></p>
+<p   class=rvps32><span  class=rvts6>Как  было  сказано  выше,
+множество     можно     представить     в     виде
+результата        операций        над        другими
+множествами.</span></p> 
+<p       class=rvps33><span       class=rvts8>Объединение</span><span
+class=rvts6>     множеств     </span><span    class=rvts8>А</span><span
+class=rvts6>    и    </span><span    class=rvts8>В</span><span    class=rvts6>
+представляет   собой  множество,  содержащее
+те      и      только     те     элементы,     которые
+принадлежат   </span><span   class=rvts8>А</span><span  class=rvts6>
+или   </span><span  class=rvts8>В</span><span  class=rvts6>  (хотя  бы
+одному из этих множеств):</span></p> 
+<p class=rvps34><span class=rvts19><br></span></p>
+<p   class=rvps1><span   class=rvts8>А</span><span   class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {</span><span class=rvts8>x</span><span
+class=rvts6> </span><span  class=rvts9>/</span><span class=rvts6> </span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>A</span><span         class=rvts6>        или        </span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6>}.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p    class=rvps35><span    class=rvts8>Пересечением    </span><span
+class=rvts6>множеств       </span><span       class=rvts8>А</span><span
+class=rvts6>    и    </span><span    class=rvts8>В</span><span    class=rvts6>
+является  множество,  содержащее те и только
+те  элементы,  каждый из которых принадлежит
+как   </span><span   class=rvts8>А</span><span   class=rvts6>,   так   и
+</span><span class=rvts8>В</span><span class=rvts6>:</span></p> 
+<p class=rvps36><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>А</span><span   class=rvts6> </span><span
+class=rvts9>∩</span><span class=rvts6> </span><span
+class=rvts8>В</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {</span><span class=rvts8>x</span><span
+class=rvts6> </span><span  class=rvts9>/</span><span class=rvts6> </span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>A</span><span          class=rvts6>          и         </span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6>}.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps37><span   class=rvts8>Разность</span><span  class=rvts6>
+множеств   </span><span   class=rvts8>А</span><span   class=rvts6>   и
+</span><span   class=rvts8>В</span><span   class=rvts6>   состоит   из
+элементов  множества  </span><span  class=rvts8>А</span><span
+class=rvts6>,   которые  не  принадлежат  множеству
+</span><span class=rvts8>В</span><span class=rvts6>:</span></p> 
+<p class=rvps38><span class=rvts19><br></span></p>
+<p  class=rvps1><span  class=rvts8>А</span><span  class=rvts6> \ </span><span
+class=rvts8>В</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {</span><span class=rvts8>x</span><span
+class=rvts6> </span><span  class=rvts9>/</span><span class=rvts6> </span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>A</span><span          class=rvts6>          и         </span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts9>∉</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6>}.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p     class=rvps39><span     class=rvts8>Сумма</span><span    class=rvts6>
+множеств   </span><span   class=rvts8>А</span><span   class=rvts6>   и
+</span><span   class=rvts8>В</span><span  class=rvts6>  (ее  называют
+еще           </span><span           class=rvts8>симметрической
+разностью</span><span    class=rvts6>   множеств   </span><span
+class=rvts8>А</span><span          class=rvts6>         и         </span><span
+class=rvts8>В</span><span       class=rvts6>)      содержит      все
+элементы   из  </span><span  class=rvts8>А</span><span  class=rvts6>,
+не    принадлежащие    </span><span    class=rvts8>В</span><span
+class=rvts6>,      и      все     элементы     из     </span><span
+class=rvts8>В</span><span    class=rvts6>,    не   принадлежащие
+</span><span class=rvts8>А</span><span class=rvts6>:</span></p> 
+<p class=rvps40><span class=rvts6><br></span></p>
+<p  class=rvps1><span  class=rvts8>А</span><span  class=rvts6> + </span><span
+class=rvts8>В</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {</span><span class=rvts8>x</span><span
+class=rvts6> </span><span class=rvts9>/</span><span
+class=rvts6> (</span><span class=rvts8>x</span><span
+class=rvts6> </span><span class=rvts9>∈</span><span
+class=rvts6> </span><span     class=rvts8>A</span><span     class=rvts6>     и
+</span><span         class=rvts8>x</span><span        class=rvts6> </span><span
+class=rvts9>∉</span><span class=rvts6> </span><span
+class=rvts8>В</span><span        class=rvts6>)       или       (</span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>В</span><span          class=rvts6>         и         </span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts9>∉</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6>)}.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p      class=rvps41><span     class=rvts8>Дополнение     </span><span
+class=rvts6>множества      </span><span      class=rvts8>А</span><span
+class=rvts6>           состоит           из          элементов
+универсального           множества           </span><span
+class=rvts8>U</span><span    class=rvts6>,    не    принадлежащих
+</span><span class=rvts8>А</span><span class=rvts6>:</span></p> 
+<p class=rvps42><span class=rvts19><br></span></p>
+<p   class=rvps1><span  class=rvts20>&not;</span><span  class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {</span><span class=rvts8>x</span><span
+class=rvts6> </span><span  class=rvts9>/</span><span class=rvts6> </span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>U</span><span          class=rvts6>          и         </span><span
+class=rvts8>x</span><span class=rvts6> </span><span
+class=rvts9>∉</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6>}.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps43><span  class=rvts6>На  рис. 1.1  затемненными
+областями    на    диаграммах    Эйлера </span><span
+class=rvts13>–</span><span       class=rvts6>Венна       показаны
+результаты перечисленных операций.</span></p> 
+<p  class=rvps44><span class=rvts6>Таким образом, формула, в
+которой  присутствуют  символы операций над
+множествами,        есть        способ       задания
+множества.          Две          формулы         </span><span
+class=rvts8>равносильны</span><span   class=rvts6>,  если  они
+представляют    одно    и    то    же   множество.
+Некоторые   операции   можно  выразить  через
+другие. Так, например, имеем</span></p> 
+<p class=rvps45><span class=rvts6><br></span></p>
+<p  class=rvps1><span  class=rvts8>А</span><span  class=rvts6> + </span><span
+class=rvts8>В</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> (</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∩</span><span
+class=rvts20>&not;</span><span class=rvts8>В</span><span
+class=rvts6>) </span><span class=rvts9>∪</span><span
+class=rvts6> (</span><span class=rvts20>&not;</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∩</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6>) </span><span
+class=rvts9>=</span><span class=rvts6> (</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6>) \ (</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∩</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6>);</span></p> 
+<p   class=rvps1><span  class=rvts20>&not;</span><span  class=rvts8>А</span><span
+class=rvts6> </span><span  class=rvts9>=</span><span class=rvts6> </span><span
+class=rvts8>U</span><span class=rvts6> \ </span><span
+class=rvts8>А</span><span class=rvts6>;</span></p> 
+<p   class=rvps1><span  class=rvts8>A</span><span  class=rvts6> \ </span><span
+class=rvts8>B</span><span  class=rvts6> </span><span  class=rvts9>=</span><span
+class=rvts6> </span><span  class=rvts8>A</span><span class=rvts6> </span><span
+class=rvts9>∩</span><span class=rvts20>&not;</span><span
+class=rvts8>B</span><span class=rvts6>.</span></p> 
+<p class=rvps46><span class=rvts6><br></span></p>
+<p   class=rvps47><span   class=rvts6>Три   из   перечисленных
+операций,      дополнение,      пересечение      и
+объединение,             составляют            </span><span
+class=rvts8>булеву       алгебру       множеств</span><span
+class=rvts6>.   Перечислим   основные   законы  этой
+алгебры,   используя   общепринятое  правило:
+если      в     формуле     отсутствуют     скобки,
+устанавливающие        порядок        выполнения
+операций,        то        сначала       выполняется
+дополнение,    потом    пересечение    и   затем
+объединение.   Для   повышения   компактности
+формулы  знак пересечения множеств, подобно
+знаку    арифметического    умножения,   будем
+опускать.</span></p> 
+<p class=rvps48><span class=rvts6><br></span></p>
+<div      class=rvps53><table      border=0      cellpadding=4     cellspacing=0
+style="border-width: 0px;"> 
+<tr valign=top>
+<td  width=128  valign=top><p><img  width=124 height=110 alt="" style="padding :
+1px;" src="lk1/img10.jpg"></p> 
+</td>
+<td   colspan=2   width=128   valign=top><p><img   width=124  height=110  alt=""
+style="padding : 1px;" src="lk1/img11.jpg"></p> 
+</td>
+<td   width=128  valign=top><p  class=rvps49><img  width=124  height=110  alt=""
+style="padding : 1px;" src="lk1/img12.jpg"></p> 
+</td>
+</tr>
+<tr valign=top>
+<td        width=128       height=29       valign=top><p       class=rvps1><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span></p> 
+</td>
+<td    colspan=2    width=128    height=29    valign=top><p    class=rvps1><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∩</span><span class=rvts6> </span><span
+class=rvts8>В</span></p> 
+</td>
+<td  width=128  height=29  valign=top><p  class=rvps50><span  class=rvts8>&nbsp;
+А</span><span class=rvts6> \ </span><span class=rvts8>В</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  colspan=2  width=203  valign=top><p  class=rvps1><img  width=120 height=106
+alt="" style="padding : 1px;" src="lk1/img13.jpg"></p> 
+</td>
+<td  colspan=2  width=194  valign=top><p  class=rvps1><img  width=120 height=106
+alt="" style="padding : 1px;" src="lk1/img14.jpg"></p> 
+</td>
+</tr>
+<tr valign=top>
+<td    colspan=2    width=203    height=22    valign=top><p    class=rvps1><span
+class=rvts8><br></span></p> 
+<p  class=rvps1><span  class=rvts8>А</span><span  class=rvts6> + </span><span
+class=rvts8>В</span></p> 
+</td>
+<td    colspan=2    width=194    height=22    valign=top><p   class=rvps51><span
+class=rvts8>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></p> 
+<p class=rvps52><span
+class=rvts8>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span class=rvts10>&not;</span><span class=rvts8>А</span></p> 
+</td>
+</tr>
+</table>
+</div>
+<p><span class=rvts6><br></span></p>
+<h3     class=rvps54><span     class=rvts0><span    class=rvts21>Рис.    1.1.
+Операции над множествами</span></span></h3> 
+<p class=rvps55><span class=rvts6><br></span></p>
+<p   class=rvps56><span   class=rvts8>Коммутативность</span><span
+class=rvts6>:</span></p> 
+<p   class=rvps57><span   class=rvts8>А</span><span  class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span  class=rvts8>А</span><span class=rvts6>;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts8>А В</span><span class=rvts6> </span><span
+class=rvts9>=</span><span class=rvts6> </span><span
+class=rvts8>В А</span><span class=rvts6>.</span></p> 
+<p class=rvps58><span class=rvts6><br></span></p>
+<p   class=rvps59><span   class=rvts8>Ассоциативность</span><span
+class=rvts6>:</span></p> 
+<p   class=rvps60><span   class=rvts8>А</span><span  class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> (</span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>С</span><span class=rvts6>) </span><span
+class=rvts9>=</span><span class=rvts6> (</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6>) </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>С</span><span  class=rvts6>;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts8>А </span><span class=rvts6>(</span><span
+class=rvts8>В С</span><span class=rvts6>) </span><span
+class=rvts9>=</span><span class=rvts6> (</span><span
+class=rvts8>А В</span><span class=rvts6>)</span><span
+class=rvts8> С</span><span class=rvts6>.</span></p> 
+<p class=rvps61><span class=rvts6><br></span></p>
+<p  class=rvps62><span  class=rvts8>Дистрибутивность</span><span
+class=rvts6>:</span></p> 
+<p   class=rvps63><span  class=rvts8>А</span><span  class=rvts6> (</span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>С</span><span class=rvts6>) </span><span
+class=rvts9>=</span><span  class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> </span><span  class=rvts8>С</span><span class=rvts6>;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts8>С</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> (</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6>) (</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>С</span><span
+class=rvts6>).</span></p> 
+<p class=rvps64><span class=rvts6><br></span></p>
+<p   class=rvps65><span   class=rvts8>Идемпотентность</span><span
+class=rvts6>:</span></p> 
+<p   class=rvps66><span   class=rvts8>А</span><span  class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>А</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> </span><span  class=rvts8>А</span><span class=rvts6>;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>        &nbsp;        &nbsp;        &nbsp;        &nbsp;</span><span
+class=rvts8>А А</span><span class=rvts6> </span><span
+class=rvts9>=</span><span  class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6>.</span></p> 
+<p class=rvps67><span class=rvts6><br></span></p>
+<p  class=rvps68><span  class=rvts8>Законы де Моргана</span><span
+class=rvts6>:</span></p> 
+<p   class=rvps69><img   width=52   height=24   alt=""  style="padding  :  1px;"
+src="lk1/img15.jpg"><span class=rvts6>=</span><span
+class=rvts20>&not;</span><span class=rvts8>А</span><span
+class=rvts20>&not;</span><span class=rvts8>В</span><span
+class=rvts6>;</span><span  class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><img  width=29  height=24  alt=""  style="padding  :  1px;"
+src="lk1/img16.jpg"><span class=rvts6>=</span><span
+class=rvts20>&not;</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts20>&not;</span><span class=rvts8>В</span><span
+class=rvts6>.</span></p> 
+<p class=rvps70><span class=rvts6><br></span></p>
+<p     class=rvps71><span     class=rvts8>Законы    операций    с
+константами      (пустым      и     универсальным
+множествами)</span><span class=rvts6>:</span></p> 
+<p   class=rvps72><span   class=rvts8>А</span><span  class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts9>∅</span><span class=rvts6> </span><span
+class=rvts9>=</span><span  class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6>;</span><span  class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts8>А</span><span  class=rvts6> </span><span class=rvts8>U</span><span
+class=rvts6> </span><span  class=rvts9>=</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6>;</span></p> 
+<p   class=rvps73><span   class=rvts8>А</span><span  class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>U</span><span  class=rvts6> </span><span  class=rvts9>=</span><span
+class=rvts6> </span><span  class=rvts8>U</span><span  class=rvts6>;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∅</span><span
+class=rvts6> </span><span  class=rvts9>=</span><span class=rvts6> </span><span
+class=rvts9>∅</span><span class=rvts6>;</span></p> 
+<p   class=rvps74><span   class=rvts8>А</span><span  class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts10>&not;</span><span
+class=rvts8>А</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> </span><span  class=rvts8>U</span><span  class=rvts6>;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts8>А</span><span
+class=rvts10>&not;</span><span class=rvts8>А</span><span
+class=rvts6> </span><span  class=rvts9>=</span><span class=rvts6> </span><span
+class=rvts9>∅</span><span class=rvts6>.</span></p> 
+<p class=rvps75><span class=rvts6><br></span></p>
+<p        class=rvps76><span       class=rvts8>Закон       двойного
+дополнения</span><span class=rvts6>:</span></p> 
+<p   class=rvps77><img   width=17   height=27   alt=""  style="padding  :  1px;"
+src="lk1/img17.jpg"><span  class=rvts9>=</span><span  class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6>.</span></p> 
+<p class=rvps78><span class=rvts6><br></span></p>
+<h4   class=rvps79><span  class=rvts0><span  class=rvts6>Заметим,  что
+для  каждой  пары формул, представляющих тот
+или  иной закон, справедливо следующее: одна
+из   формул   получается  из  другой  взаимной
+заменой    всех    операций    пересечения    на
+операции    объединения    и    всех    символов
+</span></span><span     class=rvts0><span     class=rvts9>∅</span></span><span
+class=rvts0><span    class=rvts6>    на   символы   </span></span><span
+class=rvts0><span       class=rvts8>U</span></span><span       class=rvts0><span
+class=rvts6>.    При    этом   должен   быть   сохранен
+порядок   действий.  Этот  факт  известен  под
+названием             </span></span><span             class=rvts0><span
+class=rvts8>принципа двойственности</span></span><span
+class=rvts0><span class=rvts6>.</span></span></h4> 
+<p    class=rvps80><span    class=rvts6>Любое    равенство    из
+булевой   алгебры   множеств   можно   вывести
+путем         равносильных        преобразований,
+используя       формулы       из      приведенного
+списка.</span></p> 
+<p  class=rvps81><span  class=rvts6>Например,  известная как
+</span><span       class=rvts8>закон       поглощения</span><span
+class=rvts6>      формула     </span><span     class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>В </span><span
+class=rvts9>=</span><span  class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6>,  которой  нет  в  приведенном  списке,
+выводится следующим образом:</span></p> 
+<p class=rvps82><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>А</span><span   class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> </span><span  class=rvts8>U</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> (</span><span class=rvts8>U</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span  class=rvts8>В</span><span class=rvts6>)</span><span
+class=rvts8> </span><span  class=rvts9>=</span><span class=rvts6> </span><span
+class=rvts8>А</span><span        class=rvts6> </span><span       class=rvts8>U
+</span><span       class=rvts9>=</span><span      class=rvts6>      </span><span
+class=rvts8>А</span><span class=rvts6>.</span></p> 
+<p class=rvps83><span class=rvts6><br></span></p>
+<p      class=rvps84><span     class=rvts6>Используя     принцип
+двойственности, получим</span></p> 
+<p class=rvps85><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>А</span><span  class=rvts6> (</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span  class=rvts6>)</span><span class=rvts8> </span><span
+class=rvts9>=</span><span  class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6>.</span></p> 
+<p class=rvps86><span class=rvts6><br></span></p>
+<p        class=rvps87><span        class=rvts6>Список       формул,
+приведенный  выше,  является достаточным, но
+для    вывода   любого   равенства   из   данной
+алгебры    можно    воспользоваться    меньшим
+списком,    т. е.    некоторые    формулы   этого
+списка  можно  вывести  из  других.  Например,
+формулу</span></p> 
+<p class=rvps88><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>А</span><span   class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts8>С</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> (</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6>) (</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>С</span><span class=rvts6>)</span></p> 
+<p class=rvps89><span class=rvts6><br></span></p>
+<p        class=rvps89><span       class=rvts6>(дистрибутивность
+объединения      относительно     пересечения)
+можно     получить    следующим    образом.    Ее
+правую   часть,  используя  дистрибутивность
+пересечения, представим как</span></p> 
+<p class=rvps89><span class=rvts6><br></span></p>
+<p    class=rvps1><span   class=rvts6>(</span><span   class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6>) </span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> (</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6>) </span><span class=rvts8>С</span><span
+class=rvts6>.</span></p> 
+<p class=rvps90><span class=rvts6><br></span></p>
+<p     class=rvps89><span    class=rvts6>Раскрыв    скобки    (по
+закону ассоциативности), получим</span></p> 
+<p class=rvps89><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>А</span><span   class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>С</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts8>С</span><span class=rvts6>.</span></p> 
+<p class=rvps91><span class=rvts6><br></span></p>
+<p        class=rvps89><span       class=rvts6>Применим       закон
+идемпотентности    и   используем   константу
+</span><span      class=rvts8>U</span><span      class=rvts6>      (</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>А</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>А </span><span
+class=rvts9>=</span><span  class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> </span><span     class=rvts8>U</span><span    class=rvts6>),    в
+результате   чего   после  применения  закона
+коммутативности  пересечения  правая  часть
+примет        вид        </span><span        class=rvts8>А</span><span
+class=rvts6> </span><span  class=rvts8>U</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>С</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts8>С</span><span   class=rvts6>.  После  вынесения  за
+скобки      </span><span      class=rvts8>А</span><span      class=rvts6>
+получим              </span><span              class=rvts8>А</span><span
+class=rvts6> (</span><span class=rvts8>U</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>С</span><span
+class=rvts6>) </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span   class=rvts8>С</span><span   class=rvts6>,   что
+равно    левой    части   исходного   выражения
+согласно      свойству      константы      </span><span
+class=rvts8>U</span><span class=rvts6>.</span></p> 
+<p   class=rvps92><span   class=rvts6>Выведем  теперь  </span><span
+class=rvts8>закон     простого     склеивания</span><span
+class=rvts6>  </span><span class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts20>&not;</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>В</span><span class=rvts6>:</span></p> 
+<p class=rvps93><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>А</span><span   class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts20>&not;</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> (</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts20>&not;</span><span class=rvts8>А</span><span
+class=rvts6>) </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span  class=rvts8>U</span><span class=rvts6> </span><span
+class=rvts9>=</span><span  class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6>.</span></p> 
+<p class=rvps94><span class=rvts6><br></span></p>
+<p        class=rvps95><span       class=rvts6>Формулу       </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts20>&not;</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>С</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts20>&not;</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>С</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span        class=rvts8>С</span><span        class=rvts6>
+(</span><span  class=rvts8>обобщенное склеивание</span><span
+class=rvts6>) выведем следующим образом:</span></p> 
+<p class=rvps89><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>А</span><span   class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts20>&not;</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>С</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts8>С</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts20>&not;</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>С</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span class=rvts8>С </span><span
+class=rvts6>(</span><span  class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts20>&not;</span><span
+class=rvts8>А</span><span class=rvts6>) </span><span
+class=rvts9>=</span></p> 
+<p    class=rvps1><span   class=rvts9>=</span><span   class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В </span><span class=rvts6>(</span><span
+class=rvts8>U</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts8>С</span><span
+class=rvts6>) </span><span class=rvts9>∪</span><span
+class=rvts20>&not;</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>С </span><span
+class=rvts6>(</span><span  class=rvts8>U</span><span  class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts8>В</span><span
+class=rvts6>)</span><span  class=rvts8> </span><span  class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts20>&not;</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>С</span><span class=rvts6>.</span></p> 
+<p class=rvps96><span class=rvts6><br></span></p>
+<p   class=rvps97><span   class=rvts6>Используя   только   что
+выведенную    формулу   и   закон   поглощения,
+докажем              </span><span              class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts20>&not;</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span  class=rvts9>=</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6>:</span></p> 
+<p class=rvps98><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>А</span><span   class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts20>&not;</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> </span><span  class=rvts8>U</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts20>&not;</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> </span><span class=rvts8>А</span><span
+class=rvts6> </span><span  class=rvts8>U</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts20>&not;</span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>U</span><span  class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span class=rvts9>=</span></p> 
+<p   class=rvps1><span   class=rvts6>= </span><span  class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts20>&not;</span><span class=rvts8>А</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts6> </span><span  class=rvts9>=</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6>.</span></p> 
+<p><span class=rvts6><br></span></p>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts9
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts14
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts15
+{
+ font-size: 14pt;
+ font-family: 'GoudyHandtooled BT';
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts17
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts18
+{
+ font-size: 9pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ vertical-align: super;
+}
+span.rvts19
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts20
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts21
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts22
+{
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts23
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts24
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps4
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 38px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-indent: 38px;
+}
+.rvps36
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps37
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps41
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps42
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps43
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps44
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps45
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps46
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps47
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps48
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps49
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps50
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps51
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps52
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps53
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps54
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps55
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps56
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps57
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps58
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps59
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps60
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps61
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps62
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps63
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps64
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps65
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps66
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps67
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps68
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps69
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps70
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps71
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps72
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps73
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps74
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps75
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps76
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 2</span></p>
+<p><span   class=rvts7>Отношения   бинарные   и   </span><span
+class=rvts8>n</span><span class=rvts7>-арные </span></p> 
+<p class=rvps3><span class=rvts6><br></span></p>
+<p         class=rvps4><span         class=rvts7>2.1.         Декартово
+произведение</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p  class=rvps6><span class=rvts9>Декартовым</span><span class=rvts6>,
+или             </span><span             class=rvts9>прямым</span><span
+class=rvts6>,</span><span   class=rvts9>  произведением</span><span
+class=rvts6>  двух  множеств </span><span class=rvts9>А</span><span
+class=rvts6>    и    </span><span    class=rvts9>В</span><span    class=rvts6>
+(обозначается         </span><span        class=rvts9>А</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span        class=rvts9>В</span><span       class=rvts6>)
+называется        множество        всех        таких
+упорядоченных    пар   (</span><span   class=rvts9>a</span><span
+class=rvts6>, </span><span   class=rvts9>b</span><span   class=rvts6>),  что
+</span><span         class=rvts9>a</span><span        class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>A</span><span          class=rvts6>          и         </span><span
+class=rvts9>b</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>В</span><span     class=rvts6>.    Пусть,    например,
+</span><span      class=rvts9>А</span><span      class=rvts6> = {</span><span
+class=rvts9>a</span><span  class=rvts6>, </span><span class=rvts9>b</span><span
+class=rvts6>, </span><span     class=rvts9>c</span><span    class=rvts6>}    и
+</span><span       class=rvts9>B</span><span      class=rvts6> = {</span><span
+class=rvts9>l</span><span  class=rvts6>, </span><span class=rvts9>m</span><span
+class=rvts6>}.      Тогда      </span><span      class=rvts9>А</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span class=rvts9>В</span><span
+class=rvts6> = {(</span><span class=rvts9>a</span><span
+class=rvts6>, </span><span       class=rvts9>l</span><span       class=rvts6>),
+(</span><span        class=rvts9>b</span><span       class=rvts6>, </span><span
+class=rvts9>l</span><span              class=rvts6>),              (</span><span
+class=rvts9>c</span><span  class=rvts6>, </span><span class=rvts9>l</span><span
+class=rvts6>),              (</span><span              class=rvts9>a</span><span
+class=rvts6>, </span><span       class=rvts9>m</span><span       class=rvts6>),
+(</span><span        class=rvts9>b</span><span       class=rvts6>, </span><span
+class=rvts9>m</span><span              class=rvts6>),              (</span><span
+class=rvts9>c</span><span  class=rvts6>, </span><span class=rvts9>m</span><span
+class=rvts6>)}.   Это  понятие  распространяется  на
+случай   с   более   чем   одним   сомножителем.
+Декартово    произведение   множеств   </span><span
+class=rvts9>А</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts9>А</span><span
+class=rvts11>2</span><span class=rvts6>, … , </span><span
+class=rvts9>А</span><span        class=rvts12>п</span><span       class=rvts6>
+(обозначается         </span><span        class=rvts9>А</span><span
+class=rvts11>1</span><span class=rvts6> </span><span
+class=rvts10>×</span><span class=rvts6> </span><span
+class=rvts9>А</span><span class=rvts11>2</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> … </span><span class=rvts10>×</span><span
+class=rvts6> </span><span class=rvts9>А</span><span
+class=rvts12>п</span><span  class=rvts6>)  есть множество всех
+векторов             (</span><span            class=rvts9>а</span><span
+class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts9>а</span><span class=rvts11>2</span><span
+class=rvts6>, … , </span><span class=rvts9>а</span><span
+class=rvts12>п</span><span  class=rvts6>)  размерности  </span><span
+class=rvts9>п</span><span   class=rvts6>,   таких,   что   </span><span
+class=rvts9>a</span><span  class=rvts11>1</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>A</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts9>a</span><span
+class=rvts11>2</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>А</span><span class=rvts11>2</span><span
+class=rvts6>, … , </span><span class=rvts9>a</span><span
+class=rvts12>п</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>А</span><span class=rvts12>п</span><span
+class=rvts6>.</span></p> 
+<p   class=rvps7><span  class=rvts6>Декартово  произведение
+</span><span    class=rvts9>п</span><span   class=rvts6>   одинаковых
+сомножителей         </span><span         class=rvts9>А</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span class=rvts9>А</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> … </span><span class=rvts10>×</span><span
+class=rvts6> </span><span        class=rvts9>А</span><span        class=rvts6>
+обозначается              символом              </span><span
+class=rvts9>А</span><span     class=rvts13>п</span><span    class=rvts6>    и
+называется   </span><span  class=rvts9>п</span><span  class=rvts6>-й
+</span><span        class=rvts9>степенью</span><span        class=rvts6>
+множества  </span><span class=rvts9>А</span><span class=rvts6>. При
+этом   </span><span   class=rvts9>А</span><span  class=rvts14>1</span><span
+class=rvts6> = </span><span      class=rvts9>А</span><span      class=rvts6>.
+Примером  декартова  произведения  является
+</span><span       class=rvts15>R </span><span      class=rvts10>×</span><span
+class=rvts15> R </span><span class=rvts6>= </span><span
+class=rvts15>R</span><span  class=rvts14>2</span><span class=rvts6> </span><span
+class=rvts16>–</span><span  class=rvts6>  множество  точек  на
+плоскости.        Здесь        элементы       </span><span
+class=rvts9>х</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts15>R</span><span          class=rvts6>         и         </span><span
+class=rvts9>у</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts15>R</span><span  class=rvts6>  служат  координатами
+некоторой     точки    на    плоскости.    Другим
+примером      является      множество      </span><span
+class=rvts15>R</span><span  class=rvts14>3</span><span  class=rvts6>  точек
+в     трехмерном    евклидовом    пространстве.
+Обобщением   этих   понятий  является  </span><span
+class=rvts9>п</span><span class=rvts16>‑</span><span
+class=rvts6>мерное пространство.</span></p> 
+<p     class=rvps8><span     class=rvts6>Любое     подмножество
+</span><span         class=rvts9>R</span><span        class=rvts6> </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts9>А</span><span class=rvts11>1</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span class=rvts9>А</span><span
+class=rvts11>2</span><span class=rvts6> </span><span
+class=rvts10>×</span><span class=rvts6> … </span><span
+class=rvts10>×</span><span class=rvts6> </span><span
+class=rvts9>А</span><span        class=rvts12>п</span><span       class=rvts6>
+декартова             произведения             </span><span
+class=rvts9>п</span><span  class=rvts6>  множеств  называется
+</span><span      class=rvts9>п-арным     отношением</span><span
+class=rvts6>.        При        </span><span       class=rvts9>п</span><span
+class=rvts6> = 1, 2, 3                имеем                </span><span
+class=rvts9>унарное</span><span         class=rvts6>,        </span><span
+class=rvts9>бинарное</span><span        class=rvts6>,       </span><span
+class=rvts9>тернарное</span><span    class=rvts6>    отношения
+соответственно.     Унарное     отношение     на
+множестве    </span><span    class=rvts9>А</span><span    class=rvts6>
+представляет  собой подмножество множества
+</span><span class=rvts9>А</span><span class=rvts6>.</span></p> 
+<p class=rvps9><span class=rvts6><br></span></p>
+<p><span        class=rvts7>2.2.       Бинарные       отношения
+(соответствия)</span></p> 
+<p class=rvps10><span class=rvts6><br></span></p>
+<p                class=rvps11><span                class=rvts9>Бинарным
+отношением</span><span      class=rvts6>,      или     </span><span
+class=rvts9>соответствием</span><span    class=rvts6>    между
+элементами  множеств  </span><span  class=rvts9>А</span><span
+class=rvts6>    и    </span><span    class=rvts9>В</span><span   class=rvts6>,
+называется       любое       подмножество</span><span
+class=rvts9>               R</span><span              class=rvts6> </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts9>А</span><span class=rvts6> </span><span
+class=rvts10>×</span><span class=rvts6> </span><span
+class=rvts9>В</span><span            class=rvts6>            декартова
+произведения  этих  множеств.  Тот  факт,  что
+некоторые             </span><span            class=rvts9>a</span><span
+class=rvts6> </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span     class=rvts9>A</span><span     class=rvts6>     и
+</span><span         class=rvts9>b</span><span        class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>В</span><span        class=rvts6>       находятся       в
+отношении    </span><span    class=rvts9>R</span><span    class=rvts6>,
+иногда   выражают  как  </span><span  class=rvts9>a</span><span
+class=rvts6> </span><span  class=rvts9>R</span><span class=rvts6> </span><span
+class=rvts9>b</span><span   class=rvts6>.   В  качестве  примера
+бинарного  отношения  рассмотрим  отношение
+</span><span       class=rvts9>R</span><span       class=rvts6>       между
+элементами  множеств  </span><span  class=rvts9>А</span><span
+class=rvts6> = {1, 2, 3}     и    </span><span    class=rvts9>B</span><span
+class=rvts6> = {1, 2, 3, 4, 5, 6},        которое       можно
+выразить     словами    так:    элемент    </span><span
+class=rvts9>х</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>A</span><span       class=rvts6>      есть      делитель
+элемента             </span><span             class=rvts9>у</span><span
+class=rvts6> </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span  class=rvts9>В</span><span  class=rvts6>. Тогда
+имеем   </span><span  class=rvts9>R</span><span  class=rvts6> = {(1, 1),
+(1, 2), (1, 3),   (1, 4),   (1, 5),  (1, 6),  (2, 2),  (2, 4),  (2, 6),
+(3, 3), (3, 6)}.</span></p> 
+<p     class=rvps12><span     class=rvts6>Бинарное    отношение
+удобно     представлять     в    виде    двоичной
+(</span><span        class=rvts9>булевой</span><span        class=rvts6>)
+матрицы.  При  этом элементы множеств </span><span
+class=rvts9>А</span><span          class=rvts6>         и         </span><span
+class=rvts9>В</span><span        class=rvts6>       должны       быть
+пронумерованы,  и  если </span><span class=rvts9>i</span><span
+class=rvts6>-й       элемент       множества       </span><span
+class=rvts9>А</span><span  class=rvts6> соответствует </span><span
+class=rvts9>j</span><span  class=rvts6>-му элементу множества
+</span><span   class=rvts9>В</span><span   class=rvts6>,   то  элемент
+матрицы,     расположенный    на    пересечении
+</span><span    class=rvts9>i</span><span    class=rvts6>-й   строки   и
+</span><span    class=rvts9>j</span><span    class=rvts6>-го   столбца,
+имеет   значение   1,   в   противном  случае  он
+имеет   значение  0.  Например,  рассмотренное
+выше  отношение </span><span class=rvts9>R</span><span class=rvts6>
+будет              представлено              следующей
+матрицей:</span></p> 
+<p class=rvps13><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=187   height=105  alt=""  style="padding  :  1px;"
+src="lk2/img1.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps14><span class=rvts6><br></span></p>
+<p       class=rvps15><span       class=rvts9>Проекция      </span><span
+class=rvts6>элемента       (</span><span       class=rvts9>a</span><span
+class=rvts6>, </span><span        class=rvts9>b</span><span       class=rvts6>)
+множества            </span><span            class=rvts9>А</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span    class=rvts9>В</span><span    class=rvts6>    на
+множество    </span><span    class=rvts9>А</span><span    class=rvts6>
+есть  элемент  </span><span  class=rvts9>а</span><span class=rvts6>.
+Аналогично   элемент   </span><span   class=rvts9>b</span><span
+class=rvts6>  является проекцией элемента (</span><span
+class=rvts9>a</span><span  class=rvts6>, </span><span class=rvts9>b</span><span
+class=rvts6>)    множества    </span><span   class=rvts9>А</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span    class=rvts9>В</span><span    class=rvts6>    на
+множество            </span><span            class=rvts9>В</span><span
+class=rvts6>.</span></p> 
+<p    class=rvps16><span    class=rvts6>Проекцией    множества
+</span><span        class=rvts9>Е</span><span        class=rvts6> </span><span
+class=rvts10>⊂</span><span class=rvts6> </span><span
+class=rvts9>А</span><span class=rvts6> </span><span
+class=rvts10>×</span><span class=rvts6> </span><span
+class=rvts9>В</span><span         class=rvts6>         на        </span><span
+class=rvts9>А</span><span  class=rvts6> называется множество
+всех  тех элементов из </span><span class=rvts9>А</span><span
+class=rvts6>,      которые      являются     проекциями
+элементов  из  </span><span  class=rvts9>Е</span><span  class=rvts6>
+на  множество  </span><span  class=rvts9>А</span><span class=rvts6>.
+Для  множеств </span><span class=rvts9>А</span><span class=rvts6> и
+</span><span               class=rvts9>В</span><span              class=rvts6>,
+рассмотренных    выше,    проекцией   элемента
+(2, 4)   на   множество   </span><span  class=rvts9>А  </span><span
+class=rvts6>является    элемент    2,    а    проекцией
+множества        {(1, 2), (2, 2),        (2, 4)}       </span><span
+class=rvts16>–</span><span           class=rvts6>           множество
+{1, 2}.</span></p> 
+<p   class=rvps17><span   class=rvts9>Сечением</span><span  class=rvts6>
+множества             </span><span            class=rvts9>R</span><span
+class=rvts6> </span><span class=rvts10>⊂</span><span
+class=rvts6> </span><span class=rvts9>А</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span    class=rvts9>В</span><span    class=rvts6>    по
+</span><span  class=rvts9>а</span><span  class=rvts6>, обозначаемым
+</span><span         class=rvts9>R</span><span         class=rvts6>(</span><span
+class=rvts9>а</span><span          class=rvts6>),          называется
+множество     всех     тех    элементов    </span><span
+class=rvts9>у</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>В</span><span  class=rvts6>,  для  которых  (</span><span
+class=rvts9>a</span><span class=rvts6>, </span><span
+class=rvts9>у</span><span class=rvts6>)</span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>R</span><span class=rvts6>.</span></p> 
+<p       class=rvps18><span       class=rvts6>Сечением      </span><span
+class=rvts9>R</span><span  class=rvts6>(</span><span  class=rvts9>Х</span><span
+class=rvts6>)   множества   </span><span   class=rvts9>R   </span><span
+class=rvts6>по             </span><span             class=rvts9>Х</span><span
+class=rvts6> </span><span class=rvts10>⊂</span><span
+class=rvts6> </span><span        class=rvts9>А</span><span        class=rvts6>
+является    объединение    сечений   для   всех
+элементов  из  </span><span  class=rvts9>Х</span><span class=rvts6>.
+Пусть                 </span><span                class=rvts9>R</span><span
+class=rvts6> = {(1, 1), (1, 3)    (1, 5),   (1, 6),   (2, 2),   (2, 4),
+(3, 3),    (3, 6)}.    Тогда    </span><span    class=rvts9>R</span><span
+class=rvts6>(2) = {2, 4},          а          если          </span><span
+class=rvts9>Х</span><span     class=rvts6> = {2, 3},    то    </span><span
+class=rvts9>R</span><span  class=rvts6>(</span><span  class=rvts9>Х</span><span
+class=rvts6>) = {2, 3, 4, 6}.</span></p> 
+<p     class=rvps19><span     class=rvts6>Бинарное    отношение
+можно  задавать с помощью сечений. Например,
+отношение, представленное матрицей</span></p> 
+<p class=rvps20><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=161   height=161  alt=""  style="padding  :  1px;"
+src="lk2/img2.jpg"><span class=rvts6>,</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps21><span  class=rvts6>можно  задать  следующим
+образом:              </span><span              class=rvts9>R</span><span
+class=rvts6>(</span><span  class=rvts9>a</span><span  class=rvts11>1</span><span
+class=rvts6>) = {</span><span class=rvts9>b</span><span
+class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts9>b</span><span        class=rvts11>3</span><span       class=rvts6>},
+</span><span         class=rvts9>R</span><span         class=rvts6>(</span><span
+class=rvts9>a</span><span class=rvts11>2</span><span
+class=rvts6>) = {</span><span class=rvts9>b</span><span
+class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts9>b</span><span class=rvts11>3</span><span
+class=rvts6>, </span><span class=rvts9>b</span><span
+class=rvts11>4</span><span              class=rvts6>},              </span><span
+class=rvts9>R</span><span   class=rvts6>(</span><span  class=rvts9>a</span><span
+class=rvts11>3</span><span class=rvts6>) = {</span><span
+class=rvts9>b</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts9>b</span><span
+class=rvts11>4</span><span              class=rvts6>},              </span><span
+class=rvts9>R</span><span   class=rvts6>(</span><span  class=rvts9>a</span><span
+class=rvts11>4</span><span class=rvts6>) = </span><span
+class=rvts10>∅</span><span              class=rvts6>,             </span><span
+class=rvts9>R</span><span   class=rvts6>(</span><span  class=rvts9>a</span><span
+class=rvts11>5</span><span class=rvts6>) = {</span><span
+class=rvts9>b</span><span        class=rvts11>4</span><span       class=rvts6>}.
+Множество      сечений      для     всех     </span><span
+class=rvts9>a</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>A</span><span    class=rvts6>    называется   </span><span
+class=rvts9>фактор-множеством</span><span
+class=rvts6>.</span></p> 
+<h6     class=rvps22><span     class=rvts0><span    class=rvts9>Областью
+определения</span></span><span     class=rvts0><span     class=rvts6>
+отношения             </span></span><span             class=rvts0><span
+class=rvts9>R </span></span><span class=rvts0><span
+class=rvts10>⊆</span></span><span class=rvts0><span
+class=rvts9> А </span></span><span class=rvts0><span
+class=rvts10>×</span></span><span       class=rvts0><span      class=rvts9> В
+</span></span><span        class=rvts0><span        class=rvts6>является
+проекция     множества</span></span><span     class=rvts0><span
+class=rvts9>           R          </span></span><span          class=rvts0><span
+class=rvts6>на</span></span><span     class=rvts0><span    class=rvts9>    А.
+</span></span><span             class=rvts0><span             class=rvts6>Для
+рассматриваемого    выше    отношения    такой
+областью      является</span></span><span      class=rvts0><span
+class=rvts9>                </span></span><span                class=rvts0><span
+class=rvts6>{</span></span><span class=rvts0><span
+class=rvts9>а</span></span><span class=rvts0><span
+class=rvts11>1</span></span><span class=rvts0><span
+class=rvts6>, </span></span><span class=rvts0><span
+class=rvts9>а</span></span><span class=rvts0><span
+class=rvts11>2</span></span><span class=rvts0><span
+class=rvts6>, </span></span><span class=rvts0><span
+class=rvts9>а</span></span><span class=rvts0><span
+class=rvts11>3</span></span><span class=rvts0><span
+class=rvts6>, </span></span><span class=rvts0><span
+class=rvts9>а</span></span><span class=rvts0><span
+class=rvts11>5</span></span><span class=rvts0><span
+class=rvts6>}</span></span><span         class=rvts0><span         class=rvts9>.
+Областью    значений    </span></span><span    class=rvts0><span
+class=rvts6>отношения       </span></span><span       class=rvts0><span
+class=rvts9>R </span></span><span class=rvts0><span
+class=rvts10>⊆</span></span><span class=rvts0><span
+class=rvts9> А </span></span><span class=rvts0><span
+class=rvts10>×</span></span><span       class=rvts0><span      class=rvts9> В
+</span></span><span        class=rvts0><span        class=rvts6>является
+сечение    множества    </span></span><span    class=rvts0><span
+class=rvts9>R</span></span><span     class=rvts0><span     class=rvts6>     по
+</span></span><span      class=rvts0><span     class=rvts9>А</span></span><span
+class=rvts0><span      class=rvts6>.      Областью      значений
+рассматриваемого      отношения     </span></span><span
+class=rvts0><span       class=rvts9>R</span></span><span       class=rvts0><span
+class=rvts6>     является     {</span></span><span     class=rvts0><span
+class=rvts9>b</span></span><span class=rvts0><span
+class=rvts11>1</span></span><span class=rvts0><span
+class=rvts6>, </span></span><span class=rvts0><span
+class=rvts9>b</span></span><span class=rvts0><span
+class=rvts11>3</span></span><span class=rvts0><span
+class=rvts6>, </span></span><span class=rvts0><span
+class=rvts9>b</span></span><span class=rvts0><span
+class=rvts11>4</span></span><span class=rvts0><span
+class=rvts6>}.</span></span></h6> 
+<p    class=rvps23><span   class=rvts9>Образом</span><span   class=rvts6>
+множества            </span><span            class=rvts9>Х</span><span
+class=rvts6> </span><span class=rvts10>⊆</span><span
+class=rvts6> </span><span        class=rvts9>А</span><span        class=rvts6>
+относительно   </span><span  class=rvts9>R</span><span  class=rvts6>
+называется  множество {</span><span class=rvts9>b</span><span
+class=rvts6> / </span><span class=rvts9>b</span><span
+class=rvts6> </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span        class=rvts9>В</span><span       class=rvts6>,
+</span><span        class=rvts9>х</span><span        class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>Х</span><span              class=rvts6>,              (</span><span
+class=rvts9>х</span><span class=rvts6>, </span><span
+class=rvts9>b</span><span class=rvts6>) </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>R</span><span               class=rvts6>}.              </span><span
+class=rvts9>Прообразом</span><span   class=rvts6>   множества
+</span><span         class=rvts9>Y</span><span        class=rvts6> </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts9>В</span><span  class=rvts6>  относительно  </span><span
+class=rvts9>R</span><span  class=rvts6>  называется множество
+{</span><span       class=rvts9>a</span><span      class=rvts6> / </span><span
+class=rvts9>a</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>A</span><span  class=rvts6>,  </span><span class=rvts9>y</span><span
+class=rvts6> </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span        class=rvts9>Y</span><span        class=rvts6>,
+(</span><span        class=rvts9>a</span><span       class=rvts6>, </span><span
+class=rvts9>y</span><span class=rvts6>) </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>R</span><span   class=rvts6>}.   В   нашем  последнем
+примере       образом       множества       {</span><span
+class=rvts9>а</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts9>а</span><span
+class=rvts11>3</span><span  class=rvts6>}  относительно </span><span
+class=rvts9>R</span><span     class=rvts6>     является    {</span><span
+class=rvts9>b</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts9>b</span><span
+class=rvts11>3</span><span class=rvts6>, </span><span
+class=rvts9>b</span><span     class=rvts11>4</span><span    class=rvts6>},    а
+прообразом  множества {</span><span class=rvts9>b</span><span
+class=rvts11>3</span><span class=rvts6>, </span><span
+class=rvts9>b</span><span        class=rvts11>4</span><span        class=rvts6>}
+является             {</span><span            class=rvts9>а</span><span
+class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts9>а</span><span class=rvts11>2</span><span
+class=rvts6>, </span><span class=rvts9>а</span><span
+class=rvts11>3</span><span class=rvts6>, </span><span
+class=rvts9>а</span><span class=rvts11>5</span><span
+class=rvts6>}.</span></p> 
+<p                class=rvps24><span                class=rvts9>Обратным
+отношением</span><span            class=rvts6>            </span><span
+class=rvts9>R</span><span class=rvts14> </span><span
+class=rvts17>–</span><span  class=rvts14> 1</span><span  class=rvts6>  для
+некоторого  отношения  </span><span class=rvts9>R</span><span
+class=rvts6> </span><span class=rvts10>⊆</span><span
+class=rvts6> </span><span class=rvts9>А</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span        class=rvts9>В</span><span        class=rvts6>
+является     множество,    образованное    теми
+парами               (</span><span               class=rvts9>b</span><span
+class=rvts6>, </span><span class=rvts9>а</span><span
+class=rvts6>) </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span class=rvts9>В</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span   class=rvts9>А</span><span   class=rvts6>,   для
+которых              (</span><span             class=rvts9>а</span><span
+class=rvts6>, </span><span class=rvts9>b</span><span
+class=rvts6>) </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span        class=rvts9>R</span><span        class=rvts6>.
+Матрица,   представляющая  отношение  </span><span
+class=rvts9>R</span><span class=rvts14> </span><span
+class=rvts17>–</span><span      class=rvts14> 1</span><span     class=rvts6>,
+получается      транспонированием     матрицы,
+представляющей        </span><span       class=rvts9>R</span><span
+class=rvts6>,   т.   е.   заменой   строк   столбцами  и
+наоборот.</span></p> 
+<p                class=rvps25><span               class=rvts6>Например,
+рассмотренному     выше     отношению    </span><span
+class=rvts9>R</span><span                 class=rvts6>                будет
+соответствовать     обратное     отношение&nbsp;
+</span><span       class=rvts9>R </span><span      class=rvts18>−</span><span
+class=rvts14> 1</span><span    class=rvts6>    ,   представляемое
+матрицей</span></p> 
+<p class=rvps26><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=207   height=135  alt=""  style="padding  :  1px;"
+src="lk2/img3.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps27><span class=rvts6><br></span></p>
+<p class=rvps28><span class=rvts6><br></span></p>
+<p      class=rvps29><span      class=rvts7>2.3.     Операции     над
+бинарными отношениями</span></p> 
+<p class=rvps30><span class=rvts6><br></span></p>
+<p      class=rvps31><span      class=rvts6>Поскольку      всякое
+отношение   есть   некоторое   множество  пар,
+над  отношениями  применимы все стандартные
+операции         над         множествами,         т. е.
+объединение,       пересечение,      дополнение.
+Универсальным    множеством    для    операции
+дополнения   при   этом   является&nbsp;   </span><span
+class=rvts9>А</span><span class=rvts6> </span><span
+class=rvts10>×</span><span class=rvts6> </span><span
+class=rvts9>В</span><span class=rvts6>.</span></p> 
+<p    class=rvps32><span    class=rvts6>Рассмотрим    операцию
+</span><span      class=rvts9>композиции</span><span      class=rvts6>
+отношений.       Заданы      множества      </span><span
+class=rvts9>А</span><span               class=rvts6>,              </span><span
+class=rvts9>В</span><span               class=rvts6>,              </span><span
+class=rvts9>С</span><span   class=rvts6>   и  отношения  </span><span
+class=rvts9>R</span><span class=rvts6> </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts9>А</span><span class=rvts6> </span><span
+class=rvts10>×</span><span class=rvts6> </span><span
+class=rvts9>В</span><span          class=rvts6>         и         </span><span
+class=rvts9>S</span><span class=rvts6> </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts9>В</span><span class=rvts6> </span><span
+class=rvts10>×</span><span class=rvts6> </span><span
+class=rvts9>С</span><span           class=rvts6>.          Композиция
+отношений   </span><span   class=rvts9>S</span><span   class=rvts6>  и
+</span><span  class=rvts9>R</span><span  class=rvts6>  (обозначается
+</span><span   class=rvts9>SR</span><span  class=rvts6>,  не  путать  с
+пересечением              множеств              </span><span
+class=rvts9>S</span><span          class=rvts6>          и         </span><span
+class=rvts9>R</span><span               class=rvts6>!)              </span><span
+class=rvts16>–</span><span  class=rvts6>  это такое отношение
+между        элементами       множеств       </span><span
+class=rvts9>А</span><span          class=rvts6>         и         </span><span
+class=rvts9>С</span><span  class=rvts6>,  что  для  всех </span><span
+class=rvts9>а</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>А</span><span    class=rvts6>   сечение   множества
+</span><span    class=rvts9>SR</span><span    class=rvts6>   по   </span><span
+class=rvts9>а  </span><span  class=rvts6>совпадает с сечением
+множества   </span><span  class=rvts9>S</span><span  class=rvts6>  по
+подмножеству          </span><span         class=rvts9>R</span><span
+class=rvts6>(</span><span  class=rvts9>a</span><span class=rvts6>) </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts9>B</span><span   class=rvts6>.   Это  записывается  в
+виде   (</span><span  class=rvts9>SR</span><span  class=rvts6>)(</span><span
+class=rvts9>a</span><span class=rvts6>) </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts9>S</span><span   class=rvts6>(</span><span  class=rvts9>R</span><span
+class=rvts6>(</span><span        class=rvts9>a</span><span       class=rvts6>)).
+Например,        пусть        отношения       </span><span
+class=rvts9>R</span><span          class=rvts6>          и         </span><span
+class=rvts9>S</span><span                class=rvts6>               заданы
+соответственно следующими
+матрицами:</span></p> 
+<p class=rvps33><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>R</span><span  class=rvts6> =  </span><img
+width=164  height=161  alt=""  style="padding  :  1px;" src="lk2/img4.jpg"><span
+class=rvts6>,&nbsp;&nbsp;&nbsp;      </span><span      class=rvts8>S</span><span
+class=rvts6> =  </span><img  width=124 height=135 alt="" style="padding : 1px;"
+src="lk2/img5.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps21><span class=rvts6><br></span></p>
+<p  class=rvps21><span  class=rvts6>Тогда композиция </span><span
+class=rvts9>SR</span><span      class=rvts6>     этих     отношений
+представится матрицей</span></p> 
+<p class=rvps21><span class=rvts6><br></span></p>
+<p   class=rvps1><span  class=rvts8>SR</span><span  class=rvts6> =  </span><img
+width=125  height=161  alt=""  style="padding  :  1px;" src="lk2/img6.jpg"><span
+class=rvts6>.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p class=rvps34><span class=rvts6><br></span></p>
+<p><span              class=rvts7>2.4.              Функциональные
+отношения</span></p> 
+<p class=rvps35><span class=rvts6><br></span></p>
+<p      class=rvps36><span      class=rvts6>Отношение      </span><span
+class=rvts9>R</span><span class=rvts6> </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts9>А</span><span class=rvts6> </span><span
+class=rvts10>×</span><span class=rvts6> </span><span
+class=rvts9>В</span><span    class=rvts6>   называется   </span><span
+class=rvts9>функциональным</span><span    class=rvts6>,   если
+для        каждого       </span><span       class=rvts9>а</span><span
+class=rvts6> </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span        class=rvts9>А</span><span        class=rvts6>
+сечение    множества    </span><span   class=rvts9>R</span><span
+class=rvts6>    по    </span><span   class=rvts9>а</span><span   class=rvts6>
+содержит  не  более  одного элемента, т.е. для
+каждого      </span><span     class=rvts9>а</span><span     class=rvts6>
+справедливо          |{</span><span         class=rvts9>a</span><span
+class=rvts6> / (</span><span class=rvts9>a</span><span
+class=rvts6>, </span><span class=rvts9>b</span><span
+class=rvts6>) </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span class=rvts9>R</span><span
+class=rvts6>, </span><span class=rvts9>b</span><span
+class=rvts6> </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span class=rvts9>B</span><span
+class=rvts6>}| </span><span  class=rvts10>≤</span><span  class=rvts6> 1.  В
+функциональном    отношении   не   существует
+пар     с     одинаковым    левым    элементом    и
+различными   правыми  элементами,  т. е.  если
+(</span><span       class=rvts9>а</span><span       class=rvts6>, </span><span
+class=rvts9>b</span><span class=rvts6>) </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>R</span><span          class=rvts6>          и         </span><span
+class=rvts9>R</span><span                class=rvts6>               </span><span
+class=rvts16>–</span><span      class=rvts6>      функциональное
+отношение,  то в </span><span class=rvts9>R</span><span class=rvts6>
+не      может      быть      пары      вида     (</span><span
+class=rvts9>а</span><span class=rvts6>, </span><span
+class=rvts9>с</span><span        class=rvts6>),       где       </span><span
+class=rvts9>b</span><span class=rvts6> </span><span
+class=rvts10>≠</span><span class=rvts6> </span><span
+class=rvts9>c</span><span              class=rvts6>.             Матрица,
+представляющая   функциональное  отношение,
+в    каждой    строке   имеет   не   более   одной
+единицы.  Примером  может  служить следующая
+матрица:</span></p> 
+<p class=rvps37><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=115   height=161  alt=""  style="padding  :  1px;"
+src="lk2/img7.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps21><span class=rvts6><br></span></p>
+<p         class=rvps38><span         class=rvts6>Если        сечение
+функционального          отношения          </span><span
+class=rvts9>R</span><span   class=rvts6>   по   любому  элементу
+</span><span  class=rvts9>а</span><span  class=rvts6>  из  множества
+</span><span  class=rvts9>А</span><span  class=rvts6> содержит один
+и  только  один  элемент, то отношение </span><span
+class=rvts9>R</span><span    class=rvts6>    называется   </span><span
+class=rvts9>всюду определенным</span><span
+class=rvts6>.</span></p> 
+<p   class=rvps39><span   class=rvts6>Если  отношение  </span><span
+class=rvts9>R</span><span class=rvts14> </span><span
+class=rvts17>–</span><span      class=rvts14> 1</span><span     class=rvts6>,
+обратное    для   функционального   отношения
+</span><span       class=rvts9>R</span><span       class=rvts6>,      также
+является     функциональным,    то    отношение
+</span><span    class=rvts9>R</span><span    class=rvts6>   называется
+</span><span    class=rvts9>взаимно    однозначным</span><span
+class=rvts6>.</span></p> 
+<p          class=rvps40><span         class=rvts6>Для         всякого
+функционального          отношения          </span><span
+class=rvts9>R</span><span class=rvts6> </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts9>А</span><span class=rvts6> </span><span
+class=rvts10>×</span><span class=rvts6> </span><span
+class=rvts9>В</span><span    class=rvts6>    можно    определить
+</span><span         class=rvts9>функцию</span><span        class=rvts6>,
+связанную       с      этим      отношением.      Для
+обозначения   функции   используется  запись
+</span><span       class=rvts9>f</span><span       class=rvts6> : </span><span
+class=rvts9>A</span><span class=rvts6> </span><span
+class=rvts10>→</span><span class=rvts6> </span><span
+class=rvts9>B</span><span       class=rvts6>.       Если       (</span><span
+class=rvts9>х</span><span class=rvts6>, </span><span
+class=rvts9>у</span><span class=rvts6>) </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts9>R</span><span  class=rvts6>, то это можно выразить
+как   </span><span  class=rvts9>у</span><span  class=rvts6> = </span><span
+class=rvts9>f</span><span   class=rvts6>(</span><span  class=rvts9>x</span><span
+class=rvts6>),   где   </span><span  class=rvts9>х</span><span  class=rvts6>
+является    </span><span    class=rvts9>аргументом</span><span
+class=rvts6>,    а    </span><span    class=rvts9>у</span><span   class=rvts6>
+</span><span      class=rvts16>–</span><span     class=rvts6>     </span><span
+class=rvts9>значением      функции</span><span      class=rvts6>
+</span><span class=rvts9>f</span><span class=rvts6>.</span></p> 
+<p      class=rvps41><span      class=rvts6>Множество     {</span><span
+class=rvts9>x</span><span class=rvts6> / (</span><span
+class=rvts9>x</span><span  class=rvts6>, </span><span class=rvts9>y</span><span
+class=rvts6>) </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span        class=rvts9>R</span><span        class=rvts6>}
+называется          </span><span          class=rvts9>областью
+определения</span><span   class=rvts6>   функции  </span><span
+class=rvts9>f</span><span   class=rvts6>.   Если  это  множество
+совпадает   с  </span><span  class=rvts9>А</span><span  class=rvts6>,
+то    функция   </span><span   class=rvts9>f</span><span   class=rvts6>
+является               </span><span               class=rvts9>всюду
+определенной</span><span   class=rvts6>.  Такая  функция
+называется </span><span
+class=rvts9>отображением</span><span class=rvts6>
+множества        </span><span        class=rvts9>А        </span><span
+class=rvts6>в</span><span    class=rvts9>   В</span><span   class=rvts6>.   В
+противном  случае  функцию  называют  </span><span
+class=rvts9>частичной</span><span class=rvts6>.</span></p> 
+<p      class=rvps42><span      class=rvts6>Множество     {</span><span
+class=rvts9>у</span><span class=rvts6> / (</span><span
+class=rvts9>x</span><span  class=rvts6>, </span><span class=rvts9>y</span><span
+class=rvts6>) </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span        class=rvts9>R</span><span        class=rvts6>}
+называется          </span><span          class=rvts9>областью
+значений</span><span     class=rvts6>     функции    </span><span
+class=rvts9>f</span><span       class=rvts6>.       Если      область
+значений     функции    </span><span    class=rvts9>f</span><span
+class=rvts6>    совпадает    с    множеством    </span><span
+class=rvts9>В</span><span         class=rvts6>,        то        </span><span
+class=rvts9>f</span><span              class=rvts6>             называют
+отображением      </span><span      class=rvts9>А      </span><span
+class=rvts6>на</span><span     class=rvts9>    В</span><span    class=rvts6>,
+</span><span          class=rvts9>сюръективным          </span><span
+class=rvts6>отображением,             или            </span><span
+class=rvts9>сюръекцией</span><span class=rvts6>.
+Обязательным       условием       существования
+отображения       </span><span       class=rvts9>А      </span><span
+class=rvts6>на</span><span     class=rvts9>     В</span><span    class=rvts6>
+является             </span><span             class=rvts10>|</span><span
+class=rvts9>А</span><span class=rvts10>|</span><span
+class=rvts6> </span><span class=rvts10>≥</span><span
+class=rvts6> </span><span class=rvts10>|</span><span
+class=rvts9>В</span><span class=rvts10>|</span><span class=rvts6>.</span></p> 
+<p    class=rvps43><span    class=rvts6>Если    функциональное
+отношение             </span><span            class=rvts9>R</span><span
+class=rvts6> </span><span class=rvts10>⊆</span><span
+class=rvts6> </span><span class=rvts9>А</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span        class=rvts9>В</span><span       class=rvts6>,
+определяющее  функцию  </span><span class=rvts9>f</span><span
+class=rvts6>,   является   взаимно  однозначным,  то
+функцию      </span><span      class=rvts9>f</span><span     class=rvts6>
+называют   </span><span   class=rvts9>инъективным</span><span
+class=rvts6>         отображением,        или        </span><span
+class=rvts9>инъекцией</span><span     class=rvts6>.     В     этом
+случае        существует       функция       </span><span
+class=rvts9>f</span><span class=rvts14> </span><span
+class=rvts17>–</span><span      class=rvts14> 1</span><span     class=rvts6>,
+которая                   является                   </span><span
+class=rvts9>обратной</span><span    class=rvts6>    к    функции
+</span><span  class=rvts9>f</span><span  class=rvts6>.  При этом если
+</span><span       class=rvts9>у</span><span      class=rvts6> = </span><span
+class=rvts9>f</span><span  class=rvts13> </span><span class=rvts6>(</span><span
+class=rvts9>x</span><span         class=rvts6>),        то        </span><span
+class=rvts9>х</span><span class=rvts6> = </span><span
+class=rvts9>f</span><span class=rvts14> </span><span
+class=rvts17>–</span><span class=rvts14> 1</span><span
+class=rvts6>(</span><span     class=rvts9>у</span><span    class=rvts6>),    а
+мощность     области     определения    функции
+</span><span    class=rvts9>f</span><span    class=rvts6>    не   должна
+превышать            </span><span            class=rvts10>|</span><span
+class=rvts9>В</span><span class=rvts10>|</span><span class=rvts6>.</span></p> 
+<p        class=rvps44><span       class=rvts6>Функция       </span><span
+class=rvts9>f</span><span    class=rvts6>    называется   </span><span
+class=rvts9>биективным </span><span
+class=rvts6>отображением,             или            </span><span
+class=rvts9>биекцией</span><span     class=rvts6>,    если    она
+является       как      сюръективным,      так      и
+инъективным            отображением.           Такое
+отображение  называется еще </span><span class=rvts9>1-1
+соответствием</span><span class=rvts6>.</span></p> 
+<p          class=rvps45><span         class=rvts6>Если         </span><span
+class=rvts9>R</span><span                class=rvts6>               </span><span
+class=rvts16>–</span><span  class=rvts6> взаимно однозначное
+отношение  между  элементами  одного  и  того
+же   множества,   т. е.   </span><span   class=rvts9>R</span><span
+class=rvts6> </span><span class=rvts10>⊆</span><span
+class=rvts6> </span><span class=rvts9>А</span><span
+class=rvts6> </span><span class=rvts10>×</span><span
+class=rvts6> </span><span class=rvts9>А</span><span
+class=rvts6> = </span><span class=rvts9>А</span><span
+class=rvts14>2</span><span  class=rvts6>,  и, кроме того, </span><span
+class=rvts9>R          </span><span          class=rvts6>и         </span><span
+class=rvts9>R</span><span class=rvts14> </span><span
+class=rvts17>–</span><span      class=rvts14> 1</span><span      class=rvts6>
+всюду        определены,       то       отображение,
+связанное   с   </span><span  class=rvts9>R</span><span  class=rvts6>,
+называется </span><span
+class=rvts9>подстановкой</span><span class=rvts6>.</span></p> 
+<p   class=rvps46><span   class=rvts6>На   рис. 2.1   изображены
+схемы                 рассмотренных                 видов
+отображений.</span></p> 
+
+<center><img src="lk2/diagram1.png"></center>
+
+<p         class=rvps1><span        class=rvts23>Рис. 2.1.        Схемы
+функциональных         отображений:        </span><span
+class=rvts24>а)</span><span   class=rvts23>   сюръекция;  </span><span
+class=rvts24>б)</span><span class=rvts23> инъекция;</span></p> 
+<p       class=rvps1><span       class=rvts24>в)</span><span      class=rvts23>
+биекция</span></p> 
+<p class=rvps47><span class=rvts6><br></span></p>
+<p  class=rvps48><span class=rvts6>Функция, определенная на
+множестве   натуральных   чисел,   называется
+</span><span class=rvts9>последовательностью</span><span
+class=rvts6>,     а    каждое    ее    значение    </span><span
+class=rvts16>–</span><span              class=rvts6>              </span><span
+class=rvts9>членом</span><span class=rvts6>
+последовательности.</span></p> 
+<p     class=rvps49><span     class=rvts6>Отображение    </span><span
+class=rvts9>f</span><span         class=rvts6>        произвольного
+множества     в     множество    действительных
+чисел                   называется                   </span><span
+class=rvts9>функционалом</span><span  class=rvts6>. Примером
+функционала    может   служить   определенный
+интеграл.</span></p> 
+<p     class=rvps50><span     class=rvts6>Отображение    </span><span
+class=rvts9>f</span><span class=rvts6> : </span><span
+class=rvts9>A</span><span class=rvts6> </span><span
+class=rvts10>→</span><span class=rvts6> </span><span
+class=rvts9>B</span><span        class=rvts6>,        где        </span><span
+class=rvts9>А</span><span          class=rvts6>         и         </span><span
+class=rvts9>В</span><span               class=rvts6>               </span><span
+class=rvts16>–</span><span  class=rvts6> некоторые множества
+функций,                 называется                </span><span
+class=rvts9>оператором</span><span    class=rvts6>.   Оператор
+преобразует      одну     функцию     в     другую.
+Примером     оператора     является    оператор
+суперпозиции     функций,    где    аргументами
+некоторых   функций  служат  другие  функции.
+Это         понятие         будет        использовано
+далее.</span></p> 
+<p><span class=rvts7><br></span></p>
+<p><span     class=rvts7>2.5.     Бинарные    отношения    на
+множестве</span></p> 
+<p class=rvps51><span class=rvts6><br></span></p>
+<p         class=rvps52><span         class=rvts6>Пусть        </span><span
+class=rvts9>R</span><span class=rvts6> </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts9>А</span><span class=rvts6> </span><span
+class=rvts10>×</span><span class=rvts6> </span><span
+class=rvts9>А</span><span  class=rvts6>.  Определим некоторые
+свойства,   которыми  может  обладать  или  не
+обладать такое отношение:</span></p> 
+<p class=rvps53><span class=rvts6><br></span></p>
+<p    class=rvps54><span    class=rvts9>рефлексивность</span><span
+class=rvts6>:  </span><span class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;        &nbsp;</span><span        class=rvts6>если        </span><span
+class=rvts9>a</span><span class=rvts6> = </span><span
+class=rvts9>b</span><span         class=rvts6>,         то        </span><span
+class=rvts9>a</span><span  class=rvts6> </span><span  class=rvts9>R</span><span
+class=rvts6> </span><span class=rvts9>b</span><span class=rvts6>;</span></p> 
+<p class=rvps55><span class=rvts6><br></span></p>
+<p  class=rvps56><span  class=rvts9>иррефлексивность</span><span
+class=rvts6>:</span><span  class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>   &nbsp;   &nbsp;  &nbsp;  &nbsp;</span><span  class=rvts6>если
+</span><span         class=rvts9>a</span><span        class=rvts6> </span><span
+class=rvts9>R</span><span  class=rvts6> </span><span  class=rvts9>b</span><span
+class=rvts6>,         то         </span><span        class=rvts9>a</span><span
+class=rvts6> </span><span class=rvts10>≠</span><span
+class=rvts6> </span><span class=rvts9>b</span><span class=rvts6>;</span></p> 
+<p class=rvps57><span class=rvts6><br></span></p>
+<p    class=rvps58><span    class=rvts9>симметричность</span><span
+class=rvts6>:</span><span  class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;        &nbsp;</span><span        class=rvts6>если        </span><span
+class=rvts9>a</span><span  class=rvts6> </span><span  class=rvts9>R</span><span
+class=rvts6> </span><span    class=rvts9>b</span><span    class=rvts6>,    то
+</span><span         class=rvts9>b</span><span        class=rvts6> </span><span
+class=rvts9>R</span><span  class=rvts6> </span><span  class=rvts9>a</span><span
+class=rvts6>;</span></p> 
+<p class=rvps59><span class=rvts6><br></span></p>
+<p class=rvps60><span
+class=rvts9>антисимметричность</span><span
+class=rvts6>:</span><span  class=rvts9>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts9>   &nbsp;   &nbsp;  &nbsp;  &nbsp;</span><span  class=rvts6>если
+</span><span         class=rvts9>a</span><span        class=rvts6> </span><span
+class=rvts9>R</span><span  class=rvts6> </span><span  class=rvts9>b</span><span
+class=rvts6>          и          </span><span         class=rvts9>b</span><span
+class=rvts6> </span><span  class=rvts9>R</span><span class=rvts6> </span><span
+class=rvts9>a</span><span         class=rvts6>,         то        </span><span
+class=rvts9>a</span><span class=rvts6> = </span><span
+class=rvts9>b</span><span class=rvts6>;</span></p> 
+<p class=rvps61><span class=rvts6><br></span></p>
+<p    class=rvps62><span    class=rvts9>транзитивность</span><span
+class=rvts6>:</span><span  class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;        &nbsp;</span><span        class=rvts6>если        </span><span
+class=rvts9>a</span><span  class=rvts6> </span><span  class=rvts9>R</span><span
+class=rvts6> </span><span     class=rvts9>b</span><span     class=rvts6>     и
+</span><span         class=rvts9>b</span><span        class=rvts6> </span><span
+class=rvts9>R</span><span  class=rvts6> </span><span class=rvts9>с</span><span
+class=rvts6>,         то         </span><span        class=rvts9>a</span><span
+class=rvts6> </span><span  class=rvts9>R</span><span class=rvts6> </span><span
+class=rvts9>с</span><span class=rvts6>;</span></p> 
+<p class=rvps63><span class=rvts6><br></span></p>
+<p         class=rvps64><span         class=rvts9>дихотомия</span><span
+class=rvts6>:</span><span  class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts6> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts6> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts6>если            </span><span           class=rvts9>a</span><span
+class=rvts6> </span><span class=rvts10>≠</span><span
+class=rvts6> </span><span    class=rvts9>b</span><span    class=rvts6>,    то
+либо   </span><span   class=rvts9>a</span><span   class=rvts6> </span><span
+class=rvts9>R</span><span  class=rvts6> </span><span  class=rvts9>b</span><span
+class=rvts6>,        либо       </span><span       class=rvts9>b</span><span
+class=rvts6> </span><span  class=rvts9>R</span><span class=rvts6> </span><span
+class=rvts9>a</span><span class=rvts6>.</span></p> 
+<p class=rvps65><span class=rvts6><br></span></p>
+<p      class=rvps66><span      class=rvts6>Следует      выделить
+некоторые       типы      бинарных      отношений,
+характеризуемые      определенным      набором
+свойств.</span></p> 
+<p      class=rvps67><span      class=rvts6>Отношение      </span><span
+class=rvts9>эквивалентности</span><span class=rvts6>
+рефлексивно,    симметрично   и   транзитивно.
+Примерами       отношения       эквивалентности
+являются   равносильность   формул,   подобие
+геометрических       фигур,      принадлежность
+студентов   к  одной  группе,  принадлежность
+населенных    пунктов    к    одному   району   и
+т. п.</span></p> 
+<p               class=rvps68><span               class=rvts6>Отношение
+эквивалентности      делит      множество      на
+непересекающиеся      подмножества      </span><span
+class=rvts16>–</span><span  class=rvts6> </span><span class=rvts9>классы
+эквивалентности</span><span    class=rvts6>.    С   другой
+стороны,  всякое разбиение множества </span><span
+class=rvts9>М  </span><span  class=rvts6>на  непересекающиеся
+подмножества             задает             отношение
+эквивалентности      на     множестве     </span><span
+class=rvts9>М</span><span  class=rvts6>:  любые  два  элемента,
+принадлежащие    одному   и   тому   же   классу
+разбиения,      эквивалентны,      а     элементы,
+принадлежащие      различным      классам,     не
+являются   эквивалентными.   Множество   всех
+классов   эквивалентности   образует  </span><span
+class=rvts9>фактор-множество</span><span class=rvts6>
+множества  </span><span  class=rvts9>М</span><span  class=rvts6>  по
+</span><span  class=rvts9>R</span><span  class=rvts6>  (обозначается
+</span><span       class=rvts9>M</span><span       class=rvts6> / </span><span
+class=rvts9>R</span><span class=rvts6>). </span></p> 
+<p      class=rvps69><span      class=rvts6>Отношение      </span><span
+class=rvts9>совместимости</span><span class=rvts6>
+рефлексивно     и     симметрично.     Примерами
+отношения  совместимости являются близость
+чисел, знакомство людей и т. п.</span></p> 
+<p      class=rvps70><span      class=rvts6>Отношение      </span><span
+class=rvts9>нестрогого     порядка</span><span     class=rvts6>
+рефлексивно,             антисимметрично            и
+транзитивно.              Отношения             </span><span
+class=rvts10>≤</span><span  class=rvts6>  (меньше  или равно) и
+</span><span   class=rvts10>≥</span><span  class=rvts6>  (больше  или
+равно)  для  действительных чисел так же, как
+</span><span    class=rvts10>⊆</span><span    class=rvts6>   и   </span><span
+class=rvts10>⊇</span><span      class=rvts6>      для      множеств
+являются           отношениями           нестрогого
+порядка.</span></p> 
+<p      class=rvps71><span      class=rvts6>Отношение      </span><span
+class=rvts9>строгого       порядка</span><span       class=rvts6>
+иррефлексивно,           антисимметрично          и
+транзитивно.  Отношениями  строгого порядка
+являются    </span><span    class=rvts10>&lt;</span><span   class=rvts6>
+(меньше)   и   </span><span   class=rvts10>&gt;</span><span  class=rvts6>
+(больше)  для  действительных  чисел,  а также
+</span><span    class=rvts10>⊂</span><span    class=rvts6>   и   </span><span
+class=rvts10>⊃</span><span class=rvts6> для множеств.</span></p> 
+<p      class=rvps72><span      class=rvts6>Множество      </span><span
+class=rvts9>М</span><span   class=rvts6>,   на   котором  задано
+отношение    порядка    </span><span   class=rvts9>R</span><span
+class=rvts6>    (строгого   или   нестрогого),   может
+быть  </span><span  class=rvts9>полностью</span><span  class=rvts6>
+упорядоченным,    если   любые   два   элемента
+</span><span     class=rvts9>a</span><span    class=rvts6>    и    </span><span
+class=rvts9>b</span><span         class=rvts6>         из         </span><span
+class=rvts9>М</span><span        class=rvts6>       находятся       в
+отношении    </span><span    class=rvts9>R</span><span    class=rvts6>,
+т. е.   </span><span   class=rvts9>a</span><span   class=rvts6> </span><span
+class=rvts9>R</span><span  class=rvts6> </span><span  class=rvts9>b</span><span
+class=rvts6>         или        </span><span        class=rvts9>b</span><span
+class=rvts6> </span><span  class=rvts9>R</span><span class=rvts6> </span><span
+class=rvts9>a</span><span    class=rvts6>.   При   этом   говорят,
+что&nbsp;     </span><span    class=rvts9>a</span><span    class=rvts6>    и
+</span><span       class=rvts9>b</span><span      class=rvts6>      </span><span
+class=rvts9>сравнимы</span><span   class=rvts6>.  Если  </span><span
+class=rvts9>М</span><span  class=rvts6> содержит хотя бы одну
+пару      элементов     </span><span     class=rvts9>с</span><span
+class=rvts6>  и  </span><span  class=rvts9>d</span><span  class=rvts6>,  для
+которых      не     имеет     место     ни     </span><span
+class=rvts9>c</span><span  class=rvts6> </span><span  class=rvts9>R</span><span
+class=rvts6> </span><span    class=rvts9>d</span><span    class=rvts6>,    ни
+</span><span         class=rvts9>d</span><span        class=rvts6> </span><span
+class=rvts9>R</span><span  class=rvts6> </span><span  class=rvts9>c</span><span
+class=rvts6>,  то  множество  </span><span class=rvts9>М</span><span
+class=rvts6>                    является                    </span><span
+class=rvts9>частично</span><span class=rvts6>
+упорядоченным,  а указанные элементы </span><span
+class=rvts9>с</span><span    class=rvts6>    и    </span><span   class=rvts9>d
+несравнимы</span><span  class=rvts6>.  Отношение </span><span
+class=rvts9>полного        порядка</span><span        class=rvts6>
+обладает      свойствами     иррефлексивности,
+антисимметричности    и    дихотомии.   Полный
+порядок           называют           еще          </span><span
+class=rvts9>линейным</span><span    class=rvts6>   или   </span><span
+class=rvts9>совершенным</span><span class=rvts6>.</span></p> 
+<p        class=rvps73><span        class=rvts6>Для        множества
+действительных  чисел </span><span class=rvts15>R</span><span
+class=rvts6>    отношения   </span><span   class=rvts10>≤</span><span
+class=rvts6>    и   </span><span   class=rvts10>&lt;</span><span   class=rvts6>
+являются  отношениями  полного  порядка. Для
+семейства          подмножеств          некоторого
+множества    </span><span    class=rvts9>М</span><span    class=rvts6>
+отношение    </span><span   class=rvts10>⊆</span><span   class=rvts6>
+является   отношением   частичного   порядка.
+Например,             {</span><span            class=rvts9>a</span><span
+class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts9>a</span><span class=rvts11>3</span><span
+class=rvts6>} </span><span class=rvts10>⊆</span><span
+class=rvts6> {</span><span class=rvts9>a</span><span
+class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts9>a</span><span class=rvts11>2</span><span
+class=rvts6>, </span><span class=rvts9>a</span><span
+class=rvts11>3</span><span     class=rvts6>},     а    подмножества
+{</span><span        class=rvts9>a</span><span        class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts9>a</span><span
+class=rvts11>3</span><span         class=rvts6>}         и        {</span><span
+class=rvts9>a</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts9>a</span><span
+class=rvts11>2</span><span class=rvts6>, </span><span
+class=rvts9>a</span><span        class=rvts11>4</span><span        class=rvts6>}
+несравнимы.</span></p> 
+<p  class=rvps74><span  class=rvts6>Порядок  букв в алфавите
+и    естественный    порядок    цифр    являются
+полными  порядками.  На  основе  порядка букв
+строится </span><span
+class=rvts9>лексикографический</span><span class=rvts6>
+порядок   слов,   используемый   в  словарях  и
+определяемый следующим образом.</span></p> 
+<p  class=rvps75><span  class=rvts6>Обозначим это отношение
+порядка    символом   </span><img   width=16   height=16   alt=""
+style="padding   :   1px;"  src="lk2/img10.jpg"><span  class=rvts6>.  Пусть
+имеются       слова      </span><span      class=rvts9>w</span><span
+class=rvts11>1</span><span class=rvts6> = </span><span
+class=rvts9>a</span><span  class=rvts11>11</span><span class=rvts9>a</span><span
+class=rvts11>12</span><span class=rvts6> … </span><span
+class=rvts9>a</span><span  class=rvts11>1</span><span class=rvts12>m</span><span
+class=rvts6>          и          </span><span         class=rvts9>w</span><span
+class=rvts11>2</span><span class=rvts6> = </span><span
+class=rvts9>a</span><span  class=rvts11>21</span><span class=rvts9>a</span><span
+class=rvts11>22</span><span class=rvts6> … </span><span
+class=rvts9>a</span><span  class=rvts11>2</span><span class=rvts12>n</span><span
+class=rvts6>.       Тогда       </span><span      class=rvts9>w</span><span
+class=rvts11>1</span><img  width=16  height=16  alt=""  style="padding  :  1px;"
+src="lk2/img11.jpg"><span  class=rvts9>w</span><span  class=rvts11>2</span><span
+class=rvts6>,   если   и   только   если   либо  </span><span
+class=rvts9>w</span><span class=rvts11>1</span><span
+class=rvts6> = </span><span class=rvts9>pa</span><span
+class=rvts12>i</span><span  class=rvts9>q</span><span class=rvts6>, </span><span
+class=rvts9>w</span><span class=rvts11>2</span><span
+class=rvts6> = </span><span class=rvts9>pa</span><span
+class=rvts12>j</span><span     class=rvts9>r</span><span     class=rvts6>     и
+</span><span   class=rvts9>а</span><span   class=rvts12>i</span><img   width=16
+height=16    alt=""    style="padding    :    1px;"    src="lk2/img12.jpg"><span
+class=rvts9>a</span><span    class=rvts12>j</span><span   class=rvts6>,   где
+</span><span      class=rvts9>p</span><span      class=rvts6>,      </span><span
+class=rvts9>q</span><span          class=rvts6>          и         </span><span
+class=rvts9>r</span><span                class=rvts6>               </span><span
+class=rvts16>–</span><span    class=rvts6>    некоторые   слова,
+возможно,   пустые,   а  </span><span  class=rvts9>а</span><span
+class=rvts12>i</span><span          class=rvts6>         и         </span><span
+class=rvts9>a</span><span  class=rvts12>j</span><span  class=rvts6> </span><span
+class=rvts16>–</span><span   class=rvts6>  буквы,  либо  </span><span
+class=rvts9>w</span><span class=rvts11>2</span><span
+class=rvts6> = </span><span class=rvts9>w</span><span
+class=rvts11>1</span><span    class=rvts9>p</span><span   class=rvts6>,   где
+</span><span      class=rvts9>р</span><span      class=rvts6>      </span><span
+class=rvts16>–</span><span            class=rvts6>            непустое
+слово.</span></p> 
+<p  class=rvps76><span  class=rvts6>Например,  учебник</span><img
+width=16  height=16  alt=""  style="padding  :  1px;"  src="lk2/img13.jpg"><span
+class=rvts6>ученик   и   мор</span><img   width=16   height=16  alt=""
+style="padding   :   1px;"  src="lk2/img14.jpg"><span  class=rvts6>море.  В
+первом      случае      </span><span      class=rvts9>р</span><span
+class=rvts6> = уче,         </span><span         class=rvts9>а</span><span
+class=rvts12>i</span><span           class=rvts6> = б,           </span><span
+class=rvts9>а</span><span    class=rvts12>j</span><span    class=rvts6> = н,
+</span><span   class=rvts9>q</span><span  class=rvts6> = ник,  </span><span
+class=rvts9>r</span><span    class=rvts6> = ик,   и   в   алфавите
+буква  «н»  стоит  дальше  буквы «б». Потому в
+словаре    слово    «ученик»   следует   искать
+после   слова   «учебник».   Во  втором  случае
+</span><span         class=rvts9>w</span><span        class=rvts11>1</span><span
+class=rvts6> = мор      и      </span><span     class=rvts9>р</span><span
+class=rvts6> = е.   Согласно   лексикографическому
+порядку  слово  «море»  должно быть помещено
+в словаре после слова «мор».</span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body></html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Кодирование состояний асинхронного автомата</title>
+
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts11
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts15
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts17
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps3
+{
+ text-align: justify;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ margin: 0px 0px 8px 0px;
+}
+--></style>
+</head>
+<body>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<a href="../../../Теория/theory.htm">Теория</a> | <strong>Практика</strong> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+<p><span class=rvts6>Кодирование состояний асинхронного автомата</span></p>
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 15.1</span></p>
+<p      class=rvps2><span      class=rvts7>Закодировать с устранением опасных состязаний  кодами минимальной длины состояния асинхронного автомата, поведение которого  задано следующей таблицей переходов:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=254   height=119  alt=""  style="padding  :  1px;"
+src="lb15/img1.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p    class=rvps2><span   class=rvts7>Для того чтобы учесть требование ортогональности кодов для различных состояний, вводим в таблицу переходов еще один столбец, где присутствуют все состояния, которые являются устойчивыми. Это делает все строки различными. В результате получаем следующую таблицу:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=310   height=129  alt=""  style="padding  :  1px;"
+src="lb15/img2.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Условия отсутствия опасных состязаний при входном сигнала </span><span class="rvts8">а<span class="rvts13">1</span></span><span     class=rvts7> выражаются следующими троичными векторами (справа показаны рассматриваемые при этом пары переходов).</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=241   height=124  alt=""  style="padding  :  1px;"
+src="lb15/img3.jpg"></p> 
+ 
+<p><span class=rvts7><br></span></p>
+<p    class=rvps2><span    class=rvts7>В данном случае строка (0 0 1 1 –) имплицирует каждую из трех остальных, которые, следовательно, не надо включать в матрицу условий. Рассматривая остальные пары переходов и формируя для них соответствующие троичные векторы, получим следующую матрицу условий, которая для удобства обозрения разбита на секции, соответствующие различным столбцам таблицы переходов и выходов:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=235   height=272  alt=""  style="padding  :  1px;"
+src="lb15/img4.jpg"></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p        class=rvps2><span        class=rvts7>Каждому совместимому множеству строк троичной матрицы согласно его определению соответствует вектор, имплицирующий все строки, являющиеся элементами этого множества. Для данной троичной матрицы S получим следующие максимальные совместимые множества, соответствующие им векторы и таблицу покрытия:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=444   height=197  alt=""  style="padding  :  1px;"
+src="lb15/img5.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Первая строка является обязательной. Включив ее в текущее решение и исключив из таблицы, получим:</span></p>
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=367   height=178  alt=""  style="padding  :  1px;"
+src="lb15/img6.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p> 
+<p     class=rvps2><span     class=rvts7>По правилам редукции удаляем строки {2, 3, 6}, {3, 6, 10}, {4, 6, 7, 10} и {7, 8, 9}:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=369   height=95  alt=""  style="padding  :  1px;"
+src="lb15/img7.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p> 
+<p     class=rvps2><span     class=rvts7>Кратчайшее покрытие множества строк матрицы S составляют множества {1, 6, 7, 9}, {2, 3, 4, 5, 8} и {2, 4, 7, 8, 10}. Соответствующие им векторы являются вектор-столбцами матрицы кодирования заданного асинхронного автомата:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=127   height=160  alt=""  style="padding  :  1px;"
+src="lb15/img8.jpg"></p> 
+
+<p class=rvps3><span class=rvts7><br></span></p>
+<p     class=rvps5><span    class=rvts7>Функции, описывающие состояния элементов памяти, задаются на интервалах пространства внутренних переменных (некоторые интервалы поглощаются другими):</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=239   height=316  alt=""  style="padding  :  1px;"
+src="lb15/img9.jpg"></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p     class=rvps5><span    class=rvts7>Данная система булевых функций допускает упрощение за счет расширения интервалов. Результат упрощения представим следующими матрицами:</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=241   height=310  alt=""  style="padding  :  1px;"
+src="lb15/img10.jpg"></p> 
+<p class=rvps4><span class=rvts7><br></span></p> 
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 15.2</span></p>
+<p      class=rvps2><span      class=rvts7>Закодировать с устранением опасных состязаний кодами  минимальной длины состояния асинхронного автомата, поведение которого задано  следующей таблицей переходов:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=307   height=147  alt=""  style="padding  :  1px;"
+src="lb15/img11.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p    class=rvps2><span   class=rvts7>Рассматривая остальные пары переходов и формируя  для них соответствующие троичные векторы, получим следующую матрицу условий:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=151   height=291  alt=""  style="padding  :  1px;"
+src="lb15/img12.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Для данной троичной матрицы получим следующие максимальные совместимые множества, соответствующие им векторы и таблицу покрытия.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=501   height=323  alt=""  style="padding  :  1px;"
+src="lb15/img13.jpg"></p> 
+ 
+<p><span class=rvts7><br></span></p>
+<p    class=rvps2><span    class=rvts7>По правилу редукции удаляем из таблицы покрытия 6-й столбец, затем строки {1, 3, 6} и {6, 8, 10}:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=483   height=281  alt=""  style="padding  :  1px;"
+src="lb15/img14.jpg"></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p        class=rvps2><span        class=rvts7>Рассмотрим варианты покрытия первого столбца. Включив в текущее решение первую строку и применив правила редукции, придем к следующей ситуации, где строка {3, 6, 7, 9} оказывается обязательной:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=403   height=152  alt=""  style="padding  :  1px;"
+src="lb15/img15.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Включив строку {3, 6, 7, 9} в решение, удалив покрываемые столбцы и применив правила редукции, получим таблицу, покрываемую строками {4, 8} и {5, 8, 10, 11}:</span></p>
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=372   height=86  alt=""  style="padding  :  1px;"
+src="lb15/img16.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p> 
+<p     class=rvps2><span     class=rvts7>Таким образом, одним из покрытий строк матрицы условий составляют множества {1, 2, 3}, {3, 6, 7, 9}, {4, 8} и {5, 8, 10, 11}:</span></p> 
+<p     class=rvps2><span     class=rvts7>Вернемся теперь к ситуации, которая сложилась после удаления 6-го столбца, и рассмотрим вариант покрытия первого столбца строкой {1, 2, 4, 5}. После удаления первых двух строк, столбцов, покрываемых строкой {1, 2, 4, 5}, и применения правил редукции получим следующее:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=410   height=155  alt=""  style="padding  :  1px;"
+src="lb15/img17.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p> 
+<p     class=rvps2><span     class=rvts7>Полученная таблица покрывается двумя строками: {3, 6, 7, 9} и {5, 8, 10, 11}. Таким образом, множества {1, 2, 4, 5}, {3, 6, 7, 9} и {5, 8, 10, 11} составляют кратчайшее покрытие. Соответствующие им векторы являются вектор-столбцами матрицы кодирования заданного асинхронного автомата:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=139   height=197  alt=""  style="padding  :  1px;"
+src="lb15/img18.jpg"></p> 
+
+<p class=rvps3><span class=rvts7><br></span></p>
+<p     class=rvps5><span    class=rvts7>Функции, описывающие состояния элементов памяти, задаются на интервалах пространства внутренних переменных (некоторые интервалы поглощаются другими):</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=244   height=334  alt=""  style="padding  :  1px;"
+src="lb15/img19.jpg"></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p     class=rvps5><span    class=rvts7>Здесь данная система булевых функций допускает упрощение за счет расширения интервалов. Результат упрощения представим следующими матрицами:</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=242   height=313  alt=""  style="padding  :  1px;"
+src="lb15/img20.jpg"></p>
+<p class=rvps3><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 15.3</span></p>
+<p      class=rvps2><span      class=rvts7>Закодировать с устранением опасных состязаний с помощью рассмотрения K-множеств состояния асинхронного автомата, поведение которого задано таблицей переходов из задачи 15.2.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p    class=rvps2><span   class=rvts7>Имеем следующие K-множества:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p    class=rvps2><span   class=rvts7>K</span><span class="rvts13">11</span><span   class=rvts7> = {1, 3}, K</span><span class="rvts13">12</span><span   class=rvts7> = {2, 4, 5}, K</span><span class="rvts13">16</span><span   class=rvts7> = {6};</span></p> 
+<p    class=rvps2><span   class=rvts7>K</span><span class="rvts13">25</span><span   class=rvts7> = {1, 4, 5}, K</span><span class="rvts13">26</span><span   class=rvts7> = {2, 6};</span></p> 
+<p    class=rvps2><span   class=rvts7>K</span><span class="rvts13">31</span><span   class=rvts7> = {1, 5}, K</span><span class="rvts13">32</span><span   class=rvts7> = {2, 6}, K</span><span class="rvts13">34</span><span   class=rvts7> = {3, 4};</span></p> 
+<p    class=rvps2><span   class=rvts7>K</span><span class="rvts13">43</span><span   class=rvts7> = {3, 6}, K</span><span class="rvts13">45</span><span   class=rvts7> = {1, 5};</span></p> 
+<p    class=rvps2><span   class=rvts7>K</span><span class="rvts13">52</span><span   class=rvts7> = {1, 2}, K</span><span class="rvts13">56</span><span   class=rvts7> = {4, 6}.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p    class=rvps2><span   class=rvts7>Матрица условий имеет следующий вид:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=145   height=213  alt=""  style="padding  :  1px;"
+src="lb15/img21.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Для данной троичной матрицы получим следующие максимальные совместимые множества, соответствующие им векторы и таблицу покрытия:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=437   height=215  alt=""  style="padding  :  1px;"
+src="lb15/img22.jpg"></p> 
+ 
+<p><span class=rvts7><br></span></p>
+<p    class=rvps2><span    class=rvts7>Включив в текущее решение строку {1, 2} и выполнив упрощение таблицы покрытия по правилам редукции, придем к следующей ситуации, где строки {3, 7} и {5, 7, 8} оказываются обязательными:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=414   height=132  alt=""  style="padding  :  1px;"
+src="lb15/img23.jpg"></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p        class=rvps2><span        class=rvts7>Включив строки {3, 7} и {5, 7, 8} в текущее решение, удалив покрываемые  ими столбцы и применив правила редукции, получим следующее, где строка {2, 4, 6} покрывает все столбцы:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=329   height=90  alt=""  style="padding  :  1px;"
+src="lb15/img24.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Множества {1, 2}, {3, 7}, {5, 7, 8} и {2, 4, 6} составляют одно из покрытий матрицы условий.</span></p>
+<p     class=rvps2><span     class=rvts7>Вернувшись к начальной ситуации комбинаторного поиска, включаем в текущее решение теперь строку {1, 3} и после применения правил редукции приходим к следующей ситуации:</span></p>
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=395   height=139  alt=""  style="padding  :  1px;"
+src="lb15/img25.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p> 
+<p     class=rvps2><span     class=rvts7>По таблице видно, что строки {2, 4, 6} и {5, 7, 8} покрывают все столбца. Новое решение {1, 3}, {2, 4, 6}, {5, 7, 8} оказывается лучше предыдущего. В результате получаем следующую матрицу кодирования состояний, которая случайно оказалась совпадающей с матрицей, полученной при рассмотрении пар переходов:</span></p>  
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=142   height=196  alt=""  style="padding  :  1px;"
+src="lb15/img26.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p> 
+<p     class=rvps2><span     class=rvts7>Функции, описывающие состояния элементов памяти, задаются на интервалах пространства внутренних переменных, которые определяются K-множествами. Матричное представление этих функций после расширения интервалов примет следующий вид:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=239   height=314  alt=""  style="padding  :  1px;"
+src="lb15/img27.jpg"></p> 
+ <p class=rvps3><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 15.4</span></p>
+<p      class=rvps2><span      class=rvts7>Закодировать состояния асинхронного автомата, поведение которого задано таблицей переходов из задачи 15.2, соседними кодами, исключающими состязания между элементами памяти.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=255   height=140  alt=""  style="padding  :  1px;"
+src="lb15/img28.jpg"></p> 
+ <p class=rvps3><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p    class=rvps2><span   class=rvts7>Ранее были получены все K-множества:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p    class=rvps2><span   class=rvts7>K</span><span class="rvts13">11</span><span   class=rvts7> = {1, 3}, K</span><span class="rvts13">12</span><span   class=rvts7> = {2, 4, 5}, K</span><span class="rvts13">16</span><span   class=rvts7> = {6};</span></p> 
+<p    class=rvps2><span   class=rvts7>K</span><span class="rvts13">25</span><span   class=rvts7> = {1, 4, 5}, K</span><span class="rvts13">26</span><span   class=rvts7> = {2, 6};</span></p> 
+<p    class=rvps2><span   class=rvts7>K</span><span class="rvts13">31</span><span   class=rvts7> = {1, 5}, K</span><span class="rvts13">32</span><span   class=rvts7> = {2, 6}, K</span><span class="rvts13">34</span><span   class=rvts7> = {3, 4};</span></p> 
+<p    class=rvps2><span   class=rvts7>K</span><span class="rvts13">43</span><span   class=rvts7> = {3, 6}, K</span><span class="rvts13">45</span><span   class=rvts7> = {1, 5};</span></p>  
+<p class=rvps2><span class=rvts7><br></span></p>
+<p    class=rvps2><span   class=rvts7>Значения коэффициента связи </span><span class="rvts8">w<span class="rvts13">ij</span></span><span   class=rvts7> представим следующей таблицей:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=179   height=136  alt=""  style="padding  :  1px;"
+src="lb15/img29.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Результат процесса сборки гиперкуба показан на рис. 15.1.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=276   height=185  alt=""  style="padding  :  1px;"
+src="lb15/img30.jpg"></p> 
+<p     class=rvps2><span     class=rvts7><center>Рис. 15.1. Гиперкуб, представляющий соседство состояний.</center></span></p>
+ 
+<p><span class=rvts7><br></span></p>
+<p    class=rvps2><span    class=rvts7>Разместим теперь в этом гиперкубе связные подграфы, соответствующие K-множествам, и снабдим ребра этих подграфов ориентацией, соответствующей направлениям переходов (рис. 15.2). В данном примере удалось без увеличения размерности гиперкуба разместить их так, чтобы любые два из них, соответствующие одному и тому же входному сигналу, не пересекались.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=668   height=231  alt=""  style="padding  :  1px;"
+src="lb15/img31.jpg"></p> 
+<p     class=rvps2><span     class=rvts7><center>Рис. 15.2. Цепочки элементарных переходов.</center></span></p>
+<p class=rvps3><span class=rvts7><br></span></p>
+<p        class=rvps2><span        class=rvts7>Таблица элементарных переходов, полученная из исходной таблицы примет следующий вид (правый столбец представляет коды состояний:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7><span class="rvps1"><center><img   width=322   height=143  alt=""  style="padding  :  1px;"
+src="lb15/img32.jpg"></center></span></span></p>
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Функции возбуждения элементов памяти строятся здесь так же, как для синхронного автомата. Для получения булева автомата закодируем входные сигналы следующим образом: а</span><span class="rvts13">1</span><span     class=rvts7> – 00, а</span><span class="rvts13">1</span><span     class=rvts7> – 10, а</span><span class="rvts13">1</span><span     class=rvts7> – 11, а</span><span class="rvts13">1</span><span     class=rvts7> – 01, Булев автомат, соответствующий данному варианту кодирования, представим тремя картами Карно, которые задают не полностью определенные  функции z<span class="rvts13">1</span></span><span class="rvts10">+</span><span     class=rvts7>, z<span class="rvts13">2</span></span><span class="rvts10">+</span><span     class=rvts7> и z<span class="rvts13">3</span></span><span class="rvts10">+</span><span     class=rvts7> и строкам которых соответствуют состояния заданного автомата (рис. 15.3).</span></p>
+
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=570   height=262  alt=""  style="padding  :  1px;"
+src="lb15/img33.jpg"></p> 
+<p     class=rvps2><center>
+    <span class="rvts7">Рис. 15.3. Представление функций z<span class="rvts13">1</span></span><span class="rvts10">+</span><span class="rvts7">, z<span class="rvts13">2</span></span><span class="rvts10">+</span><span class="rvts7"> и z<span class="rvts13">3</span></span><span class="rvts10">+</span><span class="rvts7"> с помощью карт Карно.</span>
+</center>
+</p>
+<p class=rvps2><span class=rvts7><br></span></p> 
+<p     class=rvps2><span     class=rvts7>Совместная минимизация этих функций дает следующий результат:</span></p>  
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=244   height=220  alt=""  style="padding  :  1px;"
+src="lb15/img34.jpg"></p> 
+<p class=rvps4><span class=rvts7><br></span></p> 
+<p><span class=rvts17><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+
+</body></html>

@@ -1,0 +1,658 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Задача о кратчайшем покрытии</title>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts11
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts12
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts13
+{
+ font-size: 7pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts15
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts17
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts18
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps3
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 48px;
+ margin: 0px 0px 0px 103px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 48px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 48px;
+ margin: 0px 0px 0px 141px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+}
+--></style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<a href="../../../Теория/theory.htm">Теория</a> | <strong>Практика</strong> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+<p><span         class=rvts6>Задача         о        кратчайшем
+покрытии</span></p> 
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 3.1</span></p>
+<p       class=rvps2><span      class=rvts7>Найти      кратчайшее
+покрытие   множества   </span><span  class=rvts8>А</span><span
+class=rvts7> = {</span><span class=rvts8>a</span><span
+class=rvts9>1</span><span  class=rvts7>,  </span><span class=rvts8>a</span><span
+class=rvts9>2</span><span  class=rvts7>, </span><span class=rvts8>а</span><span
+class=rvts9>3</span><span  class=rvts7>,  </span><span class=rvts8>a</span><span
+class=rvts9>4</span><span  class=rvts7>,  </span><span class=rvts8>a</span><span
+class=rvts9>5</span><span  class=rvts7>,  </span><span class=rvts8>a</span><span
+class=rvts9>6</span><span  class=rvts7>,  </span><span class=rvts8>a</span><span
+class=rvts9>7</span><span  class=rvts7>,  </span><span class=rvts8>a</span><span
+class=rvts9>8</span><span  class=rvts7>,  </span><span class=rvts8>a</span><span
+class=rvts9>9</span><span  class=rvts7>,  </span><span class=rvts8>a</span><span
+class=rvts9>10</span><span   class=rvts7>}  его  подмножествами
+</span><span         class=rvts8>В</span><span        class=rvts9>1</span><span
+class=rvts7> = {</span><span class=rvts8>a</span><span
+class=rvts9>1</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>4</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>8</span><span               class=rvts7>},              </span><span
+class=rvts8>В</span><span class=rvts9>2</span><span
+class=rvts7> = {</span><span class=rvts8>a</span><span
+class=rvts9>2</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>6</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>7</span><span               class=rvts7>},              </span><span
+class=rvts8>В</span><span class=rvts9>3</span><span
+class=rvts7> = {</span><span class=rvts8>a</span><span
+class=rvts9>2</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>3</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>5</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>8</span><span               class=rvts7>},              </span><span
+class=rvts8>В</span><span class=rvts9>4</span><span
+class=rvts7> = {</span><span class=rvts8>a</span><span
+class=rvts9>3</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>4</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>8</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>10</span><span              class=rvts7>},              </span><span
+class=rvts8>В</span><span class=rvts9>5</span><span
+class=rvts7> = {</span><span class=rvts8>a</span><span
+class=rvts9>4</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>7</span><span               class=rvts7>},              </span><span
+class=rvts8>В</span><span class=rvts9>6</span><span
+class=rvts7> = {</span><span class=rvts8>a</span><span
+class=rvts9>1</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>3</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>6</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>9</span><span               class=rvts7>},              </span><span
+class=rvts8>В</span><span class=rvts9>7</span><span
+class=rvts7> = {</span><span class=rvts8>a</span><span
+class=rvts9>2</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>5</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>7</span><span               class=rvts7>},              </span><span
+class=rvts8>В</span><span class=rvts9>8</span><span
+class=rvts7> = {</span><span class=rvts8>a</span><span
+class=rvts9>1</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>5</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>8</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>9</span><span               class=rvts7>},              </span><span
+class=rvts8>В</span><span class=rvts9>9</span><span
+class=rvts7> = {</span><span class=rvts8>a</span><span
+class=rvts9>1</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>3</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>5</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>7</span><span  class=rvts7>, </span><span class=rvts8>a</span><span
+class=rvts9>10</span><span           class=rvts7>}.           Матричная
+формулировка   этой   задачи   требует   найти
+минимальное          множество         строк         в
+представленной   ниже  матрице,  такое  чтобы
+каждый  ее  столбец  имел  единицу  хотя  бы  в
+одной из этих строк.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=388   height=270  alt=""  style="padding  :  1px;"
+src="lb3/img1.jpg"></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p  class=rvps3><span  class=rvts7>Точный  метод нахождения
+кратчайшего   покрытия   представляет  собой
+обход    дерева    поиска.   Текущая   ситуация,
+соответствующая  некоторой  вершине  дерева
+поиска,          представляется         переменной
+матрицей    </span><span    class=rvts10>Х</span><span    class=rvts7>,
+которая   показывает,  какие  столбцы  еще  не
+покрыты  и  какие  строки можно использовать
+для  их покрытия. В этой ситуации выбирается
+первый   из   столбцов  с  минимальным  числом
+единиц   </span><span   class=rvts11>–</span><span  class=rvts7>  так
+минимизируется            число            вариантов
+продолжения  поиска. Очередной шаг процесса
+состоит   в   выборе  покрывающей  строки  для
+этого   столбца   и   пробном   включении  ее  в
+получаемое  решение.  Таким образом, вершины
+дерева    поиска    соответствуют    некоторым
+столбцам   исходной  матрицы,  а  дуги  </span><span
+class=rvts11>–</span><span   class=rvts7>   выбираемым  для  их
+покрытия строкам.</span></p> 
+<p     class=rvps4><span     class=rvts7>Начальное     значение
+матрицы     </span><span     class=rvts10>Х</span><span     class=rvts7>
+совпадает  с исходной матрицей. Последующие
+значения     получаются     удалением     строк,
+включаемых  в  решение,  и столбцов, покрытых
+этими   строками.   Кроме   того,   выполняются
+следующие            </span><span            class=rvts8>правила
+редукции</span><span class=rvts7>.</span></p> 
+<p   class=rvps5><span   class=rvts7>1.   Если  столбец  </span><span
+class=rvts8>k</span><span  class=rvts7>  имеет  единицы  везде,
+где      имеет      единицы      столбец      </span><span
+class=rvts8>l</span><span   class=rvts7>,   то   столбец   </span><span
+class=rvts8>k</span><span  class=rvts7>  можно  удалить.  Любая
+строка,       покрывающая      столбец      </span><span
+class=rvts8>l</span><span     class=rvts7>,     покрывает    также
+столбец      </span><span     class=rvts8>k</span><span     class=rvts7>.
+Поэтому  при поиске покрытия столбец </span><span
+class=rvts8>k</span><span          class=rvts7>          можно         не
+рассматривать.       Достаточно,       чтобы      в
+покрытие  была включена какая-либо из строк,
+покрывающих   столбец  </span><span  class=rvts8>l</span><span
+class=rvts7>. </span></p> 
+<p   class=rvps6><span   class=rvts7>2.   Если   строка   </span><span
+class=rvts8>i</span><span  class=rvts7>  имеет  единицы  везде,
+где       имеет       единицы      строка      </span><span
+class=rvts8>j</span><span    class=rvts7>,    то   строку   </span><span
+class=rvts8>j</span><span      class=rvts7>      можно      удалить.
+Действительно,        пусть        в       некотором
+кратчайшем  покрытии  имеется строка </span><span
+class=rvts8>j</span><span     class=rvts7>.    Очевидно,    данное
+покрытие  останется  кратчайшим,  если  в нем
+строку       </span><span      class=rvts8>j</span><span      class=rvts7>
+заменить     строкой    </span><span    class=rvts8>i</span><span
+class=rvts7>.</span></p> 
+<p  class=rvps7><span  class=rvts7>На  первом  шаге выбираем
+столбец              </span><span              class=rvts8>а</span><span
+class=rvts9>6</span><span      class=rvts7>,     содержащий     две
+единицы.     Среди     покрывающих     ее    строк
+выбираем       такую,       которая       покрывает
+наибольшее   число  столбцов.  Такой  строкой
+является     строка     </span><span    class=rvts8>В</span><span
+class=rvts9>6</span><span  class=rvts7>.  Удалив  эту  строку  и
+покрываемые  ею  столбцы,  получим следующее
+значение    матрицы    </span><span    class=rvts10>X</span><span
+class=rvts7>:</span></p> 
+<p><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=257   height=245  alt=""  style="padding  :  1px;"
+src="lb3/img2.jpg"><span class=rvts7>.</span></p> 
+<p><span class=rvts7><br></span></p>
+<p    class=rvps8><span   class=rvts7>После   удаления   строк
+</span><span  class=rvts8>В</span><span class=rvts9>1</span><span class=rvts7>,
+</span><span  class=rvts8>В</span><span  class=rvts9>2</span><span class=rvts7>
+и     </span><span     class=rvts8>В</span><span     class=rvts9>8</span><span
+class=rvts7>  согласно  второму  правилу  редукции
+матрица  </span><span class=rvts10>Х</span><span class=rvts7> будет
+иметь следующий вид:</span></p> 
+<p><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=245   height=159  alt=""  style="padding  :  1px;"
+src="lb3/img3.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p     class=rvps9><span     class=rvts7>Одним    из    столбцов,
+обладающих     минимальным    числом    единиц,
+является    столбец    </span><span    class=rvts8>а</span><span
+class=rvts9>2</span><span  class=rvts7>.  Обе  покрывающие  его
+строки  </span><span  class=rvts8>В</span><span class=rvts9>3</span><span
+class=rvts7>          и         </span><span         class=rvts8>В</span><span
+class=rvts9>7</span><span     class=rvts7>    содержат    по    три
+единицы.  Выбираем  первую по порядку строку
+</span><span  class=rvts8>В</span><span  class=rvts9>3</span><span class=rvts7>
+и    включаем    ее   в   формируемое   покрытие.
+Теперь         имеем         множество         {</span><span
+class=rvts8>B</span><span  class=rvts9>3</span><span class=rvts7>, </span><span
+class=rvts8>B</span><span   class=rvts9>6</span><span   class=rvts7>}.  Этот
+шаг приводит к матрице</span></p> 
+<p><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=140   height=134  alt=""  style="padding  :  1px;"
+src="lb3/img4.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p   class=rvps10><span   class=rvts7>После  удаления  строки
+</span><span  class=rvts8>В</span><span  class=rvts9>7</span><span class=rvts7>
+по     второму     правилу    редукции    получим
+матрицу,   каждая   строка   и  каждый  столбец
+которой  содержат  ровно две единицы. Выбрав
+строку  </span><span  class=rvts8>В</span><span class=rvts9>4</span><span
+class=rvts7>,       покрывающую      столбец      </span><span
+class=rvts8>а</span><span     class=rvts9>4</span><span     class=rvts7>,    и
+проведя        аналогичные       преобразования,
+получим   матрицу   с  одним  столбцом  </span><span
+class=rvts8>а</span><span  class=rvts9>7</span><span class=rvts7> и двумя
+строками             </span><span             class=rvts8>В</span><span
+class=rvts9>5</span><span          class=rvts7>          и         </span><span
+class=rvts8>В</span><span  class=rvts9>9</span><span  class=rvts7>,  любая
+из   которых  покрывает  оставшийся  столбец.
+Таким   образом,   получено  покрытие  {</span><span
+class=rvts8>В</span><span class=rvts9>3</span><span
+class=rvts7>, </span><span class=rvts8>В</span><span
+class=rvts9>4</span><span  class=rvts7>, </span><span class=rvts8>B</span><span
+class=rvts9>5</span><span class=rvts7>, </span><span
+class=rvts8>В</span><span    class=rvts9>6</span><span    class=rvts7>},   но
+пройдена   пока   только   одна   ветвь  дерева
+поиска,   и   до   совершения   полного   обхода
+дерева      неизвестно,     является     ли     это
+покрытие кратчайшим.</span></p> 
+<p  class=rvps11><span class=rvts7>Возвращаемся к ситуации,
+когда  очередным столбцом для покрытия взят
+</span><span  class=rvts8>а</span><span class=rvts9>2</span><span class=rvts7>.
+Теперь  вместо  строки </span><span class=rvts8>В</span><span
+class=rvts9>3</span><span  class=rvts7>  возьмем  для покрытия
+столбца              </span><span              class=rvts8>а</span><span
+class=rvts9>2</span><span       class=rvts7>      строку      </span><span
+class=rvts8>В</span><span        class=rvts9>7</span><span        class=rvts7>.
+Действуя     дальше     аналогичным     образом,
+получаем      очередное      покрытие     {</span><span
+class=rvts8>В</span><span class=rvts9>4</span><span
+class=rvts7>, </span><span  class=rvts8>B</span><span class=rvts9>6</span><span
+class=rvts7>, </span><span class=rvts8>В</span><span
+class=rvts9>7</span><span   class=rvts7>},   которое   вытесняет
+предыдущее,   так   как  оно  оказалось  лучше,
+однако      и     его     пока     нельзя     назвать
+кратчайшим.</span></p> 
+<p       class=rvps12><span       class=rvts7>Возвратившись      к
+начальной  вершине  дерева  поиска  и  следуя
+по    дуге,   соответствующей   строке   </span><span
+class=rvts8>В</span><span        class=rvts9>2</span><span        class=rvts7>,
+убеждаемся,   что   длина   покрытия  не  может
+быть    меньше   трех.   На   этом   поиск   можно
+закончить    и   выдать   в   качестве   решения
+множество            {</span><spanclass=rvts8>
+<center><img src="lb3/tree.png"></center>	
+<center>Рис. 3.1.   Дерево  поиска кратчайшего покрытия</center></span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p   class=rvps18><span   class=rvts7>На   рис. 3.1   изображено
+дерево  поиска,  обход которого совершался в
+процессе  решения данного примера. Вершинам
+данного  дерева  приписаны  столбцы,  а дугам
+</span><span              class=rvts11>–</span><span              class=rvts7>
+строки.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 3.2</span></p>
+<p   class=rvps2><span  class=rvts7>В  графе  из  Задачи  №  2.2
+найти  наименьшее  доминирующее множество с
+помощью     решения     задачи    о    кратчайшем
+покрытии.</span></p> 
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p    class=rvps2><span    class=rvts7>Чтобы    свести   данную
+задачу   к   задаче   о   кратчайшем   покрытии,
+преобразуем   матрицу   смежности  заданного
+графа,  подставив  единицы по всем элементам
+главной диагонали:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=304   height=303  alt=""  style="padding  :  1px;"
+src="lb3/img5.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p              class=rvps2><span             class=rvts7>Минимальная
+совокупность    строк,   где   каждый   столбец
+имеет  единицу хотя бы в одной из этих строк,
+соответствует   наименьшему   доминирующему
+множеству.</span></p> 
+<p    class=rvps2><span   class=rvts7>Согласно   1-му   правилу
+редукции   удаляем   столбец   3,   поглощающий
+столбец  7  и столбец 1, поглощающий столбец 8.
+В результате получим матрицу</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=248   height=303  alt=""  style="padding  :  1px;"
+src="lb3/img6.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p  class=rvps2><span  class=rvts7>По  2-му  правилу редукции
+удаляем  строки  2,  5 и 10, поглощаемые строкой
+4,  строку  6,  поглощаемую строкой 9, и строки 7
+и      8,      поглощаемые      строками      3     и     1
+соответственно:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=243   height=134  alt=""  style="padding  :  1px;"
+src="lb3/img7.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps2><span   class=rvts7>Строки   1   и   3  являются
+обязательными       для      любого      покрытия,
+поскольку     каждый     из    столбцов    7    и    8
+покрывается  только  одной  из них. Добавив к
+ним  строку 4, получим&nbsp; искомое кратчайшее
+покрытие.    Вместо    строки    4   можно   взять
+строку       9.      Следовательно,      одним      из
+наименьших          доминирующих          множеств
+заданного графа является {1, 3, 4}.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 3.3</span></p>
+<p   class=rvps2><span  class=rvts7>В  графе  из  Задачи  №  2.2
+найти       одно       наибольшее      независимое
+множество.</span></p> 
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p    class=rvps2><span    class=rvts7>Если    в</span><span   class=rvts8>
+</span><span   class=rvts7>графе   </span><span   class=rvts8>G</span><span
+class=rvts7> = (</span><span class=rvts8>V</span><span
+class=rvts7>, </span><span        class=rvts8>E</span><span       class=rvts7>)
+множество            </span><span            class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts17>⊆</span><span
+class=rvts7> </span><span         class=rvts8>V</span><span        class=rvts7>
+является   вершинным   покрытием,   то  </span><span
+class=rvts8>V</span><span class=rvts7> \ </span><span
+class=rvts8>B</span><span  class=rvts7>  является независимым
+множеством   и   если   </span><span   class=rvts8>В</span><span
+class=rvts7>      </span><span     class=rvts11>–</span><span     class=rvts7>
+наименьшее   вершинное  покрытие,  то  </span><span
+class=rvts8>V</span><span class=rvts7> \ </span><span
+class=rvts8>B</span><span                class=rvts7>               </span><span
+class=rvts11>–</span><span          class=rvts7>          наибольшее
+независимое множество.</span></p> 
+<p   class=rvps2><span  class=rvts7>Чтобы  найти  наименьшее
+вершинное      покрытие      в     графе     </span><span
+class=rvts8>G</span><span   class=rvts7>,   достаточно  покрыть
+столбцы       его       матрицы      инцидентности
+минимальным  количеством  ее  строк. Матрица
+инцидентности      заданного     графа     имеет
+следующий вид:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=565   height=303  alt=""  style="padding  :  1px;"
+src="lb3/img8.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p    class=rvps2><span    class=rvts7>В    этой    матрице   все
+столбцы    различны   и   содержат   ровно   две
+единицы.   Поэтому  1-е  правило  редукции  для
+данной   матрицы   неприменимо.   Строки  7  и  8
+удаляются  по 2-му правилу, в результате чего
+строки    1    и   3   становятся   обязательными.
+Включаем  эти  строки  в решение и удаляем их
+из    матрицы    вместе    с   покрываемыми   ими
+столбцами:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=324   height=189  alt=""  style="padding  :  1px;"
+src="lb3/img9.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span    class=rvts7>К    этой    матрице    не
+применимо     ни     одно     правило    редукции.
+Комбинаторный        поиск        осуществляется
+следующим    образом.   Выбрав   строку   2   для
+покрытия    столбца    </span><span    class=rvts8>е</span><span
+class=rvts9>5</span><span   class=rvts7>,   придем   к  ситуации,
+представленной матрицей</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=254   height=159  alt=""  style="padding  :  1px;"
+src="lb3/img10.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p  class=rvps2><span  class=rvts7>Удаление  строки  6 по 2-му
+правилу       редукции      делает      строку      9
+обязательной.     Включив     ее     в     решение,
+оставляем     непокрытыми     столбцы    </span><span
+class=rvts8>е</span><span     class=rvts9>10</span><span     class=rvts7>    и
+</span><span        class=rvts8>е</span><span        class=rvts9>12</span><span
+class=rvts7>,    которые    покрываются    строкой   4.
+Таким   образом,  получено  покрытие  матрицы
+инцидентности,  состоящее из пяти строк: {1, 2,
+3, 4, 9}.</span></p> 
+<p     class=rvps2><span    class=rvts7>Возьмем    теперь    для
+покрытия    столбца    </span><span    class=rvts8>е</span><span
+class=rvts9>5</span><span    class=rvts7>    строку    4.   Текущая
+ситуация    представится   теперь   следующей
+матрицей,   для   покрытия   которой   надо   не
+менее двух строк:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=173   height=134  alt=""  style="padding  :  1px;"
+src="lb3/img11.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p    class=rvps2><span    class=rvts7>Таким   образом,   ранее
+полученное   покрытие   {1,   2,  3,  4,  9}  является
+решением.</span></p> 
+<p   class=rvps2><span  class=rvts7>Наибольшим  независимым
+множеством  для  заданного графа является {5,
+6, 7, 8, 10}.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 3.4</span></p>
+<p      class=rvps2><span      class=rvts7>Найти     минимальную
+раскраску    для   графа   из   Задачи   №   2.1   с
+помощью     решения     задачи    о    кратчайшем
+покрытии.</span></p> 
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p   class=rvps2><span   class=rvts7>Для   упомянутого  графа
+получена        совокупность        максимальных
+независимых  множеств  {1,  5,  8}, {2, 5}, {3, 4, 5}, {3, 5,
+6},  {1,  7,  8},  {4,  5,  8},  {4,  7,  8}, которая может быть
+представлена следующей матрицей:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=243   height=215  alt=""  style="padding  :  1px;"
+src="lb3/img12.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span    class=rvts7>Включаем    в    решение
+обязательные    строки    2   и   4.   Оставленные
+непокрытыми        столбцы        представляются
+матрицей</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=137   height=159  alt=""  style="padding  :  1px;"
+src="lb3/img13.jpg"><span class=rvts7>,</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p    class=rvps19><span    class=rvts7>из    которой    по    2-му
+правилу  редукции  удаляются  строки  1,  3  и 6.
+Оставшиеся     строки     5    и    7    оказываются
+обязательными          и          включаются          в
+решение.</span></p> 
+<p        class=rvps2><span        class=rvts7>Таким        образом,
+минимальную     совокупность     максимальных
+независимых          множеств,         покрывающую
+множество        вершин       заданного       графа
+представляют  множества  {2,  5}, {3, 5, 6}, {1, 7, 8}, {4,
+7,   8}.   После   ликвидации   пересечений   этих
+множеств  получим  искомую раскраску: {1, 7}, {2,
+5}, {3, 6}, {4, 8}.</span></p> 
+<p><span class=rvts18><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+
+</body></html>

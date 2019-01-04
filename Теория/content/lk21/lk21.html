@@ -1,0 +1,479 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Декомпозиция булевых функций</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts14
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts15
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+}
+
+
+--></style>
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 21</span></p>
+<p><span class=rvts7>Декомпозиция булевых функций </span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Задача декомпозиции булевой функции состоит в том, чтобы представить заданную функцию в виде суперпозиции более простых функций. Фактически реализация булевой функции схемой из логических элементов, или синтез комбинационной схемы, сводится к задаче декомпозиции, когда получаемая суперпозиция должна содержать функции, реализуемые отдельными логическими элементами.</span></p>
+<p      class=rvps5><span     class=rvts6>Примером суперпозиции вида f(x) = φ (g</span><span class="rvts12">1</span><span     class=rvts6>, g</span><span class="rvts12">2</span><span     class=rvts6>, … , g</span><span class="rvts12">m</span><span     class=rvts6>), где g</span><span class="rvts12">i</span><span     class=rvts6> = g<span class="rvts12">i</span>(z<span class="rvts12">i</span>), а z<span class="rvts12">i</span> – булев вектор, составленный из компонент вектора х (i = 1, 2, … , m), является дизъюнктивная нормальная форма, где в качестве функций g<span class="rvts12">i</span> выступают элементарные конъюнкции, а в качестве φ  – дизъюнкция.</span></p>
+<p      class=rvps5><span     class=rvts6>Задачи синтеза комбинационных схем разнообразны, что обусловлено применением различных критериев оптимизации и учетом различных технологических ограничений. Поэтому задача декомпозиции булевых функций может иметь много разных постановок. Рассмотрим наиболее простые задачи декомпозиции, связанные с минимизацией числа аргументов получаемых функций. Технически это выражается в минимизации числа внешних полюсов блоков схемы, реализующих данные функции.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p         class=rvps3><span         class=rvts7>21.1.         Двухблочная разделительная декомпозиция</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Наиболее простая декомпозиция получает представление некоторой функции f(х), где х – вектор, компонентами которого являются переменные из множества Х, в виде</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img1.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Здесь z</span><span class="rvts12">1</span><span     class=rvts6> и z</span><span class="rvts12">2</span><span     class=rvts6> – векторы, компоненты которых составляют непустые множества Z<span class="rvts12">1</span> и Z<span class="rvts12">2</span> соответственно, причем</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img2.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Такой тип декомпозиции порождает схему соединения двух блоков, изображенную на рис. 21.1. Он называется </span><span class="rvts8">двухблочной разделительной декомпозицией</span><span     class=rvts6> ввиду того, что исходная функция f(х) разлагается на функции φ и g, реализуемые двумя блоками, а множество аргументов Х разделено на непересекающиеся подмножества.</span></p>
+<p      class=rvps5><span     class=rvts6>Естественно рассматривать только нетривиальные случаи, когда</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img3.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>поскольку при |Z<span class="rvts12">1</span>| = n или |Z</span><span class="rvts12">1</span><span     class=rvts6>| = 1 одна из функций φ или g имеет аргументов не меньше, чем исходная функция f.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img4.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Чтобы определить свойство булевых функций, допускающих нетривиальную двухблочную разделительную декомпозицию, рассмотрим задание функции двумерной таблицей, строки которой кодируются значениями переменных из множества Z</span><span class="rvts12">1</span><span     class=rvts6> (значениями векторной переменной z<span class="rvts12">1</span>), а столбцы – значениями переменных из множества Z</span><span class="rvts12">2</span><span     class=rvts6> (значениями векторной переменной z<span class="rvts12">2</span>). На пересечении строки и столбца помещается значение функции, которое она принимает на соответствующих наборах значений переменных. Такая таблица называется картой декомпозиции для множеств переменных (Z<span class="rvts12">1</span>, Z<span class="rvts12">2</span>). В данном случае карта декомпозиции имеет 2</span><span class="rvts14">|z</span><span class="rvts12">1</span><span class="rvts14">|</span><span     class=rvts6> строк и 2</span><span class="rvts14">|z</span><span class="rvts12">2</span><span class="rvts14">|</span><span     class=rvts6> столбцов. Порядок расположения строк и столбцов здесь не имеет особого значения, но если для их кодирования использовать код Грея, то карта декомпозиции принимает вид карты Карно.</span></p>
+<p      class=rvps5><span class="rvts8">У т в е р ж д е н и е  21.1</span><span     class=rvts6>. Полностью определенная булева функция f(х) допускает двухблочную разделительную декомпозицию в форме f(x) = φ (g(z<span class="rvts12">1</span>), z<span class="rvts12">2</span>) тогда и только тогда, когда в карте декомпозиции для (Z</span><span class="rvts12">1</span><span     class=rvts6>, Z</span><span class="rvts12">2</span><span     class=rvts6>) имеется не более двух различных значений строк.</span></p>
+<p      class=rvps5><span     class=rvts6>Действительно, допустим, что существует указанное представление некоторой заданной функции f(x), а в ее карте декомпозиции для (Z</span><span class="rvts12">1</span><span     class=rvts6>, Z</span><span class="rvts12">2</span><span     class=rvts6>) имеется три различных значения строк. Пусть эти строки соответствуют наборам значений σ</span><span class="rvts12">u</span><span     class=rvts6>, σ</span><span class="rvts12">v</span><span     class=rvts6> и σ</span><span class="rvts12">w</span><span     class=rvts6> переменных из множества Z</span><span class="rvts12">1</span><span     class=rvts6>. Эти строки представляют соответственно булевы функции </span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img5.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>получаемые в результате подстановки констант g(σ</span><span class="rvts12">u</span><span     class=rvts6>), g(σ</span><span class="rvts12">v</span><span     class=rvts6>), g(σ</span><span class="rvts12">w</span><span     class=rvts6>) и зависящие только от переменных множества Z</span><span class="rvts12">2</span><span     class=rvts6>. Эти функции попарно различны, поскольку они представляются различными строками карты декомпозиции. Отсюда должно следовать, что константы g(σ<span class="rvts12">u</span>), g(σ<span class="rvts12">v</span>), g(σ<span class="rvts12">w</span>) тоже попарно различны, а это невозможно, так как имеется всего две константы: 0 и 1.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть теперь в карте декомпозиции для некоторой функции f(х) и множеств переменных Z</span><span class="rvts12">1</span><span     class=rvts6> и Z</span><span class="rvts12">2</span><span     class=rvts6> имеется только два различных значения строк. Пусть строки с одним значением составляют множество С<span class="rvts12">1</span>, а строки с другим значением – множество С<span class="rvts12">2</span>. Определим функцию g(z<span class="rvts12">1</span>) так, что g(z<span class="rvts12">1</span>) = 1 на всех значениях векторной переменной z</span><span class="rvts12">1</span><span     class=rvts6>, соответствующих строкам из множества C<span class="rvts12">1</span>, и g(z<span class="rvts12">1</span>) = 0 – на остальных ее значениях. Можно построить используемое табличное представление с двумя строками для функции от |Z<span class="rvts12">2</span>| + 1 переменных, где одна строка совпадает со всеми строками из множества С<span class="rvts12">1</span>, а вторая строка совпадает со всеми строками из множества С<span class="rvts12">2</span>. Эта функция является искомой функцией φ. Легко убедиться, что для любых наборов значений переменных из множества Х значения функций f и φ совпадают.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть, например, для функции, представленной в табл. 21.1, задано разбиение (Z<span class="rvts12">1</span>, Z<span class="rvts12">2</span>) на множестве ее аргументов, где Z</span><span class="rvts12">1</span><span     class=rvts6> = {x</span><span class="rvts12">1</span><span     class=rvts6>, x</span><span class="rvts12">2</span><span     class=rvts6>, x</span><span class="rvts12">3</span><span     class=rvts6>} и Z<span class="rvts12">2</span> = {x</span><span class="rvts12">4</span><span     class=rvts6>, x</span><span class="rvts12">5</span><span     class=rvts6>}. Требуется найти разложение функции f (х) в виде</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img6.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Табл. 21.1 является картой декомпозиции этой функции для Z<span class="rvts12">1</span> = {x<span class="rvts12">1</span>, x<span class="rvts12">2</span>, x<span class="rvts12">3</span>} и Z<span class="rvts12">2</span> = {x<span class="rvts12">4</span>, x<span class="rvts12">5</span>}.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img7.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Нетрудно заметить, что функция f (X) допускает заданную декомпозицию, так как имеется всего два вида строк. На наборах значений переменных х</span><span class="rvts12">1</span><span     class=rvts6>, х</span><span class="rvts12">2</span><span     class=rvts6>, х</span><span class="rvts12">3</span><span     class=rvts6>, соответствующих строкам вида</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img8.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>ададим функцию g(х<span class="rvts12">1</span>, х<span class="rvts12">2</span>, х<span class="rvts12">3</span>) = 1, на остальных наборах – g(х<span class="rvts12">1</span>, х<span class="rvts12">2</span>, х<span class="rvts12">3</span>) = 0. Тогда</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img9.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Из табл. 21.2 получаем представление функции φ в виде следующей ДНФ:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img10.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img11.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p         class=rvps3><span         class=rvts7>21.2.         Двухблочная разделительная декомпозиция не полностью определенных булевых функций</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Эта задача состоит в том, чтобы для заданной не полностью определенной функции f (х) и разбиения множества аргументов (Z<span class="rvts12">1</span>, Z</span><span class="rvts12">2</span><span     class=rvts6>) найти суперпозицию φ (g(z<span class="rvts12">1</span>), z<span class="rvts12">2</span>), реализующую f (x).</span></p>
+<p      class=rvps5><span     class=rvts6>Очевидно, всякая не полностью определенная булева функция допускает двухблочную разделительную декомпозицию, если ее можно доопределить до функции, для которой существует искомая суперпозиция. Пусть, например, табл. 21.3 представляет заданную не полностью определенную булеву функцию f (х</span><span class="rvts12">1</span><span     class=rvts6>, х<span class="rvts12">2</span>, х<span class="rvts12">3</span>, х</span><span class="rvts12">4</span><span     class=rvts6>). Эта же таблица является картой декомпозиции для Z<span class="rvts12">1</span> = {х<span class="rvts12">1</span>, х<span class="rvts12">2</span>}, Z<span class="rvts12">2</span> = {х</span><span class="rvts12">3</span><span     class=rvts6>, х<span class="rvts12">4</span>}. Табл. 21.4 является картой декомпозиции результата доопределения заданной функции, допускающего двухблочную разделительную декомпозицию.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img12.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Так же, как в предыдущем примере, определим функцию g следующим образом:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img13.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Для функции φ получим табл. 21.5, по которой найдем ДНФ данной функции:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img14.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Строки карты декомпозиции можно рассматривать как троичные векторы. Например, карту декомпозиции не полностью определенной функции, показанную на табл. 21.3, можно представить в виде матрицы</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img15.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img16.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Построим граф G отношения ортогональности на множестве строк карты декомпозиции. Для нашего примера – это граф, изображенный на рис. 21.2. Его вершины соответствуют строкам, и две вершины связаны ребром, если и только если соответствующие строки ортогональны.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img17.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span class="rvts8">У т в е р ж д е н и е  21.2.</span><span     class=rvts6> Не полностью определенная булева функция допускает двухблочную разделительную декомпозицию, если и только если граф ортогональности строк ее карты декомпозиции является бихроматическим.</span></p>
+<p      class=rvps5><span     class=rvts6>Если построенный для заданной функции граф G является бихроматическим, раскрасим его вершины в два цвета. Одному цвету припишем константу 0, другому – константу 1, определив таким образом функцию g на значениях векторной переменной z</span><span class="rvts12">1</span><span     class=rvts6>, кодирующих соответствующие строки карты декомпозиции.</span></p>
+<p      class=rvps5><span     class=rvts6>Для строк, соответствующих вершинам одного цвета, построим вектор, каждую компоненту которого определим следующим образом: если i-я компонента хотя бы одной из этих строк имеет определенное значение (0 либо 1), то это же значение припишем i-й компоненте получаемого вектора. В противном случае данной компоненте припишем значение «–». Полученные векторы представляют строки таблицы, задающей функцию φ.</span></p>
+<p      class=rvps5><span     class=rvts6>В рассматриваемом примере одноцветным вершинам 1 и 4 соответствует вектор  0 0 1 0, а другим одноцветным вершинам, 2 и 3, – вектор  1 0 0 1. Приведенное выше решение получим, если искомой функции g на наборах значений переменных х</span><span class="rvts12">1</span><span     class=rvts6> и х</span><span class="rvts12">2</span><span     class=rvts6>, соответствующих строкам 1 и 4, припишем значение 1, а на остальных наборах – значение 0.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p         class=rvps3><span         class=rvts7>21.3.         Многоблочные разделительные декомпозиции</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Результатом многоблочной декомпозиции является множество функций, суперпозиция которых представляет некоторую многоблочную структуру. При многоблочной разделительной декомпозиции задается разбиение множества Х аргументов исходной функции f (х) на более чем два подмножества: X = Z</span><span class="rvts12">1</span><span     class=rvts6> ∪ Z<span class="rvts12">2</span> ∪ … ∪ Z</span><span class="rvts12">m</span><span     class=rvts6>, Z</span><span class="rvts12">i</span><span     class=rvts6> ∩ Z</span><span class="rvts12">j</span><span     class=rvts6> = ∅, i ≠ j. Переменные из множеств Z<span class="rvts12">1</span>, Z<span class="rvts12">2</span>, … , Z<span class="rvts12">m</span> являются компонентами соответствующих булевых векторов z<span class="rvts12">1</span>, z</span><span class="rvts12">2</span><span     class=rvts6>, … , z<span class="rvts12">m</span>. Рассмотрим два вида многоблочной разделительной декомпозиции: последовательную и параллельную.</span></p>
+<p      class=rvps5><span class="rvts8">Последовательная разделительная декомпозиция</span><span     class=rvts6> представляет собой многократную двухблочную декомпозицию, выполняемую следующим образом. Сначала получается суперпозиция</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img18.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>затем разлагается функция g:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img19.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>и т. д. В результате получается суперпозиция следующего вида (если, конечно, соответствующие функции допускают двухблочную разделительную декомпозицию):</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img2.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>что соответствует структуре, изображенной на рис. 2.3.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть, например, область единичных значений полностью определенной булевой функции f (x</span><span class="rvts12">1</span><span     class=rvts6>, x</span><span class="rvts12">2</span><span     class=rvts6>, x</span><span class="rvts12">3</span><span     class=rvts6>, x</span><span class="rvts12">4</span><span     class=rvts6>) составляют следующие наборы значений переменных:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img21.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img22.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Требуется получить последовательную разделительную декомпозицию по разбиению</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img23.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Приведенная в табл. 21.6 карта декомпозиции для {x</span><span class="rvts12">1</span><span     class=rvts6>, x</span><span class="rvts12">2</span><span     class=rvts6>, x</span><span class="rvts12">3</span><span     class=rvts6>}, {x</span><span class="rvts12">4</span><span     class=rvts6>} говорит о существовании суперпозиции</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img24.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Табл. 21.7 задает функцию φ‘. Таким образом, имеем</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img25.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img26.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Для функции g и разбиения (Z</span><span class="rvts12">1</span><span     class=rvts6>, Z</span><span class="rvts12">2</span><span     class=rvts6>) карта декомпозиции представлена в виде табл. 21.8.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img27.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Окончательно получаем</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img28.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span class="rvts8">Параллельная разделительная декомпозиция</span><span     class=rvts6> по разбиению (Z</span><span class="rvts12">1</span><span     class=rvts6>, Z</span><span class="rvts12">2</span><span     class=rvts6>, … , Z</span><span class="rvts12">m</span><span     class=rvts6>) приводит функцию f(х) к виду</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img29.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Эта форма соответствует схеме, приведенной на рис. 21.4.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img30.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span class="rvts8">У т в е р ж д е н и е  21.3</span><span     class=rvts6>. Булева функция f (x) допускает параллельную разделительную декомпозицию вида (21.1) тогда и только тогда, когда она допускает двухблочные разделительные декомпозиции вида</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img31.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p      class=rvps5><span     class=rvts6>Пусть функция f (x) задана с помощью табл. 21.9. Эта таблица является картой декомпозиции для разбиения ({x</span><span class="rvts12">1</span><span     class=rvts6>, x</span><span class="rvts12">2</span><span     class=rvts6>, x</span><span class="rvts12">3</span><span     class=rvts6>}, {x</span><span class="rvts12">4</span><span     class=rvts6>, x</span><span class="rvts12">5</span><span     class=rvts6>, x</span><span class="rvts12">6</span><span     class=rvts6>}). Среди ее строк имеется только два различных значения, следовательно, заданная функция допускает декомпозицию вида</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img32.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>а если строки заменить одноименными столбцами, то убедимся, что существует суперпозиция</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img33.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img34.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+
+<p      class=rvps5><span     class=rvts6>Таким образом, заданная функция f (х) допускает параллельную разделительную декомпозицию вида f (х) = φ (g<span class="rvts12">1</span>, g</span><span class="rvts12">2</span><span     class=rvts6>).</span></p>
+<p      class=rvps5><span     class=rvts6>Определим функцию g</span><span class="rvts12">1</span><span     class=rvts6> как</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img35.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Тогда табл. 21.10 будет задавать функцию φ</span><span class="rvts12">1</span><span     class=rvts6>. По этой таблице получим</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img36.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>После соответствующего кодирования столбцов значениями переменной g</span><span class="rvts12">2</span><span     class=rvts6> будем иметь</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img37.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img38.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p         class=rvps3><span         class=rvts7>21.4.         Неразделительная декомпозиция</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>При неразделительной декомпозиции множества аргументов Z</span><span class="rvts12">1</span><span     class=rvts6>, Z</span><span class="rvts12">2</span><span     class=rvts6>, … , Z</span><span class="rvts12">m</span><span     class=rvts6> могут пересекаться. Рассмотрим двухблочную неразделительную декомпозицию</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img39.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>где компонентами векторов z</span><span class="rvts12">1</span><span     class=rvts6> и z</span><span class="rvts12">2</span><span     class=rvts6> являются переменные из множеств Z<span class="rvts12">1</span> и Z<span class="rvts12">2</span> соответственно, причем</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img40.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Естественно, имеет смысл решать задачу такой декомпозиции только при | Z</span><span class="rvts12">1</span><span     class=rvts6>| &lt; | X | и | Z</span><span class="rvts12">2</span><span     class=rvts6> | + 1 &lt; | X |.</span></p>
+<p      class=rvps5><span     class=rvts6>Особенностью карты декомпозиции для такой задачи является то, что некоторые ее элементы находятся на пересечении строки и столбца, в кодах которых одна и та же переменная (принадлежащая как Z</span><span class="rvts12">1</span><span     class=rvts6>, так и Z</span><span class="rvts12">2</span><span     class=rvts6>) имеет противоположные значения. Значение функции для такого элемента не определено. Это можно представить как внесение новых аргументов, число которых равно | Z<span class="rvts12">1</span> ∩ Z<span class="rvts12">2</span> |. При этом каждый из них связан с каким-либо из заданных аргументов так, что он не может принимать неодинаковое с ним значение. Таким образом, данную задачу можно решить как задачу разделительной декомпозиции не полностью определенной булевой функции.</span></p>
+<p      class=rvps5><span     class=rvts6>У т в е р ж д е н и е  21.4. Булева функция f (х) допускает двухблочную неразделительную декомпозицию вида f (x) = φ (g(z</span><span class="rvts12">1</span><span     class=rvts6>), z<span class="rvts12">2</span>) тогда и только тогда, когда граф ортогональности строк карты декомпозиции для (Z<span class="rvts12">1</span>, Z</span><span class="rvts12">2</span><span     class=rvts6>) является бихроматическим.</span></p>
+<p      class=rvps5><span     class=rvts6>Это справедливо как для полностью, так и для не полностью определенных функций.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть функция f (x</span><span class="rvts12">1</span><span     class=rvts6>, x</span><span class="rvts12">2</span><span     class=rvts6>, x</span><span class="rvts12">3</span><span     class=rvts6>, x</span><span class="rvts12">4</span><span     class=rvts6>, x</span><span class="rvts12">5</span><span     class=rvts6>) имеет значение 1 на  следующих наборах значений переменных:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img41.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Положим, что для нее требуется получить суперпозицию</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img42.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Карта декомпозиции для такого случая представлена в табл. 2.11.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img43.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Граф ортогональности строк данной карты декомпозиции изображен на рис. 21.5, где вершины обозначены кодами соответствующих строк карты декомпозиции, а в скобках показана раскраска вершин графа – цвет «0» и цвет «1». Считая данные коды наборами значений аргументов х</span><span class="rvts12">1</span><span     class=rvts6>, х</span><span class="rvts12">2</span><span     class=rvts6>, х</span><span class="rvts12">3</span><span     class=rvts6> функции g, а величины в скобках – ее соответствующими значениями, получим</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img44.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img45.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>По табл. 21.12, задающей функцию φ, получим ДНФ этой функции:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img46.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Многоблочные неразделительные декомпозиции получаются аналогично двухблочным неразделительным декомпозициям.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img47.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p         class=rvps3><span         class=rvts7>21.5.         Декомпозиция систем булевых функций</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Рассмотрим следующую задачу. Пусть задана система не полностью определенных булевых функций f<span class="rvts12">1</span>, f</span><span class="rvts12">2</span><span     class=rvts6>, … , fm от общего множества аргументов Х = {x<span class="rvts12">1</span>, x<span class="rvts12">2</span>, … , xn}. Для заданной пары подмножеств (Z<span class="rvts12">1</span>, Z<span class="rvts12">2</span>) множества Х, такой, что X = Z<span class="rvts12">1</span> ∪ Z<span class="rvts12">2</span>, требуется найти суперпозиции</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img48.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>где z<span class="rvts12">1</span> и z<span class="rvts12">1</span> – векторы, компонентами которых служат переменные из множеств Z<span class="rvts12">1</span> и Z<span class="rvts12">2</span>, причем</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img49.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>и не важно, пересекаются или нет подмножества Z</span><span class="rvts12">1</span><span     class=rvts6> и Z<span class="rvts12">2</span>.</span></p>
+<p      class=rvps5><span     class=rvts6>В векторной форме данную задачу сформулируем следующим образом: для системы функций y = f (x) требуется найти суперпозицию</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img50.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>такую, чтобы число компонент вектора w было меньше числа компонент вектора z</span><span class="rvts12">1</span><span     class=rvts6>, а сумма чисел компонент векторов w и z</span><span class="rvts12">2</span><span     class=rvts6> была меньше длины вектора х. Дополнительно можно еще поставить задачу минимизации числа компонент вектора w.</span></p>
+<p      class=rvps5><span     class=rvts6>Эта задача имеет приложение в синтезе логических схем из блоков, реализующих достаточно сложные системы булевых функций, с ограниченным числом внешних полюсов.</span></p>
+<p      class=rvps5><span     class=rvts6>Для решения рассматриваемой задачи используется карта декомпозиции. Так же, как и для одной функции, строки ее соответствуют значениям векторной переменной z</span><span class="rvts12">1</span><span     class=rvts6>, столбцы – значениям векторной переменной z</span><span class="rvts12">2</span><span     class=rvts6>. На пересечении строки и столбца помещается значение вектора у (компоненты которого задают значения, которые принимают функции системы на соответствующих наборах значений аргументов). Ввиду неполной определенности функций здесь не обязательно должно быть   2</span><span class="rvts14">|z</span><span class="rvts12">1</span><span class="rvts14">|</span><span     class=rvts6> строки и   2</span><span class="rvts14">|z</span><span class="rvts12">2</span><span class="rvts14">|</span><span     class=rvts6> столбца.</span></p>
+<p      class=rvps5><span     class=rvts6>Каждую строку карты декомпозиции рассматриваем как троичный вектор, составленный из векторов значений функций.</span></p>
+<p      class=rvps5><span class="rvts8">У т в е р ж д е н и е  21.5.</span><span     class=rvts6> Система не полностью определенных булевых функций f</span><span class="rvts12">1</span><span     class=rvts6>, f<span class="rvts12">2</span>, … , f</span><span class="rvts12">m</span><span     class=rvts6> допускает декомпозицию в форме (21.2) тогда и только тогда, когда хроматическое число графа ортогональности строк ее карты декомпозиции для (Z</span><span class="rvts12">1</span><span     class=rvts6>, Z</span><span class="rvts12">2</span><span     class=rvts6>) не превышает 2<span class="rvts14">k</span>.</span></p>
+<p      class=rvps5><span     class=rvts6>Если удастся раскрасить упомянутый граф в 2</span><span class="rvts14">k</span><span     class=rvts6> цвета, то закодируем строки карты декомпозиции значениями векторной переменной</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img51.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>так, чтобы строки, соответствующие одноцветным вершинам, были закодированы одним кодом, а строки, соответствующие вершинам различных цветов, – различными кодами. Таким образом, значениям векторной переменной z</span><span class="rvts12">1</span><span     class=rvts6> ставятся в соответствие значения векторной переменной w, т. е. построена система функций g<span class="rvts12">1</span>(z<span class="rvts12">1</span>), g</span><span class="rvts12">2</span><span     class=rvts6>(z<span class="rvts12">1</span>), … , g</span><span class="rvts12">k</span><span     class=rvts6>(z<span class="rvts12">1</span>).</span></p>
+<p      class=rvps5><span     class=rvts6>Карту декомпозиции, строкам которой приписаны значения переменной w, а столбцам – значения векторной переменной z</span><span class="rvts12">2</span><span     class=rvts6>, можно рассматривать как представление системы функций y = φ (w, z<span class="rvts12">2</span>).</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть, например, задана система слабо определенных булевых функций</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img52.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>где х = (x</span><span class="rvts12">1</span><span     class=rvts6>, x</span><span class="rvts12">2</span><span     class=rvts6>, х</span><span class="rvts12">3</span><span     class=rvts6>, х</span><span class="rvts12">4</span><span     class=rvts6>, х</span><span class="rvts12">5</span><span     class=rvts6>, х</span><span class="rvts12">6</span><span     class=rvts6>), и заданы векторные переменные</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img53.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Заданная система представлена в виде пары булевых матриц, одна из которых содержит наборы значений аргументов (значения вектора х), другая представляет значения функций на этих наборах (значения вектора у). Считается, что на всех наборах значений аргументов, которые не присутствуют в соответствующей матрице, все функции заданной системы не определены. Матрицы имеют следующий вид:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img54.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Карта декомпозиции системы булевых функций приведена в табл. 21.13. Граф ортогональности строк матрицы изображен на рис. 2.7. У вершин графа показаны наборы значений переменных x<span class="rvts12">1</span>, x<span class="rvts12">2</span>, х<span class="rvts12">3</span>, х<span class="rvts12">4</span>, которые приписаны соответствующим строкам карты декомпозиции.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img55.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img56.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p      class=rvps5><span     class=rvts6>Граф раскрашивается не менее чем в четыре цвета, поскольку в нем легко заметен полный четырехвершинный подграф, все вершины которого должны быть раскрашены в разные цвета. В скобках приведены коды цветов в виде двухкомпонентных булевых векторов w = (w</span><span class="rvts12">1</span><span     class=rvts6>, w</span><span class="rvts12">2</span><span     class=rvts6>). В то же время четыре цвета оказываются достаточными – в результате находится схема, показанная на рис. 21.7. </span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img57.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Систему функций w</span><span class="rvts12">1</span><span     class=rvts6> = g</span><span class="rvts12">1</span><span     class=rvts6>(x<span class="rvts12">1</span>, x<span class="rvts12">2</span>, х<span class="rvts12">3</span>, х<span class="rvts12">4</span>), w</span><span class="rvts12">2</span><span     class=rvts6> = g<span class="rvts12">2</span>(x<span class="rvts12">1</span>, x<span class="rvts12">2</span>, х<span class="rvts12">3</span>, х<span class="rvts12">4</span>) представим следующими матрицами:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img58.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Табл. 21.14, полученную из табл. 21.13 совмещением неортогональных одноцветных строк, можно считать заданием системы функций y = φ (w, z</span><span class="rvts12">2</span><span     class=rvts6>).</span></p>
+<p      class=rvps5><span     class=rvts6>Таким образом, заданная система не полностью определенных булевых функций y = f (x) разложена на две системы:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img59.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Последнюю представим парой матриц:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img60.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img61.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>После минимизации получим следующие ДНФ: </span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk21/img62.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p class=rvps7><span class=rvts6><br></span><span class=rvts6><br>
+</span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body></html>

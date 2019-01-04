@@ -1,0 +1,1231 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Основные  понятия теории графов</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts11
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts14
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts15
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts16
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts17
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts18
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps6
+{
+ text-align: justify;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: center;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps15
+{
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 47px;
+ margin: 0px 0px 0px 189px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 19px;
+ margin: 0px 0px 0px 95px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps23
+{
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps36
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps37
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps41
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps42
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps43
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 3</span></p>
+<p><span  class=rvts7>Основные  понятия теории графов
+</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p        class=rvps3><span        class=rvts7>3.1.       Абстрактный
+граф</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p  class=rvps5><span  class=rvts8>Граф</span><span  class=rvts6> можно
+определить  как совокупность двух множеств:
+</span><span       class=rvts8>G</span><span      class=rvts6> = (</span><span
+class=rvts8>V</span><span  class=rvts6>, </span><span class=rvts8>E</span><span
+class=rvts6>),   где   </span><span   class=rvts8>V</span><span  class=rvts6>
+</span><span     class=rvts9>–</span><span    class=rvts6>    непустое
+множество,   элементы   которого   называются
+</span><span    class=rvts8>вершинами</span><span    class=rvts6>,   и
+</span><span      class=rvts8>Е</span><span      class=rvts6>      </span><span
+class=rvts9>–</span><span         class=rvts6>        произвольное
+множество      пар      (</span><span      class=rvts8>v</span><span
+class=rvts10>i</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts10>j</span><span        class=rvts6>)
+элементов          из         множества         </span><span
+class=rvts8>V</span><span        class=rvts6>,       т. е.       </span><span
+class=rvts8>v</span><span  class=rvts10>i</span><span class=rvts6> </span><span
+class=rvts11>∈</span><span class=rvts6> </span><span
+class=rvts8>V</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts10>j</span><span class=rvts6> </span><span
+class=rvts11>∈</span><span class=rvts6> </span><span
+class=rvts8>V</span><span  class=rvts6>, </span><span class=rvts8>Е</span><span
+class=rvts6> </span><span class=rvts11>⊆</span><span
+class=rvts6> </span><span class=rvts8>V</span><span
+class=rvts12> 2</span><span  class=rvts6>.  Элементы множества
+</span><span    class=rvts8>Е</span><span   class=rvts6>   называются
+</span><span class=rvts8>ребрами</span><span class=rvts6>.</span></p> 
+<p     class=rvps5><span    class=rvts6>Само    понятие    графа
+подразумевает   графическое   представление
+данного     объекта.    Вершины    изображаются
+точками,    а    ребра   </span><span   class=rvts9>–</span><span
+class=rvts6>   линиями,   соединяющими   эти   точки.
+Если    ребра    представляют    упорядоченные
+пары       вершин,      соответствующие      линии
+изображаются     стрелками    (рис. 3.1).    Такие
+ребра                     называют                     </span><span
+class=rvts8>ориентированными ребрами</span><span
+class=rvts6>              или,             чаще,             </span><span
+class=rvts8>дугами</span><span   class=rvts6>.  В  этом  случае
+имеем  дело  с </span><span class=rvts8>ориентированным
+</span><span   class=rvts6>графом   в  отличие  от  </span><span
+class=rvts8>неориентированного</span><span class=rvts6>
+графа,  на ребрах которого порядок вершин не
+задан.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=322   height=114  alt=""  style="padding  :  1px;"
+src="lk3/img1.jpg"></p> 
+<p  class=rvps6><span  class=rvts13>  &nbsp;  &nbsp;  &nbsp;  &nbsp;</span><span
+class=rvts13>  &nbsp;  &nbsp;  &nbsp;  &nbsp;</span><span  class=rvts13>  &nbsp;
+&nbsp;    &nbsp;   &nbsp;</span><span   class=rvts13>   &nbsp;   &nbsp;   &nbsp;
+&nbsp;</span><span   class=rvts13>   &nbsp;   &nbsp;  &nbsp;  &nbsp;</span><span
+class=rvts13>  &nbsp;  &nbsp;  &nbsp;  &nbsp;</span><span  class=rvts13>  &nbsp;
+&nbsp;    &nbsp;   &nbsp;</span><span   class=rvts13>   &nbsp;   &nbsp;   &nbsp;
+&nbsp;</span><span   class=rvts13>   &nbsp;   &nbsp;  &nbsp;  &nbsp;</span><span
+class=rvts13>  &nbsp;  &nbsp;  &nbsp;  &nbsp;</span><span  class=rvts13>  &nbsp;
+&nbsp;   &nbsp;  &nbsp;</span><span  class=rvts14>а)</span><span  class=rvts14>
+&nbsp;  &nbsp;  &nbsp;  &nbsp;</span><span  class=rvts14>  &nbsp;  &nbsp; &nbsp;
+&nbsp;</span><span   class=rvts14>   &nbsp;   &nbsp;  &nbsp;  &nbsp;</span><span
+class=rvts14>  &nbsp;  &nbsp;  &nbsp;  &nbsp;</span><span  class=rvts14>  &nbsp;
+&nbsp;    &nbsp;   &nbsp;</span><span   class=rvts14>   &nbsp;   &nbsp;   &nbsp;
+&nbsp;</span><span   class=rvts14>   &nbsp;   &nbsp;  &nbsp;  &nbsp;</span><span
+class=rvts14>  &nbsp;  &nbsp;  &nbsp;  &nbsp;</span><span  class=rvts14>  &nbsp;
+&nbsp; &nbsp; &nbsp;</span><span class=rvts14>б)</span></p> 
+<p class=rvps6><span class=rvts14> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p  class=rvps1><span  class=rvts13>Рис. 3.1.  Примеры  графов:
+</span><span              class=rvts14>а)</span><span             class=rvts13>
+неориентированный;</span></p> 
+<p                 class=rvps1><span                class=rvts14>б)</span><span
+class=rvts13> ориентированный</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p                  class=rvps5><span                 class=rvts6>Вершины
+неориентированного      графа,     связываемые
+ребром,                   считаются                  </span><span
+class=rvts8>концами</span><span   class=rvts6>   этого   ребра.
+Например,         концами         ребра         </span><span
+class=rvts8>е</span><span  class=rvts15>2</span><span  class=rvts6>  графа
+на    рис. 3.1, </span><span    class=rvts8>а</span><span   class=rvts6>
+являются     вершины    </span><span    class=rvts8>v</span><span
+class=rvts15>1</span><span          class=rvts6>         и         </span><span
+class=rvts8>v</span><span        class=rvts15>3</span><span        class=rvts6>.
+Принято  обозначать  ребра  также  парами  их
+концов,     например    </span><span    class=rvts8>е</span><span
+class=rvts15>2</span><span class=rvts6> </span><span
+class=rvts11>=</span><span  class=rvts6> </span><span class=rvts8>v</span><span
+class=rvts15>1</span><span  class=rvts8>v</span><span class=rvts15>3</span><span
+class=rvts6>.   Всякая  упорядоченная  пара  вершин
+(</span><span        class=rvts8>v</span><span        class=rvts10>i</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts10>j</span><span  class=rvts6>), представляющая дугу
+в    ориентированном    графе,    имеет   </span><span
+class=rvts8>начало</span><span          class=rvts6>          </span><span
+class=rvts8>v</span><span     class=rvts10>i</span><span     class=rvts6>     и
+</span><span   class=rvts8>конец  v</span><span  class=rvts10>j</span><span
+class=rvts6>.       Говорят,       что      дуга      </span><span
+class=rvts8>выходит</span><span   class=rvts6>   из   начала   и
+</span><span  class=rvts8>входит</span><span  class=rvts6>  в конец.
+В  ориентированном  графе  на рис. 3.1, </span><span
+class=rvts8>б</span><span  class=rvts6>  началом  дуги  </span><span
+class=rvts8>а</span><span        class=rvts15>4</span><span        class=rvts6>
+является     вершина    </span><span    class=rvts8>v</span><span
+class=rvts15>3</span><span    class=rvts6>    и    концом    </span><span
+class=rvts9>–</span><span     class=rvts6>     вершина     </span><span
+class=rvts8>v</span><span    class=rvts15>2</span><span   class=rvts6>.   Это
+можно  представить как </span><span class=rvts8>a</span><span
+class=rvts15>4</span><span class=rvts6> = (</span><span
+class=rvts8>v</span><span class=rvts15>3</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts15>2</span><span class=rvts6>).</span></p> 
+<p     class=rvps5><span     class=rvts6>Между     вершинами    и
+ребрами   неориентированного  графа  так  же,
+как        между        вершинами        и        дугами
+ориентированного         графа,        существует
+отношение </span><span
+class=rvts8>инцидентности</span><span      class=rvts6>.     При
+этом    в    неориентированном   графе   </span><span
+class=rvts8>G</span><span class=rvts6> = (</span><span
+class=rvts8>V</span><span  class=rvts6>, </span><span class=rvts8>E</span><span
+class=rvts6>)      вершина     </span><span     class=rvts8>v</span><span
+class=rvts6> </span><span class=rvts11>∈</span><span
+class=rvts6> </span><span  class=rvts8>V</span><span class=rvts6> и ребро
+</span><span        class=rvts8>е</span><span        class=rvts6> </span><span
+class=rvts11>∈</span><span class=rvts6> </span><span
+class=rvts8>Е</span><span               class=rvts6>               </span><span
+class=rvts8>инцидентны</span><span        class=rvts6>,       если
+</span><span  class=rvts8>v</span><span class=rvts6> является одним
+из    концов    ребра    </span><span    class=rvts8>е</span><span
+class=rvts6>.    В   ориентированном   графе   </span><span
+class=rvts8>G</span><span class=rvts6> = (</span><span
+class=rvts8>V</span><span class=rvts6>, </span><span
+class=rvts8>А</span><span     class=rvts6>)     вершина     </span><span
+class=rvts8>v</span><span class=rvts6> </span><span
+class=rvts11>∈</span><span class=rvts6> </span><span
+class=rvts8>V</span><span      class=rvts6>     и     дуга     </span><span
+class=rvts8>а</span><span class=rvts6> </span><span
+class=rvts11>∈</span><span class=rvts6> </span><span
+class=rvts8>А</span><span               class=rvts6>               </span><span
+class=rvts8>инцидентны</span><span        class=rvts6>,       если
+</span><span     class=rvts8>v</span><span     class=rvts6>     является
+началом       либо       концом      дуги      </span><span
+class=rvts8>а</span><span       class=rvts6>.       Две       вершины
+неориентированного           графа           </span><span
+class=rvts8>смежны</span><span      class=rvts6>,      если     они
+инцидентны одному и тому же ребру.</span></p> 
+<p    class=rvps7><span   class=rvts6>Граф   может   содержать
+</span><span     class=rvts8>петли</span><span    class=rvts6>,    т. е.
+ребра,  концы  которых  совпадают, или дуги, у
+которых      начало     совпадает     с     концом.
+Очевидно,                 ориентация                петли
+несущественна.</span></p> 
+<p   class=rvps5><span   class=rvts6>Множество   всех  вершин
+графа  </span><span  class=rvts8>G</span><span class=rvts6>, смежных
+с   вершиной   </span><span   class=rvts8>v</span><span   class=rvts6>,
+называется </span><span
+class=rvts8>окрестностью</span><span   class=rvts6>   вершины
+</span><span  class=rvts8>v</span><span class=rvts6> и обозначается
+символом              </span><span             class=rvts8>N</span><span
+class=rvts6>(</span><span        class=rvts8>v</span><span        class=rvts6>).
+Мощность   множества   </span><span   class=rvts8>N</span><span
+class=rvts6>(</span><span        class=rvts8>v</span><span        class=rvts6>),
+обозначаемая          </span><span         class=rvts8>d</span><span
+class=rvts6>(</span><span        class=rvts8>v</span><span        class=rvts6>),
+называется    </span><span    class=rvts8>степенью</span><span
+class=rvts6>      вершины      </span><span     class=rvts8>v</span><span
+class=rvts6>.      В      ориентированном      графе     с
+некоторой   вершиной   </span><span   class=rvts8>v</span><span
+class=rvts6>     подобным     образом    связаны    два
+множества:    </span><span   class=rvts8>полуокрестность
+исхода</span><span   class=rvts6>  </span><span  class=rvts8>N</span><span
+class=rvts16> </span><span class=rvts12>+</span><span
+class=rvts6>(</span><span  class=rvts8>v</span><span  class=rvts6>) </span><span
+class=rvts9>–</span><span  class=rvts6>  множество  вершин,  в
+которые  входят  дуги,  исходящие  из вершины
+</span><span    class=rvts8>v</span><span    class=rvts6>,    и    </span><span
+class=rvts8>полуокрестность захода</span><span
+class=rvts6>  </span><span class=rvts8>N</span><span class=rvts16> </span><span
+class=rvts17>‑</span><span class=rvts6>(</span><span
+class=rvts8>v</span><span class=rvts6>) </span><span
+class=rvts9>–</span><span  class=rvts6>  множество вершин, из
+которых   исходят  дуги,  заходящие  в  </span><span
+class=rvts8>v</span><span       class=rvts6>.       Соответственно
+мощность   множества   </span><span   class=rvts8>N</span><span
+class=rvts16> </span><span class=rvts12>+</span><span
+class=rvts6>(</span><span         class=rvts8>v</span><span        class=rvts6>)
+называется      </span><span      class=rvts8>полустепенью
+исхода</span><span  class=rvts6>  и обозначается </span><span
+class=rvts8>d</span><span class=rvts16> </span><span
+class=rvts12>+</span><span  class=rvts6>(</span><span  class=rvts8>v</span><span
+class=rvts6>),     а     мощность    множества    </span><span
+class=rvts8>N</span><span class=rvts16> </span><span
+class=rvts17>‑</span><span class=rvts6>(</span><span
+class=rvts8>v</span><span               class=rvts6>)               </span><span
+class=rvts9>–</span><span               class=rvts6>              </span><span
+class=rvts8>полустепенью  захода</span><span  class=rvts6>  и
+обозначается          </span><span         class=rvts8>d</span><span
+class=rvts16> </span><span class=rvts17>‑</span><span
+class=rvts6>(</span><span     class=rvts8>v</span><span     class=rvts6>).&nbsp;
+Можно    говорить    об    окрестности    </span><span
+class=rvts8>N</span><span   class=rvts6>(</span><span  class=rvts8>v</span><span
+class=rvts6>)    и    степени   </span><span   class=rvts8>d</span><span
+class=rvts6>(</span><span         class=rvts8>v</span><span        class=rvts6>)
+вершины      </span><span      class=rvts8>v</span><span     class=rvts6>
+ориентированного графа. При этом</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p    class=rvps1><span    class=rvts8>N</span><span   class=rvts6>(</span><span
+class=rvts8>v</span><span class=rvts6>) = </span><span
+class=rvts8>N</span><span class=rvts16> </span><span
+class=rvts12>+</span><span  class=rvts6>(</span><span  class=rvts8>v</span><span
+class=rvts6>) </span><span class=rvts11>∪</span><span
+class=rvts6> </span><span class=rvts8>N</span><span
+class=rvts16> </span><span class=rvts17>‑</span><span
+class=rvts6>(</span><span   class=rvts8>v</span><span  class=rvts6>)&nbsp;&nbsp;
+и&nbsp;&nbsp;  </span><span class=rvts8>d</span><span class=rvts6>(</span><span
+class=rvts8>v</span><span class=rvts6>) = </span><span
+class=rvts8>d</span><span class=rvts16> </span><span
+class=rvts12>+</span><span  class=rvts6>(</span><span  class=rvts8>v</span><span
+class=rvts6>) + </span><span class=rvts8>d</span><span
+class=rvts16> </span><span class=rvts17>‑</span><span
+class=rvts6>(</span><span class=rvts8>v</span><span class=rvts6>).</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps5><span  class=rvts6>Для  неориентированного
+графа       с       множеством      ребер      </span><span
+class=rvts8>Е</span><span   class=rvts6>   очевидно  следующее
+соотношение:</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=60   height=40   alt=""   style="padding  :  1px;"
+src="lk3/img2.jpg"><span class=rvts6>= 2|</span><span
+class=rvts8>Е</span><span class=rvts6>|,</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p><span   class=rvts6>откуда   следует,   что   в   любом
+неориентированном   графе   число   вершин   с
+нечетной степенью всегда четно.</span></p> 
+<p    class=rvps5><span    class=rvts6>Для   ориентированного
+графа        с        множеством       дуг       </span><span
+class=rvts8>А</span><span class=rvts6> имеем</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=159   height=44   alt=""  style="padding  :  1px;"
+src="lk3/img3.jpg"><span class=rvts6>= |</span><span
+class=rvts8>А</span><span class=rvts6>|.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p        class=rvps5><span        class=rvts6>В       практических
+приложениях     граф    (ориентированный    или
+неориентированный),   как  правило,  является
+</span><span   class=rvts8>конечным</span><span  class=rvts6>,  т. е.
+его  множество  вершин  конечно. Специальный
+раздел  теории  графов  изучает также </span><span
+class=rvts8>бесконечные   графы</span><span   class=rvts6>,   у
+которых                  множество                  вершин
+бесконечно.</span></p> 
+<p          class=rvps5><span          class=rvts6>Граф         </span><span
+class=rvts8>G</span><span class=rvts6> = (</span><span
+class=rvts8>V</span><span  class=rvts6>, </span><span class=rvts8>E</span><span
+class=rvts6>),  у  которого  множество  ребер пусто,
+т. е.   </span><span   class=rvts8>Е</span><span  class=rvts6> </span><span
+class=rvts11>=</span><span class=rvts6> </span><span
+class=rvts11>∅</span><span   class=rvts6>,  называется  </span><span
+class=rvts8>пустым</span><span          class=rvts6>         графом.
+Неориентированный  граф  называется  </span><span
+class=rvts8>полным</span><span  class=rvts6>,  если  любые две
+его    вершины   смежны.   Полный   граф,   число
+вершин     которого     </span><span    class=rvts8>п</span><span
+class=rvts6>,     обозначается     символом     </span><span
+class=rvts8>K</span><span class=rvts10>n</span><span class=rvts6>.</span></p> 
+<p     class=rvps5><span    class=rvts6>Обозначим    множество
+ребер     полного     графа    символом    </span><span
+class=rvts8>U</span><span               class=rvts6>.               </span><span
+class=rvts8>Дополнением</span><span      class=rvts6>      графа
+</span><span       class=rvts8>G</span><span      class=rvts6> = (</span><span
+class=rvts8>V</span><span  class=rvts6>, </span><span class=rvts8>E</span><span
+class=rvts6>)                является               граф</span><span
+class=rvts18>&not;</span><span class=rvts8>G</span><span
+class=rvts6> = (</span><span class=rvts8>V</span><span
+class=rvts6>,</span><span class=rvts18>&not;</span><span
+class=rvts8>E</span><span   class=rvts6>),   у   которого  </span><span
+class=rvts18>&not;</span><span class=rvts8>E</span><span
+class=rvts6> = </span><span class=rvts8>U</span><span
+class=rvts6> \ </span><span       class=rvts8>E</span><span      class=rvts6>.
+Очевидно,  что  всякий  полный  граф является
+дополнением   некоторого   пустого   графа  и,
+наоборот,    всякий    пустой    граф   является
+дополнением            некоторого            полного
+графа.</span></p> 
+<p   class=rvps5><span  class=rvts6>Граф  называется  </span><span
+class=rvts8>двудольным</span><span        class=rvts6>,       если
+множество  его  вершин  </span><span class=rvts8>V</span><span
+class=rvts6>   разбито   на   два   непересекающихся
+подмножества          </span><span         class=rvts8>V</span><span
+class=rvts18>′</span><span         class=rvts6>         и        </span><span
+class=rvts8>V</span><span   class=rvts18>′′</span><span  class=rvts6>  ,  а
+концы     любого     его    ребра    находятся    в
+различных      подмножествах.      Такой     граф
+задается       как       </span><span       class=rvts8>G</span><span
+class=rvts6> = (</span><span class=rvts8>V</span><span
+class=rvts18>′</span><span class=rvts6>, </span><span
+class=rvts8>V</span><span class=rvts18>′′</span><span
+class=rvts6>, </span><span   class=rvts8>E</span><span   class=rvts6>)   или
+как&nbsp;                </span><span               class=rvts8>G</span><span
+class=rvts6> = (</span><span class=rvts8>V</span><span
+class=rvts18>′</span><span class=rvts6>, </span><span
+class=rvts8>V</span><span class=rvts18>′′</span><span
+class=rvts6>, </span><span    class=rvts8>A</span><span    class=rvts6>).    В
+</span><span    class=rvts8>полном    двудольном    </span><span
+class=rvts6>графе          (</span><span          class=rvts8>V</span><span
+class=rvts18>′</span><span class=rvts6>, </span><span
+class=rvts8>V</span><span class=rvts18>′′</span><span
+class=rvts6>, </span><span        class=rvts8>E</span><span       class=rvts6>)
+каждая    вершина   из   </span><span   class=rvts8>V</span><span
+class=rvts18>′</span><span   class=rvts6>   связана   ребром   с
+каждой   вершиной   из   </span><span  class=rvts8>V</span><span
+class=rvts18>′′</span><span  class=rvts6>. Полный двудольный
+граф,    у    которого    </span><span   class=rvts11>|</span><span
+class=rvts8>V</span><span class=rvts18>′</span><span
+class=rvts16> </span><span class=rvts11>|</span><span
+class=rvts6> </span><span class=rvts11>=</span><span
+class=rvts6> </span><span     class=rvts8>p</span><span     class=rvts6>     и
+</span><span         class=rvts11>|</span><span        class=rvts8>V</span><span
+class=rvts18>′′</span><span class=rvts16> </span><span
+class=rvts11>|</span><span class=rvts6> </span><span
+class=rvts11>=</span><span  class=rvts6> </span><span class=rvts8>q</span><span
+class=rvts6>,     обозначается     символом     </span><span
+class=rvts8>K</span><span  class=rvts10>p</span><span class=rvts15>,</span><span
+class=rvts10> q</span><span class=rvts6>.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p        class=rvps8><span        class=rvts7>3.2.       Графическое
+представление бинарного отношения</span></p> 
+<p class=rvps9><span class=rvts6><br></span></p>
+<p    class=rvps10><span   class=rvts6>Наглядными   примерами
+графов     служат     схемы     железных    дорог,
+помещаемые   на  стенах  больших  вокзалов,  и
+схемы  авиалиний  в  аэропортах. Характерным
+для    таких    схем    является    несоблюдение
+масштаба,      несмотря     на     то,     что     они
+изображаются  на  фоне  очертания страны или
+контуров  материков  земного шара. Тем самым
+подчеркивается,    что    здесь    важна   связь
+(бинарное   отношение   «есть   линия»)   между
+населенными           пунктами,           но           не
+расстояние.</span></p> 
+<p  class=rvps11><span  class=rvts6>Граф  в  том  виде,  как он
+определен   выше,   является,   по   сути   дела,
+графическим      представлением      бинарного
+отношения.  Пусть задано бинарное отношение
+</span><span         class=rvts8>R</span><span        class=rvts6> </span><span
+class=rvts11>⊆</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts11>×</span><span class=rvts6> </span><span
+class=rvts8>В</span><span       class=rvts6>.       Если       </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts11>∩</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> = </span><span
+class=rvts11>∅</span><span  class=rvts6>, то данное отношение
+можно              представить              двудольным
+ориентированным             графом             </span><span
+class=rvts8>G</span><span class=rvts6> = (</span><span
+class=rvts8>А</span><span class=rvts6>, </span><span
+class=rvts8>В</span><span class=rvts6>, </span><span
+class=rvts8>R</span><span    class=rvts6>),    где    каждая   пара
+(</span><span        class=rvts8>a</span><span       class=rvts6>, </span><span
+class=rvts8>b</span><span class=rvts6>) </span><span
+class=rvts11>∈</span><span class=rvts6> </span><span
+class=rvts8>R</span><span  class=rvts6> представляется дугой,
+исходящей  из  вершины </span><span class=rvts8>а</span><span
+class=rvts6>    и    заходящей    в    вершину    </span><span
+class=rvts8>b</span><span         class=rvts6>.         На        рис. 3.2
+представлено             отношение             </span><span
+class=rvts8>R</span><span     class=rvts6>    между    элементами
+множеств   </span><span   class=rvts8>А</span><span   class=rvts6>   и
+</span><span   class=rvts8>В</span><span   class=rvts6>,   где  </span><span
+class=rvts8>A</span><span  class=rvts6> </span><span class=rvts11>=</span><span
+class=rvts6> {</span><span class=rvts8>a</span><span
+class=rvts15>1</span><span class=rvts6>, </span><span
+class=rvts8>a</span><span class=rvts15>2</span><span
+class=rvts6>, </span><span class=rvts8>a</span><span
+class=rvts15>3</span><span              class=rvts6>},              </span><span
+class=rvts8>B</span><span  class=rvts6> </span><span class=rvts11>=</span><span
+class=rvts6> {</span><span class=rvts8>b</span><span
+class=rvts15>1</span><span class=rvts6>, </span><span
+class=rvts8>b</span><span class=rvts15>2</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts15>3</span><span class=rvts6>, </span><span
+class=rvts8>b</span><span class=rvts15>4</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts15>5</span><span              class=rvts6>},              </span><span
+class=rvts8>R</span><span  class=rvts6> </span><span class=rvts11>=</span><span
+class=rvts6> {(</span><span class=rvts8>a</span><span
+class=rvts15>1</span><span class=rvts6>, </span><span
+class=rvts8>b</span><span        class=rvts15>1</span><span       class=rvts6>),
+(</span><span        class=rvts8>a</span><span        class=rvts15>1</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts15>2</span><span              class=rvts6>),             (</span><span
+class=rvts8>a</span><span class=rvts15>1</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts15>3</span><span              class=rvts6>),             (</span><span
+class=rvts8>a</span><span class=rvts15>1</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts15>5</span><span              class=rvts6>),             (</span><span
+class=rvts8>a</span><span class=rvts15>2</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts15>2</span><span              class=rvts6>),             (</span><span
+class=rvts8>a</span><span class=rvts15>2</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts15>4</span><span              class=rvts6>),             (</span><span
+class=rvts8>a</span><span class=rvts15>3</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts15>3</span><span class=rvts6>)}.</span></p> 
+<p class=rvps12><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=194   height=195  alt=""  style="padding  :  1px;"
+src="lk3/img4.jpg"></p> 
+<p class=rvps13><span class=rvts6><br></span></p>
+<h5      class=rvps14><span     class=rvts0><span     class=rvts13>Рис. 3.2.
+Графическое  представление отношения между
+элементами</span></span></h5> 
+<h5     class=rvps14><span    class=rvts0><span    class=rvts13>множеств
+</span></span><span     class=rvts0><span     class=rvts14>А</span></span><span
+class=rvts0><span   class=rvts13>   и   </span></span><span   class=rvts0><span
+class=rvts14>В</span></span></h5> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p    class=rvps16><span    class=rvts6>Операция    композиции
+отношений,     рассмотренная    в    предыдущей
+главе,   проиллюстрирована   на   рис. 3.3,   где
+отношение     </span><span    class=rvts8>R</span><span    class=rvts6>
+между  элементами  множеств  </span><span  class=rvts8>А
+</span><span    class=rvts6>и    </span><span    class=rvts8>В    </span><span
+class=rvts6>и    отношение    </span><span   class=rvts8>S</span><span
+class=rvts6>   между   элементами  множеств  </span><span
+class=rvts8>В          </span><span         class=rvts6>и         </span><span
+class=rvts8>С</span><span   class=rvts6>   показаны  совместно
+(рис. 3.3, </span><span    class=rvts8>а</span><span   class=rvts6>).   В
+представлении            отношения            </span><span
+class=rvts8>SR</span><span    class=rvts6>    на   рис. 3.3, </span><span
+class=rvts8>б</span><span   class=rvts6>   видно,   что  вершина
+</span><span        class=rvts8>а</span><span        class=rvts6> </span><span
+class=rvts11>∈</span><span class=rvts6> </span><span
+class=rvts8>А</span><span  class=rvts6>  соединена с вершиной
+</span><span        class=rvts8>с</span><span        class=rvts6> </span><span
+class=rvts11>∈</span><span class=rvts6> </span><span
+class=rvts8>С</span><span  class=rvts6>  дугой  тогда и только
+тогда,    когда   существует   вершина   </span><span
+class=rvts8>b</span><span class=rvts6> </span><span
+class=rvts11>∈</span><span class=rvts6> </span><span
+class=rvts8>В</span><span   class=rvts6>,  которая  в  графе  на
+рис. 3.3,      </span><span      class=rvts8>а</span><span     class=rvts6>
+является  концом  дуги,  исходящей  из </span><span
+class=rvts8>а</span><span    class=rvts6>,    и    началом    дуги,
+заходящей        в       </span><span       class=rvts8>с</span><span
+class=rvts6>.</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=336   height=201  alt=""  style="padding  :  1px;"
+src="lk3/img5.jpg"></p> 
+<p  class=rvps18><span  class=rvts14>а)</span><span class=rvts14> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span class=rvts14> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts14>  &nbsp;  &nbsp;  &nbsp;  &nbsp;</span><span  class=rvts14>  &nbsp;
+&nbsp;    &nbsp;   &nbsp;</span><span   class=rvts14>   &nbsp;   &nbsp;   &nbsp;
+&nbsp;</span><span   class=rvts14>   &nbsp;   &nbsp;  &nbsp;  &nbsp;</span><span
+class=rvts14>  &nbsp;  &nbsp;  &nbsp;  &nbsp;</span><span  class=rvts14>  &nbsp;
+&nbsp;    &nbsp;   &nbsp;</span><span   class=rvts14>   &nbsp;   &nbsp;   &nbsp;
+&nbsp;</span><span   class=rvts14>   &nbsp;   &nbsp;  &nbsp;  &nbsp;</span><span
+class=rvts14>б)</span></p> 
+<p class=rvps19><span class=rvts13><br></span></p>
+<h5      class=rvps14><span     class=rvts0><span     class=rvts13>Рис. 3.3.
+Представление        композиции       отношений:
+</span></span><span     class=rvts0><span    class=rvts14>а)</span></span><span
+class=rvts0><span     class=rvts13>    отношения    </span></span><span
+class=rvts0><span       class=rvts14>R</span></span><span      class=rvts0><span
+class=rvts13>          и          </span></span><span         class=rvts0><span
+class=rvts14>S</span></span><span class=rvts0><span
+class=rvts13>;</span></span></h5> 
+<p       class=rvps1><span       class=rvts14>б)</span><span      class=rvts13>
+отношение </span><span class=rvts14>SR</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p         class=rvps5><span        class=rvts6>В        графическом
+представлении   функционального   отношения
+</span><span      class=rvts8>R</span><span      class=rvts6> = {(</span><span
+class=rvts8>a</span><span  class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts6>),              (</span><span              class=rvts8>c</span><span
+class=rvts6>, </span><span       class=rvts8>b</span><span       class=rvts6>),
+(</span><span        class=rvts8>b</span><span       class=rvts6>, </span><span
+class=rvts8>d</span><span              class=rvts6>),              (</span><span
+class=rvts8>e</span><span  class=rvts6>, </span><span class=rvts8>d</span><span
+class=rvts6>),              (</span><span              class=rvts8>d</span><span
+class=rvts6>, </span><span  class=rvts8>d</span><span class=rvts6>)} между
+элементами   множеств  </span><span  class=rvts8>A</span><span
+class=rvts6> = {</span><span class=rvts8>a</span><span
+class=rvts6>, </span><span class=rvts8>b</span><span
+class=rvts6>, </span><span class=rvts8>c</span><span
+class=rvts6>, </span><span class=rvts8>d</span><span
+class=rvts6>, </span><span     class=rvts8>e</span><span    class=rvts6>}    и
+</span><span      class=rvts8>В</span><span      class=rvts6> = {</span><span
+class=rvts8>b</span><span  class=rvts6>, </span><span class=rvts8>d</span><span
+class=rvts6>, </span><span       class=rvts8>e</span><span       class=rvts6>},
+рассмотренного    в    предыдущей    главе,   из
+каждой   вершины  выходит  только  одна  дуга,
+включая петли (рис. 3.4).</span></p> 
+<p class=rvps6><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=244   height=97   alt=""  style="padding  :  1px;"
+src="lk3/img6.jpg"></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts13>Рис. 3.4.   Представление
+функционального отношения</span></p> 
+<p class=rvps20><span class=rvts6><br></span></p>
+<p class=rvps21><span class=rvts6><br></span></p>
+<p         class=rvps22><span         class=rvts7>3.3.        Матричные
+представления графа</span></p> 
+<p class=rvps23><span class=rvts6><br></span></p>
+<p   class=rvps24><span   class=rvts6>Поскольку   граф   можно
+рассматривать             как             графическое
+представление        некоторого        бинарного
+отношения,  его  можно  задать той же булевой
+матрицей,  которая  задает  данное отношение
+и  описана  в  предыдущей  главе.  Эта матрица
+называется          </span><span          class=rvts8>матрицей
+смежности</span><span    class=rvts6>   графа.   Строки   и
+столбцы   матрицы   смежности  соответствуют
+вершинам  графа, а элемент ее на пересечении
+строки  </span><span  class=rvts8>v</span><span class=rvts10>i</span><span
+class=rvts6>    и    столбца    </span><span   class=rvts8>v</span><span
+class=rvts10>j</span><span    class=rvts6>    имеет    значение   1
+тогда  и  только  тогда, когда вершины </span><span
+class=rvts8>v</span><span     class=rvts10>i</span><span     class=rvts6>     и
+</span><span  class=rvts8>v</span><span  class=rvts10>j</span><span class=rvts6>
+смежны.           В           матрице           смежности
+ориентированного  графа  этот элемент имеет
+значение   1,   если   и   только  если  в  данном
+графе   имеется   дуга   с   началом  в  вершине
+</span><span  class=rvts8>v</span><span  class=rvts10>i</span><span class=rvts6>
+и   концом   в   вершине  </span><span  class=rvts8>v</span><span
+class=rvts10>j</span><span  class=rvts6>.  Графы, показанные на
+рис. 3.1,         имеют        следующие        матрицы
+смежности:</span></p> 
+<p class=rvps6><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=163   height=135  alt=""  style="padding  :  1px;"
+src="lk3/img7.jpg"><span class=rvts6>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img    width=200    height=161    alt=""    style="padding    :    1px;"
+src="lk3/img8.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p    class=rvps5><span    class=rvts6>Нетрудно   видеть,   что
+матрица      смежности      неориентированного
+графа    обладает   симметрией   относительно
+главной диагонали.</span></p> 
+<p    class=rvps25><span   class=rvts6>Ориентированный   граф
+можно  задать  также  </span><span  class=rvts8>матрицей
+инцидентности</span><span   class=rvts6>,</span><span  class=rvts8>
+</span><span  class=rvts6>которая</span><span  class=rvts8>  </span><span
+class=rvts6>определяется   следующим  образом.  Ее
+строки     соответствуют     вершинам     графа,
+столбцы     </span><span     class=rvts9>–</span><span     class=rvts6>
+дугам.     Элемент    на    пересечении    строки
+</span><span    class=rvts8>v</span><span    class=rvts6>    и   столбца
+</span><span       class=rvts8>а</span><span       class=rvts6>      имеет
+значение       1,       если       вершина       </span><span
+class=rvts8>v</span><span  class=rvts6> является началом дуги
+</span><span   class=rvts8>а</span><span   class=rvts6>,   и  значение
+</span><span  class=rvts9>–</span><span  class=rvts6>1,  если </span><span
+class=rvts8>v</span><span  class=rvts6>  является  концом дуги
+</span><span  class=rvts8>а</span><span  class=rvts6>.  Если вершина
+</span><span  class=rvts8>v</span><span  class=rvts6>  и  дуга </span><span
+class=rvts8>а</span><span    class=rvts6>   не   инцидентны,   то
+указанный  элемент имеет значение 0. Матрица
+инцидентности    неориентированного    графа
+имеет  тот  же  вид, только в ней все значения
+</span><span   class=rvts9>–</span><span   class=rvts6>1  заменяются
+на    1.    Матрицы    инцидентности   графов   на
+рис. 3.1 будут иметь следующий вид:</span></p> 
+<p class=rvps6><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=159   height=135  alt=""  style="padding  :  1px;"
+src="lk3/img9.jpg"><span class=rvts6>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img    width=264    height=161    alt=""    style="padding    :    1px;"
+src="lk3/img10.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p      class=rvps26><span     class=rvts6>Заметим,     что     при
+матричном  представлении графа его вершины,
+а     также     ребра    или    дуги    оказываются
+упорядоченными.     Любая     строка     матрицы
+смежности              является              векторным
+представлением окрестности
+соответствующей    вершины.    Любой   столбец
+матрицы  инцидентности  неориентированного
+графа   содержит   ровно   две  единицы.  Сумма
+значений  элементов  любого столбца матрицы
+инцидентности      ориентированного      графа
+равна нулю.</span></p> 
+<p class=rvps27><span class=rvts6><br></span></p>
+<p><span class=rvts7>3.4. Части графа</span></p>
+<p class=rvps28><span class=rvts6><br></span></p>
+<p          class=rvps29><span         class=rvts6>Граф         </span><span
+class=rvts8>Н</span><span class=rvts6> = (</span><span
+class=rvts8>W</span><span  class=rvts6>, </span><span class=rvts8>F</span><span
+class=rvts6>)                  называется                 </span><span
+class=rvts8>подграфом</span><span  class=rvts6> графа </span><span
+class=rvts8>G</span><span class=rvts6> = (</span><span
+class=rvts8>V</span><span  class=rvts6>, </span><span class=rvts8>E</span><span
+class=rvts6>),       если       </span><span       class=rvts8>W</span><span
+class=rvts6> </span><span class=rvts11>⊆</span><span
+class=rvts6> </span><span  class=rvts8>V</span><span class=rvts6>, </span><span
+class=rvts8>F</span><span class=rvts6> </span><span
+class=rvts11>⊆</span><span class=rvts6> </span><span
+class=rvts8>E</span><span     class=rvts6>     и     обе     вершины,
+инцидентные     любому     ребру     из     </span><span
+class=rvts8>F</span><span   class=rvts6>,   принадлежат  </span><span
+class=rvts8>W</span><span      class=rvts6>.     Подграф     </span><span
+class=rvts8>Н</span><span       class=rvts6>       графа      </span><span
+class=rvts8>G</span><span  class=rvts6> называется его </span><span
+class=rvts8>остовным     подграфом</span><span    class=rvts6>,
+если  </span><span  class=rvts8>W</span><span  class=rvts6> = </span><span
+class=rvts8>V</span><span        class=rvts6>.       Если       </span><span
+class=rvts8>F</span><span   class=rvts6>  является  множеством
+всех    ребер    графа    </span><span   class=rvts8>G</span><span
+class=rvts6>,   все   концы   которых   содержатся   в
+множестве  </span><span  class=rvts8>W</span><span  class=rvts6>,  то
+подграф              </span><span              class=rvts8>Н</span><span
+class=rvts6> = (</span><span class=rvts8>W</span><span
+class=rvts6>, </span><span        class=rvts8>F</span><span       class=rvts6>)
+называется   </span><span   class=rvts8>подграфом</span><span
+class=rvts6>,           </span><span          class=rvts8>порожденным
+множеством W</span><span class=rvts6>.</span></p> 
+<p                   class=rvps30><span                   class=rvts6>Любая
+последовательность            вида            </span><span
+class=rvts8>v</span><span class=rvts15>1</span><span
+class=rvts6>, </span><span class=rvts8>e</span><span
+class=rvts15>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts15>2</span><span
+class=rvts6>, </span><span class=rvts8>e</span><span
+class=rvts15>2</span><span class=rvts6>, … , </span><span
+class=rvts8>e</span><span class=rvts10>k</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts10>k</span><span  class=rvts15> + 1</span><span class=rvts6>, где
+</span><span         class=rvts8>v</span><span        class=rvts15>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts15>2</span><span class=rvts6>, … , </span><span
+class=rvts8>v</span><span class=rvts10>k</span><span
+class=rvts15> + 1</span><span             class=rvts6>            </span><span
+class=rvts9>–</span><span   class=rvts6>  вершины  некоторого
+графа,          а          </span><span          class=rvts8>e</span><span
+class=rvts15>1</span><span        class=rvts6>, </span><span       class=rvts8>
+e</span><span   class=rvts15>2</span><span   class=rvts6>, … , </span><span
+class=rvts8>e</span><span  class=rvts10>k</span><span  class=rvts6> </span><span
+class=rvts9>–</span><span   class=rvts6>   его   ребра,   причем
+</span><span         class=rvts8>e</span><span        class=rvts10>i</span><span
+class=rvts6> = </span><span class=rvts8>v</span><span
+class=rvts10>i</span><span  class=rvts8>v</span><span class=rvts10>i</span><span
+class=rvts15> + 1</span><span            class=rvts6>            (</span><span
+class=rvts8>i</span><span class=rvts6> = 1, 2, … , </span><span
+class=rvts8>k</span><span   class=rvts6>),   называется   </span><span
+class=rvts8>маршрутом</span><span      class=rvts6>.     Маршрут
+может  быть  конечным либо бесконечным. Одно
+и  то  же  ребро может встречаться в маршруте
+не       один      раз.      </span><span      class=rvts8>Длиной
+маршрута</span><span          class=rvts6>          называется
+количество   входящих  в  него  ребер,  причем
+каждое     ребро     считается     столько    раз,
+сколько      оно      встречается      в      данном
+маршруте.</span></p> 
+<p     class=rvps31><span    class=rvts6>Маршрут,    все    ребра
+которого     различны,     называется     </span><span
+class=rvts8>цепью</span><span      class=rvts6>.      Цепь,      все
+вершины     которой     различны,     называется
+</span><span  class=rvts8>простой цепью</span><span class=rvts6>. С
+понятием  длины цепи связано понятие </span><span
+class=rvts8>расстояния</span><span  class=rvts6> в графе. Под
+расстоянием       между       двумя      вершинами
+понимается       длина       кратчайшей       цепи,
+связывающей данные вершины.</span></p> 
+<p        class=rvps32><span       class=rvts6>Маршрут       </span><span
+class=rvts8>v</span><span class=rvts15>1</span><span
+class=rvts6>, </span><span class=rvts8>e</span><span
+class=rvts15>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts15>2</span><span
+class=rvts6>, </span><span class=rvts8>e</span><span
+class=rvts15>2</span><span class=rvts6>, … , </span><span
+class=rvts8>e</span><span class=rvts10>k</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts15>1</span><span    class=rvts6>   называется   </span><span
+class=rvts8>циклическим</span><span class=rvts6>.
+Циклическая      цепь      называется      </span><span
+class=rvts8>циклом</span><span          class=rvts6>.         </span><span
+class=rvts8>Простой    цикл</span><span   class=rvts6>   </span><span
+class=rvts9>–</span><span     class=rvts6>    это    циклическая
+простая цепь.</span></p> 
+<p  class=rvps33><span  class=rvts6>Любую  цепь  и любой цикл
+графа      можно      рассматривать     как     его
+подграф.</span></p> 
+<p   class=rvps34><span   class=rvts6>Граф   является   </span><span
+class=rvts8>связным</span><span    class=rvts6>,    если   между
+любыми   двумя  его  вершинами  имеется  цепь.
+Связный     подграф    некоторого    графа,    не
+содержащийся  ни  в каком другом его связном
+подграфе,                называется               </span><span
+class=rvts8>компонентой  связности</span><span  class=rvts6>
+или  просто </span><span class=rvts8>компонентой</span><span
+class=rvts6> данного графа.</span></p> 
+<p  class=rvps35><span  class=rvts6>В ориентированном графе
+</span><span       class=rvts8>маршрутом</span><span       class=rvts6>
+называется  последовательность вида </span><span
+class=rvts8>v</span><span class=rvts15>1</span><span
+class=rvts6>, </span><span class=rvts8>а</span><span
+class=rvts15>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts15>2</span><span
+class=rvts6>, </span><span class=rvts8>а</span><span
+class=rvts15>2</span><span class=rvts6>, … , </span><span
+class=rvts8>а</span><span class=rvts10>k</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts10>k</span><span  class=rvts15> + 1</span><span class=rvts6>, где
+для    всякой    дуги    </span><span    class=rvts8>а</span><span
+class=rvts10>i</span><span      class=rvts6>     вершина     </span><span
+class=rvts8>v</span><span         class=rvts10>i</span><span        class=rvts6>
+является   началом,   а  </span><span  class=rvts8>v</span><span
+class=rvts10>i</span><span      class=rvts15> + 1</span><span     class=rvts6>
+</span><span      class=rvts9>–</span><span     class=rvts6>     концом.
+Вершина               </span><span              class=rvts8>v</span><span
+class=rvts15>1</span><span    class=rvts6>    является    началом
+маршрута,   а   вершина  </span><span  class=rvts8>v</span><span
+class=rvts10>k</span><span      class=rvts15> + 1</span><span     class=rvts6>
+</span><span        class=rvts9>–</span><span        class=rvts6>       его
+концом.&nbsp;  Маршрут,  в  котором  все вершины,
+кроме,    возможно,    начальной    и   конечной,
+различны,                называется               </span><span
+class=rvts8>путем</span><span  class=rvts6>. Путь вида </span><span
+class=rvts8>v</span><span class=rvts15>1</span><span
+class=rvts6>, </span><span class=rvts8>а</span><span
+class=rvts15>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts15>2</span><span
+class=rvts6>, </span><span class=rvts8>а</span><span
+class=rvts15>2</span><span class=rvts6>, … , </span><span
+class=rvts8>а</span><span class=rvts10>k</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts15>1</span><span    class=rvts6>   называется   </span><span
+class=rvts8>контуром</span><span class=rvts6>.</span></p> 
+<p        class=rvps36><span       class=rvts6>Вершина       </span><span
+class=rvts8>v</span><span     class=rvts10>j</span><span     class=rvts6>     в
+ориентированном    графе    является    </span><span
+class=rvts8>достижимой</span><span  class=rvts6>  из  вершины
+</span><span         class=rvts8>v</span><span        class=rvts10>j</span><span
+class=rvts6>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+если  в  этом  графе  имеется путь с началом в
+</span><span  class=rvts8>v</span><span  class=rvts10>i</span><span class=rvts6>
+и       концом       в       </span><span      class=rvts8>v</span><span
+class=rvts10>j</span><span      class=rvts6>.     Ориентированный
+граф       является       </span><span      class=rvts8>сильно
+связным</span><span     class=rvts6>,    если    любая    его
+вершина достижима из любой вершины.</span></p> 
+<p    class=rvps37><span   class=rvts6>Ориентированный   граф
+называется </span><span
+class=rvts8>транзитивным</span><span   class=rvts6>,  если  из
+существования    дуг    </span><span   class=rvts8>a</span><span
+class=rvts10>p</span><span class=rvts6> = (</span><span
+class=rvts8>v</span><span  class=rvts10>i</span><span class=rvts8>,v</span><span
+class=rvts10>j</span><span         class=rvts6>)         и         </span><span
+class=rvts8>a</span><span class=rvts10>q</span><span
+class=rvts6> = (</span><span class=rvts8>v</span><span
+class=rvts10>j</span><span  class=rvts6>,</span><span  class=rvts8>v</span><span
+class=rvts10>k</span><span              class=rvts6>)             следует
+существование   дуги   </span><span   class=rvts8>a</span><span
+class=rvts10>r</span><span class=rvts6> = (</span><span
+class=rvts8>v</span><span  class=rvts10>i</span><span  class=rvts6>,</span><span
+class=rvts8>v</span><span        class=rvts10>k</span><span       class=rvts6>).
+</span><span class=rvts8>Транзитивным
+замыканием</span><span  class=rvts6>  ориентированного
+графа                 </span><span                class=rvts8>G</span><span
+class=rvts6> = (</span><span class=rvts8>V</span><span
+class=rvts6>, </span><span       class=rvts8>А</span><span       class=rvts6>)
+называется     граф     </span><span    class=rvts8>G*</span><span
+class=rvts6> = (</span><span class=rvts8>V</span><span
+class=rvts6>, </span><span  class=rvts8>А*</span><span  class=rvts6>),  где
+</span><span   class=rvts8>А*</span><span  class=rvts6>  получено  из
+</span><span   class=rvts8>А</span><span   class=rvts6>  добавлением
+минимально     возможного    количества    дуг,
+необходимого   для  того,  чтобы  граф  </span><span
+class=rvts8>G*</span><span                  class=rvts6>                  был
+транзитивным.</span></p> 
+<p class=rvps38><span class=rvts6><br></span></p>
+<p><span class=rvts7>3.5. Обобщения графов</span></p>
+<p><span class=rvts7><br></span></p>
+<p    class=rvps39><span   class=rvts6>Существуют   различные
+обобщения   понятия   графа.   Одним  из  таких
+обобщений                 является                 </span><span
+class=rvts8>мультиграф</span><span  class=rvts6>.  Это граф, в
+котором    любые    две    вершины   могут   быть
+связаны    любым    количеством    ребер,   т. е.
+мультиграф  допускает </span><span class=rvts8>кратные
+ребра</span><span class=rvts6>.</span></p> 
+<p    class=rvps40><span    class=rvts6>В   некоторых   задачах
+используются   графы,  на  множествах  вершин
+или      ребер      которых      заданы     функции,
+принимающие        значения       из       множеств
+действительных,     целых    или    натуральных
+чисел.    Эти    значения    называются   </span><span
+class=rvts8>весами</span><span  class=rvts6>. Тогда речь идет
+о</span><span    class=rvts8>   взвешенных   графах</span><span
+class=rvts6>,          о         графах         со         </span><span
+class=rvts8>взвешенными  вершинами</span><span class=rvts6>,
+со  </span><span class=rvts8>взвешенными ребрами</span><span
+class=rvts6>   или   со   </span><span   class=rvts8>взвешенными
+дугами</span><span  class=rvts6>.  Графы  со взвешенными
+ребрами      используются     в     транспортных
+задачах   и   в   задачах   о   потоках  в  сетях.
+Мультиграф   можно  рассматривать  как  граф,
+ребра     которого     взвешены    натуральными
+числами,         представляющими        кратности
+ребер.</span></p> 
+<p  class=rvps41><span  class=rvts6>Иногда  рассматриваются
+</span><span        class=rvts8>смешанные        графы</span><span
+class=rvts6>,    у    которых   наряду   с   элементами
+ориентированного    графа   (дугами)   имеются
+элементы  неориентированного  графа (ребра).
+Ребром       может       быть      заменена      пара
+противоположно       направленных       дуг      в
+ориентированном  графе,  соединяющих  одни и
+те        же       вершины.       Смешанные       графы
+используются  при  решении  задач, связанных
+с  установлением  схемы выполнения операций
+в технологическом процессе.</span></p> 
+<p   class=rvps42><span   class=rvts6>Еще   одним   обобщением
+понятия          графа         является         </span><span
+class=rvts8>гиперграф</span><span      class=rvts6>,     который
+также   представляет   собой   два   множества
+</span><span    class=rvts9>–</span><span    class=rvts6>   множество
+вершин    и    множество   ребер,   однако   если
+ребром    графа    является   пара   вершин,   то
+ребром     гиперграфа     может     быть     любое
+непустое           подмножество           множества
+вершин.</span></p> 
+<p  class=rvps43><span  class=rvts6>Гиперграф может служить
+моделью      принципиальной      электрической
+схемы.   При   этом   полюса  элементов  данной
+схемы  соответствуют вершинам гиперграфа, а
+электрические   цепи  </span><span  class=rvts9>–</span><span
+class=rvts6>   ребрам.   Электрическая   цепь  здесь
+рассматривается    как    множество   выводов,
+соединенных     между    собой    проводниками.
+Многие     понятия,     связанные    с    графами,
+распространяются    на    случай   гиперграфа,
+однако    графически   изобразить   гиперграф
+гораздо  труднее,  чем  граф.  Вместе  с тем от
+гиперграфа   можно   перейти   к   двудольному
+графу,  долями  которого  являются множество
+вершин   и   множество   ребер   гиперграфа,   а
+ребра    показывают   принадлежность   вершин
+гиперграфа его ребрам.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body></html>

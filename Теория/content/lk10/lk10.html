@@ -1,0 +1,1637 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Методы
+комбинаторного поиска</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts10
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts11
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts14
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts15
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts17
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts18
+{
+ font-size: 11pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts19
+{
+ font-size: 7pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts20
+{
+ font-size: 7pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts21
+{
+ font-size: 7pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps6
+{
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps26
+{
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: center;
+ text-indent: 38px;
+ margin: 0px 76px 8px 0px;
+}
+.rvps33
+{
+ text-align: center;
+ text-indent: 38px;
+ margin: 0px 44px 0px 0px;
+}
+.rvps34
+{
+ text-align: center;
+ text-indent: 38px;
+ margin: 0px 44px 8px 0px;
+}
+.rvps35
+{
+ text-align: right;
+}
+.rvps36
+{
+ margin: 0px 0px 0px 156px;
+}
+.rvps37
+{
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: center;
+ text-indent: 38px;
+ margin: 0px 38px 8px 0px;
+}
+.rvps41
+{
+ text-align: center;
+ text-indent: 38px;
+ margin: 0px 20px 0px 0px;
+}
+.rvps42
+{
+ text-align: center;
+ text-indent: 38px;
+ margin: 0px 20px 8px 0px;
+}
+.rvps43
+{
+ text-indent: 38px;
+}
+.rvps44
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps45
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps46
+{
+ text-indent: 38px;
+}
+.rvps47
+{
+ text-indent: 38px;
+}
+.rvps48
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps49
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps50
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps51
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 10</span></p>
+<p><span  class=rvts7>Комбинаторные  задачи  и  методы
+комбинаторного поиска </span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps3><span  class=rvts6>Можно  выделить  три типа
+комбинаторных   задач:  </span><span  class=rvts8>задачи
+подсчета</span><span  class=rvts6>  числа  конфигураций
+определенного                 вида;                </span><span
+class=rvts8>перечислительные задачи</span><span
+class=rvts6>,     в    результате    решения    которых
+получаются  все  конструкции  определенного
+вида  (например,  получение всех независимых
+множеств                    графа);                    </span><span
+class=rvts8>оптимизационные комбинаторные
+задачи</span><span    class=rvts6>,   решением   любой   из
+которых   является  конструкция,  обладающая
+оптимальным          значением          некоторого
+параметра  среди  всех  конструкций  данного
+вида         (например,         раскраска        графа
+минимальным количеством цветов).</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p class=rvps5><span class=rvts7>10.1. Задачи подсчета</span></p>
+<p class=rvps6><span class=rvts6><br></span></p>
+<p   class=rvps7><span   class=rvts6>Рассмотрим   простейшие
+задачи подсчета.</span></p> 
+<p  class=rvps8><span  class=rvts8>Число размещений U</span><span
+class=rvts6>(</span><span  class=rvts8>m</span><span class=rvts6>, </span><span
+class=rvts8>n</span><span           class=rvts6>)          показывает,
+сколькими     способами     можно    разместить
+</span><span  class=rvts8>п</span><span  class=rvts6>  предметов  по
+</span><span   class=rvts8>т</span><span   class=rvts6>   ящикам.  Для
+каждого   из   </span><span   class=rvts8>п</span><span   class=rvts6>
+предметов    имеется   </span><span   class=rvts8>т</span><span
+class=rvts6>               вариантов              размещения.
+Следовательно,</span></p> 
+<p class=rvps9><span class=rvts6><br></span></p>
+<p    class=rvps1><span    class=rvts8>U</span><span   class=rvts6>(</span><span
+class=rvts8>m</span><span  class=rvts6>, </span><span class=rvts8>n</span><span
+class=rvts6>) = </span><span class=rvts8>т</span><span
+class=rvts9>п</span><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p    class=rvps10><span    class=rvts8>Числом    перестановок
+Р</span><span        class=rvts6>(</span><span       class=rvts8>п</span><span
+class=rvts6>)        является        число       различных
+последовательностей,         которые        можно
+составить  из  </span><span  class=rvts8>п</span><span  class=rvts6>
+предметов.     В    последовательности    всего
+</span><span     class=rvts8>п</span><span     class=rvts6>     позиций.
+Зафиксируем     один     предмет.     Его    можно
+разместить  в  одну  из </span><span class=rvts8>п</span><span
+class=rvts6>      позиций,      т. е.      имеем     </span><span
+class=rvts8>п</span><span            class=rvts6>            вариантов
+размещения.      Для      следующего     предмета
+имеется              </span><span              class=rvts8>п</span><span
+class=rvts6> </span><span      class=rvts10>–</span><span     class=rvts6> 1
+вариантов       размещения       по      незанятым
+позициям и т. д. Таким образом,</span></p> 
+<p class=rvps11><span class=rvts6><br></span></p>
+<p    class=rvps1><span   class=rvts8>Р</span><span   class=rvts6>(</span><span
+class=rvts8>n</span><span class=rvts6>) = </span><span
+class=rvts8>п </span><span class=rvts6>· (</span><span
+class=rvts8>п</span><span class=rvts6> </span><span
+class=rvts10>–</span><span
+class=rvts6> 1) · … · 2 · 1 = </span><span
+class=rvts8>п</span><span class=rvts6>!.</span></p> 
+<p class=rvps12><span class=rvts6><br></span></p>
+<p   class=rvps13><span   class=rvts8>Число   размещений   без
+повторений           А</span><span          class=rvts6>(</span><span
+class=rvts8>m</span><span  class=rvts6>, </span><span class=rvts8>n</span><span
+class=rvts6>)  представляет  собой  число способов
+размещения    </span><span   class=rvts8>п</span><span   class=rvts6>
+предметов  по  </span><span  class=rvts8>т</span><span  class=rvts6>
+ящикам  не  более  чем  по  одному  в  ящик (при
+этом   считается,   что  </span><span  class=rvts8>m</span><span
+class=rvts6>      </span><span     class=rvts11>≥</span><span     class=rvts6>
+</span><span       class=rvts8>n</span><span      class=rvts6>).      Путем
+рассуждений,          подобных          предыдущим,
+получим</span></p> 
+
+<center><img src="lk10/f2.png"></center>
+
+<p  class=rvps16><span  class=rvts8>Число сочетаний С</span><span
+class=rvts6>(</span><span  class=rvts8>m</span><span class=rvts6>, </span><span
+class=rvts8>n</span><span           class=rvts6>)          показывает,
+сколькими          способами         из         </span><span
+class=rvts8>т</span><span     class=rvts6>     предметов    можно
+выбрать      </span><span     class=rvts8>п</span><span     class=rvts6>
+предметов.  В данном случае не важно, в каком
+порядке        эти        предметы       выбираются,
+поэтому</span></p>
+<center><img src="lk10/f3.png"></center>
+
+<p><span   class=rvts7>10.2.  Особенности  комбинаторных
+задач</span></p> 
+<p class=rvps20><span class=rvts6><br></span></p>
+<p               class=rvps21><span               class=rvts6>Примерами
+оптимизационных       комбинаторных      задач,
+решение              которых              предполагает
+комбинаторный              поиск,             являются
+рассмотренные  нами  в  предыдущих  разделах
+поиск        наибольшего       независимого       и
+наименьшего        доминирующего       множеств,
+раскраска графа.</span></p> 
+<p    class=rvps22><span    class=rvts6>В    отличие   от   задач
+традиционной     математики,     где     решение
+получается    с    помощью    целенаправленной
+вычислительной       процедуры,      однозначно
+ведущей    к    цели,    решение   комбинаторной
+задачи      сводится      зачастую     к     </span><span
+class=rvts8>полному       перебору</span><span       class=rvts6>
+различных      вариантов.      Перебираются     и
+испытываются    конструкции    определенного
+вида,    среди    которых    должно   находиться
+решение  задачи.  Как  только выясняется, что
+очередная   конструкция  является  решением,
+процесс    поиска    решения    можно    считать
+завершенным.</span></p> 
+<p        class=rvps23><span       class=rvts6>В       традиционной
+математике  трудоемкость  задачи  обычно  не
+очень   сильно   зависит  от  размера  области
+возможных    решений,   в   то   время   как   для
+комбинаторных      задач     эта     зависимость
+весьма велика.</span></p> 
+<p    class=rvps24><span   class=rvts6>Комбинаторные   задачи
+характерны   еще   тем,  что  множество,  среди
+элементов   которого  отыскивается  решение,
+всегда  конечно.  Реализовав полный перебор,
+либо  найдем  решение,  либо  убедимся  в  том,
+что  решения  нет.&nbsp;  Таким  образом,  всякая
+подобная   задача   может&nbsp;  быть  решена&nbsp;
+за&nbsp;  конечное&nbsp;  время.&nbsp;  Однако  это не
+значит,    что    она    может   быть   решена   за
+практически     приемлемое     время    даже    с
+помощью           самой           быстродействующей
+вычислительной машины.</span></p> 
+<p class=rvps25><span class=rvts6><br></span></p>
+<p><span              class=rvts7>10.3.             Вычислительная
+сложность</span></p> 
+<p class=rvps26><span class=rvts6><br></span></p>
+<p  class=rvps27><span  class=rvts6>Трудоемкость алгоритма,
+или   временн</span><span  class=rvts12>á</span><span  class=rvts6>я
+сложность,  т. е.  время, затрачиваемое на&nbsp;
+выполнение   алгоритма,  оценивается  числом
+условных   элементарных   операций,   которые
+необходимо   выполнить  при  решении  задачи.
+Естественно,     эта    величина    зависит    от
+объема         исходных        данных,        который
+оценивается          некоторым         параметром.
+Например,   для  графа  это  может  быть  число
+вершин     или    число    ребер.    Трудоемкость
+алгоритма,   таким   образом,   можно   оценить
+некоторой   функцией   </span><span   class=rvts8>f</span><span
+class=rvts6>(</span><span    class=rvts8>n</span><span   class=rvts6>),   где
+</span><span      class=rvts8>п</span><span      class=rvts6>      </span><span
+class=rvts10>–</span><span   class=rvts6>  натуральное  число,
+выражающее объем исходных данных.</span></p> 
+<p   class=rvps28><span   class=rvts6>Принято  писать  </span><span
+class=rvts8>f</span><span   class=rvts6>(</span><span  class=rvts8>n</span><span
+class=rvts6>) = </span><span class=rvts8>O</span><span
+class=rvts6>(</span><span   class=rvts8>g</span><span  class=rvts6>(</span><span
+class=rvts8>n</span><span        class=rvts6>)),       где       </span><span
+class=rvts8>g</span><span   class=rvts6>(</span><span  class=rvts8>n</span><span
+class=rvts6>)     </span><span     class=rvts11>−</span><span     class=rvts6>
+некоторая   конкретная   функция   от   </span><span
+class=rvts8>n</span><span  class=rvts6>,  если  найдется  такая
+константа  </span><span class=rvts8>с</span><span class=rvts6>, что
+</span><span         class=rvts8>f</span><span         class=rvts6>(</span><span
+class=rvts8>n</span><span class=rvts6>) </span><span
+class=rvts11>≤</span><span class=rvts6> </span><span
+class=rvts8>сg</span><span  class=rvts6>(</span><span class=rvts8>n</span><span
+class=rvts6>)   для   любого   </span><span   class=rvts8>n</span><span
+class=rvts6> </span><span  class=rvts11>≥</span><span class=rvts6> 0. При
+этом       употребляют       такие       выражения:
+«трудоемкость      алгоритма     есть     </span><span
+class=rvts8>O</span><span   class=rvts6>(</span><span  class=rvts8>g</span><span
+class=rvts6>(</span><span   class=rvts8>n</span><span   class=rvts6>))»  или
+«алгоритм   решает   задачу  за  время  </span><span
+class=rvts8>O</span><span   class=rvts6>(</span><span  class=rvts8>g</span><span
+class=rvts6>(</span><span  class=rvts8>n</span><span  class=rvts6>))». Если
+трудоемкость  не зависит от объема исходных
+данных,  то  для ее обозначения используется
+символ     </span><span     class=rvts8>О</span><span    class=rvts6>(1).
+Алгоритм              трудоемкости              </span><span
+class=rvts8>О</span><span  class=rvts6>(</span><span class=rvts8>п</span><span
+class=rvts6>)                    называют                   </span><span
+class=rvts8>линейным</span><span      class=rvts6>.     Алгоритм
+трудоемкости         </span><span         class=rvts8>О</span><span
+class=rvts6>(</span><span  class=rvts8>п</span><span  class=rvts9>b</span><span
+class=rvts6>),   где   </span><span   class=rvts8>b</span><span  class=rvts6>
+</span><span    class=rvts10>–</span><span   class=rvts6>   константа
+(возможно,     дробная),     называется    </span><span
+class=rvts8>полиномиальным</span><span    class=rvts6>.   Если
+</span><span         class=rvts8>g</span><span         class=rvts6>(</span><span
+class=rvts8>n</span><span             class=rvts6>)             является
+показательной   функцией,   например  2</span><span
+class=rvts9>п</span><span    class=rvts6>,    то    говорят,    что
+алгоритм                  обладает                  </span><span
+class=rvts8>неполиномиальной</span><span   class=rvts6>,  или
+</span><span class=rvts8>экспоненциальной</span><span
+class=rvts6>, сложностью.</span></p> 
+<p    class=rvps29><span    class=rvts6>Оценка    трудоемкости
+алгоритма    позволяет    судить   о   том,   как
+влияет      быстродействие      вычислительной
+машины    на    время    выполнения   алгоритма.
+Пусть         имеется         пять         алгоритмов,
+трудоемкость       которых       соответственно
+</span><span      class=rvts8>п</span><span      class=rvts6>,     </span><span
+class=rvts8>n</span><span class=rvts6> log</span><span
+class=rvts8>n</span><span  class=rvts6>, </span><span class=rvts8>п</span><span
+class=rvts13>2</span><span               class=rvts6>,              </span><span
+class=rvts8>п</span><span     class=rvts13>3</span><span     class=rvts6>    и
+2</span><span      class=rvts9>п</span><span      class=rvts6>.      Пусть
+условная   элементарная   операция,   которая
+является  единицей  измерения  трудоемкости
+алгоритма,         выполняется         за         одну
+миллисекунду.  В табл. 10.1, заимствованной из
+работы  [1],  показано,  какого  размера задачи
+могут      быть     решены     каждым     из     этих
+алгоритмов  за  одну  секунду,  одну  минуту и
+один  час.  Из  этой  таблицы  видно, например,
+что       за       одну      минуту      алгоритм      с
+трудоемкостью        </span><span        class=rvts8>п</span><span
+class=rvts13>2</span><span  class=rvts6> решает задачу в шесть
+раз  большую,  чем  алгоритм  с трудоемкостью
+</span><span        class=rvts8>п</span><span        class=rvts13>3</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps30><span  class=rvts6>Следует,  однако, иметь в
+виду,  что  трудоемкость, выражаемая большей
+степенью    полинома,   может   иметь   меньший
+множитель  </span><span  class=rvts8>с</span><span  class=rvts6>  из
+приведенного     выше     неравенства    </span><span
+class=rvts8>f</span><span   class=rvts6>(</span><span  class=rvts8>n</span><span
+class=rvts6>) </span><span class=rvts11>≤</span><span
+class=rvts6> </span><span class=rvts8>сg</span><span
+class=rvts6>(</span><span  class=rvts8>n</span><span  class=rvts6>).  Точно
+так  же  сложность  алгоритма,  которая носит
+экспоненциальный    характер,    может   иметь
+множитель,   меньший,   чем  у  полиномиальной
+сложности.    При    разработке   компьютерных
+программ   для   решения  практических  задач
+важно  знать,  при каких значениях параметра
+</span><span       class=rvts8>п</span><span       class=rvts6>      время
+выполнения    экспоненциального    алгоритма
+оказывается   меньше,  чем  время  выполнения
+полиномиального  алгоритма, решающего ту же
+задачу.</span></p> 
+<p class=rvps31><span class=rvts14><br></span></p>
+<p class=rvps32><span class=rvts15>Таблица 10.1</span></p>
+<p     class=rvps33><span    class=rvts15>Связь    трудоемкости
+алгоритма с максимальным размером</span></p> 
+<p    class=rvps34><span    class=rvts15>задачи,   решаемой   за
+единицу времени</span></p> 
+<div      class=rvps36><table      border=1     cellpadding=4     cellspacing=-1
+style="border-width: 0px; border-collapse: collapse;"> 
+<tr valign=top>
+<td  width=75  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:           solid;           border-bottom:          none;"><p><span
+class=rvts14>Временн</span><span class=rvts16>á</span><span
+class=rvts14>я</span></p> 
+</td>
+<td  colspan=3  width=213  valign=top  style="border-width  : 1px; border-color:
+#000000;           border-style:           solid;"><p          class=rvps1><span
+class=rvts14>Максимальный размер задачи</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=75  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:            solid;            border-top:           none;"><p><span
+class=rvts14>сложность</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps1><span class=rvts14>1 с</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps1><span class=rvts14>1 мин</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps1><span class=rvts14>1 ч</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=75  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps1><span class=rvts17>п</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>1000</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:    solid;"><p    class=rvps35><span   class=rvts14>6 </span><span
+class=rvts18>×</span><span class=rvts14> 10</span><span
+class=rvts19>4</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:   solid;"><p   class=rvps35><span   class=rvts14>3,6 </span><span
+class=rvts18>×</span><span class=rvts14> 10</span><span
+class=rvts19>6</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=75  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p    class=rvps1><span    class=rvts17>п</span><span
+class=rvts14> log</span><span class=rvts17>n</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>140</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>4893</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:   solid;"><p   class=rvps35><span   class=rvts14>2,0 </span><span
+class=rvts18>×</span><span class=rvts14> 10</span><span
+class=rvts19>5</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=75  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts17>n</span><span
+class=rvts19>2</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>31</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>244</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>1897</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=75  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts17>n</span><span
+class=rvts19>3</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>10</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>39</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>153</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=75  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts14>2</span><span
+class=rvts20>n</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>9</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>15</span></p> 
+</td>
+<td  width=62  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps35><span class=rvts14>21</span></p> 
+</td>
+</tr>
+</table>
+</div>
+<p class=rvps37><span class=rvts14><br></span></p>
+<p     class=rvps38><span     class=rvts6>Для     очень     многих
+практических          комбинаторных          задач
+существуют               алгоритмы               только
+экспоненциальной       трудоемкости.      Может
+показаться,     что     с     совершенствованием
+вычислительной        техники        и        ростом
+быстродействия       вычислительных       машин
+проблема   трудоемкости  ослабевает.  Однако
+данные,  приведенные  в  табл. 10.2  [1], говорят,
+что  это  не  так.  Пусть  следующее поколение
+вычислительных        машин       будет       иметь
+быстродействие,  в  десять раз большее, чем у
+современных      вычислительных      машин.     В
+табл. 10.2        показано,        как        благодаря
+увеличению       быстродействия       возрастут
+размеры  задач, которые могут быть решены за
+некоторую   фиксированную  единицу  времени.
+Задачи      достаточно      большого     размера,
+решаемые               только               алгоритмами
+экспоненциальной   трудоемкости,  вообще  не
+могут      быть      решены      за      практически
+приемлемое   время,  даже  если  надеяться  на
+существенное    увеличение    быстродействия
+вычислительных машин в будущем.</span></p> 
+<p class=rvps39><span class=rvts14><br></span></p>
+<p class=rvps40><span class=rvts15>Таблица 10.2</span></p>
+<p   class=rvps41><span   class=rvts15>Связь  размера  задачи,
+решаемой за заданное время,</span></p> 
+<p     class=rvps42><span     class=rvts15>с     быстродействием
+вычислительной машины</span></p> 
+<div      class=rvps36><table      border=1     cellpadding=4     cellspacing=-1
+style="border-width: 0px; border-collapse: collapse;"> 
+<tr valign=top>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:      solid;     border-bottom:     none;"><p     class=rvps1><span
+class=rvts14>Временн</span><span class=rvts16>á</span><span
+class=rvts14>я</span></p> 
+</td>
+<td  colspan=2  width=233  valign=top  style="border-width  : 1px; border-color:
+#000000;           border-style:           solid;"><p          class=rvps1><span
+class=rvts14>Максимальный размер задачи</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:      solid;      border-top:      none;"><p      class=rvps1><span
+class=rvts14>сложность</span></p> 
+</td>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:        solid;"><p        class=rvps1><span       class=rvts14>до
+ускорения</span></p> 
+</td>
+<td  width=119  valign=top  style="border-width  :  1px;  border-color: #000000;
+border-style:      solid;"><p      class=rvps1><span     class=rvts14>после
+ускорения</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style: solid;"><p class=rvps1><span class=rvts17>п</span></p> 
+</td>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts17>s</span><span
+class=rvts21>1</span></p> 
+</td>
+<td  width=119  valign=top  style="border-width  :  1px;  border-color: #000000;
+border-style:    solid;"><p   class=rvps1><span   class=rvts14>10   </span><span
+class=rvts17>s</span><span class=rvts21>1</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p    class=rvps1><span    class=rvts17>п</span><span
+class=rvts14> log</span><span class=rvts17>n</span></p> 
+</td>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts17>s</span><span
+class=rvts21>2</span></p> 
+</td>
+<td  width=119  valign=top  style="border-width  :  1px;  border-color: #000000;
+border-style:    solid;"><p    class=rvps1><span    class=rvts18>≈</span><span
+class=rvts14>         10         </span><span         class=rvts17>s</span><span
+class=rvts21>2</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts17>n</span><span
+class=rvts19>2</span></p> 
+</td>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts17>s</span><span
+class=rvts21>3</span></p> 
+</td>
+<td  width=119  valign=top  style="border-width  :  1px;  border-color: #000000;
+border-style:   solid;"><p   class=rvps1><span   class=rvts14>3,16  </span><span
+class=rvts17>s</span><span class=rvts21>3</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts17>n</span><span
+class=rvts19>3</span></p> 
+</td>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts17>s</span><span
+class=rvts21>4</span></p> 
+</td>
+<td  width=119  valign=top  style="border-width  :  1px;  border-color: #000000;
+border-style:   solid;"><p   class=rvps1><span   class=rvts14>2,15  </span><span
+class=rvts17>s</span><span class=rvts21>4</span></p> 
+</td>
+</tr>
+<tr valign=top>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts14>2</span><span
+class=rvts20>n</span></p> 
+</td>
+<td  width=99  valign=top  style="border-width  :  1px;  border-color:  #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts17>s</span><span
+class=rvts21>5</span></p> 
+</td>
+<td  width=119  valign=top  style="border-width  :  1px;  border-color: #000000;
+border-style:     solid;"><p     class=rvps1><span    class=rvts17>s</span><span
+class=rvts21>5</span><span class=rvts14> </span><span
+class=rvts18>+</span><span class=rvts14> 3,3</span></p> 
+</td>
+</tr>
+</table>
+</div>
+<p class=rvps43><span class=rvts14><br></span></p>
+<p   class=rvps44><span   class=rvts6>Иногда   удается   найти
+способы    сокращения    перебора    благодаря
+некоторым         особенностям         конкретных
+исходных данных.</span></p> 
+<p   class=rvps45><span   class=rvts6>Другой  путь  выхода  из
+такого    положения   </span><span   class=rvts10>–</span><span
+class=rvts6>         использование         приближенных
+методов.  Для  практических  задач  не всегда
+требуется   получать  точное  решение.  Часто
+достаточно     иметь     решение,     близкое    к
+оптимальному.  Пример  приближенного метода
+рассмотрен  нами  ранее  при  решении  задачи
+раскраски графа.</span></p> 
+<p class=rvps46><span class=rvts6><br></span></p>
+<p><span     class=rvts7>10.4.     Методы     комбинаторного
+поиска</span></p> 
+<p class=rvps47><span class=rvts6><br></span></p>
+<p  class=rvps48><span  class=rvts6>Один из наиболее общих и
+плодотворных        подходов        к        решению
+комбинаторных       задач       заключается      в
+применении            </span><span            class=rvts8>дерева
+поиска</span><span   class=rvts6>.  В  дереве  выделяется
+вершина,       которая      называется      </span><span
+class=rvts8>корнем      дерева</span><span      class=rvts6>      и
+которая  ставится  в  соответствие  исходной
+ситуации     в     процессе     решения    задачи.
+Остальные      вершины      сопоставляются      с
+ситуациями,  которые  можно достичь в данном
+процессе.   Выделение  корня  придает  дереву
+ориентацию,  при  которой  все  пути  ведут из
+корня   в   остальные   вершины.   Дуги   дерева
+соответствуют           некоторым           простым
+операциям,   представляющим   шаги   процесса
+решения,          и          связывают          вершины,
+соответствующие  ситуациям, одна из которых
+преобразуется     в     другую    в    результате
+выполнения   шага.  Для  ситуации  характерно
+разнообразие  вариантов  выбора  очередного
+шага,  представленных  дугами, исходящими из
+соответствующей         вершины.        Некоторые
+ситуации соответствуют решениям.</span></p> 
+<p     class=rvps49><span     class=rvts6>Дерево     поиска     не
+задается   априори,   а   строится  в  процессе
+поиска:       когда       возникает       некоторая
+ситуация,   тогда  и  определяются  возможные
+направления              процесса,             которые
+представляются     исходящими     из    вершины
+дугами.   Естественным  является  стремление
+сокращать   число   этих   дуг,  чтобы  быстрее
+найти   решение.   Способы   этого  сокращения
+строятся  с  учетом особенностей конкретных
+задач.</span></p> 
+<p        class=rvps50><span       class=rvts6>Довольно       общим
+средством         повышения         эффективности
+процесса   решения   задачи  является  </span><span
+class=rvts8>редуцирование</span><span     class=rvts6>,    т. е.
+упрощение   текущей   ситуации,   сокращающее
+объем   вычислений,  проводимых  при  анализе
+множества    вытекающих   из   нее   вариантов.
+Способы        редуцирования        определяются
+особенностями       конкретной       задачи      и
+исходных данных.</span></p> 
+<p               class=rvps51><span               class=rvts6>Процедуру
+комбинаторного   поиска   удобно  проследить
+на   примере   решения   задачи   о  кратчайшем
+покрытии,   которую  рассмотрим  в  следующем
+разделе.</span></p> 
+
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts11
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts14
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts15
+{
+ font-size: 7pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts16
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts17
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts18
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: justify;
+ text-indent: 48px;
+ margin: 0px 0px 0px 103px;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 48px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 48px;
+ margin: 0px 0px 0px 141px;
+}
+.rvps35
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 11</span></p>
+<p><span   class=rvts7>Задача   о  кратчайшем  покрытии
+</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p        class=rvps3><span        class=rvts7>11.1.        Постановка
+задачи</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p    class=rvps5><span    class=rvts6>Многие   комбинаторные
+оптимизационные  задачи  сводятся  к  </span><span
+class=rvts8>задаче  о  кратчайшем  покрытии</span><span
+class=rvts6>,       которая      ставится      следующим
+образом.   Пусть   даны   некоторое  множество
+</span><span      class=rvts8>А</span><span      class=rvts6> = {</span><span
+class=rvts8>a</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>a</span><span class=rvts9>2</span><span
+class=rvts6>, …, </span><span class=rvts8>a</span><span
+class=rvts10>n</span><span   class=rvts6>}  и  совокупность  его
+подмножеств          </span><span          class=rvts8>В</span><span
+class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>В</span><span class=rvts9>2</span><span
+class=rvts6>, …, </span><span class=rvts8>В</span><span
+class=rvts10>т</span><span       class=rvts6>,       т. е.      </span><span
+class=rvts8>B</span><span  class=rvts10>i</span><span class=rvts6> </span><span
+class=rvts11>⊆</span><span class=rvts6> </span><span
+class=rvts8>A</span><span  class=rvts6>,  </span><span class=rvts8>i</span><span
+class=rvts6> = 1, 2, …, </span><span class=rvts8>m</span><span
+class=rvts6>,      причем      </span><span     class=rvts8>В</span><span
+class=rvts9>1</span><span class=rvts6> </span><span
+class=rvts11>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span  class=rvts9>2</span><span class=rvts6> </span><span
+class=rvts11>∪</span><span class=rvts6> … </span><span
+class=rvts11>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts10>т</span><span
+class=rvts6> = </span><span      class=rvts8>А</span><span      class=rvts6>.
+Требуется      среди      данных      подмножеств
+выделить   такую   совокупность   </span> B<sub>j1</sub>,B<sub>j2</sub>, ... , B<sub>jk</sub>  <span     class=rvts6>с    минимальным
+</span><span  class=rvts8>k</span><span  class=rvts6>,  чтобы  каждый
+элемент   из   </span><img src="lk11/f2.png">
+<p   class=rvps6><span  class=rvts6>Одной  из  интерпретаций
+этой        задачи        является       задача       о
+переводчиках.    Из    некоторого   коллектива
+переводчиков,       число      которых      </span><span
+class=rvts8>т</span><span  class=rvts6>  и  каждый  из  которых
+владеет         несколькими         определенными
+языками,          требуется         скомплектовать
+минимальную  по  числу  членов группу, такую,
+чтобы    она   смогла   обеспечить   перевод   с
+любого    из    заданного    множества   языков,
+число  которых </span><span class=rvts8>п</span><span class=rvts6>.
+Здесь  </span><span  class=rvts8>А</span><span  class=rvts6>  </span><span
+class=rvts12>–</span><span   class=rvts6>   множество   языков,
+перевод  с  которых  требуется  обеспечить, а
+</span><span  class=rvts8>В</span><span class=rvts10>i</span><span class=rvts6>
+</span><span    class=rvts12>–</span><span   class=rvts6>   множество
+языков,         которыми        владеет        </span><span
+class=rvts8>i</span><span class=rvts6>-й переводчик.</span></p> 
+<p    class=rvps7><span    class=rvts6>Удобно   рассматривать
+матричную  формулировку  данной  задачи, при
+которой  совокупность </span><span class=rvts8>В</span><span
+class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>В</span><span class=rvts9>2</span><span
+class=rvts6>, …, </span><span class=rvts8>В</span><span
+class=rvts10>т</span><span    class=rvts6>    задается    в   виде
+булевой         матрицы,        строки        которой
+соответствуют    подмножествам    из    данной
+совокупности,         а         столбцы         </span><span
+class=rvts12>–</span><span  class=rvts6> элементам множества
+</span><span     class=rvts8>А</span><span     class=rvts6>.     Элемент
+</span><span    class=rvts8>i</span><span    class=rvts6>-й   строки   и
+</span><span    class=rvts8>j</span><span    class=rvts6>-го    столбца
+имеет  значение  1,  если и только если </span><span
+class=rvts8>a</span><span  class=rvts10>j</span><span class=rvts6> </span><span
+class=rvts11>∈</span><span class=rvts6> </span><span
+class=rvts8>B</span><span  class=rvts10>i</span><span  class=rvts6>. В этом
+случае   говорят,   что  </span><span  class=rvts8>i</span><span
+class=rvts6>-я                     строка                    </span><span
+class=rvts8>покрывает</span><span       class=rvts6>       </span><span
+class=rvts8>j</span><span   class=rvts6>-й  столбец.  Требуется
+найти     такое     множество     строк     данной
+матрицы,    чтобы    каждый   ее   столбец   имел
+единицу   хотя   бы  в  одной  строке  из  этого
+множества,  и  при  этом  мощность выбранного
+множества должна быть минимальной.</span></p> 
+<p class=rvps8><span class=rvts6><br></span></p>
+<p><span  class=rvts7>11.2. Приближенные методы решения
+задачи</span></p> 
+<p class=rvps9><span class=rvts6><br></span></p>
+<p  class=rvps10><span class=rvts6>Существуют приближенные
+методы  решения  данной  задачи. Например, ее
+можно  решать  с  помощью  жадного алгоритма,
+представляющего        собой        многошаговый
+процесс,   где  на  каждом  шаге  выбирается  и
+включается    в    покрытие   строка   заданной
+матрицы,   покрывающая  наибольшее  число  из
+еще   не   покрытых   столбцов.   Этот   процесс
+заканчивается,   когда  все  столбцы  матрицы
+оказываются  покрытыми.  Применение жадного
+алгоритма   иногда  дает  точное  решение,  но
+гарантии  этому  нет.  Например,  если  задана
+матрица</span></p> 
+<p class=rvps11><span class=rvts6><br></span></p>
+<p class=rvps12><span class=rvts6><br></span></p>
+<p class=rvps13><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=252   height=105  alt=""  style="padding  :  1px;"
+src="lk11/img5.jpg"><span class=rvts6>,</span></p> 
+<p><span class=rvts6><br></span></p>
+<p  class=rvps14><span  class=rvts6>первой  для  включения  в
+формируемое      решение     жадный     алгоритм
+выберет      строку     </span><span     class=rvts8>В</span><span
+class=rvts9>1</span><span     class=rvts6>,     после    чего    для
+покрытия  оставшихся  столбцов  должны  быть
+включены    в    решение    обе   строки   </span><span
+class=rvts8>В</span><span     class=rvts9>2</span><span     class=rvts6>     и
+</span><span  class=rvts8>В</span><span class=rvts9>3</span><span class=rvts6>.
+Кратчайшее    же    покрытие   данной   матрицы
+составляют     только     две    строки    </span><span
+class=rvts12>–</span><span              class=rvts6>              </span><span
+class=rvts8>В</span><span     class=rvts9>2</span><span     class=rvts6>     и
+</span><span         class=rvts8>В</span><span        class=rvts9>3</span><span
+class=rvts6>.</span></p> 
+<p      class=rvps15><span      class=rvts6>Более     близкое     к
+кратчайшему     покрытие     получается    чаще
+всего              с             помощью             «</span><span
+class=rvts8>минимаксного</span><span class=rvts6>»
+алгоритма.        Он        представляет       собой
+многошаговый     процесс,    на    каждом    шаге
+которого  выбирается  столбец с минимальным
+числом  единиц  и  из  покрывающих  его  строк
+для   включения   в   решение   выбирается   та,
+которая     покрывает     максимальное    число
+непокрытых     столбцов.     Пусть,     например,
+задана матрица</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=388   height=273  alt=""  style="padding  :  1px;"
+src="lk11/img6.jpg"><span class=rvts6>.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p    class=rvps16><span   class=rvts6>Одним   из   столбцов   с
+минимальным      числом      единиц      является
+столбец              </span><span              class=rvts8>а</span><span
+class=rvts9>6</span><span   class=rvts6>.   Из  покрывающих  его
+строк       максимальное       число      столбцов
+покрывает    строка    </span><span    class=rvts8>В</span><span
+class=rvts9>6</span><span  class=rvts6>.  Включим  эту строку в
+решение  и  удалим  ее  и столбцы, которые она
+покрывает, в результате чего получим</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=260   height=247  alt=""  style="padding  :  1px;"
+src="lk11/img7.jpg"><span class=rvts6>.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p  class=rvps17><span  class=rvts6>Из  оставшихся  столбцов
+минимальное   число   единиц   имеет   столбец
+</span><span        class=rvts8>а</span><span        class=rvts9>10</span><span
+class=rvts6>.    Покрывающие    его    строки   </span><span
+class=rvts8>В</span><span     class=rvts9>4</span><span     class=rvts6>     и
+</span><span  class=rvts8>В</span><span  class=rvts9>9</span><span class=rvts6>
+имеют     одинаковое     число     единиц,    т. е.
+одинаковое  число покрываемых ими, но еще не
+покрытых    столбцов.    Включаем    в   решение
+первую       по       порядку      строку      </span><span
+class=rvts8>В</span><span     class=rvts9>4</span><span     class=rvts6>     и
+получаем матрицу</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=133   height=217  alt=""  style="padding  :  1px;"
+src="lk11/img8.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps18><span   class=rvts6>В   полученной   матрице
+столбцом    с    минимальным    числом    единиц
+является    столбец    </span><span    class=rvts8>а</span><span
+class=rvts9>2</span><span  class=rvts6>,  а  из покрывающих его
+строк       строка       </span><span      class=rvts8>В</span><span
+class=rvts9>7</span><span   class=rvts6>   имеет   максимальное
+число    единиц.    Включение   этой   строки   в
+решение   завершает   процесс,   в  результате
+которого    полученным   покрытием   является
+{</span><span         class=rvts8>B</span><span        class=rvts9>4</span><span
+class=rvts6>, </span><span  class=rvts8>B</span><span class=rvts9>6</span><span
+class=rvts6>, </span><span  class=rvts8>B</span><span class=rvts9>7</span><span
+class=rvts6>}.    Как    будет    показано    ниже,   это
+решение является точным.</span></p> 
+<p class=rvps19><span class=rvts6><br></span></p>
+<p><span class=rvts7>11.3. Точный метод</span></p>
+<p class=rvps20><span class=rvts6><br></span></p>
+<p  class=rvps21><span  class=rvts6>Точный метод нахождения
+кратчайшего   покрытия   представляет  собой
+обход    дерева    поиска.   Текущая   ситуация,
+соответствующая  некоторой  вершине  дерева
+поиска,          представляется         переменной
+матрицей    </span><span    class=rvts13>Х</span><span    class=rvts6>,
+которая   показывает,  какие  столбцы  еще  не
+покрыты  и  какие  строки можно использовать
+для  их покрытия. В этой ситуации выбирается
+первый   из   столбцов  с  минимальным  числом
+единиц   </span><span   class=rvts12>–</span><span  class=rvts6>  так
+минимизируется            число            вариантов
+продолжения  поиска. Очередной шаг процесса
+состоит   в   выборе  покрывающей  строки  для
+этого   столбца   и   пробном   включении  ее  в
+получаемое  решение.  Таким образом, вершины
+дерева    поиска    соответствуют    некоторым
+столбцам   исходной  матрицы,  а  дуги  </span><span
+class=rvts12>–</span><span   class=rvts6>   выбираемым  для  их
+покрытия строкам.</span></p> 
+<p     class=rvps22><span     class=rvts6>Начальное    значение
+матрицы     </span><span     class=rvts13>Х</span><span     class=rvts6>
+совпадает  с исходной матрицей. Последующие
+значения     получаются     удалением     строк,
+включаемых  в  решение,  и столбцов, покрытых
+этими   строками.   Кроме   того,   выполняются
+следующие            </span><span            class=rvts8>правила
+редукции</span><span class=rvts6>.</span></p> 
+<p   class=rvps23><span   class=rvts6>1.  Если  столбец  </span><span
+class=rvts8>k</span><span  class=rvts6>  имеет  единицы  везде,
+где      имеет      единицы      столбец      </span><span
+class=rvts8>l</span><span   class=rvts6>,   то   столбец   </span><span
+class=rvts8>k</span><span  class=rvts6>  можно  удалить.  Любая
+строка,       покрывающая      столбец      </span><span
+class=rvts8>l</span><span     class=rvts6>,     покрывает    также
+столбец      </span><span     class=rvts8>k</span><span     class=rvts6>.
+Поэтому  при поиске покрытия столбец </span><span
+class=rvts8>k</span><span          class=rvts6>          можно         не
+рассматривать.       Достаточно,       чтобы      в
+покрытие  была включена какая-либо из строк,
+покрывающих   столбец  </span><span  class=rvts8>l</span><span
+class=rvts6>. </span></p> 
+<p   class=rvps24><span   class=rvts6>2.   Если   строка  </span><span
+class=rvts8>i</span><span  class=rvts6>  имеет  единицы  везде,
+где       имеет       единицы      строка      </span><span
+class=rvts8>j</span><span    class=rvts6>,    то   строку   </span><span
+class=rvts8>j</span><span      class=rvts6>      можно      удалить.
+Действительно,        пусть        в       некотором
+кратчайшем  покрытии  имеется строка </span><span
+class=rvts8>j</span><span     class=rvts6>.    Очевидно,    данное
+покрытие  останется  кратчайшим,  если  в нем
+строку       </span><span      class=rvts8>j</span><span      class=rvts6>
+заменить     строкой    </span><span    class=rvts8>i</span><span
+class=rvts6>.</span></p> 
+<p        class=rvps25><span        class=rvts6>Продемонстрируем
+описанный       процесс       на      матрице      из
+предыдущего примера:</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=388   height=273  alt=""  style="padding  :  1px;"
+src="lk11/img9.jpg"><span class=rvts6>.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p  class=rvps26><span  class=rvts6>На  первом шаге выбираем
+столбец              </span><span              class=rvts8>а</span><span
+class=rvts9>6</span><span      class=rvts6>,     содержащий     две
+единицы.     Среди     покрывающих     ее    строк
+выбираем       такую,       которая       покрывает
+наибольшее   число  столбцов.  Такой  строкой
+является     строка     </span><span    class=rvts8>В</span><span
+class=rvts9>6</span><span  class=rvts6>.  Удалив  эту  строку  и
+покрываемые  ею  столбцы,  получим следующее
+значение    матрицы    </span><span    class=rvts13>X</span><span
+class=rvts6>:</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=260   height=247  alt=""  style="padding  :  1px;"
+src="lk11/img10.jpg"><span class=rvts6>.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps27><span   class=rvts6>После   удаления   строк
+</span><span  class=rvts8>В</span><span class=rvts9>1</span><span class=rvts6>,
+</span><span  class=rvts8>В</span><span  class=rvts9>2</span><span class=rvts6>
+и     </span><span     class=rvts8>В</span><span     class=rvts9>8</span><span
+class=rvts6>  согласно  второму  правилу  редукции
+матрица  </span><span class=rvts13>Х</span><span class=rvts6> будет
+иметь следующий вид:</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=247   height=161  alt=""  style="padding  :  1px;"
+src="lk11/img11.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p     class=rvps28><span    class=rvts6>Одним    из    столбцов,
+обладающих     минимальным    числом    единиц,
+является    столбец    </span><span    class=rvts8>а</span><span
+class=rvts9>2</span><span  class=rvts6>.  Обе  покрывающие  его
+строки  </span><span  class=rvts8>В</span><span class=rvts9>3</span><span
+class=rvts6>          и         </span><span         class=rvts8>В</span><span
+class=rvts9>7</span><span     class=rvts6>    содержат    по    три
+единицы.  Выбираем  первую по порядку строку
+</span><span  class=rvts8>В</span><span  class=rvts9>3</span><span class=rvts6>
+и    включаем    ее   в   формируемое   покрытие.
+Теперь         имеем         множество         {</span><span
+class=rvts8>B</span><span  class=rvts9>3</span><span class=rvts6>, </span><span
+class=rvts8>B</span><span   class=rvts9>6</span><span   class=rvts6>}.  Этот
+шаг приводит к матрице</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=140   height=135  alt=""  style="padding  :  1px;"
+src="lk11/img12.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps29><span   class=rvts6>После  удаления  строки
+</span><span  class=rvts8>В</span><span  class=rvts9>7</span><span class=rvts6>
+по     второму     правилу    редукции    получим
+матрицу,   каждая   строка   и  каждый  столбец
+которой  содержат  ровно две единицы. Выбрав
+строку  </span><span  class=rvts8>В</span><span class=rvts9>4</span><span
+class=rvts6>,       покрывающую      столбец      </span><span
+class=rvts8>а</span><span     class=rvts9>4</span><span     class=rvts6>,    и
+проведя        аналогичные       преобразования,
+получим   матрицу   с  одним  столбцом  </span><span
+class=rvts8>а</span><span  class=rvts9>7</span><span class=rvts6> и двумя
+строками             </span><span             class=rvts8>В</span><span
+class=rvts9>5</span><span          class=rvts6>          и         </span><span
+class=rvts8>В</span><span  class=rvts9>9</span><span  class=rvts6>,  любая
+из   которых  покрывает  оставшийся  столбец.
+Таким   образом,   получено  покрытие  {</span><span
+class=rvts8>В</span><span class=rvts9>3</span><span
+class=rvts6>, </span><span class=rvts8>В</span><span
+class=rvts9>4</span><span  class=rvts6>, </span><span class=rvts8>B</span><span
+class=rvts9>5</span><span class=rvts6>, </span><span
+class=rvts8>В</span><span    class=rvts9>6</span><span    class=rvts6>},   но
+пройдена   пока   только   одна   ветвь  дерева
+поиска,   и   до   совершения   полного   обхода
+дерева      неизвестно,     является     ли     это
+покрытие кратчайшим.</span></p> 
+<p  class=rvps30><span class=rvts6>Возвращаемся к ситуации,
+когда  очередным столбцом для покрытия взят
+</span><span  class=rvts8>а</span><span class=rvts9>2</span><span class=rvts6>.
+Теперь  вместо  строки </span><span class=rvts8>В</span><span
+class=rvts9>3</span><span  class=rvts6>  возьмем  для покрытия
+столбца              </span><span              class=rvts8>а</span><span
+class=rvts9>2</span><span       class=rvts6>      строку      </span><span
+class=rvts8>В</span><span        class=rvts9>7</span><span        class=rvts6>.
+Действуя     дальше     аналогичным     образом,
+получаем      очередное      покрытие     {</span><span
+class=rvts8>В</span><span class=rvts9>4</span><span
+class=rvts6>, </span><span  class=rvts8>B</span><span class=rvts9>6</span><span
+class=rvts6>, </span><span class=rvts8>В</span><span
+class=rvts9>7</span><span   class=rvts6>},   которое   вытесняет
+предыдущее,   так   как  оно  оказалось  лучше,
+однако      и     его     пока     нельзя     назвать
+кратчайшим.</span></p>
+<center><img src="lk11/img11.1.jpg"></center>
+<p   class=rvps1><span   class=rvts18>Рис. 11.1.  Дерево  поиска
+кратчайшего покрытия</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p       class=rvps35><span       class=rvts6>Возвратившись      к
+начальной  вершине  дерева  поиска  и  следуя
+по    дуге,   соответствующей   строке   </span><span
+class=rvts8>В</span><span        class=rvts9>2</span><span        class=rvts6>,
+убеждаемся,   что   длина   покрытия  не  может
+быть    меньше   трех.   На   этом   поиск   можно
+закончить    и   выдать   в   качестве   решения
+множество            {</span><span           class=rvts8>В</span><span
+class=rvts9>4</span><span  class=rvts6>, </span><span class=rvts8>B</span><span
+class=rvts9>6</span><span class=rvts6>, </span><span
+class=rvts8>В</span><span    class=rvts9>7</span><span    class=rvts6>}.   На
+дереве  поиска,  обход которого совершался в
+процессе  решения  данного примера (рис. 11.1),
+вершинам  приписаны  столбцы, а дугам </span><span
+class=rvts12>–</span><span class=rvts6> строки.</span></p> 
+<p><span class=rvts6><br></span></p>
+
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Минимизация полных автоматов</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts14
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts15
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+}
+
+
+--></style>
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 23</span></p>
+<p><span class=rvts7>Минимизация полных автоматов</span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p         class=rvps3><span         class=rvts7>23.1.         Автомат с памятью</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Одно и то же поведение может быть задано автоматами с различным числом состояний. Отсюда возникает задача </span><span class="rvts8">минимизации числа состояний автомата</span><span     class=rvts6>, или просто </span><span class="rvts8">минимизации автомата</span><span     class=rvts6>.</span></p>
+<p      class=rvps5><span     class=rvts6>Основным понятием, используемым в данной задаче, является эквивалентность состояний автомата. Состояние q</span><span class="rvts12">i</span><span     class=rvts6> автомата М</span><span class="rvts12">1</span><span     class=rvts6> и состояние q</span><span class="rvts12">j</span><span     class=rvts6> автомата М</span><span class="rvts12">2 </span><span     class=rvts6>эквивалентны, если автомат М</span><span class="rvts12">1</span><span     class=rvts6> при начальном состоянии q</span><span class="rvts12">i</span><span     class=rvts6> и автомат М</span><span class="rvts12">2</span><span     class=rvts6> при начальном состоянии q</span><span class="rvts12">j</span><span     class=rvts6> под воздействием любой входной последовательности выдают одинаковые последовательности на выходе. При этом М</span><span class="rvts12">1</span><span     class=rvts6> и М</span><span class="rvts12">2</span><span     class=rvts6> могут представлять собой один и тот же автомат. </span></p>
+<p      class=rvps5><span     class=rvts6>Отношение эквивалентности состояний обладает свойствами рефлексивности (каждое состояние эквивалентно самому себе), симметричности (если состояние q</span><span class="rvts12">i</span><span     class=rvts6> эквивалентно состоянию q</span><span class="rvts12">j</span><span     class=rvts6>, то q<span class="rvts12">j</span> эквивалентно q<span class="rvts12">i</span>) и транзитивности (если состояние q<span class="rvts12">i</span> эквивалентно состоянию q</span><span class="rvts12">k</span><span     class=rvts6>, а q</span><span class="rvts14">k</span><span     class=rvts6> эквивалентно состоянию q<span class="rvts12">j</span>, то q<span class="rvts12">i</span> эквивалентно q<span class="rvts12">j</span>). Как известно, бинарное отношение на некотором множестве, обладающее такими свойствами, определяет разбиение данного множества на классы эквивалентности.</span></p>
+<p class=rvps5><span     class=rvts6>Автомат М</span><span class="rvts12">1</span><span     class=rvts6> и автомат М</span><span class="rvts12">2</span> <span class="rvts8">эквивалентны</span><span     class=rvts6>, если для каждого состояния одного из них имеется хотя бы одно эквивалентное ему состояние другого.</span></p>
+<p class=rvps5><span     class=rvts6>Задача минимизации полного автомата ставится следующим образом: для заданного автомата М найти эквивалентный ему автомат с минимальным числом состояний.</span></p>
+<p class=rvps5><span     class=rvts6>Пусть задан автомат М = (A, B, Q, ψ, φ) и требуется найти эквивалентный ему автомат М’ = (A, B, Q’, ψ’, φ’), обладающий минимальным числом состояний. Допустим, установлено отношение эквивалентности на множестве состояний автомата М и определены классы эквивалентности S</span><span class="rvts12">1</span><span     class=rvts6>, S</span><span class="rvts12">2</span><span     class=rvts6>, … , S</span><span class="rvts12">т</span><span     class=rvts6>. Обозначим символом q</span><span class="rvts14">(i)</span><span     class=rvts6> любое состояние, принадлежащее классу S</span><span class="rvts12">i</span><span     class=rvts6>. Тогда минимальный автомат строится следующим образом.</span></p>
+<p class=rvps5><span     class=rvts6>Формируется множество состояний Q’ = {q’</span><span class="rvts12">1</span><span     class=rvts6>, q’</span><span class="rvts12">2</span><span     class=rvts6>, … , q’</span><span class="rvts12">т</span><span     class=rvts6>}, где каждому q’</span><span class="rvts12">i</span><span     class=rvts6> поставлен во взаимно однозначное соответствие класс эквивалентности S</span><span class="rvts12">i</span><span     class=rvts6>.</span></p>
+<p class=rvps5><span     class=rvts6>Если для некоторых q</span><span class="rvts14">(i)</span><span     class=rvts6> ∈ S</span><span class="rvts12">i</span><span     class=rvts6> и а ∈ А имеет место φ(а, q</span><span class="rvts14">(i)</span><span     class=rvts6>) = b, где b ∈ В, то φ’(а, q’</span><span class="rvts12">i</span><span     class=rvts6>) = b.</span></p>
+<p class=rvps5><span class="rvts6">Если для некоторых q</span><span class="rvts14">(i)</span><span class="rvts6"> ∈ S</span><span class="rvts12">i</span><span class="rvts6"> и а ∈ А имеет место ψ(а, q</span><span class="rvts14">(i)</span><span class="rvts6">) = q</span><span class="rvts14">(j)</span><span class="rvts6">, где q</span><span class="rvts14">(j)</span><span class="rvts6"> ∈ S</span><span class="rvts12">j</span><span class="rvts6">, то ψ’(а, q’</span><span class="rvts12">i</span><span class="rvts6">) = q’</span><span class="rvts12">j</span><span class="rvts6">.</span></p>
+<p class=rvps5><span class=rvts6><br>
+</span></p>
+
+<p><span    class=rvts7>23.2.  Установление эквивалентности состояний</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>В следующих трех случаях эквивалентность или неэквивалентность состояний определяется непосредственно по таблицам переходов и выходов.</span></p>
+<p      class=rvps5><span     class=rvts6>1. Найдется такой входной сигнал а ∈ А, что φ(а, q</span><span class="rvts12">i</span><span     class=rvts6>) ≠ φ(а, q</span><span class="rvts12">j</span><span     class=rvts6>). Тогда состояния q</span><span class="rvts12">i</span><span     class=rvts6> и q</span><span class="rvts12">j</span> <span class="rvts8">явно неэквивалентны</span><span     class=rvts6>. В таблице выходов это соответствует столбцу, где элементы в строках q</span><span class="rvts12">i</span><span     class=rvts6> и q</span><span class="rvts12">j</span><span     class=rvts6> различны.</span></p>
+<p      class=rvps5><span     class=rvts6>2. Для всех а ∈ А имеют место φ(а, q</span><span class="rvts12">i</span><span     class=rvts6>) = φ(а, q</span><span class="rvts12">j</span><span     class=rvts6>) и ψ(а, q</span><span class="rvts12">i</span><span     class=rvts6>) = ψ(а, q</span><span class="rvts12">j</span><span     class=rvts6>). Здесь состояния q</span><span class="rvts12">i</span><span     class=rvts6> и q<span class="rvts12">j</span> явно эквивалентны. В таблице переходов и таблице выходов строки q</span><span class="rvts12">i</span><span     class=rvts6> и q</span><span class="rvts12">j</span><span     class=rvts6> совпадают.</span></p>
+<p class=rvps5><span     class=rvts6>3. Строки q</span><span class="rvts12">i</span><span     class=rvts6> и q</span><span class="rvts12">j</span><span     class=rvts6> таблицы выходов совпадают, а строки q<span class="rvts12">i</span> и q<span class="rvts12">j</span> таблицы переходов совпадут после замены каждого значения q<span class="rvts12">i</span> на q<span class="rvts12">j</span> или каждого значения q<span class="rvts12">j</span> на q<span class="rvts12">i</span> (если, конечно, такие значения присутствуют в этих строках). В этом случае состояния q<span class="rvts12">i</span> и q<span class="rvts12">j</span> также являются явно эквивалентными.</span></p>
+<p class=rvps5><span     class=rvts6>Если состояния не являются явно эквивалентными или явно неэквивалентными, то для решения вопроса об их эквивалентности приходится применять более глубокий анализ.</span></p>
+<p class=rvps5><span     class=rvts6>Пусть q</span><span class="rvts12">i</span><span     class=rvts6> ≠ q<span class="rvts12">j</span>. Цепью, порождаемой парой состояний &lt;q<span class="rvts12">i</span>, q<span class="rvts12">j</span>&gt; полного автомата М, назовем множество С, элементами которого являются следующие пары: 1) сама пара &lt;q<span class="rvts12">i</span>, q</span><span class="rvts12">j</span><span     class=rvts6>&gt;; 2) если &lt;q<span class="rvts12">k</span>, q<span class="rvts12">l</span>&gt; ∈ C, то все пары вида &lt;ψ(a, q<span class="rvts12">k</span>), ψ(a, q</span><span class="rvts12">l</span><span     class=rvts6>)&gt;, где ψ(a, q</span><span class="rvts12">k</span><span     class=rvts6>) и ψ(a, q</span><span class="rvts12">l</span><span     class=rvts6>) различны. Другие пары не входят в С.</span></p>
+<p class=rvps5><span     class=rvts6>Таким образом, цепь С, порождаемая парой состояний &lt;q</span><span class="rvts12">i</span><span     class=rvts6>, q</span><span class="rvts12">j</span><span     class=rvts6>&gt;, содержит все пары состояний, в которые автомат переходит из состояний q</span><span class="rvts12">i</span><span     class=rvts6> и q</span><span class="rvts12">j</span><span     class=rvts6> под воздействием всевозможных входных последовательностей (конечных и бесконечных). Само название «цепь» связано с характером образования этого множества: реализуется процесс, подобный цепной реакции (появление одного элемента в цепи вызывает вовлечение множества других элементов). Справедливо следующее утверждение.</span></p>
+<p class=rvps5><span class="rvts8">У т в е р ж д е н и е  23.1</span><span     class=rvts6>. Состояния q<span class="rvts12">i</span> и q</span><span class="rvts12">j </span><span     class=rvts6>автомата М являются эквивалентными, если и только если в цепи, порождаемой парой состояний &lt;q</span><span class="rvts12">i</span><span     class=rvts6>, q<span class="rvts12">j </span>&gt;, нет ни одной пары явно неэквивалентных состояний. В этом случае все пары, принадлежащие данной цепи, являются парами эквивалентных состояний.</span></p>
+<p class=rvps5><span class="rvts6">Действительно, пусть состояние q</span><span class="rvts12">i</span><span class="rvts6"> автомата М эквивалентно состоянию q<span class="rvts12">j</span>, а цепь С, порождаемая парой &lt;q<span class="rvts12">i</span>, q<span class="rvts12">j</span>&gt;, содержит пару явно неэквивалентных состояний, скажем, &lt;q</span><span class="rvts12">k</span><span class="rvts6">, q</span><span class="rvts12">l</span><span class="rvts6">&gt;. Тогда существует входная последовательность, переводящая автомат М из состояний q<span class="rvts12">i</span> и q<span class="rvts12">j</span> в состояния q<span class="rvts12">k</span> и q<span class="rvts12">l</span>. Она вызывает различные выходные последовательности, что противоречит условию. С другой стороны, поскольку в С нет ни одной пары явно неэквивалентных состояний, выходные последовательности при одной и той же входной последовательности и при начальных состояниях q<span class="rvts12">i</span> и q<span class="rvts12">j</span> одинаковы.</span></p>
+<p      class=rvps5><span     class=rvts6>Эквивалентность состояний можно представить матрицей эквивалентности – булевой матрицей, строки и столбцы которой соответствуют состояниям автомата. Элемент, расположенный на пересечении i-й строки и j-го столбца, имеет значение 1, если и только если состояния q</span><span class="rvts12">i</span><span     class=rvts6> и q</span><span class="rvts12">j</span><span     class=rvts6> эквивалентны.</span></p>
+<p      class=rvps5><span     class=rvts6>Рассмотрим процесс минимизации полного автомата на примере (табл. 23.1).</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk23/img1.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Сначала находим явно эквивалентные и явно неэквивалентные состояния. В силу рефлексивности и симметричности отношения эквивалентности достаточно иметь только часть матрицы эквивалентности, расположенную выше (или ниже) главной диагонали. Получим следующую матрицу, пустые элементы в верхней части которой соответствуют парам. Для этих пар непосредственно из таблицы переходов и выходов не видно, эквивалентны в них состояния или нет, т. е. не являются ни явно эквивалентными, ни явно неэквивалентными:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk23/img2.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Для пар состояний, которым соответствуют пустые места в этой матрице, надо строить порождаемые ими цепи, которые удобно представлять ориентированными графами. Вершинам такого графа соответствуют пары, принадлежащие формируемой цепи. Из вершины &lt;q</span><span class="rvts12">i</span><span     class=rvts6>, q</span><span class="rvts12">j</span><span     class=rvts6>&gt; в вершину &lt;q</span><span class="rvts12">k</span><span     class=rvts6>, q</span><span class="rvts12">l</span><span     class=rvts6>&gt; направлена дуга, если &lt;q<span class="rvts12">k</span>, q<span class="rvts12">l</span>&gt; = &lt;ψ(a, q<span class="rvts12">i</span>), ψ(a, q<span class="rvts12">j</span>)&gt;. Не обязательно строить всю цепь, если порождающая ее пара не является эквивалентной. Можно прекратить процесс после появления первой пары, которой соответствует нулевое значение элемента матрицы эквивалентности. Тогда неэквивалентными объявляются все пары, лежащие на пути к данной паре от порождающей пары.</span></p>
+<p      class=rvps5><span class="rvts6">Часть цепи, порождаемой парой &lt;1, 5&gt;, изображена на рис. 23.1. Она содержит пару явно неэквивалентных состояний &lt;2, 7&gt;. Дальше цепь можно не строить, так как ясно, что пара &lt;1, 5&gt; оказалась неэквивалентной и, кроме нее, неэквивалентными оказались пары &lt;4, 9&gt; и &lt;2, 6&gt;, лежащие на пути из вершины &lt;1, 5&gt; к вершине &lt;2, 7&gt;.</span>
+</p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk23/img3.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p     class=rvps5><span     class=rvts6>Таким образом, матрица дополняется нулями в виде значений элементов, соответствующих парам &lt;1, 5&gt;, &lt;2, 6&gt; и &lt;4, 9&gt;:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk23/img4.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span>
+<center></center>
+<p class=rvps5><span     class=rvts6>Состояния, принадлежащие паре &lt;1, 7&gt;, также оказались неэквивалентными. Цепь, порождаемая парой &lt;1, 8&gt; (рис. 23.2), не содержит пар неэквивалентных состояний. Поэтому любая из пар, принадлежащих этому множеству, является парой эквивалентных состояний. Окончательно получим следующую матрицу эквивалентности:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk23/img5.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk23/img6.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span>
+<center></center>
+<p class=rvps5><span     class=rvts6>Классы {1, 3, 8}, {2, 4}, {5, 7}, {6} и {9} определяются по строкам матрицы эквивалентности с учетом свойства транзитивности и симметричности отношения эквивалентности. Полученным классам эквивалентности ставим в соответствие состояния нового автомата 1, 2, 3, 4 и 5, в результате чего получим табл. 23.2, представляющую минимальный автомат, эквивалентный заданному.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk23/img7.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p class=rvps15>&nbsp;</p> 
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body></html>

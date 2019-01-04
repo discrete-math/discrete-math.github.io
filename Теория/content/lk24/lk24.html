@@ -1,0 +1,326 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Минимизация частичных автоматов</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts14
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts15
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+}
+
+
+--></style>
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 24</span></p>
+<p><span class=rvts7>Минимизация частичных автоматов</span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p         class=rvps3><span         class=rvts7>24.1.         Отношение реализации. Постановка задачи минимизации</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>В случае полного автомата задача минимизации сводится к установлению эквивалентности состояний и требуется найти автомат, поведение которого совпадает с поведением исходного автомата. В случае частичного автомата поведение искомого автомата с минимальным числом состояний должно совпадать в тех ситуациях, где оно определено для исходного автомата. Здесь понятие эквивалентности не подходит. Далее будет показано, что задача минимизации частичного автомата не сводится к задаче минимизации полного автомата. Для строгой формулировки задачи введем ряд понятий.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть задан частичный автомат М = (A, B, Q, </span><span class="rvts9">ψ</span><span     class=rvts6>, </span><span class="rvts9">φ</span><span     class=rvts6>). </span></p>
+<p      class=rvps5><span     class=rvts6>Входная последовательность  </span><span class="rvts8">a</span><span class="rvts12">i<span class="rvts11">1</span></span><span class="rvts8">a</span><span class="rvts12">i<span class="rvts11">2</span></span><span class="rvts8">...a<span class="rvts12">i<span class="rvts11">p</span></span></span><span     class=rvts6> называется допустимой для состояния </span><span class="rvts8">q<span class="rvts12">i<span class="rvts11">1</span></span></span><span     class=rvts6> автомата М, если существует последовательность состояний </span><span class="rvts8">q</span><span class="rvts12">i<span class="rvts11">1</span></span><span class="rvts8">q</span><span class="rvts12">i<span class="rvts11">2</span></span><span class="rvts8">...q<span class="rvts12">i<span class="rvts11">p</span></span></span><span     class=rvts6> , такая, что значение </span><span class="rvts9">φ</span><span     class=rvts6>(</span><span class="rvts8">a</span><span class="rvts12">i<span class="rvts11">p</span></span><span class="rvts8">,q<span class="rvts12">i<span class="rvts11">p</span></span></span><span     class=rvts6>) и значения </span><span class="rvts9">ψ</span><span class="rvts8"> (a</span><span class="rvts12">i<span class="rvts11">j</span></span><span class="rvts8">,q</span><span class="rvts12">i<span class="rvts11">j</span></span><span class="rvts8">)</span><span     class=rvts6>для 1 ≤ j ≤ p – 1  определены и </span><span class="rvts9">ψ</span><span class="rvts8"> (a</span><span class="rvts12">ij</span><span class="rvts8">,q</span><span class="rvts12">ij</span><span class="rvts8">)=q<span class="rvts12">i<span class="rvts11">j+1</span></span></span><span     class=rvts6>.</span></p>
+<p      class=rvps5><span     class=rvts6>При допустимой для некоторого состояния входной последовательности автомат, выйдя из данного состояния, проходит вполне определенную последовательность состояний. Выход автомата должен быть определен для заключительного символа входной последовательности. Для промежуточных символов это не обязательно. Если при какой-то входной последовательности встретился неопределенный переход, то данная последовательность не является допустимой для соответствующего начального состояния.</span></p>
+<p      class=rvps5><span     class=rvts6>Состояние q</span><span class="rvts12">j</span><span     class=rvts6> автомата М<span class="rvts12">2</span> реализует состояние q<span class="rvts12">i</span> автомата М</span><span class="rvts12">1</span><span     class=rvts6>, если любая входная последовательность, допустимая для q<span class="rvts12">i</span>, допустима и для q</span><span class="rvts12">j</span><span     class=rvts6>, а отвечающие ей выходные последовательности, полученные от автомата М<span class="rvts12">1</span> при начальном состоянии q</span><span class="rvts12">i</span><span     class=rvts6> и от автомата М<span class="rvts12">2</span> при начальном состоянии q<span class="rvts12">j</span>, совпадают везде, где выходы автомата М<span class="rvts12">1</span> определены.</span></p>
+<p      class=rvps5><span     class=rvts6>Отношение реализации, очевидно, является рефлексивным (любое состояние реализует само себя) и транзитивным (из того, что q</span><span class="rvts12">i</span><span     class=rvts6> реализует q<span class="rvts12">j</span>, а q<span class="rvts12">j</span> реализует q</span><span class="rvts12">k</span><span     class=rvts6>, следует, что q<span class="rvts12">i</span> реализует q<span class="rvts12">k</span>). Это отношение не является симметричным, т. е. из того, что q<span class="rvts12">i</span> реализует q</span><span class="rvts12">j</span><span     class=rvts6>, не следует, что q<span class="rvts12">j</span> реализует q<span class="rvts12">i</span>. Симметричность не обеспечивается из-за того, что реализующее состояние может иметь более широкую область допустимых последовательностей, чем реализуемое состояние.</span></p>
+<p      class=rvps5><span     class=rvts6>Автомат М</span><span class="rvts12">2</span><span     class=rvts6> реализует автомат М<span class="rvts12">1</span>, если для каждого состояния q</span><span class="rvts12">i</span><span     class=rvts6> автомата М<span class="rvts12">1</span> имеется по крайней мере одно состояние q</span><span class="rvts12">j</span><span     class=rvts6> автомата М<span class="rvts12">2</span>, реализующее состояние q<span class="rvts12">i</span>. Поведение автомата М<span class="rvts12">2</span>, реализующего автомат М<span class="rvts12">1</span>, совпадает с поведением автомата М<span class="rvts12">1</span> везде, где поведение автомата М<span class="rvts12">1</span> определено.</span></p>
+<p      class=rvps5><span     class=rvts6>Задача минимизации частичного автомата ставится следующим образом: для заданного автомата М = (A, B, Q, </span><span class="rvts9">ψ</span><span     class=rvts6>, </span><span class="rvts9">φ</span><span     class=rvts6>) найти реализующий его автомат М’ = (A, B, Q’, </span><span class="rvts9">ψ</span><span     class=rvts6>’, <span class="rvts9">φ</span>’) с минимальным числом состояний.</span></p>
+<p      class=rvps5><span     class=rvts6>Сформулированная задача сводится к группированию состояний исходного автомата в некоторые подмножества, в общем случае пересекающиеся, и сопоставлению каждого такого подмножества с состоянием нового автомата, реализующим любое состояние из этого подмножества. При этом необходимо, чтобы число таких подмножеств было минимальным, а объединение их составляло множество всех состояний исходного автомата.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть имеется некоторая совокупность S подмножеств множества Q состояний автомата М. Эти подмножества могут пересекаться, но ни одно из них не содержится в другом. Совокупность S называется группировкой автомата М, если каждое его состояние входит хотя бы в одно из подмножеств данной совокупности.</span></p>
+<p      class=rvps5><span     class=rvts6>Некоторое множество состояний {q</span><span class="rvts12">r</span><span     class=rvts6>, q</span><span class="rvts12">s</span><span     class=rvts6>, … , q</span><span class="rvts12">t</span><span     class=rvts6>} ⊆ Q назовем </span><span class="rvts8">непосредственно производным по входному символу а ∈ А множеством</span><span     class=rvts6> от множества состояний {q</span><span class="rvts12">i</span><span     class=rvts6>, q</span><span class="rvts12">j</span><span     class=rvts6>, … , q</span><span class="rvts12">k</span><span     class=rvts6>} ⊆ Q, если значения <span class="rvts9">ψ</span>(а, q<span class="rvts12">j</span>), <span class="rvts9">ψ</span>(а, q<span class="rvts12">j</span>), … , </span><span class="rvts9">ψ</span><span     class=rvts6>(а, q<span class="rvts12">k</span>) составляют множество {q<span class="rvts12">r</span>, q<span class="rvts12">s</span>, … , q<span class="rvts12">t</span>}.</span></p>
+<p      class=rvps5><span     class=rvts6>Для множества состояний {q<span class="rvts12">r</span>, q<span class="rvts12">s</span>, … , q<span class="rvts12">t</span>} непосредственно производным от него по входному символу </span><span class="rvts8">а</span><span     class=rvts6> является множество тех состояний, в которые автомат переходит из состояний q<span class="rvts12">r</span>, q<span class="rvts12">s</span>, … , q<span class="rvts12">t</span> при поступлении на его вход символа <span class="rvts8">а</span>.</span></p>
+<p      class=rvps5><span     class=rvts6>Множество состояний Q</span><span class="rvts12">i</span><span     class=rvts6> ⊆ Q называется непосредственно производным от Q</span><span class="rvts12">j</span><span     class=rvts6> ⊆ Q, если найдется такой входной символ </span><span class="rvts8">а ∈ А</span><span     class=rvts6>, что Q<span class="rvts12">i</span> является непосредственно производным по </span><span class="rvts8">а</span><span     class=rvts6> от Q<span class="rvts12">j</span>.</span></p>
+<p      class=rvps5><span     class=rvts6>Группировка S называется </span><span class="rvts8">правильной</span><span     class=rvts6>, если для каждого ее элемента S</span><span class="rvts12">i</span><span     class=rvts6> справедливо следующее:</span></p>
+<p      class=rvps5><span     class=rvts6>– любое непосредственно производное от него множество является подмножеством какого-то из элементов S;</span></p>
+<p      class=rvps5><span     class=rvts6>– для любых q</span><span class="rvts12"><span class="rvts8">j</span></span><span     class=rvts6>, q<span class="rvts12">k</span> ∈ S</span><span class="rvts12"><span class="rvts8">i</span></span><span     class=rvts6> и для любого </span><span class="rvts8">а ∈ А</span><span     class=rvts6> справедливо </span><span class="rvts9">φ</span><span     class=rvts6>(а, q<span class="rvts12"><span class="rvts8">j</span></span>) = </span><span class="rvts9">φ</span><span     class=rvts6>(а, q</span><span class="rvts12">k</span><span     class=rvts6>) всегда, когда эти значения оба определены.</span></p>
+<p      class=rvps5><span     class=rvts6>Для любого элемента S<span class="rvts12">i</span> правильной группировки автомата М и любого входного символа </span><span class="rvts8">а ∈ А</span><span     class=rvts6> можно найти в этой же группировке элемент, содержащий все состояния, в которые переходит автомат М из состояний, принадлежащих S</span><span class="rvts12">i</span><span     class=rvts6>, при поступлении на его вход символа </span><span class="rvts8">а</span><span     class=rvts6>.</span></p>
+<p      class=rvps5><span     class=rvts6>Правильная группировка автомата М, имеющая минимальное число элементов среди всех правильных группировок автомата М, называется </span><span class="rvts8">минимальной</span><span     class=rvts6>.</span></p>
+<p      class=rvps5><span     class=rvts6>От любой правильной группировки автомата М можно перейти к автомату М’, реализующему М, путем совмещения состояний, входящих в один и тот же элемент группировки. Если {q<span class="rvts12">i</span>, q<span class="rvts12">j</span>, … , q<span class="rvts12">k</span>} – элемент правильной группировки S автомата М, то в автомате М’ ему соответствует состояние, реализующее любое из состояний q<span class="rvts12">i</span>, q<span class="rvts12">j</span>, … , q<span class="rvts12">k</span>. Если S – минимальная правильная группировка, то построенный по ней автомат М’ будет обладать минимальным числом состояний среди всех автоматов, реализующих автомат М.</span></p>
+<p      class=rvps5><span     class=rvts6>Чтобы получить множество состояний Q’ автомата М’, надо каждому элементу S</span><span class="rvts12">i</span><span     class=rvts6> ∈ S поставить в соответствие состояние q’<span class="rvts12">i</span> ∈ Q’. Функции </span><span class="rvts9">φ</span><span     class=rvts6>’ и </span><span class="rvts9">ψ</span><span     class=rvts6>’ получаются следующим образом.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть q</span><span class="rvts14">(i)</span><span     class=rvts6> – некоторое (любое) состояние автомата М, принадлежащее элементу S</span><span class="rvts12">i</span><span     class=rvts6> ∈ S. Если </span><span class="rvts9">φ</span><span     class=rvts6>(а, q</span><span class="rvts14">(i)</span><span     class=rvts6>) = b, то φ’(а, q’<span class="rvts12">i</span>) = b. Если для всех q</span><span class="rvts14">(i)</span><span     class=rvts6> из S</span><span class="rvts12">i</span><span     class=rvts6> значение φ(а, q</span><span class="rvts14">(i)</span><span     class=rvts6>) не определено, то значение φ’(а, q’</span><span class="rvts12">i</span><span     class=rvts6>) считается неопределенным.</span></p>
+<p      class=rvps5><span     class=rvts6>Если значение </span><span class="rvts9">ψ</span><span     class=rvts6>(а, q</span><span class="rvts14">(i)</span><span     class=rvts6>) не определено для всех q<span class="rvts14">(i)</span> ∈ S</span><span class="rvts12">i</span><span     class=rvts6>, то <span class="rvts9">ψ</span>(a, q’<span class="rvts12">i</span>) считается неопределенным. Обозначим символом <span class="rvts9">ψ</span>(а, S<span class="rvts12">i</span>) множество, непосредственно производное от множества S<span class="rvts12">i</span> ∈ S по входному символу а (если значение <span class="rvts9">ψ</span>(а, q<span class="rvts14">(i)</span>) не определено для всех q<span class="rvts14">(i)</span> ∈ S<span class="rvts12">i</span>, то <span class="rvts9">ψ</span>(а, S<span class="rvts12">i</span>) = ). Тогда <span class="rvts9">ψ</span>(a, q’<span class="rvts12">i</span>) = q’</span><span class="rvts12">j</span><span     class=rvts6>, где q’<span class="rvts12">j</span> соответствует любому S<span class="rvts12">j</span> ∈ S, для которого <span class="rvts9">ψ</span>(а, S<span class="rvts12">i</span>) ⊆ Sj.</span></p>
+<p      class=rvps5><span     class=rvts6>Рассмотрим заимствованный из работы [20] пример построения автомата по правильной группировке, на котором продемонстрируем, что минимизация частичного автомата не сводится к минимизации полного автомата. Пусть табл. 24.1 представляет таблицу переходов и выходов заданного частичного автомата. Все два варианта доопределения представлены в табл. 24.2 и табл. 24.3.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img1.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Нетрудно убедиться, что число состояний любого из этих полных автоматов не может быть уменьшено. В то же время множество S = {{1, 2}, {1, 3}} является правильной группировкой заданного автомата и табл.24.4 представляет таблицу переходов и выходов построенного по данной группировке автомата, реализующего заданный автомат. Число состояний полученного автомата меньше числа состояний исходного автомата.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img2.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p><span    class=rvts7>24.2.  Совместимость состояний</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Состояния q</span><span class="rvts12">i</span><span     class=rvts6> и q</span><span class="rvts12">j</span><span     class=rvts6> автомата М несовместимы, если существует такая входная последовательность, допустимая для q<span class="rvts12">i</span> и q<span class="rvts12">j</span>, что заключительные выходные символы, вызываемые этой последовательностью при начальных состояниях q<span class="rvts12">i</span> и q<span class="rvts12">j</span>, не совпадают. Состояния q<span class="rvts12">i</span> и q<span class="rvts12">j</span> автомата М</span><span class="rvts8"> совместимы</span><span     class=rvts6>, если они не являются несовместимыми.</span></p>
+<p      class=rvps5><span     class=rvts6>Отношение совместимости на множестве состояний автомата рефлексивно, симметрично, но не транзитивно. Из этих свойств отношение несовместимости обладает только симметричностью.</span></p>
+<p      class=rvps5><span     class=rvts6>Очевидно, что любые два состояния, принадлежащие одному и тому же элементу правильной группировки, совместимы. Отношение совместимости можно использовать при нахождении минимальной правильной группировки.</span></p>
+<p      class=rvps5><span     class=rvts6>В некоторых случаях совместимость или несовместимость состояний устанавливается непосредственно. Пусть q<span class="rvts12">i</span> и q<span class="rvts12">j</span> – состояния некоторого автомата М. Если существует столбец таблицы выходов, в котором элементы строк q<span class="rvts12">i</span> и q<span class="rvts12">j</span> определены и различны, то состояния q<span class="rvts12">i</span> и q<span class="rvts12">j</span> несовместимы. Это явно несовместимые состояния.</span></p>
+<p      class=rvps5><span     class=rvts6>Если строки q<span class="rvts12">i</span> и q<span class="rvts12">j</span> таблицы переходов совпадают везде, где их элементы определены, и строки q<span class="rvts12">i</span> и q<span class="rvts12">jj</span>таблицы выходов также совпадают везде, где их элементы определены, то состояния q<span class="rvts12">i</span> и q<span class="rvts12">j</span> совместимы. Это </span><span class="rvts8">явно совместимые</span><span     class=rvts6> состояния.</span></p>
+<p      class=rvps5><span     class=rvts6>Совместимость состояний q<span class="rvts12">i</span> и q<span class="rvts12">j</span>, которые не являются ни явно совместимыми, ни явно несовместимыми, определяется с помощью цепи, порождаемой парой состояний &lt;q<span class="rvts12">i</span>, q<span class="rvts12">j</span>&gt;, которая находится так же, как цепь для полного автомата.</span></p>
+<p      class=rvps5><span     class=rvts6>Цепью, порождаемой парой состояний &lt;q</span><span class="rvts12">i</span><span     class=rvts6>, q<span class="rvts12">j</span>&gt; частичного автомата М, назовем множество С, элементами которого являются следующие пары состояний: сама пара &lt;q<span class="rvts12">i</span>, q<span class="rvts12">j</span>&gt;; все пары вида &lt;</span><span class="rvts9">ψ</span><span     class=rvts6>(a, q<span class="rvts12">k</span>), <span class="rvts9">ψ</span>(a, q<span class="rvts12">l</span>)&gt;, где <span class="rvts9">ψ</span>(a, q<span class="rvts12">k</span>) и <span class="rvts9">ψ</span>(a, q</span><span class="rvts12">l</span><span     class=rvts6>) определены и различны, если &lt;q</span><span class="rvts12">k</span><span     class=rvts6>, ql&gt; ∈ C. Другие пары не входят в С.</span></p>
+<p      class=rvps5><span     class=rvts6>Справедливо следующее утверждение, которое доказывается точно так же, как утверждение 24.1.</span></p>
+<p      class=rvps5><span class="rvts8">У т в е р ж д е н и е  24.1</span><span     class=rvts6>. Состояния q<span class="rvts12">i</span> и q<span class="rvts12">j</span> автомата М являются совместимыми, если и только если в цепи, порождаемой парой состояний &lt;q<span class="rvts12">i</span>, q<span class="rvts12">j</span>&gt;, нет ни одной пары явно несовместимых состояний. В этом случае все пары, принадлежащие данной цепи, являются парами совместимых состояний.</span></p>
+<p      class=rvps5><span     class=rvts6>Совместимость удобно представлять булевой матрицей совместимости, строкам и столбцам которой соответствуют состояния автомата и элемент на пересечении i-й строки и j-го столбца имеет значение 1, если и только если состояния q<span class="rvts12">i</span> и q</span><span class="rvts12">j</span><span     class=rvts6> совместимы. Процесс установления совместимости состояний частичного автомата не отличается от процесса установления эквивалентности состояний полного автомата, описанного в разд. 5.2.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть задан автомат, таблицу переходов и выходов которого представляет табл. 24.5.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img3.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Явно несовместимыми являются пары &lt;1, 5&gt;, &lt;1, 6&gt; и  &lt;2, 6&gt;. Пара &lt;2, 5&gt; является явно совместимой. Части цепей, порождаемых парами &lt;1, 2&gt;, &lt;1, 4&gt;, &lt;2, 4&gt;, &lt;3, 5&gt; и &lt;3, 6&gt;, которые необходимы для построения матрицы совместимости, показаны на рис. 24.1.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img4.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Формирование матрицы совместимости показано на примере следующей последовательности матриц:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img5.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Множество S<span class="rvts12">i</span> называется совместимым множеством, если все состояния в нем попарно совместимы. Совместимое множество S</span><span class="rvts12">i</span><span     class=rvts6> называется максимальным совместимым множеством, если оно не содержится ни в каком другом совместимом множестве в качестве подмножества. К совместимым множествам относятся также все одноэлементные подмножества множества состояний.</span></p>
+<p      class=rvps5><span     class=rvts6>Отношение совместимости на множестве состояний частичного автомата может быть представлено в виде неориентированного графа, вершинам которого соответствуют состояния и две вершины связаны ребром, если и только если соответствующие состояния совместимы. Этот граф назовем графом совместимости состояний. Дополнительный по отношению к нему граф является графом несовместимости состояний. Поиск всех максимальных совместимых множеств состояний любого автомата сводится к поиску всех максимальных независимых множеств в графе несовместимости, построенном для заданного автомата. Для решения этой задачи можно использовать метод, описанный в гл. 6, в результате применения которого получим множества {1, 2, 3, 4}, {2, 3, 4, 5} и {3, 4, 5, 6}.</span></p>
+<p      class=rvps5><span     class=rvts6>Достижимая верхняя граница т числа всех максимальных совместимых множеств для автомата с числом состояний y  так же, как и наибольшее число всех максимальных независимых множеств в графе, приведенное в гл. 6, выражается следующими формулами: где k – некоторое целое положительное число:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img6.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p><span    class=rvts7>24.3.  Нахождение минимальной правильной группировки</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Рассмотрим некоторые утверждения, позволяющие обосновать описываемый здесь метод.</span></p>
+<p      class=rvps5><span class="rvts8">У т в е р ж д е н и е  24.2</span><span     class=rvts6>. Непосредственно производное от совместимого множества есть совместимое множество.</span></p>
+<p      class=rvps5><span     class=rvts6>Действительно, допустим обратное: пусть для некоторого автомата М подмножество S</span><span class="rvts12">i</span><span     class=rvts6> множества состояний является совместимым множеством, а непосредственно производное от него Sj – несовместимое множество. Тогда существует последовательность, допустимая для некоторых состояний q</span><span class="rvts12">k</span><span     class=rvts6>, q</span><span class="rvts12">l</span><span     class=rvts6> ∈ S</span><span class="rvts12">i</span><span     class=rvts6>, которая вызывает различные заключительные выходные символы у автомата М при начальных состояниях соответственно q</span><span class="rvts12">k</span><span     class=rvts6> и q</span><span class="rvts12">l</span><span     class=rvts6>, что противоречит определению совместимости состояний.</span></p>
+<p      class=rvps5><span     class=rvts6>Из утверждения 24.2 вытекает следующее.</span></p>
+<p      class=rvps5><span class="rvts8">У т в е р ж д е н и е  24.3</span><span     class=rvts6>. Совокупность всех максимальных совместимых множеств есть правильная группировка.</span></p>
+<p      class=rvps5><span     class=rvts6>Действительно, пусть S = {S</span><span class="rvts12">1</span><span     class=rvts6>, S</span><span class="rvts12">2</span><span     class=rvts6>, … , S</span><span class="rvts12">m</span><span     class=rvts6>} – совокупность всех максимальных совместимых множеств некоторого автомата М. Если бы S не была правильной группировкой, то существовало бы некоторое совместимое множество S</span><span class="rvts12">p</span><span     class=rvts6>, непосредственно производное от некоторого S</span><span class="rvts12">i</span><span     class=rvts6> ∈ S и не являющееся подмножеством никакого S</span><span class="rvts12">j</span><span     class=rvts6> ∈ S, но тогда множество S содержало бы не все максимальные совместимые множества.</span></p>
+<p      class=rvps5><span     class=rvts6>Из утверждения 24.3 следует, что правильную группировку можно формировать как некоторую совокупность совместимых множеств. Иногда совокупность всех максимальных совместимых множеств является минимальной правильной группировкой, но чаще всего это не так. Например, автомат, таблицей переходов и выходов которого является табл. 24.5, имеет три максимальных совместимых множества: {1, 2, 3, 4}, {2, 3, 4, 5} и {3, 4, 5, 6}, тогда как минимальной правильной группировкой для него является {{1, 2, 3}, {4, 5, 6}} и ни одна совокупность двух максимальных совместимых множеств не является правильной группировкой. Таблицей переходов и выходов минимального автомата, реализующего данный автомат, является табл. 24.6.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img7.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Минимальное число состояний <span class="rvts8">y</span>‘ автомата, реализующего заданный автомат М с числом состояний </span><span class="rvts8">y</span><span     class=rvts6>, находится в следующих границах:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img8.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p><span     class=rvts6>где <span class="rvts8">α</span> (G) – мощность наибольшего независимого множества графа G совместимости состояний; </span><span class="rvts8">т</span><span     class=rvts6> – число всех максимальных совместимых множеств автомата М. Эта оценка полезна при поиске минимальной правильной группировки.</span></p>
+<p      class=rvps5><span     class=rvts6>Для получения минимальной правильной группировки требуется осуществить комбинаторный поиск в пространстве максимальных и немаксимальных совместимых множеств. При этом некоторые из немаксимальных совместимых множеств можно исключить из рассмотрения, учитывая следующие соображения.</span></p>
+<p      class=rvps5><span     class=rvts6>Для каждого совместимого множества S</span><span class="rvts12">i</span><span     class=rvts6> (максимального или немаксимального) построим множество T</span><span class="rvts12">i</span><span     class=rvts6> = {t<span class="rvts12">i1</span>, t<span class="rvts12">i2</span>, … , t<span class="rvts12">ik</span>}, элементами которого являются подмножества множества состояний Q, обладающие следующими свойствами:</span></p>
+<p      class=rvps5><span     class=rvts6>1)  t</span><span class="rvts12">i<span class="rvts11">j</span></span><span     class=rvts6>(j = 1, 2, … , k) является непосредственно производным множеством от S</span><span class="rvts12">i</span><span     class=rvts6>;</span></p>
+<p      class=rvps5><span     class=rvts6>2) никакое   t<span class="rvts12">i<span class="rvts11">j</span></span>(j = 1, 2, … , k) не содержится ни в S</span><span class="rvts12">i</span><span     class=rvts6>, ни в каком другом  t<span class="rvts12">i<span class="rvts11">j</span></span> ∈ T</span><span class="rvts12">i</span><span     class=rvts6> в качестве подмножества;</span></p>
+<p      class=rvps5><span     class=rvts6>3) | t<span class="rvts12">i<span class="rvts11">j</span></span> |&gt; 1 для всех j = 1, 2, … , k.</span></p>
+<p      class=rvps5><span     class=rvts6>Если S<span class="rvts12">g</span> ⊂ S</span><span class="rvts12">h</span><span     class=rvts6>, a T<span class="rvts12">g</span> ⊇ T<span class="rvts12">h</span>, то S</span><span class="rvts12">g</span><span     class=rvts6> можно исключить из рассмотрения. Действительно, пусть получена правильная группировка, содержащая S<span class="rvts12">g</span>. Заменив S<span class="rvts12">g</span> на S<span class="rvts12">h</span>, получим правильную группировку с тем же числом элементов.</span></p>
+<p      class=rvps5><span     class=rvts6>Процесс нахождения минимальной правильной группировки состоит из двух этапов. На первом этапе находятся совместимые множества, максимальные и немаксимальные, подлежащие рассмотрению. На втором этапе находится совокупность совместимых множеств, обладающая свойствами правильной группировки, с помощью метода комбинаторного поиска, подобного тому, который используется при решении задачи о кратчайшем покрытии (см. гл. 11).</span></p>
+<p      class=rvps5><span     class=rvts6>Выполняя первый этап, сначала находим все максимальные совместимые множества. При этом, как уже было сказано, можно использовать описанный в гл. 6 метод нахождения всех максимальных независимых множеств графа, имея в виду граф несовместимости состояний. Затем находим все собственные подмножества совместимых множеств. После получения очередного совместимого множества S</span><span class="rvts12">i</span><span     class=rvts6> сразу решаем вопрос об удалении или сохранении S<span class="rvts12">i</span>, построив соответствующее T<span class="rvts12">i</span> и сравнив его с другими такими множествами, построенными ранее.</span></p>
+<p      class=rvps5><span     class=rvts6>Продемонстрируем выполнение первого этапа на примере автомата, таблицей переходов и выходов которого является табл. 24.7.</span></p>
+<p      class=rvps5><span     class=rvts6>Максимальными совместимыми множествами для этого автомата являются {1, 2, 3, 5}, {2, 4}, {3, 6} и {4, 6}. Все совместимые множества S</span><span class="rvts12">i</span><span     class=rvts6> с соответствующими T<span class="rvts12">i</span> представлены в табл. 24.8. Из этой таблицы видно, что для сокращения перебора надо удалить все одноэлементные множества S<span class="rvts12">i</span>, у которых по определению соответствующие T<span class="rvts12">i</span> всегда пусты, а в данном случае для каждого одноэлементного множества S<span class="rvts12">i</span> найдется двухэлементное множество S<span class="rvts12">j</span> ⊃ S<span class="rvts12">i</span>, для которого T</span><span class="rvts12">j</span><span     class=rvts6> = ∅. Кроме того, удаляются множества S</span><span class="rvts12">11 </span><span     class=rvts6>= {1,5} и S</span><span class="rvts12">12</span><span     class=rvts6> = {2,3}, поскольку S</span><span class="rvts12">11</span><span     class=rvts6> ⊂ S</span><span class="rvts12">6</span><span     class=rvts6>, T</span><span class="rvts12">11</span><span     class=rvts6> = T</span><span class="rvts12">6</span><span     class=rvts6> и S</span><span class="rvts12">12 </span><span     class=rvts6>⊂ S</span><span class="rvts12">8</span><span     class=rvts6>, T</span><span class="rvts12">12</span><span     class=rvts6> = T</span><span class="rvts12">8</span><span     class=rvts6>.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img9.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img10.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Для выполнения второго этапа, осуществляющего комбинаторный поиск, строится </span><span class="rvts8">обобщенная таблица покрытия</span><span     class=rvts6>. Пусть в результате выполнения первого этапа получена совокупность совместимых множеств S</span><span class="rvts12">1</span><span     class=rvts6>, S</span><span class="rvts12">2</span><span     class=rvts6>, … , S</span><span class="rvts12">m</span><span     class=rvts6> и соответствующие им множества Т</span><span class="rvts12">1</span><span     class=rvts6>, Т</span><span class="rvts12">2</span><span     class=rvts6>, … , Т</span><span class="rvts12">m</span><span     class=rvts6>. Строкам обобщенной таблицы покрытия соответствуют совместимые множества, а множество столбцов делится на две части: часть А и часть В. Столбцам части А соответствуют состояния заданного автомата, а столбцам части В – элементы множества Т</span><span class="rvts12">1 </span><span     class=rvts6>∪ Т</span><span class="rvts12">2</span><span     class=rvts6> ∪ … ∪ Т</span><span class="rvts12">m</span><span     class=rvts6> = = {t</span><span class="rvts12">1</span><span     class=rvts6>, t</span><span class="rvts12">2</span><span     class=rvts6>, … , t</span><span class="rvts12">p</span><span     class=rvts6>}. Клетка таблицы пуста или содержит один из двух знаков: × или •. Часть А содержит только знаки ×, а часть В – и те, и другие. На пересечении строки S</span><span class="rvts12">i</span><span     class=rvts6> и столбца q</span><span class="rvts12">j</span><span     class=rvts6> в части А имеется знак ×, если и только если состояние q</span><span class="rvts12">j</span><span     class=rvts6> принадлежит множеству S</span><span class="rvts12">i</span><span     class=rvts6>. На пересечении строки S</span><span class="rvts12">i</span><span     class=rvts6> и столбца t</span><span class="rvts12">k</span><span     class=rvts6> имеется знак ×, если и только если t</span><span class="rvts12">k</span><span     class=rvts6> ⊆ S</span><span class="rvts12">i</span><span     class=rvts6>. На пересечении строки S</span><span class="rvts12">i</span><span     class=rvts6> и столбца t</span><span class="rvts12">l</span><span     class=rvts6> имеется знак •, если и только если t</span><span class="rvts12">l</span><span     class=rvts6> принадлежит T</span><span class="rvts12">i</span><span     class=rvts6>, соответствующему S</span><span class="rvts12">i</span><span     class=rvts6>.</span></p>
+<p      class=rvps5><span     class=rvts6>Табл. 24.9 представляет обобщенную таблицу покрытий для автомата, таблицей переходов и выходов которого является табл. 24.7.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img11.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Задача заключается в том, чтобы найти минимальную совокупность строк, обладающую следующими двумя свойствами.</span></p>
+<p      class=rvps5><span     class=rvts6>1. Каждый столбец части А имеет знак × хотя бы в одной из этих строк, т. е. искомая совокупность подмножеств должна покрывать все множество состояний.</span></p>
+<p      class=rvps5><span     class=rvts6>2. Если какая-то строка из данной совокупности имеет знак • в части В, то столбец, содержащий этот знак, имеет знак × хотя бы в одной из строк данной совокупности, т. е. искомая совокупность должна обладать свойством правильной группировки, которое заключается в том, что любое непосредственно производное множество от любого элемента правильной группировки должно быть подмножеством некоторого элемента этой же группировки.</span></p>
+<p      class=rvps5><span     class=rvts6>Процесс решения представляется как обход дерева поиска. Вершинам дерева соответствуют ситуации, связанные с выбором очередного столбца для покрытия. Ветви дерева соответствуют вариантам покрытия данного столбца. При рассмотрении очередной ситуации в процессе поиска решения применяются следующие правила редукции.</span></p>
+<p      class=rvps5><span     class=rvts6>1. Если в части А имеется столбец с единственным знаком ×, то строка, содержащая в данном столбце этот знак, вносится в текущее решение и удаляется из таблицы вместе со всеми столбцами, где она имеет знак ×.</span></p>
+<p      class=rvps5><span     class=rvts6>2. Если i-я строка имеет знак × везде, где такой знак имеет j-я строка, а j-я строка имеет знак • везде, где знак • имеет i-я строка, то j-я строка удаляется. Нетрудно видеть, что это действие представляет собой то же самое, что и описанное выше удаление некоторых совместимых множеств перед построением таблицы.</span></p>
+<p      class=rvps5><span     class=rvts6>3. Если i-й столбец имеет знак × везде, где имеет такой знак j-й столбец из части А, то i-й столбец удаляется.</span></p>
+<p      class=rvps5><span     class=rvts6>4. Если из какого-то столбца части В при включении строки в решение исчез хотя бы один знак •, то этот столбец переводится в часть А и из него удаляются все знаки •.</span></p>
+<p      class=rvps5><span     class=rvts6>5. Если в результате удаления строк в некотором столбце части В остались только знаки •, то строки, содержащие эти знаки, удаляются.</span></p>
+<p      class=rvps5><span     class=rvts6>Если ни одно из перечисленных условий не выполняется, то выбирается столбец в части А с минимальным числом знаков × и при формировании текущего решения в первую очередь выбирается строка с максимальным числом знаков ×. Если таких строк несколько, выбирается та, которая имеет наименьшее число знаков •. Выбранная строка удаляется из таблицы и удаляются столбцы, имеющие знак × в этой строке.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть исходной таблицей является табл. 24.9. Выбираем столбец 4 как содержащий минимум знаков ×. Строки {2, 4} и {4, 6} имеют одинаковое число знаков ×, но строка {2, 4} не содержит знаков •, и поэтому в текущее решение включаем {2, 4}. После соответствующего преобразования согласно правилам редукции получаем табл. 24.10. В этой таблице выбираем столбец 6 и покрывающую его строку {3, 6}. Табл. 24.10 преобразуется в табл. 24.11.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img12.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>В части А табл. 24.11 остался один столбец, который покрывается тремя строками. Видно, что для его покрытия не стоит выбирать строку {1, 2, 3, 5}, так как согласно правилу 4 в части А появляется новый столбец, соответствующий множеству {4, 6}, который тоже должен быть покрыт. Поэтому выбираем строку {1, 2, 5}. Полученная правильная группировка {1, 2, 5}, {2, 4}, {3, 6} является минимальной. Действительно, обратившись к дереву поиска, изображенному на рис. 24.2, видим, что вернувшись в вершину 6 и заменив множество {3, 6} на множество {4, 6}, не получим группировки с двумя элементами. Вернувшись же в начальную вершину 4, можно получить единственную двухэлементную группировку {1, 2, 3, 5}, {4, 6}, которая не является правильной.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img13.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>В результате минимизации автомата, представленного табл. 24.7, получаем автомат с тремя состояниями, таблицей переходов и выходов которого является табл. 24.12.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img14.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk24/img15.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+
+
+<p class=rvps7><span class=rvts6><br></span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body></html>

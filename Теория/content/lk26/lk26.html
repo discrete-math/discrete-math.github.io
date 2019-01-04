@@ -1,0 +1,338 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Кодирование состояний асинхронного автомата</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts14
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts15
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+}
+
+
+--></style>
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 26</span></p>
+<p><span class=rvts7>Кодирование состояний асинхронного автомата </span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p         class=rvps3><span         class=rvts7>26.1.         Явление состязаний элементов памяти</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Асинхронный автомат отличается от синхронного тем, что промежуток между моментами времени, когда автомат меняет свое состояние, у него не фиксирован, а определяется изменением входного сигнала. В связи с этим на функцию переходов ψ накладывается следующее ограничение: если ψ(a, q</span><span class="rvts12">i</span><span     class=rvts6>) = q<span class="rvts12">j</span> для некоторых а ∈ А и q<span class="rvts12">i</span> ∈ Q, то ψ(a, q</span><span class="rvts12">j</span><span     class=rvts6>) = q<span class="rvts12">j</span>, т. е. всякий переход должен всегда вести в некоторое состояние, устойчивое при действующем в данный момент входном сигнале а. Естественно, что входной сигнал не должен меняться до тех пор, пока автомат не придет в устойчивое состояние. Без этих ограничений невозможно построить автомат, реализующий заданное поведение.</span></p>
+<p      class=rvps5><span     class=rvts6>В реальных схемах не может быть одновременного изменения различных сигналов, допускаемого в абстрактной модели синхронного автомата. Реальные логические элементы обладают инерционностью, приводящей к некоторым задержкам их «срабатывания», причем разброс этих задержек для различных элементов носит случайный характер. Кроме того, сигналы, переключающие различные элементы памяти, могут проходить цепочки логических элементов, имеющие различную длину. Задержки на элементах в цепочках суммируются. Сами элементы памяти имеют различное время переключения. В схемах, работающих в синхронном режиме, такими задержками можно пренебречь, поскольку там процесс переключения элементов памяти и процесс формирования переключающих сигналов разделены во времени. В асинхронных схемах эти процессы происходят одновременно и указанное свойство реальных элементов должно учитываться.</span></p>
+<p      class=rvps5><span     class=rvts6>Рассмотрим процесс перехода из состояния в состояние для асинхронного автомата, поведение которого представлено в табл. 26.1 с выделенными устойчивыми состояниями, где крайний правый столбец представляет произвольно выполненное кодирование состояний. Переход из одного состояния в другое в реальной схеме реализуется как смена набора состояний элементов памяти. Пусть сначала действует входной сигнал а</span><span class="rvts12">1</span><span     class=rvts6> и автомат находится в устойчивом состоянии q</span><span class="rvts12">1</span><span     class=rvts6> (код 000). Затем входной сигнал меняется на а</span><span class="rvts12">3</span><span     class=rvts6>, и автомат согласно заданному поведению должен пойти в состояние q</span><span class="rvts12">4</span><span     class=rvts6> (код 011). В зависимости от того, какой из двух элементов памяти, z</span><span class="rvts12">2</span><span     class=rvts6> или z</span><span class="rvts12">3</span><span     class=rvts6>, меняет свое состояние первым, автомат может оказаться на какое-то время в промежуточном состоянии, представленном набором состояний элементов памяти 010 либо 001. Если первым меняет свое состояние элемент z<span class="rvts12">3</span>, то автомат окажется в состоянии q<span class="rvts12">2</span> (код 001), которое является устойчивым для входного сигнала а<span class="rvts12">3</span>, т. е. вместо того, чтобы идти в состояние q</span><span class="rvts12">4</span><span     class=rvts6>, автомат остается в состоянии q<span class="rvts12">2</span>.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img1.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Рассмотренное явление носит название </span><span class="rvts8">состязаний </span><span     class=rvts6>или </span><span class="rvts8">гонок</span><span     class=rvts6> элементов памяти. Принято называть состязания </span><span class="rvts8">неопасными</span><span     class=rvts6>, если все промежуточные состояния, в которых автомат может оказаться при переходе из одного состояния в другое под воздействием некоторого входного сигнала </span><span class="rvts8">а</span><span     class=rvts6>, являются неустойчивыми для сигнала </span><span class="rvts8">а</span><span     class=rvts6>, т. е. при любом порядке переключений элементов памяти автомат из некоторого состояния q<span class="rvts12">i</span> под воздействием входного сигнала а переходит всегда в состояние q</span><span class="rvts12">j</span><span     class=rvts6> = ψ(a, q</span><span class="rvts12">i</span><span     class=rvts6>). Если же при этом автомат может оказаться в некотором устойчивом состоянии q</span><span class="rvts12">k</span><span     class=rvts6>, отличном от q<span class="rvts12">j</span>, то состязания называются </span><span class="rvts8">опасными</span><span     class=rvts6>.</span></p>
+<p      class=rvps5><span     class=rvts6>Состязания могут быть также и между входными двоичными сигналами. Чтобы устранить их влияние на работу автомата, вводят обычно ограничение на изменение входных сигналов. Например, можно наложить запрет на изменение одновременно более чем одного двоичного сигнала.</span></p>
+
+
+<p      class=rvps5>&nbsp;</p>
+
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p><span    class=rvts7>26.2.  Условие отсутствия опасных состязаний</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+
+<p      class=rvps5><span     class=rvts6>Реализацию заданного в автомате перехода из состояния q</span><span class="rvts12">i</span><span     class=rvts6> в состояние q</span><span class="rvts12">j</span><span     class=rvts6> (примем для такого перехода обозначение q<span class="rvts12">i</span> <span class="rvts8">→</span> q<span class="rvts12">j</span>) можно обеспечить, придав функции переходов ψ значение q<span class="rvts12">j</span> на всех возможных промежуточных состояниях, в которые автомат может попасть из состояния q<span class="rvts12">i</span> при заданном фиксированном входном сигнале </span><span class="rvts8">а</span><span     class=rvts6>, т. е. ψ(a, q</span><span class="rvts12">l</span><span     class=rvts6>) = q<span class="rvts12">j</span> при любом q<span class="rvts12">l</span>, в котором может оказаться автомат при переходе из q<span class="rvts12">i</span>. В этом случае элементы памяти, которые должны изменить свое состояние, будут подвергаться надлежащему постоянному воздействию на всем протяжении рассматриваемого перехода, независимо от того, в каком порядке они «сработают».</span></p>
+<p      class=rvps5><span     class=rvts6>Обозначим U(q</span><span class="rvts12">i</span><span     class=rvts6>, q</span><span class="rvts12">j</span><span     class=rvts6>) множество всех возможных промежуточных состояний (включая исходное и конечное), в которые автомат может попасть при реализации перехода q<span class="rvts12">i</span> <span class="rvts8">→</span> q<span class="rvts12">j</span>, если элементы памяти, меняющие свое состояние, делают это в произвольном порядке. Для приведенного выше примера U(q1, q4) = {q</span><span class="rvts12">1</span><span     class=rvts6>, q</span><span class="rvts12">2</span><span     class=rvts6>, q</span><span class="rvts12">3</span><span     class=rvts6>, q</span><span class="rvts12">4</span><span     class=rvts6>}, U(q</span><span class="rvts12">5</span><span     class=rvts6>, q</span><span class="rvts12">2</span><span     class=rvts6>) = {q</span><span class="rvts12">1</span><span     class=rvts6>, q</span><span class="rvts12">2</span><span     class=rvts6>, q</span><span class="rvts12">5</span><span     class=rvts6>, q}, где q – некоторое состояние, не предусмотренное в задании поведения автомата, соответствующее набору состояний элементов памяти 101.</span></p>
+<p      class=rvps5><span     class=rvts6>Два перехода q<span class="rvts12">i</span> <span class="rvts8">→</span> q<span class="rvts12">j</span> и q</span><span class="rvts12">k</span><span     class=rvts6> <span class="rvts8">→</span> q<span class="rvts12">l</span>, совершаемые автоматом при одном и том же входном сигнале в различные состояния (q<span class="rvts12">j</span> ≠ q</span><span class="rvts12">l</span><span     class=rvts6>), назовем </span><span class="rvts8">парой переходов</span><span     class=rvts6>. Тогда условие отсутствия опасных состязаний формулируется следующим образом.</span></p>
+<p      class=rvps5><span class="rvts8">У т в е р ж д е н и е  26.1.</span><span     class=rvts6> При одновременном возбуждении элементов памяти в процессе перехода опасные состязания отсутствуют тогда и только тогда, когда для каждой пары переходов q</span><span class="rvts12">i</span><span     class=rvts6> <span class="rvts8">→</span> q</span><span class="rvts12">j</span><span     class=rvts6>, q<span class="rvts12">k</span> <span class="rvts8">→</span> q</span><span class="rvts12">l</span><span     class=rvts6> имеет место U(q<span class="rvts12">i</span>, q<span class="rvts12">j</span>) ∩ U(q<span class="rvts12">k</span>, q<span class="rvts12">l</span>) = ∅.</span></p>
+<p      class=rvps5><span     class=rvts6>Множества U(q<span class="rvts12">i</span>, q<span class="rvts12">j</span>) и U(q<span class="rvts12">k</span>, q<span class="rvts12">l</span>) можно формально представить как множества кодов соответствующих состояний, а те, в свою очередь, представляются троичными векторами, полученными из кодов состояний q<span class="rvts12">i</span>, q<span class="rvts12">j</span>, q<span class="rvts12">k</span> и q<span class="rvts12">l</span>. Обозначим эти векторы t(q<span class="rvts12">i</span>, q<span class="rvts12">j</span>) и t(q<span class="rvts12">k</span>, q<span class="rvts12">l</span>). Компоненты вектора t(q<span class="rvts12">i</span>, q<span class="rvts12">j</span>) принимают значения одноименных компонент кодов qi и q<span class="rvts12">j</span>, если они совпадают, и принимают значение «–» в противном случае. Например, если коды состояний q<span class="rvts12">i</span> и q<span class="rvts12">j</span> соответственно (0 0 0 1) и (0 1 0 1), то t(q<span class="rvts12">i</span>, q<span class="rvts12">j</span>) = (0 – 0 1).</span></p>
+<p      class=rvps5><span     class=rvts6>Необходимым и достаточным условием непересечения множеств U(q<span class="rvts12">i</span>, q<span class="rvts12">j</span>) и U(q<span class="rvts12">k</span>, q<span class="rvts12">l</span>) является ортогональность векторов t(q<span class="rvts12">i</span>, q<span class="rvts12">j</span>) и t(q</span><span class="rvts12">k</span><span     class=rvts6>, q<span class="rvts12">l</span>). К этому условию надо добавить еще необходимое требование того, что для реализации различных состояний их коды должны быть ортогональными.</span></p>
+<p      class=rvps5><span     class=rvts6>Для автомата, таблицей переходов которого является табл. 26.1, имеются следующие пары переходов:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img2.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Для входного сигнала а</span><span class="rvts12">2</span><span     class=rvts6> пары переходов согласно определению этого понятия отсутствуют. Легко проверить, что кодирование состояний, представленное следующей матрицей, обеспечивает отсутствие опасных состязаний:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img3.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span class="rvts8">Функции возбуждения</span><span     class=rvts6> элементов памяти, описывающие сигналы, которые устанавливают элементы памяти в нужные состояния, при фиксированных значениях двоичных входных сигналов определяются на интервалах, которым соответствуют множества U(q</span><span class="rvts12">i</span><span     class=rvts6>, q</span><span class="rvts12">j</span><span     class=rvts6>). Для любого U(q<span class="rvts12">i</span>, q<span class="rvts12">j</span>) такой интервал представляется троичным вектором t(q<span class="rvts12">i</span>, q<span class="rvts12">j</span>). Пусть, например, коды состояний автомата, поведение которого описывается с помощью табл. 26.1, представлены приведенной выше матрицей С. Для кодирования входных сигналов используются переменные х</span><span class="rvts12">1</span><span     class=rvts6>, х</span><span class="rvts12">2</span><span     class=rvts6>, значениями которых являются соответственно 0, 0 для а</span><span class="rvts12">1</span><span     class=rvts6>, 0, 1 – для а</span><span class="rvts12">2</span><span     class=rvts6> и 1, 0 – для а</span><span class="rvts12">3</span><span     class=rvts6>. Тогда булевы функции, описывающие рассматриваемый автомат, можно задать следующими матрицами, в которых удалены строки, соответствующие поглощаемым интервалам:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img4.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p><span    class=rvts7>26.3.  Минимизация длины кода</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+
+<p      class=rvps5><span     class=rvts6>Кодирование состояний, обеспечивающее отсутствие опасных состязаний (гонок), называется </span><span class="rvts8">противогоночным</span><span     class=rvts6>. Естественно, здесь возникает задача минимизации длины кода состояния, приводящая к наименьшему числу элементов памяти в реальной схеме.</span></p>
+<p      class=rvps5><span     class=rvts6>Условия отсутствия опасных состязаний можно выразить троичной матрицей, в которой столбцы соответствуют состояниям автомата и для каждой пары переходов q</span><span class="rvts12">i</span><span     class=rvts6> <span class="rvts8">→</span> q</span><span class="rvts12">j</span><span     class=rvts6>, q</span><span class="rvts12">k</span><span     class=rvts6> <span class="rvts8">→</span> q</span><span class="rvts12">l</span><span     class=rvts6> имеется хотя бы одна строка, где компоненты i и j имеют одно значение, 0 или 1, а компоненты k и l – противоположное ему значение. Остальные компоненты имеют значение «–». Эта матрица может быть избыточна, если некоторые строки находятся в отношении импликации.</span></p>
+<p      class=rvps5><span     class=rvts6>Троичный вектор </span><span class="rvts7">a</span> <span class="rvts8">имплицирует</span><span     class=rvts6> троичный вектор </span><span class="rvts7">b</span><span     class=rvts6>, если </span><span class="rvts7">b</span><span     class=rvts6> получается из </span><span class="rvts7">a</span><span     class=rvts6> заменой некоторых нулей или единиц значением «–» и, возможно, инвертированием полученного результата. Например, вектор (1 0 – – 1 0 1) имплицирует (1 0 – – – 0 1) и (0 1 – – – 1 –). Смысл этого отношения в том, что условие, представленное вектором </span><span class="rvts7">b</span><span     class=rvts6>, автоматически выполняется при соблюдении условия, представленного вектором </span><span class="rvts7">a</span><span     class=rvts6>. Данное отношение обладает свойствами рефлексивности и транзитивности.</span></p>
+<p      class=rvps5><span     class=rvts6>Представим все условия отсутствия опасных состязаний в виде троичной матрицы, удалим из нее имплицируемые строки и назовем полученную матрицу </span><span class="rvts8">матрицей условий</span><span     class=rvts6>.</span></p>
+<p      class=rvps5><span     class=rvts6>Для автомата, таблицей переходов которого является табл. 26.1, условия отсутствия опасных состязаний, определяемых парами переходов q</span><span class="rvts12">1</span><span     class=rvts6> <span class="rvts8">→</span> q</span><span class="rvts12">1</span><span     class=rvts6>, q</span><span class="rvts12">4</span><span     class=rvts6> <span class="rvts8">→</span> q</span><span class="rvts12">5</span><span     class=rvts6>; q</span><span class="rvts12">1</span><span     class=rvts6> <span class="rvts8">→</span> q</span><span class="rvts12">1</span><span     class=rvts6>, q</span><span class="rvts12">5</span><span     class=rvts6> <span class="rvts8">→</span> q</span><span class="rvts12">5</span><span     class=rvts6> и 	q</span><span class="rvts12">2</span><span     class=rvts6> <span class="rvts8">→</span> q</span><span class="rvts12">1</span><span     class=rvts6>, q</span><span class="rvts12">4</span><span     class=rvts6> <span class="rvts8">→</span> q</span><span class="rvts12">5</span><span     class=rvts6>, могут быть представлены следующими строками:</span></p>
+
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img5.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Здесь только последняя строка останется в матрице условий. Остальные строки имплицируются последней строкой и в матрицу условий не включаются.</span></p>
+<p      class=rvps5><span     class=rvts6>Будем говорить, что троичная матрица R имплицирует троичную матрицу S, если для каждой строки матрицы S в матрице R найдется имплицирующая ее строка.</span></p>
+<p      class=rvps5><span     class=rvts6>Задача противогоночного кодирования сводится к нахождению матрицы с минимальным числом строк, имплицирующей матрицу условий. Столбцы этой матрицы будут представлять искомые коды состояний, т. е., чтобы получить матрицу кодирования С, надо транспонировать </span><span class="rvts8">кратчайшую имплицирующую форму</span><span     class=rvts6> матрицы условий.</span></p>
+<p      class=rvps5><span     class=rvts6>Множество строк матрицы условий называется совместимым, если существует вектор, имплицирующий каждую строку этого множества. Заметим, что множество строк, в котором каждая пара строк является совместимой, не всегда является совместимым множеством. Действительно, пусть имеется три троичных вектора: и = (0 1 – – 0 1), v = (– 1 0 – 0 –) и w = (– –1 – – 1). Для и и v общим имплицирующим вектором является (0 1 0 – 0 1), для и и w – вектор (0 1 1 – 0 1), а для v и w – вектор (– 0 1 – 1 1). Любой имплицирующий вектор для двух векторов не является таковым для третьего. Совместимое множество называется максимальным, если оно не является собственным подмножеством другого совместимого множества.</span></p>
+<p      class=rvps5><span     class=rvts6>Чтобы получить кратчайшую имплицирующую форму для троичной матрицы, надо найти все максимальные совместимые множества ее строк, а затем получить кратчайшее покрытие строк этими множествами.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть табл. 26.2 представляет таблицу переходов заданного асинхронного автомата. Для того чтобы учесть требование ортогональности кодов для различных состояний, можно ввести в таблицу переходов еще один столбец, где присутствуют все состояния, которые являются устойчивыми. Тогда выполнение данного требования обеспечивается введением в матрицу условий строк, не имплицируемых другими строками и выражающих отсутствие опасных состязаний, которые соответствуют данному столбцу. При этом табл. 26.2 примет вид табл. 26.3. Заметим, что неортогональные коды могут оказаться у состояний, которым соответствуют одинаковые строки таблицы переходов, и введение дополнительного столбца делает все строки различными.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img6.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img7.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Анализируя табл. 26.3, нетрудно найти, в частности, что условия отсутствия опасных состязаний при входном сигнала а</span><span class="rvts12">1</span><span     class=rvts6> выражаются следующими троичными векторами (справа показаны рассматриваемые при этом пары переходов)</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img8.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>В данном случае строка (0 0 1 1 –) имплицирует каждую из трех остальных, которые, следовательно, не надо включать в матрицу условий. Рассматривая остальные пары переходов и формируя для них соответствующие троичные векторы, получим следующую матрицу условий, которая для удобства обозрения разбита на секции, соответствующие различным столбцам табл. 26.3:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img9.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Каждому совместимому множеству строк троичной матрицы согласно его определению соответствует вектор, имплицирующий все строки, являющиеся элементами этого множества. Для данной троичной матрицы S получим следующие максимальные совместимые множества и соответствующие им векторы:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img10.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Кратчайшее покрытие множества строк матрицы S составляют множества {1, 6, 7, 9}, {2, 3, 4, 5, 8} и {2, 4, 7, 8, 10}. Соответствующие им векторы являются вектор-столбцами матрицы кодирования заданного асинхронного автомата:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img11.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+
+<p><span    class=rvts7>26.4.  Рассмотрение K-множеств</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+
+<p      class=rvps5><span     class=rvts6>Для ускорения процесса противогоночного кодирования состояний асинхронного автомата вместо рассмотрения пар переходов можно рассматривать пары так называемых K-множеств.</span></p>
+<p      class=rvps5><span class="rvts8">K-множеством</span><span     class=rvts6> называется множество состояний асинхронного автомата, переходы из которых при некотором фиксированном входном сигнале ведут в одно и то же состояние (также принадлежащее данному множеству). Пусть таблицу переходов автомата представляет табл. 26.4. K-множествами при входном сигнале а</span><span class="rvts12">1</span><span     class=rvts6> являются {q</span><span class="rvts12">1</span><span     class=rvts6>, q</span><span class="rvts12">3</span><span     class=rvts6>}, {q</span><span class="rvts12">2</span><span     class=rvts6>, q</span><span class="rvts12">4</span><span     class=rvts6>, q</span><span class="rvts12">5</span><span     class=rvts6>} и {q</span><span class="rvts12">6</span><span     class=rvts6>, q</span><span class="rvts12">7</span><span     class=rvts6>}.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img12.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span class="rvts8">Парой K-множеств</span><span     class=rvts6> в дальнейшем будем называть два различных K множества, построенных для одного и того же входного сигнала. Так же, как для пары переходов, для каждой пары K-множеств строится троичный вектор, компоненты которого соответствуют состояниям автомата. Компоненты, соответствующие состояниям, которые принадлежат одному из этих K-множеств, имеют значение 0; компоненты, соответствующие состояниям из другого K-множества, – значение 1, а компоненты, соответствующие состояниям, не принадлежащим ни одному их этих K множеств, – значение «–». Множество построенных таким образом векторов для всех пар K-множеств, из которого удалены имплицируемые векторы, образует матрицу условий S*, имплицирующую матрицу S.</span></p>
+<p      class=rvps5><span     class=rvts6>Действительно, каждой из строк матрицы S, полученной при рассмотрении пары переходов q</span><span class="rvts12">i</span><span     class=rvts6> <span class="rvts8">→</span> q</span><span class="rvts12">j</span><span     class=rvts6>, q</span><span class="rvts12">k</span><span     class=rvts6> <span class="rvts8">→</span> q<span class="rvts12">l</span>, соответствует некоторая строка матрицы S*, полученная при рассмотрении пары K-множеств, одному из которых принадлежат состояния q<span class="rvts12">i</span> и q<span class="rvts12">j</span>, а другому – состояния q<span class="rvts12">k</span> и q</span><span class="rvts12">l</span><span     class=rvts6>. При этом строка матрицы S* имплицирует строку матрицы S. Благодаря транзитивности отношения импликации кратчайшая имплицирующая форма матрицы S* имплицирует также и матрицу S.</span></p>
+<p      class=rvps5><span     class=rvts6>Процесс получения кратчайшей имплицирующей формы матрицы S* ничем не отличается от описанного ранее процесса получения кратчайшей имплицирующей формы матрицы S, т. е. так же строятся максимальные совместимые множества строк и отыскивается кратчайшее покрытие строк матрицы S* этими множествами.</span></p>
+<p      class=rvps5><span     class=rvts6>В общем случае матрица S* неэквивалентна матрице S, т. е. не всегда матрица S имплицирует S*. Поэтому для одного и того же автомата кратчайшая имплицирующая форма матрицы S* может иметь большее число строк, чем кратчайшая имплицирующая форма матрицы S. Однако рассмотрение пар K-множеств менее трудоемко по сравнению с рассмотрением пар переходов.</span></p>
+<p      class=rvps5><span     class=rvts6>Проиллюстрируем данный метод кодирования на примере табл. 26.4. Здесь нет необходимости вводить дополнительный столбец, как это сделано в предыдущем примере, поскольку нет одинаковых строк. Для данного автомата получаем матрицу условий</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img13.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Для троичной матрицы S* получим следующие максимальные совместимые множества и соответствующие им векторы:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img14.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Совокупность множеств {1, 2}, {1, 3}, {4, 6} и {5, 7, 8} является кратчайшим покрытием множества строк матрицы S*. Матрица кодирования для рассматриваемого автомата имеет вид</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img15.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Функции возбуждения строятся на интервалах, каждый из которых соответствует K-множеству. Для этого представим входной сигнал многозначной переменной </span><span class="rvts8">а</span><span     class=rvts6>, принимающей значения а</span><span class="rvts12">1</span><span     class=rvts6>, а</span><span class="rvts12">2</span><span     class=rvts6>, а</span><span class="rvts12">3</span><span     class=rvts6>, а</span><span class="rvts12">4</span><span     class=rvts6>, а</span><span class="rvts12">5</span><span     class=rvts6>, и получим следующие матрицы:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img16.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Полученные функции можно упростить за счет расширения интервалов:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img17.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p><span    class=rvts7>26.5.  Соседнее кодирование состояний</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+
+<p      class=rvps5><span     class=rvts6>До сих пор рассматривались прямые переходы, когда элементы памяти одновременно меняют свои состояния. Можно избавиться от опасных состязаний, устранив вообще состязания между элементами памяти. Каждый из прямых переходов можно заменить последовательностью элементарных переходов, т. е. таких, в которых меняется состояние только одного элемента памяти. В этом случае удобно представить коды состояний как элементы булева пространства внутренних переменных, а переход из состояния в состояние – как движение по ребрам полного булева графа, или гиперкуба, из вершины в вершину. Упомянутая последовательность элементарных переходов представится тогда последовательностью пройденных ребер.</span></p>
+<p      class=rvps5><span     class=rvts6>Кодирование состояний сводится к размещению состояний на вершинах гиперкуба. Можно использовать также процесс сборки гиперкуба, применяемый при кодировании синхронного автомата методом «желательных соседств». Рассмотрим использование этого процесса для соседнего кодирования состояний асинхронного автомата.</span></p>
+<p      class=rvps5><span     class=rvts6>В данном случае также вводится величина w</span><span class="rvts12">ij</span><span     class=rvts6>, задаваемая на парах состояний автомата, только теперь она представляет коэффициент связи – число K-множеств, содержащих пару состояний q</span><span class="rvts12">i</span><span     class=rvts6>, q</span><span class="rvts12">j</span><span     class=rvts6>. Дальнейшая сборка гиперкуба ничем не отличается от той, которая применяется при кодировании состояний синхронного автомата. Заметим только, что при подсчете значения w</span><span class="rvts12">ij</span><span     class=rvts6> одно и то же K-множество учитывается столько раз, сколько раз оно определяется различными входными сигналами.</span></p>
+<p      class=rvps5><span     class=rvts6>После того как гиперкуб собран, в нем выделяются подграфы, порожденные K-множествами. Эти подграфы должны быть связными, и на них накладывается следующее ограничение. Подграфы, которые соответствуют K-множествам, определяемым одним и тем же входным сигналом, не должны пересекаться.</span></p>
+<p      class=rvps5><span     class=rvts6>В K-множестве устойчивым является только одно состояние. В подграфе, соответствующем K-множеству, можно сориентировать ребра согласно переходам, заканчивающимся всегда в устойчивом состоянии. Состояния, связанные элементарным переходом, располагаются на соседних вершинах. Если не удается выделить связные подграфы в гиперкубе, непересекающиеся и соответствующие K-множествам, которые определяются одним и тем же входным сигналом, надо увеличить размерность гиперкуба на единицу и проложить цепочку элементарных переходов, по крайней мере, для одного прямого перехода через другой подкуб.</span></p>
+<p      class=rvps5><span     class=rvts6>Обозначим K-множество, определяемое входным сигналом a</span><span class="rvts12">i</span><span     class=rvts6> и устойчивым состоянием q</span><span class="rvts12">j</span><span     class=rvts6>, символом K</span><span class="rvts12">ij </span><span     class=rvts6>и рассмотрим автомат, заданный табл. 26.4. Для него получим все K-множества:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img18.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Значения w</span><span class="rvts12">ij</span><span     class=rvts6> представим с помощью табл. 26.5. Результат процесса сборки гиперкуба показан на рис. 26.1.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img19.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Разместим теперь в этом гиперкубе связные подграфы, соответствующие K-множествам, и снабдим ребра этих подграфов ориентацией, соответствующей направлениям переходов (рис. 26.2). В данном примере удалось без увеличения размерности гиперкуба разместить их так, чтобы любые два из них, соответствующие одному и тому же входному сигналу, не пересекались.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img20.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img21.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Преобразуем теперь исходную таблицу в </span><span class="rvts8">таблицу элементарных переходов</span><span     class=rvts6>, которая представлена в виде табл. 26.6.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk26/img22.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Функции возбуждения элементов памяти строятся здесь так же, как для синхронного автомата.</span></p>
+
+
+<p class=rvps7><span class=rvts6><br></span><span class=rvts6><br>
+</span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body></html>

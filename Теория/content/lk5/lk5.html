@@ -1,0 +1,708 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Циклы и разрезы</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts11
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts14
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts15
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+}
+.rvps15
+{
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-indent: 252px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 246px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps26
+{
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-indent: 228px;
+}
+.rvps33
+{
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps36
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps37
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 5</span></p>
+<p><span class=rvts7>Циклы и разрезы </span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps3><span class=rvts7>5.1. Цикломатическое число
+графа</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p  class=rvps5><span  class=rvts6>Для  исследования циклов
+в  графах  необходимо  ввести понятие </span><span
+class=rvts8>дерева</span><span         class=rvts6>,        которое
+является      особым     видом     графа,     часто
+используемым     в    различных    приложениях.
+Приведем                три                эквивалентных
+определения:</span></p> 
+<p      class=rvps6><span      class=rvts6>1.      Дерево     </span><span
+class=rvts9>–</span><span   class=rvts6>   это   связный   граф,
+число   ребер   которого   на   единицу  меньше
+числа вершин.</span></p> 
+<p      class=rvps7><span      class=rvts6>2.      Дерево     </span><span
+class=rvts9>–</span><span  class=rvts6>  это  связный граф, не
+имеющий циклов.</span></p> 
+<p      class=rvps8><span      class=rvts6>3.      Дерево     </span><span
+class=rvts9>–</span><span  class=rvts6>  это  граф,  в  котором
+каждая  пара  вершин  связана  одной и только
+одной цепью.</span></p> 
+<p  class=rvps9><span  class=rvts6>Граф,  каждая  компонента
+связности     которого     является     деревом,
+называется       </span><span       class=rvts8>лесом</span><span
+class=rvts6>.</span></p> 
+<p         class=rvps10><span         class=rvts6>Пусть        </span><span
+class=rvts8>G</span><span  class=rvts6> </span><span class=rvts9>–</span><span
+class=rvts6>   неориентированный   граф   с   </span><span
+class=rvts8>п</span><span    class=rvts6>    вершинами,   </span><span
+class=rvts8>т</span><span    class=rvts6>    ребрами   и   </span><span
+class=rvts8>р</span><span         class=rvts6>         компонентами
+связности.      Если     </span><span     class=rvts8>G</span><span
+class=rvts6>      </span><span      class=rvts9>–</span><span     class=rvts6>
+связный       граф      (</span><span      class=rvts8>р</span><span
+class=rvts6> = 1),  то  он  имеет  остовный подграф в
+виде    дерева.    Такой    подграф   называется
+</span><span       class=rvts8>остовным       деревом</span><span
+class=rvts6>.    Число    ребер   в   остовном   дереве
+</span><span        class=rvts8>п</span><span        class=rvts6> </span><span
+class=rvts9>–</span><span    class=rvts6> 1.    Число    ребер   в
+остовном      лесе      </span><span      class=rvts8>п</span><span
+class=rvts6> </span><span class=rvts9>–</span><span
+class=rvts6> </span><span class=rvts8>р</span><span class=rvts6>.</span></p> 
+<p      class=rvps11><span      class=rvts6>Определим      </span><span
+class=rvts10>ν</span><span  class=rvts6>(</span><span class=rvts8>G</span><span
+class=rvts6>) </span><span class=rvts11>=</span><span
+class=rvts6> </span><span  class=rvts8>m</span><span class=rvts6> </span><span
+class=rvts9>–</span><span class=rvts6> </span><span
+class=rvts8>n</span><span  class=rvts6> </span><span class=rvts11>+</span><span
+class=rvts6> </span><span     class=rvts8>p</span><span     class=rvts6>     и
+</span><span        class=rvts10>ρ</span><span        class=rvts6>(</span><span
+class=rvts8>G</span><span class=rvts6>) </span><span
+class=rvts11>=</span><span  class=rvts6> </span><span class=rvts8>n</span><span
+class=rvts6> </span><span class=rvts9>–</span><span
+class=rvts6> </span><span  class=rvts8>p</span><span  class=rvts6>.  Число
+</span><span        class=rvts10>ν</span><span        class=rvts6>(</span><span
+class=rvts8>G</span><span    class=rvts6>)   называется   </span><span
+class=rvts8>цикломатическим числом</span><span
+class=rvts6>,         а         </span><span        class=rvts10>ρ</span><span
+class=rvts6>(</span><span  class=rvts8>G</span><span  class=rvts6>) </span><span
+class=rvts9>–</span><span               class=rvts6>              </span><span
+class=rvts8>коцикломатическим числом</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps12><span  class=rvts6>В  теории  электрических
+цепей   моделью   электрической  схемы  может
+служить     мультиграф,     вершины     которого
+соответствуют  узлам  схемы,  а  ребра </span><span
+class=rvts9>–</span><span  class=rvts6>  электрическим цепям
+между  узлами.  Тогда  </span><span  class=rvts10>ν</span><span
+class=rvts6>(</span><span         class=rvts8>G</span><span        class=rvts6>)
+представляет   число   независимых  круговых
+токов,    протекающих    в    схеме,    а    </span><span
+class=rvts10>ρ</span><span  class=rvts6>(</span><span class=rvts8>G</span><span
+class=rvts6>)  </span><span  class=rvts9>–</span><span class=rvts6> число
+независимых   разностей   потенциалов  между
+узлами.</span></p> 
+<p class=rvps13><span class=rvts6><br></span></p>
+<p class=rvps14><span class=rvts7>5.2. Базис циклов</span></p>
+<p class=rvps15><span class=rvts6><br></span></p>
+<p    class=rvps16><span    class=rvts6>Рассмотрим    остовное
+дерево      </span><span      class=rvts8>Т</span><span      class=rvts6>
+некоторого        связного       графа       </span><span
+class=rvts8>G</span><span class=rvts6> = (</span><span
+class=rvts8>V</span><span  class=rvts6>, </span><span class=rvts8>E</span><span
+class=rvts6>).     Добавление     одного     ребра     из
+множества   </span><span   class=rvts8>Е</span><span  class=rvts6>  к
+</span><span   class=rvts8>Т</span><span   class=rvts6>   приводит   к
+появлению    точно   одного   простого   цикла,
+состоящего  из  добавленного  ребра  и  ребер
+дерева      </span><span      class=rvts8>Т</span><span     class=rvts6>,
+лежащих  на  единственной  цепи, соединяющей
+в     </span><span     class=rvts8>Т</span><span    class=rvts6>    концы
+данного    ребра.    Число    получаемых   таким
+образом        циклов        в       графе       </span><span
+class=rvts8>G</span><span        class=rvts6>        есть       </span><span
+class=rvts8>m</span><span class=rvts6> </span><span
+class=rvts9>–</span><span class=rvts6> </span><span
+class=rvts8>n</span><span  class=rvts6> </span><span class=rvts11>+</span><span
+class=rvts6> 1,  что  совпадает  с  цикломатическим
+числом  </span><span class=rvts10>ν</span><span class=rvts6>(</span><span
+class=rvts8>G</span><span       class=rvts6>)       графа      </span><span
+class=rvts8>G</span><span class=rvts6>.</span></p> 
+<p   class=rvps17><span   class=rvts6>Каждый  из  этих  циклов
+имеет    ребро,   не   принадлежащее   никакому
+другому     из     них.     В    этом    смысле    они
+независимы.  Множество циклов, определяемых
+таким  образом  с  помощью  остовного дерева,
+называется           </span><span           class=rvts8>базисом
+циклов</span><span        class=rvts6>       графа       </span><span
+class=rvts8>G</span><span      class=rvts6>,     а     сами     циклы,
+принадлежащие               базису,              </span><span
+class=rvts9>–</span><span               class=rvts6>              </span><span
+class=rvts8>фундаментальными циклами</span><span
+class=rvts6>.     Любой     цикл,    не    принадлежащий
+базису,  может  быть  выражен в виде линейной
+комбинации    фундаментальных    циклов.   Это
+означает следующее.</span></p> 
+<p  class=rvps18><span class=rvts6>Всякий цикл графа </span><span
+class=rvts8>G</span><span    class=rvts6>    представим   </span><span
+class=rvts8>т</span><span        class=rvts6>-мерным       булевым
+вектором,   в   котором  </span><span  class=rvts8>i</span><span
+class=rvts6>-я  компонента  имеет значение 1 или 0 в
+зависимости   от  того,  принадлежит  или  нет
+</span><span      class=rvts8>i</span><span      class=rvts6>-е      ребро
+данному    циклу.    Тогда   любой   цикл   можно
+выразить    как    покомпонентную    сумму    по
+модулю        2       векторов,       представляющих
+фундаментальные   циклы   (сумма  по  модулю  2
+определяется   следующим   образом:  0 </span><span
+class=rvts11>⊕</span><span class=rvts6> 0 </span><span
+class=rvts11>=</span><span            class=rvts6> 0,           0 </span><span
+class=rvts11>⊕</span><span class=rvts6> 1 </span><span
+class=rvts11>=</span><span            class=rvts6> 1,           1 </span><span
+class=rvts11>⊕</span><span class=rvts6> 0 </span><span
+class=rvts11>=</span><span            class=rvts6> 1,           1 </span><span
+class=rvts11>⊕</span><span class=rvts6> 1 </span><span
+class=rvts11>=</span><span class=rvts6> 0).</span></p> 
+<p  class=rvps19><span  class=rvts6>Для  примера  рассмотрим
+граф,   изображенный   на  рис. 5.1.  Выделенные
+ребра  в  нем  образуют  остовное  дерево. Оно
+определяет     три     фундаментальных    цикла
+</span><span    class=rvts9>–</span><span    class=rvts6>   это   цикл,
+проходящий        через        вершины        </span><span
+class=rvts8>v</span><span  class=rvts12>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts12>2</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts12>3</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span   class=rvts12>5</span><span  class=rvts6>;  цикл,
+проходящий        через        вершины        </span><span
+class=rvts8>v</span><span  class=rvts12>2</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts12>3</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts12>5</span><span class=rvts6>; и цикл,
+проходящий        через        вершины        </span><span
+class=rvts8>v</span><span  class=rvts12>3</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts12>4</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts12>5</span><span        class=rvts6>.
+Возьмем   два  последних  цикла.  Их  линейная
+комбинация    представит    цикл,   проходящий
+через       вершины      </span><span      class=rvts8>v</span><span
+class=rvts12>2</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts12>3</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts12>4</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts12>5</span><span    class=rvts6>    и    не    являющийся
+фундаментальным:</span></p> 
+<center><img src="lk5/img5.1.jpg"></center>
+<p     class=rvps22><span    class=rvts6>Заметим,    что    базис
+циклов      определяется      неоднозначно      и
+зависит   от   выбранного   остовного  дерева.
+Заметим   также,   что   цикл,   представляющий
+собой  линейную комбинацию фундаментальных
+циклов,   не  обязательно  простой.  Например,
+линейная          комбинация         всех         трех
+фундаментальных   циклов   графа   на   рис. 5.1
+является  циклом,  который проходит два раза
+через       вершину      </span><span      class=rvts8>v</span><span
+class=rvts12>5</span><span class=rvts6>.</span></p> 
+
+<center><img src ="lk5/5.1.jpg"></center>
+<p       class=rvps1><span      class=rvts13>Рис. 5.1.      Граф      с
+выделенным остовным деревом</span></p> 
+<p class=rvps25><span class=rvts6><br></span></p>
+<p class=rvps14><span class=rvts7>5.3. Базис разрезов</span></p>
+<p class=rvps26><span class=rvts6><br></span></p>
+<p   class=rvps27><span   class=rvts8>Разрезом</span><span  class=rvts6>
+графа    называется    множество    его   ребер,
+удаление      которых      увеличивает      число
+компонент    связности   графа.   Будем   вести
+речь  только  о  минимальных разрезах, т. е. о
+таких      разрезах,      каждый      из     которых
+перестает   быть   разрезом  при  удалении  из
+него      любого      ребра,&nbsp;      и&nbsp;     под&nbsp;
+разрезом&nbsp;          будем&nbsp;          понимать&nbsp;
+именно&nbsp; минимальный&nbsp; разрез.</span></p> 
+<p   class=rvps28><span   class=rvts6>Разрез  графа  связан  с
+его    остовным    деревом.    Остовное   дерево
+представляет  минимальное  множество  ребер
+графа,    связывающее    все    его   вершины,   а
+разрез      </span><span      class=rvts9>–</span><span     class=rvts6>
+минимальное   множество  ребер,  разделяющее
+вершины.   Очевидно,   любое  остовное  дерево
+графа  должно иметь хотя бы одно общее ребро
+с каждым разрезом.</span></p> 
+<p   class=rvps29><span   class=rvts6>Пусть  в  связном  графе
+</span><span  class=rvts8>G</span><span  class=rvts6>,  число  вершин
+которого     </span><span    class=rvts8>п</span><span    class=rvts6>,
+выделено        остовное        дерево        </span><span
+class=rvts8>Т</span><span     class=rvts6>.     Назовем     </span><span
+class=rvts8>фундаментальным разрезом</span><span
+class=rvts6>    каждый    из   </span><span   class=rvts8>п</span><span
+class=rvts6> </span><span      class=rvts9>–</span><span      class=rvts6> 1
+разрезов,   который  содержит  одно  и  только
+одно   ребро,   принадлежащее   дереву  </span><span
+class=rvts8>Т</span><span      class=rvts6>.     Таким     образом,
+каждое  ребро  </span><span  class=rvts8>е</span><span  class=rvts6>
+дерева      </span><span      class=rvts8>Т</span><span      class=rvts6>
+определяет         фундаментальный        разрез,
+который    составляют,   кроме   ребра   </span><span
+class=rvts8>е</span><span    class=rvts6>,    все    ребра   графа
+</span><span         class=rvts8>G</span><span         class=rvts6>,        не
+принадлежащие  дереву </span><span class=rvts8>Т</span><span
+class=rvts6>,    но    входящие    в   фундаментальные
+циклы,    содержащие    </span><span   class=rvts8>е</span><span
+class=rvts6>.    Действительно,    чтобы    разделить
+вершины,        связанные        ребром       </span><span
+class=rvts8>е</span><span  class=rvts6>,  надо  удалить </span><span
+class=rvts8>е</span><span  class=rvts6>  и разорвать все цепи,
+связывающие   данные   вершины  помимо  ребра
+</span><span  class=rvts8>е</span><span  class=rvts6>.  Каждая такая
+цепь  вместе  с  ребром </span><span class=rvts8>е</span><span
+class=rvts6>           образует           фундаментальный
+цикл.</span></p> 
+<p               class=rvps30><span               class=rvts6>Множество
+фундаментальных    разрезов    графа    </span><span
+class=rvts8>G</span><span    class=rvts6>    называется   </span><span
+class=rvts8>базисом  разрезов</span><span class=rvts6> графа
+</span><span   class=rvts8>G</span><span   class=rvts6>.   Так  же,  как
+любой      цикл      представляется      линейной
+комбинацией  фундаментальных  циклов, любой
+разрез   графа  </span><span  class=rvts8>G</span><span  class=rvts6>
+представляется   линейной   комбинацией  его
+фундаментальных разрезов.</span></p> 
+<p    class=rvps31><span    class=rvts6>В    графе    на    рис. 5.1
+множества     ребер    {</span><span    class=rvts8>е</span><span
+class=rvts12>2</span><span               class=rvts6>,              </span><span
+class=rvts8>е</span><span        class=rvts12>3</span><span       class=rvts6>,
+</span><span        class=rvts8>е</span><span        class=rvts12>4</span><span
+class=rvts6>}         и         {</span><span        class=rvts8>е</span><span
+class=rvts12>2</span><span               class=rvts6>,              </span><span
+class=rvts8>е</span><span        class=rvts12>4</span><span       class=rvts6>,
+</span><span        class=rvts8>е</span><span        class=rvts12>5</span><span
+class=rvts6>,               </span><span              class=rvts8>е</span><span
+class=rvts12>6</span><span               class=rvts6>,              </span><span
+class=rvts8>е</span><span        class=rvts12>7</span><span       class=rvts6>}
+представляют        собой        фундаментальные
+разрезы,   а   разрез   {</span><span   class=rvts8>е</span><span
+class=rvts12>3</span><span               class=rvts6>,              </span><span
+class=rvts8>е</span><span        class=rvts12>6</span><span       class=rvts6>,
+</span><span        class=rvts8>е</span><span        class=rvts12>7</span><span
+class=rvts6>}   </span><span   class=rvts9>–</span><span   class=rvts6>   их
+линейную        комбинацию.        В       векторном
+представлении     это     выглядит    следующим
+образом:</span></p>
+<center><img src ="lk5/img5.1.jpg"></center>
+<p    class=rvps14><span   class=rvts7>5.4.   Матрицы   циклов   и
+разрезов</span></p> 
+<p class=rvps33><span class=rvts6><br></span></p>
+<p         class=rvps34><span         class=rvts6>Пусть        </span><span
+class=rvts8>G</span><span  class=rvts6> </span><span class=rvts9>–</span><span
+class=rvts6>  граф  с  </span><span class=rvts8>п</span><span class=rvts6>
+вершинами   и   </span><span  class=rvts8>т</span><span  class=rvts6>
+ребрами,         </span><span         class=rvts8>Т         </span><span
+class=rvts9>–</span><span     class=rvts6>    остовное    дерево
+графа     </span><span     class=rvts8>G</span><span    class=rvts6>.&nbsp;
+</span><span     class=rvts8>Матрицей     фундаментальных
+циклов</span><span        class=rvts6>       графа       </span><span
+class=rvts8>G</span><span    class=rvts6>    называется   булева
+матрица,           состоящая          из          </span><span
+class=rvts10>ν</span><span  class=rvts6>(</span><span class=rvts8>G</span><span
+class=rvts6>)             строк,             соответствующих
+фундаментальным        циклам,        и       </span><span
+class=rvts8>т</span><span             class=rvts6>            столбцов,
+соответствующих    ребрам.    На   пересечении
+столбца      и      строки      имеется     1,     если
+соответствующее         ребро         принадлежит
+соответствующему      циклу,      и     0     </span><span
+class=rvts9>–</span><span  class=rvts6>  в  противном  случае.
+Таким     образом,    каждая    строка    матрицы
+циклов  является  векторным  представлением
+фундаментального    цикла,   описанным   выше.
+При   этом   удобно   упорядочить   ребра   так,
+чтобы            в            начале            получаемой
+последовательности   находились   ребра,   не
+принадлежащие  дереву </span><span class=rvts8>Т</span><span
+class=rvts6>,   и   в   том   же   порядке  расположить
+определяемые         ими        циклы.        Матрица
+фундаментальных              циклов             графа,
+представленного   на   рис. 5.1,   примет  тогда
+следующий вид:</span></p> 
+<p class=rvps14><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=168   height=97   alt=""  style="padding  :  1px;"
+src="lk5/img1.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p     class=rvps35><span     class=rvts6>Левая    часть    такой
+матрицы,           состоящая          из          </span><span
+class=rvts10>ν</span><span  class=rvts6>(</span><span class=rvts8>G</span><span
+class=rvts6>)      столбцов,     представляет     собой
+единичную матрицу.</span></p> 
+<p  class=rvps36><span class=rvts8>Матрица фундаментальных
+разрезов</span><span        class=rvts6>        определяется
+аналогично.       Это      матрица      с      </span><span
+class=rvts8>п</span><span class=rvts6> </span><span
+class=rvts9>–</span><span  class=rvts6> 1  строками  и  </span><span
+class=rvts8>т</span><span  class=rvts6> столбцами, где строки
+соответствуют  фундаментальным  разрезам, а
+столбцы     </span><span     class=rvts9>–</span><span     class=rvts6>
+ребрам.&nbsp;  На  пересечении столбца и строки
+имеется    1,    если    соответствующее    ребро
+принадлежит  соответствующему  разрезу,  и  0
+</span><span   class=rvts9>–</span><span  class=rvts6>  в  противном
+случае.  Порядок  ребер  при этом точно такой
+же,  как  в  случае  матрицы  циклов, а разрезы
+располагаются    в   том   же   порядке,   что   и
+определяющие         их         ребра.         Матрица
+фундаментальных  разрезов  графа  на  рис. 5.1
+имеет следующий вид:</span></p> 
+<p class=rvps14><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=169   height=121  alt=""  style="padding  :  1px;"
+src="lk5/img2.jpg"><span class=rvts12>.</span></p> 
+<p class=rvps1><span class=rvts12><br></span></p>
+<p   class=rvps37><span   class=rvts6>Как   видно   из  данного
+примера,          правая          часть         матрицы
+фундаментальных    разрезов,    состоящая   из
+</span><span        class=rvts10>ρ</span><span        class=rvts6>(</span><span
+class=rvts8>G</span><span   class=rvts6>)   столбцов,   является
+единичной      матрицей,      а      левая     часть
+совпадает     с     транспонированной    правой
+частью   матрицы  фундаментальных  разрезов.
+Таким  образом,  нахождение  базиса  циклов и
+нахождение      базиса     разрезов     являются
+двойственными   по   отношению  друг  к  другу
+задачами.    Любая    из    представляющих   эти
+базисы  матриц  получается  из  другой  путем
+транспонирования.</span></p> 
+<p  class=rvps38><span  class=rvts6>Интересно  заметить, что
+если          приписать         строки         матрицы
+фундаментальных      разрезов      к      матрице
+фундаментальных       циклов,      то      получим
+квадратную           матрицу,          симметричную
+относительно      главной      диагонали.     Эту
+матрицу   можно   разделить  на  такие  четыре
+части,   что  левая  верхняя  и  правая  нижняя
+части      представляют      собой      единичные
+матрицы  (с единицами на главной диагонали и
+только  на  ней),  а  каждая  из остальных двух
+частей         является         транспонированным
+вариантом другой:</span></p> 
+<p class=rvps39><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=188   height=215  alt=""  style="padding  :  1px;"
+src="lk5/img3.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps14><span class=rvts6><br></span></p>
+<p   class=rvps40><span   class=rvts6>В  приведенной  матрице
+прерывистыми  линиями  выделены  упомянутые
+части.</span></p> 
+<p><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>

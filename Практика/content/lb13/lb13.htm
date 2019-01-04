@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Минимизация числа состояний частичного автомата</title>
+
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts11
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts15
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts17
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps3
+{
+ text-align: justify;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ margin: 0px 0px 8px 0px;
+}
+--></style>
+</head>
+<body>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<a href="../../../Теория/theory.htm">Теория</a> | <strong>Практика</strong> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+<p><span class=rvts6>Минимизация числа состояний частичного автомата</span></p>
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 13.1</span></p>
+<p      class=rvps2><span      class=rvts7>Построить автомат с минимальным числом состояний, реализующий автомат, заданный следующей таблицей переходов и выходов:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=273   height=149  alt=""  style="padding  :  1px;"
+src="lb13/img1.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p    class=rvps2><span   class=rvts7>Явно несовместимыми являются пары &lt;1, 4&gt;, &lt;1, 6&gt;, &lt;3, 4&gt;, &lt;4, 5&gt;, и &lt;5, 6&gt;. Пары &lt;1, 2&gt;, &lt;2, 4&gt;, &lt;2, 5&gt; и &lt;3, 5&gt; являются явно совместимыми. Таким образом, получаем начальное значение матрицы совместимости:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=141   height=169  alt=""  style="padding  :  1px;"
+src="lb13/img2.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Цепь, порождаемая парой &lt;1, 3&gt;, содержит пары &lt;1, 3&gt; → &lt;3, 6&gt;, которые определяют новые единицы в матрице совместимости</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=138   height=169  alt=""  style="padding  :  1px;"
+src="lb13/img3.jpg"></p> 
+<p><span class=rvts7><br></span></p>
+<p    class=rvps3><span    class=rvts7>Далее получаем &lt;1, 5&gt; → &lt;2, 4&gt;; &lt;2, 3&gt;→&lt;4, 6&gt;→&lt;1, 2&gt;, &lt;3, 5&gt;; &lt;2, 6&gt;→&lt;3, 4&gt;. Последняя пара содержит несовместимые состояния, следовательно, несовместимы также и состояния 2 и 6. Окончательно матрица совместимости имеет вид</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=141   height=168  alt=""  style="padding  :  1px;"
+src="lb13/img4.jpg"></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p        class=rvps2><span        class=rvts7>Максимальными совместимыми множествами для этого автомата являются {1, 2, 3, 5}, {2, 4}, {3, 6} и {4, 6}. Все совместимые множества </span><span class="rvts8">S<span class="rvts13">i</span></span><span        class=rvts7> с соответствующими </span><span class="rvts8">T<span class="rvts13">i</span></span><span        class=rvts7> представлены в приведенной ниже таблице. Из этой таблицы видно, что для сокращения перебора надо удалить все одноэлементные множества </span><span class="rvts8">S<span class="rvts13">i</span></span><span        class=rvts7>, у которых по определению соответствующие </span><span class="rvts8">T<span class="rvts13">i</span></span><span        class=rvts7> всегда пусты, а в данном случае для каждого одноэлементного множества </span><span class="rvts8">S<span class="rvts13">i</span></span><span        class=rvts7> найдется двухэлементное множество <span class="rvts8">S<span class="rvts13">i</span></span></span>⊂<span class="rvts8">S<span class="rvts13">j</span></span><span        class=rvts7>, для которого </span><span class="rvts8">T<span class="rvts13">j</span></span><span        class=rvts7> = ∅. Кроме того, удаляются множества </span><span class="rvts8">S<span class="rvts13">11</span></span><span        class=rvts7> = {1,5} и </span><span class="rvts8">S<span class="rvts13">12</span></span><span        class=rvts7> = {2,3}, поскольку </span><span class="rvts8">S<span class="rvts13">11</span></span><span        class=rvts7> ⊂ </span><span class="rvts8">S<span class="rvts13">6</span></span><span        class=rvts7>, </span><span class="rvts8">T<span class="rvts13">11</span></span><span        class=rvts7> = </span><span class="rvts8">T<span class="rvts13">6</span></span><span        class=rvts7> и </span><span class="rvts8">S<span class="rvts13">12</span></span><span        class=rvts7> ⊂ </span><span class="rvts8">S<span class="rvts13">8</span></span><span        class=rvts7>, </span><span class="rvts8">T<span class="rvts13">12</span></span><span        class=rvts7> = </span><span class="rvts8">T<span class="rvts13">8</span><span class="rvts11"></span></span><span        class=rvts7>.</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=306   height=469  alt=""  style="padding  :  1px;"
+src="lb13/img5.jpg"></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Следующая таблица представляет обобщенную таблицу покрытий для заданного автомата</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=653   height=310  alt=""  style="padding  :  1px;"
+src="lb13/img6.jpg"></p> 
+<p class=rvps4><span class=rvts7><br></span></p>
+<p     class=rvps5><span    class=rvts7>Выбираем столбец 4 как содержащий минимум знаков </span><span class="rvts6">x</span><span    class=rvts7>. Строки {2, 4} и {4, 6} имеют одинаковое число знаков <span class="rvts6">x</span>, но строка {2, 4} не содержит знаков •, и поэтому в текущее решение включаем {2, 4}. После соответствующего преобразования согласно правилам редукции получаем следующую таблицу.</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=409   height=209  alt=""  style="padding  :  1px;"
+src="lb13/img7.jpg"></p> 
+<p class=rvps4><span class=rvts7><br></span></p>
+<p         class=rvps6><span        class=rvts7>В этой таблице выбираем столбец 6 и покрывающую его строку {3, 6} и приводим эту таблицу к следующему виду</span></p> 
+<p class=rvps7><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=339   height=138  alt=""  style="padding  :  1px;"
+src="lb13/img8.jpg"></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p         class=rvps8><span        class=rvts7>В части А этой таблицы остался один столбец, который покрывается тремя строками. Видно, что для его покрытия не стоит выбирать строку {1, 2, 3, 5}, так как согласно правилу 4 в части А появляется новый столбец, соответствующий множеству {4, 6}, который тоже должен быть покрыт. Поэтому выбираем строку {1, 2, 5}. Полученная правильная группировка {1, 2, 5}, {2, 4}, {3, 6} является минимальной. Действительно, обратившись к дереву поиска, изображенному на рис. 13.1, видим, что вернувшись в вершину 6 и заменив множество {3, 6} на множество {4, 6}, не получим группировки с двумя элементами. Вернувшись же в начальную вершину 4, можно получить единственную двухэлементную группировку {1, 2, 3, 5}, {4, 6}, которая не является правильной.</span></p> 
+<p class=rvps9><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=397   height=103  alt=""  style="padding  :  1px;"
+src="lb13/img9.jpg"></p>
+<p class=rvps9><span class=rvts7><center>Рис. 13.1. Дерево поиска минимальной правильной группировки</center></span></p> 
+<p class=rvps10><span class=rvts7><br></span></p>
+<p  class=rvps11><span  class=rvts7>В результате минимизации заданного автомата получаем автомат с тремя состояниями, таблица переходов и выходов которого имеет следующий вид:</span></p>
+<p class=rvps9><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=271   height=85  alt=""  style="padding  :  1px;"
+src="lb13/img10.jpg"></p>
+<p class=rvps9><span class=rvts7><br></span></p>
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 13.2</span></p>
+<p      class=rvps2><span      class=rvts7>Построить автомат с минимальным числом состояний, реализующий автомат Мура, заданный следующей таблицей переходов и выходов:</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=279   height=154  alt=""  style="padding  :  1px;"
+src="lb13/img11.jpg"></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p   class=rvps2><span   class=rvts7>Явно несовместимыми являются состояния 4 и 6. По ним определяются несовместимые пары &lt;2, 3&gt; и &lt;3, 4&gt;. Все остальные пары совместимы. Максимальными совместимыми множествами являются {1, 2, 4, 5}, {1, 3, 5, 6}, {1, 2, 5, 6}.</span></p> 
+<p   class=rvps2><span   class=rvts7>Обобщенная таблица покрытий имеет следующий вид:</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=626   height=263  alt=""  style="padding  :  1px;"
+src="lb13/img12.jpg"></p> 
+<p class=rvps1><span class=rvts7><br>
+</span></p>
+<p  class=rvps2><span class=rvts7>В первую очередь покрываем столбец 4, как содержащий наименьшее число знаков </span><span class="rvts6">x</span><span class=rvts7>. Выбор строки {1, 2, 4, 5} заставляет перенести столбец {3, 5} из части В в часть А. Текущую ситуацию представляет теперь представленная ниже таблица, где строка {3, 5, 6} покрывает все столбцы части А. Правильную группировку составляют всего два подмножества: {1, 2, 4, 5} и {3, 5, 6}. Очевидно, эта группировка является минимальной.</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=349   height=242  alt=""  style="padding  :  1px;"
+src="lb13/img13.jpg"></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p     class=rvps2><span    class=rvts7>Одно из решений представляет следующая таблица:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=282   height=75  alt=""  style="padding  :  1px;"
+src="lb13/img14.jpg"></p> 
+<p><span class=rvts17><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+
+</body></html>

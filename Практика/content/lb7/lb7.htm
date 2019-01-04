@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Локальные упрощения ДНФ</title>
+
+
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts11
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts12
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts13
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps3
+{
+ text-align: justify;
+}
+.rvps4
+{
+}
+.rvps5
+{
+ text-indent: 36px;
+}
+--></style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<a href="../../../Теория/theory.htm">Теория</a> | <strong>Практика</strong> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+<p><span class=rvts6>Локальные упрощения ДНФ</span></p>
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 7.1</span></p>
+<p   class=rvps2><span   class=rvts7>В   ДНФ,   представленной
+следующей      матрицей     найти     избыточные
+конъюнкции.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=236   height=303  alt=""  style="padding  :  1px;"
+src="lb7/img1.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p       class=rvps2><span      class=rvts7>Если      подстановка
+значений            переменных,           обращающая
+рассматриваемую     конъюнкцию    в    единицу,
+обращает     в     единицу     дизъюнкцию     всех
+остальных   конъюнкций,  то  рассматриваемая
+конъюнкция        избыточна.       Тождественное
+равенство        некоторой        ДНФ        единице
+равносильно вырожденности
+соответствующей          троичной         матрицы.
+Результат    подстановки    значений    </span><span
+class=rvts8>х</span><span     class=rvts9>1</span><span     class=rvts7> = 1,
+</span><span         class=rvts8>х</span><span        class=rvts9>3</span><span
+class=rvts7> = 0        и       </span><span       class=rvts8>х</span><span
+class=rvts9>5</span><span      class=rvts7> = 0     (при     которых
+первая  конъюнкция обращается в единицу)&nbsp;
+представляется            минором           матрицы,
+образованным  столбцами,  где  строка 1 имеет
+«</span><span  class=rvts10>–</span><span class=rvts7>» и строками,
+не ортогональными строке 1:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=123   height=104  alt=""  style="padding  :  1px;"
+src="lb7/img2.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Данная     матрица    не
+является    вырожденной:   вектор   (0 0 </span><span
+class=rvts10>–</span><span  class=rvts7>) ортогонален всем ее
+строкам.  Следовательно,  первая  конъюнкция
+не         является         избыточной.        Миноры,
+соответствующие   остальным  строкам,  имеют
+следующий вид:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps3><span  class=rvts7>2)</span><img  width=123  height=159  alt=""
+style="padding     :    1px;"    src="lb7/img3.jpg"><span    class=rvts7>;&nbsp;
+3)</span><img    width=87    height=134    alt=""    style="padding    :   1px;"
+src="lb7/img4.jpg"><span  class=rvts7>;&nbsp;  4)</span><img width=87 height=104
+alt=""   style="padding  :  1px;"  src="lb7/img5.jpg"><span  class=rvts7>;&nbsp;
+5)</span><img    width=118    height=78    alt=""    style="padding    :   1px;"
+src="lb7/img6.jpg"><span  class=rvts7>;&nbsp;  6)</span><img width=93 height=134
+alt=""  style="padding  :  1px;" src="lb7/img7.jpg"><span class=rvts7>;&nbsp; 7)
+пустая;&nbsp;  8)</span><img  width=120  height=51 alt="" style="padding :
+1px;"  src="lb7/img8.jpg"><span  class=rvts7>;&nbsp;  9)  </span><img  width=120
+height=51     alt=""    style="padding    :    1px;"    src="lb7/img9.jpg"><span
+class=rvts7>;&nbsp;  10)</span><img  width=83  height=51 alt="" style="padding :
+1px;" src="lb7/img10.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps2><span   class=rvts7>Строка   7   ортогональна
+всем   остальным   строкам,   соответствующий
+минор  имеет  пустое  множество строк. Она не
+избыточна.   Из   всех   миноров  вырожденными
+матрицами                 являются                миноры,
+соответствующие  строкам  2,  3  и 6. Однако все
+их  удалять  нельзя,  так  как  удаление одной
+строки     может     сделать     другую     строку
+неизбыточной.  Удалив  строки  2  и  3,  получим
+матрицу,  из которой нельзя удалить ни одной
+строки:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=236   height=245  alt=""  style="padding  :  1px;"
+src="lb7/img11.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 7.2</span></p>
+<p   class=rvps2><span   class=rvts7>В   ДНФ,   представленной
+матрицей,  полученной  в  результате решения
+Задачи   №   1,   найти   и   удалить  избыточные
+литералы.</span></p> 
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p      class=rvps2><span      class=rvts7>Удаление     литерала
+равносильно  замене нуля или единицы знаком
+«</span><span    class=rvts10>–</span><span    class=rvts7>».   Задача
+сводится    к    предыдущей.   Чтобы   заменить,
+например,  единицу  в строке 1 знаком «</span><span
+class=rvts10>–</span><span    class=rvts7>»,    надо    выяснить,
+можно    ли,   не   изменяя   заданной   функции,
+добавить   к  матрице  строку,  полученную  из
+строки  1  заменой  данной  единицы нулем. Для
+этого        строим        минор,       образованный
+столбцами,  где  строка  1  имеет знак «</span><span
+class=rvts10>–</span><span    class=rvts7>»,    и   строками,   не
+ортогональными  добавляемой строке. Если он
+является       вырожденной       матрицей,       то
+соответствующий   литерал  избыточный.  Этот
+минор имеет следующий вид:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=120   height=104  alt=""  style="padding  :  1px;"
+src="lb7/img12.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p      class=rvps2><span      class=rvts7>Вектор      (0 1 </span><span
+class=rvts10>–</span><span   class=rvts7>)   ортогонален   всем
+строкам      этой     матрицы,     следовательно,
+матрица  не  вырожденная  и  рассматриваемую
+единицу      нельзя      менять      на      «</span><span
+class=rvts10>–</span><span class=rvts7>».</span></p> 
+<p   class=rvps2><span   class=rvts7>Для   нулей   в   строке   1
+получаем следующие миноры:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=123   height=134  alt=""  style="padding  :  1px;"
+src="lb7/img13.jpg"><span   class=rvts7>&nbsp;  и&nbsp;  </span><img  width=129
+height=51    alt=""    style="padding    :    1px;"    src="lb7/img14.jpg"><span
+class=rvts7>,</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p       class=rvps3><span      class=rvts7>которые      являются
+невырожденными   матрицами.   Следовательно,
+строку 1 оставляем без изменений.</span></p> 
+<p    class=rvps2><span    class=rvts7>Для    единиц   строки   4
+получаем следующие миноры:</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=84   height=78   alt=""   style="padding  :  1px;"
+src="lb7/img15.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img     width=93    height=104    alt=""    style="padding    :    1px;"
+src="lb7/img16.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img     width=84     height=51    alt=""    style="padding    :    1px;"
+src="lb7/img17.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img     width=84     height=51    alt=""    style="padding    :    1px;"
+src="lb7/img18.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p   class=rvps2><span   class=rvts7>Только   первый   из   них
+является    вырожденной    матрицей.   Поэтому
+левую    единицу    строки   4   можно   заменить
+знаком             «</span><span             class=rvts10>–</span><span
+class=rvts7>».</span></p> 
+<p   class=rvps2><span   class=rvts7>Для   строки   5  получаем
+следующие    миноры    с    учетом    предыдущей
+замены:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps4><span   class=rvts7>  &nbsp;  &nbsp;  &nbsp;  &nbsp;</span><img
+width=117  height=51  alt=""  style="padding  :  1px;" src="lb7/img19.jpg"><span
+class=rvts7>        &nbsp;        &nbsp;        &nbsp;        &nbsp;</span><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+пустая
+матрица,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img    width=120    height=159    alt=""    style="padding    :    1px;"
+src="lb7/img20.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p  class=rvps2><span class=rvts7>Последний минор является
+вырожденной    матрицей,    и   правый   нуль   в
+строке     5     можно     заменить    на    «</span><span
+class=rvts10>–</span><span class=rvts7>».</span></p> 
+<p  class=rvps2><span  class=rvts7>Далее с учетом указанных
+замен   получаем  следующие  миноры,  которые
+оказались невырожденными матрицами.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps5><span   class=rvts7>Для   строки  6:&nbsp;&nbsp;&nbsp;
+</span><img     width=93    height=104    alt=""    style="padding    :    1px;"
+src="lb7/img21.jpg"><span    class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;   </span><img
+width=91  height=78  alt=""  style="padding  :  1px;"  src="lb7/img22.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </span><img   width=87
+height=104    alt=""    style="padding    :    1px;"   src="lb7/img23.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      </span><img      width=84
+height=78    alt=""    style="padding    :    1px;"    src="lb7/img24.jpg"><span
+class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps5><span   class=rvts7>Для   строки  7:&nbsp;&nbsp;&nbsp;
+три  пустых  матрицы  и&nbsp;&nbsp;&nbsp;  </span><img width=91
+height=104    alt=""    style="padding    :    1px;"   src="lb7/img25.jpg"><span
+class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps5><span   class=rvts7>Для   строки  8:&nbsp;&nbsp;&nbsp;
+</span><img    width=120    height=104    alt=""    style="padding    :    1px;"
+src="lb7/img26.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </span><img  width=127
+height=134    alt=""    style="padding    :    1px;"   src="lb7/img27.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><img
+width=120  height=78  alt=""  style="padding  :  1px;" src="lb7/img28.jpg"><span
+class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps5><span   class=rvts7>Для   строки  9:&nbsp;&nbsp;&nbsp;
+</span><img    width=120    height=134    alt=""    style="padding    :    1px;"
+src="lb7/img29.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </span><img  width=129
+height=78    alt=""    style="padding    :    1px;"    src="lb7/img30.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><img
+width=120  height=51  alt=""  style="padding  :  1px;" src="lb7/img31.jpg"><span
+class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps5><span   class=rvts7>Для  строки  10:&nbsp;&nbsp;&nbsp;
+</span><img     width=87    height=104    alt=""    style="padding    :    1px;"
+src="lb7/img32.jpg"><span    class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;   </span><img
+width=80  height=51  alt=""  style="padding  :  1px;"  src="lb7/img33.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </span><img   width=83
+height=78    alt=""    style="padding    :    1px;"    src="lb7/img34.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      </span><img      width=83
+height=51    alt=""    style="padding    :    1px;"    src="lb7/img35.jpg"><span
+class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps2><span   class=rvts7>Окончательно   получаем
+следующую безызбыточную ДНФ:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p    class=rvps1><span   class=rvts8>х</span><span   class=rvts9>1</span><span
+class=rvts11>&not;</span><span class=rvts8>х</span><span
+class=rvts9>3</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>5</span><span class=rvts7> </span><span
+class=rvts12>∨</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>2</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>3</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>6</span><span class=rvts7> </span><span
+class=rvts12>∨</span><span class=rvts7> </span><span
+class=rvts8>х</span><span class=rvts9>2</span><span
+class=rvts11>&not;</span><span class=rvts8>х</span><span
+class=rvts9>5</span><span class=rvts7> </span><span
+class=rvts12>∨</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>1</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>3</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>4</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>6</span><span class=rvts7> </span><span
+class=rvts12>∨</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>2</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>3</span><span class=rvts7> </span><span
+class=rvts8>х</span><span class=rvts9>5</span><span
+class=rvts11>&not;</span><span class=rvts8>х</span><span
+class=rvts9>6</span><span class=rvts7> </span><span
+class=rvts12>∨</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span class=rvts9>1</span><span
+class=rvts11>&not;</span><span class=rvts8>х</span><span
+class=rvts9>4</span><span  class=rvts7> </span><span class=rvts8>х</span><span
+class=rvts9>6</span><span class=rvts7> </span><span
+class=rvts12>∨</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>1</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>2</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>6</span><span class=rvts7> </span><span
+class=rvts12>∨</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>2</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>5</span><span class=rvts7> </span><span
+class=rvts8>х</span><span class=rvts9>6</span><span class=rvts7>.</span></p> 
+<p style="page-break-before: always;"><span class=rvts13><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+
+</body></html>

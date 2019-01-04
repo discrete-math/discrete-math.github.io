@@ -1,0 +1,1606 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Минимизация ДНФ</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts15
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts17
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts18
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+}
+.rvps3
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps6
+{
+ page-break-after: avoid;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps36
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps37
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps41
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps42
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps43
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps44
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps45
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps46
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps47
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps48
+{
+ page-break-after: avoid;
+}
+.rvps49
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps50
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps51
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 8px 0px 8px 0px;
+}
+.rvps52
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 8px 0px 8px 0px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<h2   class=rvps3><span  class=rvts0><span  class=rvts6>Г  л  а  в  а&nbsp;
+18</span></span></h2> 
+<p><span class=rvts7>Минимизация ДНФ</span></p>
+<p class=rvps4><span class=rvts6><br></span></p>
+<p   class=rvps5><span  class=rvts6>Задача  минимизации  ДНФ
+заключается   в   нахождении   такой   ДНФ  для
+заданной       булевой       функции,       которая
+содержала         бы         минимальное        число
+элементарных   конъюнкций  или  литералов.  В
+первом        случае        результат        решения
+называется  </span><span  class=rvts8>кратчайшей</span><span
+class=rvts6>  ДНФ, во втором </span><span class=rvts9>–</span><span
+class=rvts6>     </span><span     class=rvts8>минимальной</span><span
+class=rvts6>.</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p                class=rvps6><span                class=rvts7>18.1. Метод
+Квайна-МакКласки</span></p> 
+<p><span class=rvts6><br></span></p>
+<p    class=rvps7><span    class=rvts6>Для    описания   метода
+введем    некоторые   понятия.   В   предыдущей
+главе    было    введено   понятие   формальной
+импликации:   функция   </span><span  class=rvts8>g</span><span
+class=rvts6>       имплицирует       функцию      </span><span
+class=rvts8>f</span><span        class=rvts6>,       т. е.       </span><span
+class=rvts8>g</span><span class=rvts6> </span><span
+class=rvts10>⇒</span><span class=rvts6> </span><span
+class=rvts8>f</span><span        class=rvts6>,       если       </span><span
+class=rvts8>f</span><span    class=rvts6>    имеет    значение    1
+везде,    где    это    значение    имеет   </span><span
+class=rvts8>g</span><span  class=rvts6>. В этом случае функция
+</span><span    class=rvts8>g</span><span    class=rvts6>   называется
+</span><span     class=rvts8>импликантой</span><span     class=rvts6>
+функции      </span><span     class=rvts8>f</span><span     class=rvts6>.
+Очевидно,       что       всякая       элементарная
+конъюнкция,     входящая    в    ДНФ    некоторой
+функции,       является      импликантой      этой
+функции.     Дизъюнкция     любого     множества
+импликант                  является                  также
+импликантой.</span></p> 
+<p                  class=rvps8><span                 class=rvts8>Простая
+импликанта</span><span            class=rvts6>            </span><span
+class=rvts9>–</span><span    class=rvts6>   это   импликанта   в
+виде     элементарной    конъюнкции,    которая
+перестает   быть   импликантой  при  удалении
+любого    литерала.    Заметим,   что   удаление
+литералов  до  пустого  множества приводит к
+конъюнкции,    представляющей    константу   1.
+Характеристическим     множеством     простой
+импликанты                является                </span><span
+class=rvts8>максимальный  интервал</span><span class=rvts6>,
+т. е.    интервал,    целиком    содержащийся   в
+единичной    области   </span><span   class=rvts8>М</span><span
+class=rvts11>1</span><span      class=rvts6>     функции     </span><span
+class=rvts8>f</span><span     class=rvts6>    и    не    являющийся
+подмножеством  другого  интервала из </span><span
+class=rvts8>М</span><span class=rvts11>1</span><span class=rvts6>.</span></p> 
+<p  class=rvps9><span  class=rvts6>Дизъюнкция  всех простых
+импликант      некоторой     булевой     функции
+называется </span><span
+class=rvts8>сокращенной</span><span   class=rvts6>   ДНФ  этой
+функции.</span></p> 
+<p   class=rvps10><span  class=rvts6>Метод  Квайна-МакКласки
+требует    представление   заданной   булевой
+функции  в  виде  совершенной ДНФ, т. е. такой
+ДНФ,  каждая  конъюнкция  которой имеет ранг,
+равный   числу  аргументов  функции.  Процесс
+минимизации    состоит    из   двух   этапов:   1)
+нахождение       множества       всех      простых
+импликант  заданной  функции; 2) выделение из
+этого              множества              минимального
+подмножества,    составляющего    ДНФ   данной
+функции.</span></p> 
+<p  class=rvps11><span  class=rvts6>Первый этап выполняется
+путем      применения      операции      простого
+склеивания  над  конъюнкциями.  Пусть </span><span
+class=rvts8>п</span><span               class=rvts6>               </span><span
+class=rvts9>–</span><span    class=rvts6>    число   аргументов
+заданной     функции    </span><span    class=rvts8>f</span><span
+class=rvts6>.      Рассмотрим     последовательность
+множеств             </span><span             class=rvts8>С</span><span
+class=rvts12>0</span><span class=rvts6>, </span><span
+class=rvts8>С</span><span class=rvts12>1</span><span
+class=rvts6>, … , </span><span class=rvts8>C</span><span
+class=rvts13>k</span><span        class=rvts6>,        где       </span><span
+class=rvts8>С</span><span  class=rvts12>0</span><span class=rvts6> </span><span
+class=rvts9>–</span><span            class=rvts6>           множество
+конъюнкций    ранга    </span><span    class=rvts8>п</span><span
+class=rvts6>,     составляющих     совершенную     ДНФ
+функции      </span><span     class=rvts8>f</span><span     class=rvts6>,
+</span><span  class=rvts8>С</span><span class=rvts13>i</span><span class=rvts6>
+</span><span    class=rvts9>–</span><span    class=rvts6>   множество
+конъюнкций    ранга    </span><span    class=rvts8>п</span><span
+class=rvts6> </span><span class=rvts9>–</span><span
+class=rvts6> </span><span        class=rvts8>i</span><span        class=rvts6>,
+полученных  путем  склеивания конъюнкций из
+множества             </span><span            class=rvts8>C</span><span
+class=rvts13>i</span><span class=rvts12> </span><span
+class=rvts14>–</span><span   class=rvts12> 1</span><span   class=rvts6>,   и
+</span><span  class=rvts8>C</span><span  class=rvts13>k</span><span class=rvts6>
+</span><span    class=rvts9>–</span><span    class=rvts6>   множество
+конъюнкций    ранга    </span><span    class=rvts8>п</span><span
+class=rvts6> </span><span class=rvts9>–</span><span
+class=rvts6> </span><span    class=rvts8>k</span><span   class=rvts6>,   где
+нет   ни   одной  пары  соседних  конъюнкций  и
+дальнейшее    склеивание    невозможно.   Если
+склеиваемым       конъюнкциям       приписывать
+некоторую        метку,        то       неотмеченные
+конъюнкции      составят      множество      всех
+простых импликант.</span></p> 
+<p   class=rvps12><span   class=rvts6>Выразим   этот   процесс
+через   операции   простого   склеивания   над
+булевыми    и   троичными   векторами.   Булева
+функция        при        этом       задана       своим
+характеристическим      множеством      </span><span
+class=rvts8>М</span><span  class=rvts11>1</span><span class=rvts6> </span><span
+class=rvts9>–</span><span           class=rvts6>          множеством
+элементов  булева  пространства,  на которых
+она    имеет    значение   1.   Удобно   при   этом
+сгруппировать   исходные   булевы  векторы  в
+подмножества,      состоящие     из     векторов,
+имеющих      одинаковое     число     единиц,     и
+упорядочить        эти        подмножества        по
+возрастанию  (или  убыванию)  числа  единиц  в
+векторе.      Тогда     для     каждого     вектора
+соседние   с   ним  векторы  будут  находиться
+только      в      соседних     подмножествах     в
+полученной последовательности.</span></p> 
+<p    class=rvps13><span    class=rvts6>В    качестве    примера
+рассмотрим      булеву      функцию,     заданную
+следующей матрицей:</span></p> 
+<p class=rvps14><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=128   height=247  alt=""  style="padding  :  1px;"
+src="lk18/img1.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p  class=rvps16><span  class=rvts6>Используя  для  множеств
+векторов       те       же       обозначения,      что
+использовались        для        соответствующих
+конъюнкций,              получим             следующую
+последовательность             матриц,            где
+склеиваемые      строки      отмечены      знаком
+«*»:</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>С</span><span   class=rvts12>0</span><span
+class=rvts6>  =  </span><img  width=155 height=247 alt="" style="padding : 1px;"
+src="lk18/img2.jpg"><span      class=rvts6>,&nbsp;&nbsp;&nbsp;      </span><span
+class=rvts8>С</span><span     class=rvts12>1</span><span     class=rvts6>     =
+</span><img    width=156    height=273    alt=""    style="padding    :    1px;"
+src="lk18/img3.jpg"><span      class=rvts6>,&nbsp;&nbsp;&nbsp;      </span><span
+class=rvts8>С</span><span     class=rvts12>2</span><span     class=rvts6>     =
+</span><img     width=128    height=52    alt=""    style="padding    :    1px;"
+src="lk18/img4.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps18><span class=rvts6><br></span></p>
+<p  class=rvps19><span class=rvts6>Сокращенная ДНФ, которая
+является   результатом   выполнения  первого
+этапа  минимизации,  представится следующей
+матрицей:</span></p> 
+<p class=rvps20><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=128   height=191  alt=""  style="padding  :  1px;"
+src="lk18/img5.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps21><span class=rvts6><br></span></p>
+<p  class=rvps22><span  class=rvts6>Второй  этап  сводится  к
+задаче   кратчайшего  покрытия,  описанной  в
+гл. 7.   В   данном   случае   множество   </span><span
+class=rvts8>М</span><span   class=rvts11>1</span><span   class=rvts6>  надо
+покрыть    минимальным    числом   интервалов,
+представленных  строками  троичной матрицы,
+задающей сокращенную ДНФ.</span></p> 
+<p   class=rvps23><span   class=rvts6>Продолжая   решать   наш
+пример  и  пользуясь  обозначениями  из гл. 7,
+поставим  задачу  следующим  образом. Заданы
+множество            </span><span            class=rvts8>А</span><span
+class=rvts6> = </span><span class=rvts8>М</span><span
+class=rvts11>1</span><span      class=rvts6>     и     совокупность
+подмножеств          </span><span          class=rvts8>В</span><span
+class=rvts12>1</span><span class=rvts6>, </span><span
+class=rvts8>В</span><span class=rvts12>2</span><span
+class=rvts6>, … , </span><span class=rvts8>В</span><span
+class=rvts13>т</span><span    class=rvts6>    множества   </span><span
+class=rvts8>А</span><span class=rvts6> в виде матриц</span></p> 
+<p class=rvps24><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=165   height=247  alt=""  style="padding  :  1px;"
+src="lk18/img6.jpg"><span class=rvts6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+и&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span><img  width=168  height=191
+alt=""        style="padding       :       1px;"       src="lk18/img7.jpg"><span
+class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p     class=rvps2><span     class=rvts6>Требуется     выделить
+минимум   подмножеств  </span><span  class=rvts8>B</span><span
+class=rvts13>i</span><span     class=rvts6>,    покрывающих    все
+множество    </span><span    class=rvts8>А</span><span   class=rvts6>.
+Перейдя   к   матричной   форме   этой   задачи,
+получим следующую матрицу:</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=323   height=191  alt=""  style="padding  :  1px;"
+src="lk18/img8.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps25><span class=rvts6><br></span></p>
+<p    class=rvps26><span    class=rvts6>Здесь    надо    выбрать
+минимальное   количество   строк   так,  чтобы
+каждый  столбец имел единицу хотя бы в одной
+из них.</span></p> 
+<p        class=rvps27><span        class=rvts6>Строка        </span><span
+class=rvts8>В</span><span        class=rvts12>6</span><span        class=rvts6>
+является    единственной    строкой,   которая
+покрывает    столбцы   </span><span   class=rvts8>а</span><span
+class=rvts12>6</span><span          class=rvts6>         и         </span><span
+class=rvts8>а</span><span        class=rvts12>7</span><span       class=rvts6>.
+Поэтому  ее  включаем  в  решение.  Удалив эту
+строку   и  покрываемые  ею  столбцы,  получим
+матрицу</span></p> 
+<p class=rvps28><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=167   height=161  alt=""  style="padding  :  1px;"
+src="lk18/img9.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p        class=rvps29><span        class=rvts6>Строки        </span><span
+class=rvts8>В</span><span     class=rvts12>3</span><span     class=rvts6>    и
+</span><span  class=rvts8>В</span><span class=rvts12>5</span><span class=rvts6>
+удаляются      по     правилу     редукции,     как
+покрываемые  строками </span><span class=rvts8>В</span><span
+class=rvts12>1</span><span          class=rvts6>         и         </span><span
+class=rvts8>В</span><span        class=rvts12>4</span><span        class=rvts6>
+соответственно.  Из оставшихся строк строки
+</span><span  class=rvts8>В</span><span class=rvts12>1</span><span class=rvts6>
+и     </span><span     class=rvts8>В</span><span    class=rvts12>4</span><span
+class=rvts6>  покрывают оставшиеся столбцы. Таким
+образом,     искомое     кратчайшее     покрытие
+составляют    строки   </span><span   class=rvts8>В</span><span
+class=rvts12>1</span><span               class=rvts6>,              </span><span
+class=rvts8>В</span><span  class=rvts12>4</span><span class=rvts8> </span><span
+class=rvts6>и              </span><span              class=rvts8>В</span><span
+class=rvts12>6</span><span   class=rvts6>,   а   кратчайшая   ДНФ,
+которая   является   также   минимальной   для
+заданной   булевой  функции,  представляется
+матрицей</span></p> 
+<p class=rvps30><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=131   height=105  alt=""  style="padding  :  1px;"
+src="lk18/img10.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps31><span class=rvts6><br></span></p>
+<p  class=rvps32><span  class=rvts6>В  алгебраической  форме
+это        решение        имеет        вид        </span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts12>1</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts12>2</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts12>4</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>1</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts12>2</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts12>3</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>3</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>4</span><span class=rvts6>.</span></p> 
+<p        class=rvps33><span        class=rvts6>Иногда        бывает
+возможность  уменьшить размерность матрицы
+покрытия,   выделив   интервалы,   входящие   в
+любую   безызбыточную   ДНФ.   Если  некоторый
+элемент      булева      пространства      </span><span
+class=rvts8>m</span><span  class=rvts13>i</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts8>M</span><span         class=rvts11>1</span><span        class=rvts6>
+принадлежит   лишь   одному  из  максимальных
+интервалов            </span><span           class=rvts8>U</span><span
+class=rvts6> </span><span class=rvts10>⊆</span><span
+class=rvts6> </span><span  class=rvts8>M</span><span class=rvts11>1</span><span
+class=rvts6>,  то  очевидно,  что  любое  кратчайшее
+покрытие   множества   </span><span  class=rvts8>М</span><span
+class=rvts11>1</span><span        class=rvts6>        максимальными
+интервалами      содержит      этот     интервал.
+Элемент               </span><span              class=rvts8>m</span><span
+class=rvts13>i</span><span  class=rvts6> в этом случае назовем
+</span><span class=rvts8>определяющим
+элементом</span><span  class=rvts6>,  а  интервал </span><span
+class=rvts8>U</span><span  class=rvts6> </span><span class=rvts9>–</span><span
+class=rvts6>          </span><span          class=rvts8>обязательным
+интервалом</span><span class=rvts6>.</span></p> 
+<p      class=rvps34><span      class=rvts6>Чтобы     определить,
+является    ли    некоторый    элемент    </span><span
+class=rvts8>m</span><span         class=rvts13>i</span><span        class=rvts6>
+определяющим,   достаточно   найти   в  </span><span
+class=rvts8>М</span><span    class=rvts11>1</span><span   class=rvts6>   все
+соседние  с  ним  элементы, а затем построить
+содержащий    их   </span><span   class=rvts8>минимальный
+поглощающий интервал</span><span class=rvts6>.</span></p> 
+<p  class=rvps35><span class=rvts6>Минимальный поглощающий
+интервал   </span><span  class=rvts8>U</span><span  class=rvts6>  для
+элементов             </span><span            class=rvts8>m</span><span
+class=rvts12>1</span><span class=rvts6>, </span><span
+class=rvts8>m</span><span class=rvts12>2</span><span
+class=rvts6>, … , </span><span class=rvts8>m</span><span
+class=rvts13>k</span><span  class=rvts6>  булева  пространства
+</span><span               class=rvts8>М</span><span               class=rvts6>
+представляется            вектором            </span><span
+class=rvts16>u</span><span   class=rvts6>,  который  получается
+следующим         образом:         если         </span><span
+class=rvts8>i</span><span  class=rvts6>-я  компонента  во  всех
+векторах              </span><span             class=rvts8>m</span><span
+class=rvts12>1</span><span class=rvts6>, </span><span
+class=rvts8>m</span><span class=rvts12>2</span><span
+class=rvts6>, … , </span><span class=rvts8>m</span><span
+class=rvts13>k</span><span  class=rvts6>  имеет  значение  0,  то
+вектор  </span><span  class=rvts16>и</span><span  class=rvts6> имеет
+в  этой  компоненте  0, если 1, то 1. Если </span><span
+class=rvts8>i</span><span    class=rvts6>-я   компонента   имеет
+различные   значения   в   этих   векторах,   то
+</span><span   class=rvts8>i</span><span   class=rvts6>-я  компонента
+вектора  </span><span class=rvts16>и</span><span class=rvts6> имеет
+значение            «</span><span           class=rvts9>–</span><span
+class=rvts6>».</span></p> 
+<p  class=rvps36><span  class=rvts6>Например,  для элементов
+булева  пространства (0 0 1 0 1 0), (0 0 1 0 1 1) и
+(0 0 0 0 1 1)         минимальный         поглощающий
+интервал          представляется          вектором
+(0 0 </span><span class=rvts9>–</span><span
+class=rvts6> 0 1 </span><span class=rvts9>–</span><span
+class=rvts6>).</span></p> 
+<p     class=rvps37><span     class=rvts6>Если    все    элементы
+полученного      таким     образом     интервала
+</span><span   class=rvts8>U</span><span   class=rvts6>   принадлежат
+</span><span        class=rvts8>М</span><span        class=rvts11>1</span><span
+class=rvts6>,    то    он   является   максимальным   в
+</span><span  class=rvts8>М</span><span class=rvts11>1</span><span class=rvts6>
+и       притом       обязательным,       а      </span><span
+class=rvts8>m</span><span         class=rvts13>i</span><span        class=rvts6>
+является       определяющим      элементом.      В
+противном     случае    </span><span    class=rvts8>U</span><span
+class=rvts6>    не   содержится   целиком   в   </span><span
+class=rvts8>М</span><span     class=rvts11>1</span><span    class=rvts6>,    а
+</span><span  class=rvts8>m</span><span  class=rvts13>i</span><span class=rvts6>
+не   является   определяющим   ни   для  какого
+интервала.</span></p> 
+<p      class=rvps38><span      class=rvts6>Чтобы     определить,
+содержится          ли         интервал         </span><span
+class=rvts8>U</span><span   class=rvts6>  во  множестве  </span><span
+class=rvts8>М</span><span        class=rvts11>1</span><span       class=rvts6>,
+достаточно    для    матрицы,   представляющей
+множество            </span><span            class=rvts8>М</span><span
+class=rvts11>1</span><span    class=rvts6>,    построить    минор,
+определяемый  столбцами,  где  вектор </span><span
+class=rvts16>и</span><span     class=rvts6>     имеет     значение
+«</span><span  class=rvts9>–</span><span class=rvts6>», и строками,
+не        ортогональными       вектору       </span><span
+class=rvts16>и</span><span  class=rvts6>.  Число  строк  в  этом
+миноре  не  превышает 2</span><span class=rvts17>р</span><span
+class=rvts6>,   где   </span><span   class=rvts8>р</span><span  class=rvts6>
+</span><span       class=rvts9>–</span><span      class=rvts6>      число
+компонент   вектора   </span><span   class=rvts16>и</span><span
+class=rvts6>,        имеющих        значение       «</span><span
+class=rvts9>–</span><span  class=rvts6>».  Очевидно, интервал
+</span><span      class=rvts8>U</span><span      class=rvts6>     целиком
+содержится       в       </span><span      class=rvts8>М</span><span
+class=rvts11>1</span><span  class=rvts6>  тогда и только тогда,
+когда   число   строк   в   этом   миноре   равно
+2</span><span class=rvts17>р</span><span class=rvts6>.</span></p> 
+<p          class=rvps39><span         class=rvts6>Обратимся         к
+рассмотренному     выше     примеру.     Элемент
+(0 0 0 0)        не        является       определяющим.
+Действительно,     минимальный    поглощающий
+интервал    для    него    и    соседних    с    ним
+элементов     (0 0 1 0)     и     (1 0 0 0)     задается
+троичным   вектором   (</span><span  class=rvts9>–</span><span
+class=rvts6> 0 </span><span    class=rvts9>–</span><span   class=rvts6> 0).
+Соответствующий             минор            матрицы,
+представляющей       </span><span       class=rvts8>М</span><span
+class=rvts11>1</span><span class=rvts6>, имеет вид</span></p> 
+<p class=rvps40><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=57   height=105   alt=""  style="padding  :  1px;"
+src="lk18/img11.jpg"><span class=rvts6>,</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p   class=rvps2><span  class=rvts6>где  число  строк  меньше
+чем 4 = 2</span><span class=rvts11>2</span><span class=rvts6>.</span></p> 
+<p    class=rvps41><span    class=rvts6>Аналогичным    образом
+устанавливается,     что     элементы    (0 0 1 0),
+(1 0 0 0),  (0 0 1 1)  и  (1 0 0 1)  также  не являются
+определяющими.     Что     касается     элемента
+(0 1 1 1),    то    для   него   и   соседних   с   ним
+элементов  (0 0 1 1)  и (1 1 1 1) соответствующим
+троичным       вектором      является      (</span><span
+class=rvts9>–</span><span class=rvts6> </span><span
+class=rvts9>–</span><span                class=rvts6> 1 1)                и
+соответствующим            минором            </span><span
+class=rvts9>–</span></p> 
+<p class=rvps42><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=57   height=135   alt=""  style="padding  :  1px;"
+src="lk18/img12.jpg"><span class=rvts6>,</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p    class=rvps2><span   class=rvts6>число   строк   которого
+равно    4.    Следовательно,    элемент   (0 1 1 1)
+является       определяющим,       а      интервал,
+представляемый            вектором           (</span><span
+class=rvts9>–</span><span class=rvts6> </span><span
+class=rvts9>–</span><span           class=rvts6> 1 1),          </span><span
+class=rvts9>–</span><span class=rvts6> обязательным.</span></p> 
+<p        class=rvps43><span        class=rvts6>Этот        интервал
+включается  в  решение,  и все покрываемые им
+элементы     исключаются    из    рассмотрения.
+Очевидно,    что    если    среди    них   имеется
+какой-либо    определяющий    элемент,   то   он
+определяет   тот   же   самый  интервал.  Затем
+отыскиваются         интервалы,        содержащие
+непокрытые  элементы.  Для  этих  элементов и
+интервалов     решается     задача     покрытия,
+представляемая матрицей</span></p> 
+<p class=rvps44><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=167   height=161  alt=""  style="padding  :  1px;"
+src="lk18/img13.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps45><span class=rvts6><br></span></p>
+<p  class=rvps46><span  class=rvts6>Дальнейший  ход  решения
+не   отличается   от   предыдущего,  и  в  итоге
+получается     тот     же     результат:    </span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts12>1</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts12>2</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts12>4</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>1</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts12>2</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts12>3</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>3</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>4</span><span class=rvts6>.</span></p> 
+<p class=rvps47><span class=rvts6><br></span></p>
+<p                class=rvps48><span               class=rvts7>18.2. Метод
+Блейка-Порецкого</span></p> 
+<p><span class=rvts6><br></span></p>
+<p  class=rvps49><span  class=rvts6>Метод  Квайна-МакКласки,
+требующий  представление  исходной  булевой
+функции  в  совершенной ДНФ, может оказаться
+не    очень    удобным,   если   булева   функция
+задана  в произвольной ДНФ, а ее совершенная
+ДНФ       является       довольно       громоздкой.
+Например,       совершенная       ДНФ      функции,
+заданной        произвольной       ДНФ       </span><span
+class=rvts8>х</span><span class=rvts12>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>2</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>3</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>5</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>2</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>3</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>4</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>5</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span  class=rvts12>1</span><span  class=rvts6>, имеет
+18   элементарных  конъюнкций.  В  то  же  время
+минимальную   ДНФ  легко  получить,  применив
+операции       обобщенного       склеивания      и
+поглощения:</span></p> 
+<p class=rvps50><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>х</span><span   class=rvts12>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>2</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>3</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>5</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>2</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>3</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>4</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>5</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts12>1</span><span
+class=rvts6> = </span><span class=rvts8>х</span><span
+class=rvts12>1</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>2</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>3</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>5</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>2</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>3</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>4</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>5</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts12>1</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>2</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>3</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>5</span><span
+class=rvts6> =</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts12>1</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>2</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>3</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>5</span><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps5><span   class=rvts6>Метод  Блейка-Порецкого
+основан         на         применении        операций
+обобщенного       склеивания       и      простого
+поглощения, определяемых формулами</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>А</span><span   class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts6> = </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В</span><span  class=rvts6>&nbsp;&nbsp;&nbsp;  и&nbsp;&nbsp;&nbsp;
+</span><span        class=rvts8>А</span><span        class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts6> = </span><span
+class=rvts8>А</span><span class=rvts6>.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p        class=rvps5><span        class=rvts6>Чтобы       получить
+сокращенную  ДНФ,  надо  для всех пар смежных
+элементарных  конъюнкций получить продукты
+обобщенного    склеивания   и   проверить,   не
+поглощаются   ли  они  другими  конъюнкциями,
+входящими  в  ДНФ,  и не поглощают ли они сами
+некоторые   конъюнкции   в   ДНФ.  Поглощаемые
+конъюнкции    удаляются.    Вновь   получаемые
+конъюнкции   также   участвуют   в   операциях
+обобщенного            склеивания.           Процесс
+заканчивается,   когда  не  удается  ввести  в
+ДНФ новую конъюнкцию.</span></p> 
+<p class=rvps51><span
+class=rvts6>У т в е р ж д е н и е  18.1. В
+результате  описанного процесса получаются
+все   простые   импликанты,   т. е.  получается
+сокращенная ДНФ.</span></p> 
+<p   class=rvps5><span   class=rvts6>Покажем   это  следующим
+образом.  Пусть  </span><span class=rvts8>L</span><span class=rvts6>
+</span><span    class=rvts9>–</span><span    class=rvts6>   множество
+конъюнкций         заданной        ДНФ,        </span><span
+class=rvts8>L</span><span  class=rvts12>1</span><span  class=rvts6> </span><span
+class=rvts9>–</span><span            class=rvts6>           результат
+преобразования        </span><span       class=rvts8>L</span><span
+class=rvts6>     путем     всевозможных    обобщенных
+склеиваний    и    поглощений   конъюнкций   из
+</span><span      class=rvts8>L</span><span      class=rvts6>,      </span><span
+class=rvts8>L</span><span  class=rvts12>2</span><span  class=rvts6> </span><span
+class=rvts9>–</span><span  class=rvts6>  результат  такого же
+преобразования           множества           </span><span
+class=rvts8>L</span><span  class=rvts12>1</span><span  class=rvts6>  и т. д.
+Получаем        последовательность        </span><span
+class=rvts8>L</span><span class=rvts12>0</span><span
+class=rvts6>, </span><span class=rvts8>L</span><span
+class=rvts12>1</span><span class=rvts6>, … , </span><span
+class=rvts8>L</span><span    class=rvts13>m</span><span   class=rvts6>,   где
+</span><span         class=rvts8>L</span><span        class=rvts12>0</span><span
+class=rvts6> = </span><span    class=rvts8>L</span><span    class=rvts6>,   а
+</span><span  class=rvts8>L</span><span  class=rvts13>m</span><span class=rvts6>
+таково,        что        </span><span        class=rvts8>L</span><span
+class=rvts13>m</span><span class=rvts12> + 1</span><span
+class=rvts6> = </span><span class=rvts8>L</span><span
+class=rvts13>m</span><span class=rvts6>.</span></p> 
+<p         class=rvps5><span         class=rvts6>Пусть         </span><span
+class=rvts8>С</span><span class=rvts12>0</span><span
+class=rvts6>, </span><span class=rvts8>С</span><span
+class=rvts12>1</span><span class=rvts6>, … , </span><span
+class=rvts8>С</span><span  class=rvts13>k</span><span class=rvts6> </span><span
+class=rvts9>–</span><span   class=rvts6>  последовательность
+множеств       конъюнкций       рангов      </span><span
+class=rvts8>п</span><span class=rvts6>, </span><span
+class=rvts8>п</span><span class=rvts6> </span><span
+class=rvts9>–</span><span class=rvts6> 1, … , </span><span
+class=rvts8>п</span><span class=rvts6> </span><span
+class=rvts9>–</span><span class=rvts6> </span><span
+class=rvts8>k</span><span       class=rvts6>,       полученная      в
+результате      выполнения     первого     этапа
+метода  Квайна-МакКласки.  Очевидно,  что для
+каждой    конъюнкции    </span><span   class=rvts8>k</span><span
+class=rvts12>0</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts8>C</span><span         class=rvts12>0</span><span        class=rvts6>
+найдется        такая       конъюнкция       </span><span
+class=rvts8>l</span><span  class=rvts12>0</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts8>L</span><span    class=rvts12>0</span><span   class=rvts6>,   что
+</span><span         class=rvts8>k</span><span        class=rvts12>0</span><span
+class=rvts6> </span><span class=rvts10>⇒</span><span
+class=rvts6> </span><span  class=rvts8>l</span><span class=rvts12>0</span><span
+class=rvts6>.  Теперь  покажем, что если для каждой
+</span><span         class=rvts8>k</span><span        class=rvts13>i</span><span
+class=rvts6> </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span  class=rvts8>C</span><span class=rvts13>i</span><span
+class=rvts6>     найдется     </span><span     class=rvts8>l</span><span
+class=rvts13>j</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts8>L</span><span  class=rvts13>j</span><span  class=rvts6>  такая,
+что    </span><span    class=rvts8>k</span><span   class=rvts13>i</span><span
+class=rvts6> </span><span class=rvts10>⇒</span><span
+class=rvts6> </span><span  class=rvts8>l</span><span class=rvts13>j</span><span
+class=rvts6>,  то  для  каждой </span><span class=rvts8>k</span><span
+class=rvts13>i</span><span class=rvts12> + 1</span><span
+class=rvts6> </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span  class=rvts8>C</span><span class=rvts13>i</span><span
+class=rvts12> + 1</span><span   class=rvts6>   найдется   </span><span
+class=rvts8>l</span><span class=rvts13>j</span><span
+class=rvts12> + 1</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts8>L</span><span class=rvts13>j</span><span
+class=rvts12> + 1</span><span  class=rvts6>  такая,  что  </span><span
+class=rvts8>k</span><span class=rvts13>i</span><span
+class=rvts12> + 1</span><span class=rvts6> </span><span
+class=rvts10>⇒</span><span class=rvts6> </span><span
+class=rvts8>l</span><span class=rvts13>j</span><span
+class=rvts12> + 1</span><span     class=rvts6>.     (Такой     метод
+доказательства  называется  методом  полной
+математической    индукции).    Если    мы    это
+докажем,     то     докажем,    что    для    всякой
+конъюнкции  из  любого  </span><span class=rvts8>C</span><span
+class=rvts13>i</span><span             class=rvts6>             найдется
+имплицируемая    ею    конъюнкция    в    </span><span
+class=rvts8>L</span><span        class=rvts13>m</span><span        class=rvts6>.
+Отметим,    что    если   </span><span   class=rvts8>k</span><span
+class=rvts6> </span><span class=rvts10>⇒</span><span
+class=rvts6> </span><span    class=rvts8>l</span><span    class=rvts6>,    то
+</span><span   class=rvts8>k</span><span  class=rvts6>  содержит  все
+литералы,      которые     имеются     в     </span><span
+class=rvts8>l</span><span     class=rvts6>.    Например,    </span><span
+class=rvts8>х</span><span class=rvts12>2</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts12>4</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>5</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>6</span><span class=rvts6> </span><span
+class=rvts10>⇒</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts12>4</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>6</span><span class=rvts6>.</span></p> 
+<p    class=rvps5><span    class=rvts6>Может   оказаться,   что
+</span><span         class=rvts8>k</span><span        class=rvts13>i</span><span
+class=rvts12> + 1</span><span           class=rvts6>          является
+импликантой        для       некоторой       </span><span
+class=rvts8>l</span><span  class=rvts13>j</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts8>L</span><span  class=rvts13>j</span><span  class=rvts6>.  Тогда
+очевидно,    что   и   в   </span><span   class=rvts8>L</span><span
+class=rvts13>j</span><span      class=rvts12> + 1</span><span     class=rvts6>
+будет     конъюнкция,    для    которой    </span><span
+class=rvts8>k</span><span class=rvts13>i</span><span
+class=rvts12> + 1</span><span           class=rvts6>          является
+импликантой.    Если    </span><span    class=rvts8>k</span><span
+class=rvts13>i</span><span   class=rvts12> + 1</span><span  class=rvts6>  не
+является      импликантой      ни     для     какой
+конъюнкции       из      </span><span      class=rvts8>L</span><span
+class=rvts13>j</span><span      class=rvts6>,      то     рассмотрим
+соседние   конъюнкции  </span><span  class=rvts8>k</span><span
+class=rvts13>i</span><span class=rvts18>′</span><span
+class=rvts6> = </span><span     class=rvts8>x k</span><span     class=rvts13>
+i</span><span   class=rvts12> + 1</span><span   class=rvts6>  и  </span><span
+class=rvts8>k</span><span class=rvts13>i</span><span
+class=rvts18>′′</span><span class=rvts6> =</span><span
+class=rvts15>&not;</span><span      class=rvts8>x k</span><span     class=rvts13>
+i</span><span  class=rvts12> + 1</span><span class=rvts6>. По условию
+</span><span         class=rvts8>k</span><span        class=rvts13>i</span><span
+class=rvts18>′</span><span         class=rvts6>         и        </span><span
+class=rvts8>k</span><span class=rvts13>i</span><span
+class=rvts18>′′</span><span  class=rvts6> таковы, что для них
+есть    конъюнкции   в   </span><span   class=rvts8>L</span><span
+class=rvts13>j</span><span   class=rvts6>,  для  которых  </span><span
+class=rvts8>k</span><span class=rvts13>i</span><span
+class=rvts18>′</span><span         class=rvts6>         и        </span><span
+class=rvts8>k</span><span class=rvts13>i</span><span
+class=rvts18>′′</span><span           class=rvts6>          являются
+импликантами,         причем        это        разные
+конъюнкции,   иначе   имел   бы   место   случай
+</span><span         class=rvts8>k</span><span        class=rvts13>i</span><span
+class=rvts12> + 1</span><span class=rvts6> </span><span
+class=rvts10>⇒</span><span class=rvts6> </span><span
+class=rvts8>l</span><span        class=rvts13>j</span><span        class=rvts6>.
+Покажем,   что   они   находятся   в   отношении
+смежности.</span></p> 
+<p         class=rvps5><span         class=rvts6>Пусть         </span><span
+class=rvts8>k</span><span class=rvts13>i</span><span
+class=rvts18>′</span><span class=rvts6> </span><span
+class=rvts10>⇒</span><span class=rvts6> </span><span
+class=rvts8>l</span><span class=rvts13>j</span><span
+class=rvts18>′</span><span         class=rvts6>         и        </span><span
+class=rvts8>k</span><span class=rvts13>i</span><span
+class=rvts18>′′</span><span class=rvts6> </span><span
+class=rvts10>⇒</span><span class=rvts6> </span><span
+class=rvts8>l</span><span class=rvts13>j</span><span
+class=rvts18>′′</span><span  class=rvts6>,  По  предположению
+</span><span         class=rvts8>k</span><span        class=rvts13>i</span><span
+class=rvts18>′</span><span       class=rvts6>       не      является
+импликантой     для     </span><span     class=rvts8>l</span><span
+class=rvts13>j</span><span   class=rvts18>′′</span><span   class=rvts6>,  а
+</span><span         class=rvts8>k</span><span        class=rvts13>i</span><span
+class=rvts18>′′</span><span             class=rvts6>            </span><span
+class=rvts9>–</span><span     class=rvts6>    импликантой    для
+</span><span         class=rvts8>l</span><span        class=rvts13>j</span><span
+class=rvts18>′</span><span      class=rvts6>.      Следовательно,
+</span><span         class=rvts8>l</span><span        class=rvts13>j</span><span
+class=rvts18>′</span><span  class=rvts6>  состоит  из каких-то
+литералов,            принадлежащих           </span><span
+class=rvts8>k</span><span               class=rvts13>              i</span><span
+class=rvts12> + 1</span><span  class=rvts6>,  и литерала </span><span
+class=rvts8>х</span><span         class=rvts6>,         а         </span><span
+class=rvts8>l</span><span class=rvts13>j</span><span
+class=rvts18>′′</span><span             class=rvts6>            </span><span
+class=rvts9>–</span><span        class=rvts6>       из       каких-то
+литералов,     также    принадлежащих    </span><span
+class=rvts8>k</span><span               class=rvts13>              i</span><span
+class=rvts12> + 1</span><span  class=rvts6>  (возможно, других),
+и           литерала</span><span           class=rvts15>&not;</span><span
+class=rvts8>x</span><span        class=rvts6>.       Следовательно,
+</span><span         class=rvts8>l</span><span        class=rvts13>j</span><span
+class=rvts18>′</span><span         class=rvts6>         и        </span><span
+class=rvts8>l</span><span class=rvts13>j</span><span
+class=rvts18>′′</span><span     class=rvts6>     смежны,    а    их
+продукт            обобщенного            склеивания
+имплицируется          конъюнкцией          </span><span
+class=rvts8>k</span><span               class=rvts13>              i</span><span
+class=rvts12> + 1</span><span class=rvts6>.</span></p> 
+<p  class=rvps5><span  class=rvts6>Таким  образом, для любой
+конъюнкции    из    любого   множества   </span><span
+class=rvts8>C</span><span  class=rvts13>i</span><span  class=rvts6>,  среди
+которых  находятся  все  простые импликанты,
+имеется    имплицируемая    ею   конъюнкция   в
+множестве             </span><span            class=rvts8>L</span><span
+class=rvts13>m</span><span   class=rvts6>.   Следовательно   все
+простые    импликанты    находятся   в   </span><span
+class=rvts8>L</span><span        class=rvts13>m</span><span        class=rvts6>.
+Непростых   импликант  там  нет,  так  как  они
+удалены  в  результате  выполнения  простого
+поглощения.</span></p> 
+<p  class=rvps5><span  class=rvts6>Если исходная ДНФ задана
+в  виде  троичной  матрицы,  то рекомендуется
+организовать            процесс            получения
+сокращенной    ДНФ    (троичной   матрицы,   где
+каждая      строка      представляет      простую
+импликанту)     следующим     образом.    Строки
+исходной   матрицы   просматриваются  сверху
+вниз,  и  для  очередной  строки отыскиваются
+смежные  с  ней строки, расположенные сверху
+от   нее.   Получаемые   продукты  обобщенного
+склеивания   добавляются   в   матрицу  снизу.
+Поглощаемые     строки    удаляются.    Процесс
+заканчивается    на    самой    нижней   строке,
+когда   результаты   обобщенного  склеивания
+со  смежными  с  ней  строками  не  дают  новых
+строк для матрицы.</span></p> 
+<p    class=rvps5><span   class=rvts6>Пусть   булева   функция
+задана следующей троичной матрицей:</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=193   height=217  alt=""  style="padding  :  1px;"
+src="lk18/img14.jpg"></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps5><span  class=rvts6>В  этой  матрице  находим
+следующие   пары   смежных   строк:  (2, 3),  (1, 4),
+(3, 4),  (2, 5),  (4, 5).  Выполняя  над ними операцию
+обобщенного            склеивания,           получим
+строки</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=235   height=161  alt=""  style="padding  :  1px;"
+src="lk18/img15.jpg"><span class=rvts6>,</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps2><span  class=rvts6>которые  не  поглощаются
+заданными   строками   и   сами   не  поглощают
+другие  строки.  Справа  приведена нумерация
+строк,       которая      продолжает      исходную
+нумерацию,   а   в   скобках  приведены  номера
+склеиваемых строк.</span></p> 
+<p   class=rvps5><span   class=rvts6>Дальнейший   поиск  дает
+пары  смежных строк (4, 6), (1, 7), (4, 7), (5, 7), (6, 7),
+для которых получим строки</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=237   height=161  alt=""  style="padding  :  1px;"
+src="lk18/img16.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p     class=rvps5><span    class=rvts6>Строка    13    поглощает
+строки     6     и     9,     а     строка     17     </span><span
+class=rvts9>–</span><span  class=rvts6>  строки  1 и 7. Строка 17
+совпадает  со строкой 14. Поэтому строки 1, 6, 7,
+9  и  17 удаляются. Далее получаются следующие
+непоглощаемые строки:</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=244   height=79   alt=""  style="padding  :  1px;"
+src="lk18/img17.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p       class=rvps5><span      class=rvts6>Последняя      строка
+поглощает  строки  5,  12,  15  и  16.  Окончательно
+получаем  следующую матрицу (с естественной
+нумерацией          строк),          представляющую
+сокращенную ДНФ:</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=200   height=303  alt=""  style="padding  :  1px;"
+src="lk18/img18.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p    class=rvps5><span   class=rvts6>Второй   этап   процесса
+минимизации  можно выполнить так же, как это
+делается   в   методе  Квайна-МакКласки,  т. е.
+свести    его    к   решению   задачи   покрытия,
+разбив    полученные    интервалы   на   булевы
+векторы     </span><span     class=rvts9>–</span><span     class=rvts6>
+элементы   множества   </span><span  class=rvts8>М</span><span
+class=rvts11>1</span><span  class=rvts6>.  Комбинаторный поиск
+при      решении      задачи     покрытия     будет
+значительно       сокращен,      если      удастся
+выделить   </span><span   class=rvts8>ядро</span><span  class=rvts6>
+</span><span    class=rvts9>–</span><span    class=rvts6>   множество
+обязательных               интервалов.              При
+существовании       ядра       иногда      удается
+выделить      </span><span      class=rvts8>антиядро</span><span
+class=rvts6>      </span><span      class=rvts9>–</span><span     class=rvts6>
+множество   интервалов,   покрываемое  ядром.
+Тогда  элементы  ядра  включаются  в решение,
+элементы        антиядра       исключаются       из
+рассмотрения    и   оставшимися   интервалами
+покрываются    элементы    множества    </span><span
+class=rvts8>М</span><span    class=rvts11>1</span><span    class=rvts6>,   не
+покрытые ядром.</span></p> 
+<p      class=rvps5><span      class=rvts6>Если     максимальный
+интервал  не  принадлежит  ядру, то после его
+удаления          из         всей         совокупности
+максимальных        интервалов        оставшиеся
+интервалы      будут     покрывать     множество
+</span><span        class=rvts8>М</span><span        class=rvts11>1</span><span
+class=rvts6>.  Таким  образом,  задача  поиска  ядра
+сводится        к       нахождению       избыточных
+конъюнкций в ДНФ.</span></p> 
+<p  class=rvps5><span  class=rvts6>Можно  предложить другой
+способ   выполнения  второго  этапа,  который
+не     требует     разбиения     интервалов     на
+отдельные      элементы     множества     </span><span
+class=rvts8>М</span><span class=rvts11>1</span><span class=rvts6>.</span></p> 
+<p         class=rvps5><span         class=rvts6>Пусть         </span><span
+class=rvts16>U</span><span               class=rvts6>               </span><span
+class=rvts9>–</span><span    class=rvts6>   троичная   матрица,
+представляющая  сокращенную  ДНФ  некоторой
+булевой   функции.  Рассмотрим  совокупность
+</span><span         class=rvts8>Р</span><span        class=rvts6>(</span><span
+class=rvts16>U</span><span             class=rvts6>)            непустых
+подмножеств      множества     номеров     строк
+матрицы  </span><span class=rvts16>U</span><span class=rvts6> такую,
+что  для  каждого  элемента множества </span><span
+class=rvts8>М</span><span        class=rvts11>1</span><span        class=rvts6>
+имеется      подмножество     в     совокупности
+</span><span         class=rvts8>Р</span><span        class=rvts6>(</span><span
+class=rvts16>U</span><span      class=rvts6>),      состоящее      из
+номеров      всех      строк     матрицы     </span><span
+class=rvts16>U</span><span       class=rvts6>,      представляющих
+интервалы,   содержащие   данный   элемент,   и
+других  подмножеств  в </span><span class=rvts8>Р</span><span
+class=rvts6>(</span><span   class=rvts16>U</span><span   class=rvts6>)   нет.
+Например,         если         матрицей         </span><span
+class=rvts16>U</span><span  class=rvts6> является приведенная
+выше  матрица,  то для вектора (1 0 0 1 1) таким
+подмножеством является {1, 4}.</span></p> 
+<p     class=rvps5><span     class=rvts6>Введем    обозначение:
+</span><span         class=rvts8>t</span><span         class=rvts6>(</span><span
+class=rvts16>u</span><span class=rvts6>, </span><span
+class=rvts16>U</span><span               class=rvts6>)              </span><span
+class=rvts9>–</span><span   class=rvts6>   множество   номеров
+тех   строк   матрицы   </span><span   class=rvts16>U</span><span
+class=rvts6>,    которые   представляют   интервалы,
+содержащие         булев         вектор        </span><span
+class=rvts16>и</span><span      class=rvts6>.      Например,     для
+приведенной      выше      матрицы     и     </span><span
+class=rvts16>и</span><span      class=rvts6> = (1 0 0 1 1)     имеем
+</span><span         class=rvts8>t</span><span         class=rvts6>(</span><span
+class=rvts16>u</span><span class=rvts6>, </span><span
+class=rvts16>U</span><span     class=rvts6>) = {1, 4}.    Ясно,    что
+</span><span         class=rvts8>t</span><span         class=rvts6>(</span><span
+class=rvts16>u</span><span class=rvts6>, </span><span
+class=rvts16>U</span><span   class=rvts6>)  является  элементом
+множества            </span><span            class=rvts8>Р</span><span
+class=rvts6>(</span><span class=rvts16>U</span><span class=rvts6>).</span></p> 
+<p         class=rvps5><span        class=rvts6>Теперь        задачу
+кратчайшего    покрытия    множества    </span><span
+class=rvts8>М</span><span        class=rvts11>1</span><span        class=rvts6>
+максимальными           интервалами           можно
+сформулировать     следующим    образом:    для
+заданной    матрицы    </span><span    class=rvts16>U</span><span
+class=rvts6>  построить минимальную совокупность
+ее  строк такую, что любой элемент множества
+</span><span         class=rvts8>Р</span><span        class=rvts6>(</span><span
+class=rvts16>U</span><span  class=rvts6>)  содержит  номер хотя
+бы          одной          строки         из         данной
+совокупности.</span></p> 
+<p   class=rvps5><span  class=rvts6>Остановимся  на  способе
+получения  множества  </span><span  class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span  class=rvts6>). Пусть
+для       двух       троичных      матриц      </span><span
+class=rvts16>U</span><span     class=rvts12>1</span><span     class=rvts6>    и
+</span><span  class=rvts16>U</span><span class=rvts12>2</span><span class=rvts6>
+с     одинаковым     числом     строк     получены
+множества            </span><span            class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span class=rvts12>1</span><span
+class=rvts6>)         и         </span><span         class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span class=rvts12>2</span><span
+class=rvts6>).</span></p> 
+<p class=rvps52><span
+class=rvts6>У т в е р ж д е н и е  18.2.   Если  из
+матриц  </span><span class=rvts16>U</span><span class=rvts12>1</span><span
+class=rvts6>          и         </span><span         class=rvts16>U</span><span
+class=rvts12>2</span><span    class=rvts6>   построить   матрицу
+</span><span     class=rvts16>U</span><span    class=rvts6>,    приписав
+столбцы     матрицы     </span><span    class=rvts16>U</span><span
+class=rvts12>2</span><span   class=rvts6>   к   столбцам   </span><span
+class=rvts16>U</span><span    class=rvts12>1</span><span    class=rvts6>,   то
+множество            </span><span            class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span  class=rvts6>)  можно
+получить,        взяв       за       его       элементы
+всевозможные         непустые         пересечения
+элементов            </span><span            class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span class=rvts12>1</span><span
+class=rvts6>)  с  элементами  </span><span class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span class=rvts12>2</span><span
+class=rvts6>).</span></p> 
+<p    class=rvps5><span    class=rvts6>Для    того,   чтобы   это
+показать,     преобразуем     матрицы     </span><span
+class=rvts16>U</span><span     class=rvts12>1</span><span     class=rvts6>    и
+</span><span  class=rvts16>U</span><span class=rvts12>2</span><span class=rvts6>
+следующим     образом.     К     матрице    </span><span
+class=rvts16>U</span><span        class=rvts12>1</span><span        class=rvts6>
+припишем  справа  столько  столбцов, сколько
+их    имеет    матрица   </span><span   class=rvts16>U</span><span
+class=rvts12>2</span><span  class=rvts6>.  Всем  элементам этих
+столбцов      придадим      значение      «</span><span
+class=rvts9>–</span><span   class=rvts6>».  Такие  же  столбцы,
+число     которых     равно     числу     столбцов
+исходной    матрицы    </span><span    class=rvts16>U</span><span
+class=rvts12>1</span><span    class=rvts6>,   припишем   слева   к
+матрице              </span><span              class=rvts16>U</span><span
+class=rvts12>2</span><span    class=rvts6>.    Очевидно,    </span><span
+class=rvts8>Р</span><span  class=rvts6>(</span><span class=rvts16>U</span><span
+class=rvts12>1</span><span         class=rvts6>)         и         </span><span
+class=rvts8>Р</span><span  class=rvts6>(</span><span class=rvts16>U</span><span
+class=rvts12>2</span><span      class=rvts6>)      при      этом     не
+изменятся.     Произвольно    выберем    вектор
+</span><span              class=rvts16>и</span><span              class=rvts6>,
+принадлежащий     какому-нибудь     интервалу,
+представляемому    строкой   матрицы   </span><span
+class=rvts16>U</span><span      class=rvts6>.      По     построению
+матрицы  </span><span  class=rvts16>U</span><span class=rvts6> имеем
+</span><span         class=rvts8>t</span><span         class=rvts6>(</span><span
+class=rvts16>u</span><span class=rvts6>, </span><span
+class=rvts16>U</span><span class=rvts6>) = </span><span
+class=rvts8>t</span><span  class=rvts6>(</span><span  class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts12>1</span><span class=rvts6>) </span><span
+class=rvts10>∩</span><span class=rvts6> </span><span
+class=rvts8>t</span><span  class=rvts6>(</span><span  class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts12>2</span><span  class=rvts6>),  т. е. каждый элемент
+множества            </span><span            class=rvts8>Р</span><span
+class=rvts6>(</span><span        class=rvts16>U</span><span        class=rvts6>)
+является  пересечением  двух  множеств, одно
+из   которых   является  элементом  множества
+</span><span         class=rvts8>Р</span><span        class=rvts6>(</span><span
+class=rvts16>U</span><span    class=rvts12>1</span><span    class=rvts6>),    а
+другое      </span><span      class=rvts9>–</span><span     class=rvts6>
+элементом  множества  </span><span  class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span class=rvts12>2</span><span
+class=rvts6>).  С  другой  стороны,  для  каждой пары
+пересекающихся  элементов,  один  из которых
+взят  из </span><span class=rvts8>Р</span><span class=rvts6>(</span><span
+class=rvts16>U</span><span    class=rvts12>1</span><span    class=rvts6>),    а
+другой    </span><span   class=rvts9>–</span><span   class=rvts6>   из
+</span><span         class=rvts8>Р</span><span        class=rvts6>(</span><span
+class=rvts16>U</span><span       class=rvts12>2</span><span       class=rvts6>),
+найдется     вектор    </span><span    class=rvts16>и</span><span
+class=rvts6>    такой,    что   </span><span   class=rvts8>t</span><span
+class=rvts6>(</span><span class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts12>1</span><span         class=rvts6>)         и         </span><span
+class=rvts8>t</span><span  class=rvts6>(</span><span  class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts12>2</span><span  class=rvts6>) являются теми самыми
+элементами.  Множество </span><span class=rvts8>t</span><span
+class=rvts6>(</span><span class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts12>1</span><span class=rvts6>) </span><span
+class=rvts10>∩</span><span class=rvts6> </span><span
+class=rvts8>t</span><span  class=rvts6>(</span><span  class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts12>2</span><span   class=rvts6>)  состоит  из  номеров
+всех   строк   матриц   </span><span   class=rvts16>U</span><span
+class=rvts12>1</span><span          class=rvts6>         и         </span><span
+class=rvts16>U</span><span        class=rvts12>2</span><span       class=rvts6>,
+каждая   из  которых  представляет  интервал,
+содержащий   </span><span   class=rvts16>и</span><span  class=rvts6>.
+Пересечение     интервалов,    представляемых
+строками     матриц     </span><span    class=rvts16>U</span><span
+class=rvts12>1</span><span          class=rvts6>         и         </span><span
+class=rvts16>U</span><span     class=rvts12>2</span><span     class=rvts6>    с
+общим  номером  </span><span class=rvts8>i</span><span class=rvts6>,
+равно   интервалу,   представляемому   </span><span
+class=rvts8>i</span><span    class=rvts6>-й    строкой    матрицы
+</span><span               class=rvts16>U</span><span              class=rvts6>.
+Следовательно,     для    любой    пары    </span><span
+class=rvts8>t</span><span  class=rvts6>(</span><span  class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts12>1</span><span         class=rvts6>)         и         </span><span
+class=rvts8>t</span><span  class=rvts6>(</span><span  class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts12>2</span><span   class=rvts6>)  найдется  множество
+</span><span         class=rvts8>t</span><span         class=rvts6>(</span><span
+class=rvts16>u</span><span class=rvts6>, </span><span
+class=rvts16>U</span><span   class=rvts6>)   такое,   что   </span><span
+class=rvts8>t</span><span  class=rvts6>(</span><span  class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts6>) = </span><span class=rvts8>t</span><span
+class=rvts6>(</span><span class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts12>1</span><span class=rvts6>) </span><span
+class=rvts10>∩</span><span class=rvts6> </span><span
+class=rvts8>t</span><span  class=rvts6>(</span><span  class=rvts16>u</span><span
+class=rvts6>, </span><span class=rvts16>U</span><span
+class=rvts12>2</span><span class=rvts6>).</span></p> 
+<p    class=rvps5><span    class=rvts6>Если    матрица   </span><span
+class=rvts16>U</span><span        class=rvts12>1</span><span        class=rvts6>
+представляет      собой      один     столбец     и
+произвольное   число  одноэлементных  строк,
+то     </span><span    class=rvts8>Р</span><span    class=rvts6>(</span><span
+class=rvts16>U</span><span        class=rvts12>1</span><span       class=rvts6>)
+состоит   не   более,  чем  из  двух  элементов.
+Один     из     них     представляет    множество,
+состоящее   из  номеров  всех  строк,  имеющих
+нули    и    «</span><span   class=rvts9>–</span><span   class=rvts6>»,
+второй      </span><span      class=rvts9>–</span><span     class=rvts6>
+множество,  состоящее из номеров всех строк,
+имеющих   единицы  и  «</span><span  class=rvts9>–</span><span
+class=rvts6>».  Если  все  элементы одностолбцовой
+матрицы              </span><span              class=rvts16>U</span><span
+class=rvts12>1</span><span   class=rvts6>   имеют  одно  и  то  же
+значение,       то       </span><span       class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span class=rvts12>1</span><span
+class=rvts6>) состоит из одного элемента.</span></p> 
+<p    class=rvps5><span   class=rvts6>Пусть   матрица   </span><span
+class=rvts16>U</span><span       class=rvts6>       имеет      </span><span
+class=rvts8>т</span><span  class=rvts6> столбцов. Для матрицы
+</span><span        class=rvts16>U</span><span        class=rvts12>1</span><span
+class=rvts6>,  состоящей из единственного первого
+столбцы     получим     </span><span    class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span class=rvts12>1</span><span
+class=rvts6>),  как  указано выше. Множество </span><span
+class=rvts8>Р</span><span  class=rvts6>(</span><span class=rvts16>U</span><span
+class=rvts12>2</span><span       class=rvts6>)       для      матрицы,
+состоящей  из  двух  первых столбцов матрицы
+</span><span  class=rvts16>U</span><span class=rvts6>, получим путем
+всевозможных        пересечений        элементов
+множества            </span><span            class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span class=rvts12>1</span><span
+class=rvts6>)   с  элементами  подобного  множества
+для   второго   столбца.   Для  матрицы  </span><span
+class=rvts16>U</span><span        class=rvts12>3</span><span       class=rvts6>,
+состоящей  из  трех  первых столбцов матрицы
+</span><span     class=rvts16>U</span><span     class=rvts6>,     получим
+</span><span         class=rvts8>Р</span><span        class=rvts6>(</span><span
+class=rvts16>U</span><span        class=rvts12>3</span><span       class=rvts6>)
+аналогично,             путем            всевозможных
+пересечений    элементов   множества   </span><span
+class=rvts8>Р</span><span  class=rvts6>(</span><span class=rvts16>U</span><span
+class=rvts12>2</span><span       class=rvts6>)      с      элементами
+подобного  множества  для  третьего столбца.
+Продолжая       таким       образом      выполнять
+операцию    пересечения   множеств,   получим,
+наконец,              </span><span             class=rvts8>Р</span><span
+class=rvts6>(</span><span class=rvts16>U</span><span
+class=rvts13>т</span><span class=rvts6>) = </span><span
+class=rvts8>Р</span><span  class=rvts6>(</span><span class=rvts16>U</span><span
+class=rvts6>).    Если    в    результате    вычисления
+некоторого           </span><span           class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span class=rvts13>i</span><span
+class=rvts6>)            (1 </span><span           class=rvts10>≤</span><span
+class=rvts6> </span><span  class=rvts8>i</span><span class=rvts6> </span><span
+class=rvts10>≤</span><span class=rvts6> </span><span
+class=rvts8>m</span><span            class=rvts6>)            появилось
+одноэлементное      множество,      то     строка
+матрицы    </span><span    class=rvts16>U</span><span   class=rvts6>   с
+соответствующим     номером     включается    в
+решение как принадлежащая ядру.</span></p> 
+<p         class=rvps5><span        class=rvts6>Продемонстрируем
+процесс    получения   </span><span   class=rvts8>Р</span><span
+class=rvts6>(</span><span    class=rvts16>U</span><span    class=rvts6>)    на
+примере матрицы</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><span  class=rvts16>U</span><span  class=rvts6>  =  </span><img
+width=200  height=303  alt=""  style="padding : 1px;" src="lk18/img19.jpg"><span
+class=rvts6>,</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p    class=rvps2><span   class=rvts6>для   которой   получаем
+следующее:</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p    class=rvps2><span   class=rvts8>Р</span><span   class=rvts6>(</span><span
+class=rvts16>U</span><span class=rvts12>1</span><span
+class=rvts6>) = {(1,4,6,7,8,9,10), (2,3,4,5,7,9,10)};</span></p> 
+<p    class=rvps2><span   class=rvts8>Р</span><span   class=rvts6>(</span><span
+class=rvts16>U</span><span class=rvts12>2</span><span
+class=rvts6>) = {(1,4,6,7),             (6,7,8,9,10),             (2,3,4,5,7),
+(3,7,9,10)};</span></p> 
+<p    class=rvps2><span   class=rvts8>Р</span><span   class=rvts6>(</span><span
+class=rvts16>U</span><span  class=rvts12>3</span><span class=rvts6>) = {(1,4),
+(1,6,7), (8), (6,7,8,9,10), (2,4,5), (3,5,7), (3,7,9,10)};</span></p> 
+<p    class=rvps2><span   class=rvts8>Р</span><span   class=rvts6>(</span><span
+class=rvts16>U</span><span  class=rvts12>4</span><span class=rvts6>) = {(1,4),
+(1,6),   (7),   (8),   (6,10),   (7,8,9,10),   (2,4),   (2,5),   (3,5,7),  (10),
+(3,7,9,10)};</span></p> 
+<p    class=rvps2><span   class=rvts8>Р</span><span   class=rvts6>(</span><span
+class=rvts16>U</span><span  class=rvts12>5</span><span class=rvts6>) = {(1,4),
+(1,6),  (7),  (8),  (6,10), (8,9,10), (7,8,9), (2,4), (2,5), (3,5), (3,7), (10),
+(3,9,10), (3,7,9)}.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p    class=rvps5><span    class=rvts6>Сформулируем   правила
+редукции,    которые    можно    применять   при
+решении      задачи      покрытия     и     которые
+согласуются                   с                  правилами,
+сформулированными в гл. 7.</span></p> 
+<p       class=rvps5><span       class=rvts6>1.       Если      </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts10>∈</span><span class=rvts6> </span><span
+class=rvts8>Р</span><span  class=rvts6>(</span><span class=rvts16>U</span><span
+class=rvts6>),              </span><span              class=rvts8>В</span><span
+class=rvts6> </span><span class=rvts10>∈</span><span
+class=rvts6> </span><span  class=rvts8>Р</span><span class=rvts6>(</span><span
+class=rvts16>U</span><span         class=rvts6>)         и         </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts10>⊆</span><span class=rvts6> </span><span
+class=rvts8>В</span><span         class=rvts6>,        то        </span><span
+class=rvts8>В</span><span  class=rvts6>  удаляется  из  </span><span
+class=rvts8>Р</span><span  class=rvts6>(</span><span class=rvts16>U</span><span
+class=rvts6>).</span></p> 
+<p    class=rvps5><span    class=rvts6>2.   Если   номер   </span><span
+class=rvts8>i</span><span  class=rvts6> присутствует только в
+тех         элементах         множества        </span><span
+class=rvts8>Р</span><span  class=rvts6>(</span><span class=rvts16>U</span><span
+class=rvts6>),    где    присутствует   номер   </span><span
+class=rvts8>k</span><span         class=rvts6>,         то        </span><span
+class=rvts8>i</span><span             class=rvts6>            удаляется
+отовсюду.</span></p> 
+<p     class=rvps5><span    class=rvts6>Применив    правило    1,
+получим              </span><span              class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span  class=rvts6>) = {(1,4),
+(1,6),   (7),  (8),  (2,4),  (2,5),  (3,5),  (10)}.  Строки  7,  8  и  10
+составляют  ядро.  Антиядро состоит из одной
+строки 9.</span></p> 
+<p   class=rvps5><span   class=rvts6>По  правилу  2  удаляются
+номера     3     и     6:     </span><span     class=rvts8>Р</span><span
+class=rvts6>(</span><span  class=rvts16>U</span><span  class=rvts6>) = {(1,4),
+(1), (7), (8), (2,4), (2,5), (5), (10)}.</span></p> 
+<p  class=rvps5><span  class=rvts6>Применив снова правило 1,
+получим              </span><span              class=rvts8>Р</span><span
+class=rvts6>(</span><span   class=rvts16>U</span><span   class=rvts6>) = {(1),
+(7), (8), (2,4), (5), (10)}.</span></p> 
+<p   class=rvps5><span  class=rvts6>Окончательно  имеем  два
+решения рассматриваемого примера:</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=200   height=191  alt=""  style="padding  :  1px;"
+src="lk18/img20.jpg"><span class=rvts6>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+и&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span><img  width=200  height=191
+alt=""       style="padding       :       1px;"       src="lk18/img21.jpg"><span
+class=rvts6>.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Локальные упрощения ДНФ</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts14
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+}
+.rvps3
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps8
+{
+ page-break-after: avoid;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: center;
+ text-indent: 36px;
+}
+.rvps14
+{
+ page-break-after: avoid;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<h2   class=rvps3><span  class=rvts0><span  class=rvts6>Г  л  а  в  а&nbsp;
+17</span></span></h2> 
+<p><span class=rvts7>Локальные упрощения ДНФ</span></p>
+<p class=rvps4><span class=rvts6><br></span></p>
+<p            class=rvps5><span           class=rvts6>Дизъюнктивная
+нормальная                   форма                   </span><span
+class=rvts8>безызбыточна</span><span   class=rvts6>,  если  из
+нее  нельзя  удалить  ни  одной  элементарной
+конъюнкции     и     ни    одного    литерала    из
+какой-либо    конъюнкции.    Это    равносильно
+тому,   что   из   представляемой   данную   ДНФ
+троичной  матрицы  нельзя удалить ни одну из
+строк  и  ни  одно  из  значений  0  или 1 нельзя
+заменить       на      «</span><span      class=rvts9>–</span><span
+class=rvts6>».  Локальные  упрощения  ДНФ сводятся
+к    поиску    и   последовательному   удалению
+таких  элементарных  конъюнкций и литералов
+до   тех   пор,   пока   данная   ДНФ   не   станет
+безызбыточной.           Простейшие          случаи
+подобного         сокращения        определяются,
+например,    формулами,    полученными    в   гл.
+8:</span></p> 
+<p class=rvps6><span class=rvts6><br></span></p>
+<p  class=rvps1><span  class=rvts8>А х</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>А</span><span class=rvts6> = </span><span
+class=rvts8>А</span><span      class=rvts6>;&nbsp;&nbsp;&nbsp;     </span><span
+class=rvts8>А</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> = </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span      class=rvts6>;&nbsp;&nbsp;&nbsp;     </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>АВ</span><span class=rvts6> = </span><span
+class=rvts8>А</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p    class=rvps7><span   class=rvts6>Более   сложный   случай
+представляет    ДНФ   </span><span   class=rvts11>&not;</span><span
+class=rvts8>х</span><span class=rvts12>1</span><span
+class=rvts11>&not;</span><span class=rvts8>х</span><span
+class=rvts12>2</span><span class=rvts8> х</span><span
+class=rvts12>3</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>1</span><span
+class=rvts11>&not;</span><span class=rvts8>х</span><span
+class=rvts12>2</span><span class=rvts8> х</span><span
+class=rvts12>4</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>2</span><span class=rvts8> х</span><span
+class=rvts12>3</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span              class=rvts6>              </span><span
+class=rvts10>∨</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span class=rvts12>1</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>2</span><span class=rvts8> х</span><span
+class=rvts12>4</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>3</span><span
+class=rvts8> х</span><span   class=rvts12>4</span><span  class=rvts6>,  где
+конъюнкция           </span><span           class=rvts8>х</span><span
+class=rvts12>3</span><span class=rvts8> х</span><span
+class=rvts12>4</span><span  class=rvts6>  является избыточной.
+Действительно,  если  ее  заменить  на </span><span
+class=rvts8>х</span><span class=rvts12>3</span><span
+class=rvts8> х</span><span class=rvts12>4</span><span
+class=rvts6> 1 = </span><span class=rvts8>х</span><span
+class=rvts12>3</span><span class=rvts8> х</span><span
+class=rvts12>4</span><span class=rvts6> (</span><span
+class=rvts8>х</span><span class=rvts12>1</span><span
+class=rvts8> х</span><span class=rvts12>2</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts12>1</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span class=rvts12>2</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts11>&not;</span><span class=rvts8>х</span><span
+class=rvts12>1</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts12>2</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts11>&not;</span><span class=rvts8>х</span><span
+class=rvts12>1</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span    class=rvts12>2</span><span    class=rvts6>),    а
+затем     раскрыть    скобки,    то    каждая    из
+конъюнкций   ранга   4   окажется  поглощаемой
+некоторой       из       конъюнкций      ранга      3,
+присутствующей в исходной ДНФ.</span></p> 
+<p       class=rvps7><span      class=rvts6>Исходя      из      выше
+сказанного,           отметим          два          вида
+избыточности:</span></p> 
+<p class=rvps7><span class=rvts6><br></span></p>
+<p   class=rvps1><span  class=rvts8>D</span><span  class=rvts6> = </span><span
+class=rvts8>k</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>D</span><span class=rvts13>′</span><span
+class=rvts6> = </span><span class=rvts8>D</span><span
+class=rvts13>′</span><span class=rvts6>&nbsp;&nbsp;&nbsp;&nbsp;
+и&nbsp;&nbsp;               </span><span              class=rvts8>D</span><span
+class=rvts6> = </span><span class=rvts8>хk</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts6> </span><span class=rvts8>D</span><span
+class=rvts13>′</span><span class=rvts6> = </span><span
+class=rvts8>k</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>D</span><span class=rvts13>′</span><span
+class=rvts6>,</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps2><span  class=rvts6>где </span><span class=rvts8>k</span><span
+class=rvts6>      </span><span      class=rvts9>–</span><span     class=rvts6>
+элементарная            конъюнкция,           </span><span
+class=rvts8>х</span><span               class=rvts6>               </span><span
+class=rvts9>–</span><span  class=rvts6>  литерал,  входящий  в
+элементарную            конъюнкцию            </span><span
+class=rvts8>хk</span><span              class=rvts6>,              </span><span
+class=rvts8>D</span><span  class=rvts6> </span><span class=rvts9>–</span><span
+class=rvts6>  некоторая  ДНФ, </span><span class=rvts8>D</span><span
+class=rvts13>′</span><span              class=rvts6>              </span><span
+class=rvts9>–</span><span   class=rvts6>   ДНФ,  получаемая  из
+</span><span     class=rvts8>D</span><span    class=rvts6>    удалением
+конъюнкции            </span><span           class=rvts8>k</span><span
+class=rvts6>.</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p  class=rvps8><span  class=rvts7>17.1. Удаление  избыточных
+элементарных конъюнкций</span></p> 
+<p><span class=rvts6><br></span></p>
+<p      class=rvps9><span      class=rvts6>В      первом     случае
+элементарная            конъюнкция            </span><span
+class=rvts8>k</span><span      class=rvts6>     избыточна,     если
+</span><span         class=rvts8>k</span><span        class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>D</span><span class=rvts13>′</span><span
+class=rvts6> = </span><span class=rvts8>D</span><span
+class=rvts13>′</span><span    class=rvts6>.    Это   значит,   что
+</span><span     class=rvts8>k</span><span    class=rvts6>    и    </span><span
+class=rvts8>D</span><span        class=rvts13>′</span><span       class=rvts6>
+находятся          в          отношении          </span><span
+class=rvts8>формальной  импликации</span><span class=rvts6>,
+т. е.   </span><span   class=rvts8>k</span><span   class=rvts6> </span><span
+class=rvts10>⇒</span><span class=rvts6> </span><span
+class=rvts8>D</span><span       class=rvts13>′</span><span       class=rvts6>.
+Функция  </span><span class=rvts8>g</span><span class=rvts6> </span><span
+class=rvts8>имплицирует</span><span    class=rvts6>    функцию
+</span><span   class=rvts8>f</span><span   class=rvts6>,  если  </span><span
+class=rvts8>f</span><span    class=rvts6>    имеет    значение    1
+везде,  где  имеет  значение  1 функция </span><span
+class=rvts8>g</span><span    class=rvts6>.   В   рассматриваемом
+случае         ДНФ        </span><span        class=rvts8>D</span><span
+class=rvts13>′</span><span      class=rvts6>      обращается      в
+единицу      при      любом     наборе     значений
+переменных,   обращающем  конъюнкцию  </span><span
+class=rvts8>k</span><span  class=rvts6>  в единицу, независимо
+от      того,      какие      значения     принимают
+переменные,       не      входящие      в      </span><span
+class=rvts8>k</span><span class=rvts6>.</span></p> 
+<p  class=rvps10><span  class=rvts6>Пусть  троичная  матрица
+</span><span  class=rvts14>V</span><span  class=rvts6>  представляет
+ДНФ   </span><span   class=rvts8>D</span><span   class=rvts13>′</span><span
+class=rvts6>,       а      троичный      вектор      </span><span
+class=rvts14>v</span><span               class=rvts6>               </span><span
+class=rvts9>–</span><span         class=rvts6>        элементарную
+конъюнкцию    </span><span   class=rvts8>k</span><span   class=rvts6>.
+Тогда   результатом   подстановки   в   </span><span
+class=rvts8>D</span><span        class=rvts13>′</span><span       class=rvts6>
+значений            переменных,           обращающих
+конъюнкцию   </span><span  class=rvts8>k</span><span  class=rvts6>  в
+единицу,    является   минор   матрицы   </span><span
+class=rvts14>V</span><span         class=rvts6>,        образованный
+строками,  не ортогональными вектору </span><span
+class=rvts14>v</span><span       class=rvts6>       и       столбцами,
+соответствующими      компонентам      вектора
+</span><span     class=rvts14>v</span><span    class=rvts6>,    имеющими
+значение   «</span><span   class=rvts9>–</span><span  class=rvts6>».
+Если    этот    минор    является    вырожденной
+матрицей,      т. е.      </span><span      class=rvts8>D</span><span
+class=rvts13>′</span><span  class=rvts6>  тождественно  равна
+единице,          то          конъюнкция         </span><span
+class=rvts8>k</span><span        class=rvts6>       избыточна.       В
+противном    случае    вектор,   ортогональный
+всем        строкам        полученного       минора,
+представляет   набор   значений   переменных,
+обращающий            </span><span           class=rvts8>D</span><span
+class=rvts13>′</span><span class=rvts6> в нуль.</span></p> 
+<p    class=rvps11><span   class=rvts6>Рассмотрим   следующую
+троичную       матрицу       и       проверим       на
+избыточность ее первую строку:</span></p> 
+<p class=rvps12><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=232   height=191  alt=""  style="padding  :  1px;"
+src="lk17/img1.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p     class=rvps2><span     class=rvts6>Минор,    образованный
+столбцами            </span><span            class=rvts8>х</span><span
+class=rvts12>3</span><span          class=rvts6>         и         </span><span
+class=rvts8>х</span><span   class=rvts12>6</span><span   class=rvts6>,   где
+элементы    первой    строки   имеют   значение
+«</span><span  class=rvts9>–</span><span  class=rvts6>», и строками
+2,  3,  4  и  5,  не  ортогональными первой строке,
+имеет вид</span></p> 
+<p   class=rvps1><img   width=87   height=135   alt=""  style="padding  :  1px;"
+src="lk17/img2.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p    class=rvps2><span   class=rvts6>Эта   матрица   является
+вырожденной,  следовательно,  первая  строка
+избыточна.    Любой    входящий   в   нее   булев
+вектор   принадлежит  некоторому  интервалу,
+представляемому  какой-либо из строк данной
+матрицы.</span></p> 
+<p  class=rvps7><span  class=rvts6>Удалив  строку  1, получим
+матрицу,   в   которой  строка  2  ортогональна
+всем  остальным  ее  строкам.  Это значит, что
+никакой      булев      вектор,     принадлежащий
+интервалу,  представляемому данной строкой,
+не      принадлежит      никакому     из     других
+интервалов,      представляемых     остальными
+строками.   Соответствующий  минор  является
+пустой     матрицей    (с    пустым    множеством
+строк).       Такая       матрица      представляет
+константу   0.   Таким   образом,   строка   2   не
+является избыточной.</span></p> 
+<p  class=rvps7><span  class=rvts6>Что  касается строки 3, то
+соответствующий            минор            является
+однострочной невырожденной
+матрицей:</span></p> 
+<p class=rvps13><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=87   height=52   alt=""   style="padding  :  1px;"
+src="lk17/img3.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps2><span  class=rvts6>Ортогональным  вектором
+для     данной     строки    является    (0 </span><span
+class=rvts9>–</span><span    class=rvts6>).    Подставив    0    во
+вторую  компоненту  строки 3, получим вектор,
+ортогональный  всем строкам матрицы. Строка
+3     также    является    неизбыточной&nbsp;    для
+заданной матрицы.</span></p> 
+<p      class=rvps7><span      class=rvts6>Выполняя     подобные
+построения      над      остальными     строками,
+убедимся,     что    они    также    не    являются
+избыточными.</span></p> 
+<p class=rvps7><span class=rvts6><br></span></p>
+<p  class=rvps14><span  class=rvts7>17.2. Удаление избыточных
+литералов</span></p> 
+<p class=rvps7><span class=rvts6><br></span></p>
+<p   class=rvps7><span   class=rvts6>Рассмотрим   второй  вид
+избыточности       в      ДНФ,      когда      </span><span
+class=rvts8>D</span><span class=rvts6> = </span><span
+class=rvts8>хk</span><span class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>D</span><span class=rvts13>′</span><span
+class=rvts6> = </span><span class=rvts8>k</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts6> </span><span class=rvts8>D</span><span
+class=rvts13>′</span><span   class=rvts6>.   Здесь   избыточным
+является    литерал    </span><span    class=rvts8>х</span><span
+class=rvts6>.  Правую  часть этого равенства можно
+представить следующим образом:</span></p> 
+<p class=rvps7><span class=rvts6><br></span></p>
+<p    class=rvps1><span   class=rvts8>k</span><span   class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>D</span><span class=rvts13>′</span><span
+class=rvts6> = </span><span class=rvts8>k</span><span
+class=rvts6>(</span><span  class=rvts8>х</span><span  class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts11>&not;</span><span
+class=rvts8>х</span><span               class=rvts6>)              </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>D</span><span class=rvts13>′</span><span
+class=rvts6> = </span><span class=rvts8>хk</span><span
+class=rvts6> </span><span class=rvts10>∨</span><span
+class=rvts6> </span><span class=rvts8>D</span><span
+class=rvts13>′</span><span              class=rvts6>              </span><span
+class=rvts10>∨</span><span class=rvts11>&not;</span><span
+class=rvts8>хk</span><span class=rvts6> = </span><span
+class=rvts8>D</span><span                class=rvts6>               </span><span
+class=rvts10>∨</span><span class=rvts11>&not;</span><span
+class=rvts8>хk</span><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps2><span class=rvts6>Отсюда видно, что литерал
+</span><span   class=rvts8>х</span><span   class=rvts6>  в  выражении
+</span><span        class=rvts8>хk</span><span       class=rvts6> </span><span
+class=rvts10>∨</span><span class=rvts6> </span><span
+class=rvts8>D</span><span        class=rvts13>′</span><span       class=rvts6>
+является     избыточным,     если     конъюнкция
+</span><span       class=rvts11>&not;</span><span      class=rvts8>хk</span><span
+class=rvts6>   является   избыточной   в   выражении
+</span><span       class=rvts8>D</span><span      class=rvts6>      </span><span
+class=rvts10>∨</span><span class=rvts11>&not;</span><span
+class=rvts8>хk</span><span       class=rvts6>.      Следовательно,
+задача  определения  избыточности  литерала
+в  ДНФ  сводится  к  предыдущей задаче </span><span
+class=rvts9>–</span><span   class=rvts6>  задаче  определения
+избыточности элементарной
+конъюнкции.</span></p> 
+<p  class=rvps7><span  class=rvts6>Удаление литерала из ДНФ
+в   матричном   представлении   выражается   в
+замене  нуля  или единицы в троичной матрице
+на       значение      «</span><span      class=rvts9>–</span><span
+class=rvts6>».        На        основании       предыдущих
+рассуждений  это можно сделать, если вектор,
+полученный   из   строки,   содержащей  данный
+нуль  или единицу, заменой этого значения на
+противоположное   ему  значение  (т. е.  0  на  1
+или    1    на    0),    является    избыточным    для
+рассматриваемой матрицы.</span></p> 
+<p  class=rvps7><span  class=rvts6>Таким  образом,  для того,
+чтобы    решить    вопрос    о    том,    можно   ли
+заменить   0   (или   1)  в  </span><span  class=rvts8>i</span><span
+class=rvts6>-й    строке    и   </span><span   class=rvts8>j</span><span
+class=rvts6>-м     столбце    на    значение    «</span><span
+class=rvts9>–</span><span    class=rvts6>»,    надо    построить
+минор,  образованный  столбцами,  где  </span><span
+class=rvts8>i</span><span      class=rvts6>-я      строка      имеет
+значения  «</span><span  class=rvts9>–</span><span class=rvts6>», и
+строками,      не     ортогональными     вектору,
+полученному      из      </span><span     class=rvts8>i</span><span
+class=rvts6>-й  строки заменой нуля (или единицы) в
+</span><span   class=rvts8>j</span><span   class=rvts6>-м  столбце  на
+противоположное  значение.  Если полученный
+минор   оказался   вырожденной   матрицей,  то
+такая замена возможна.</span></p> 
+<p class=rvps7><span class=rvts6>Рассмотрим матрицу</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=232   height=161  alt=""  style="padding  :  1px;"
+src="lk17/img4.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps2><span class=rvts6>Чтобы узнать, является ли
+0  в  строке  1 и столбце </span><span class=rvts8>х</span><span
+class=rvts12>6</span><span  class=rvts6>  избыточным, построим
+минор,  образованный  единственным столбцом
+</span><span        class=rvts8>х</span><span        class=rvts12>5</span><span
+class=rvts6>,  где  строка 1 имеет значение «</span><span
+class=rvts9>–</span><span    class=rvts6>»,    и    единственной
+строкой     3,     не     ортогональной     вектору
+(0 1 1 0 </span><span      class=rvts9>–</span><span     class=rvts6> 1).
+Единственный  элемент  в  этом  миноре  имеет
+значение    1.    Он    является    невырожденной
+матрицей.  Следовательно,  нуль  в  строке  1 и
+столбце              </span><span              class=rvts8>х</span><span
+class=rvts12>6</span><span   class=rvts6>   нельзя  заменить  на
+«</span><span class=rvts9>–</span><span class=rvts6>».</span></p> 
+<p      class=rvps7><span      class=rvts6>Рассмотрим     теперь
+единицу    в    строке    3    и    столбце   </span><span
+class=rvts8>х</span><span  class=rvts12>3</span><span class=rvts6>. Минор,
+образованный             столбцами             </span><span
+class=rvts8>х</span><span     class=rvts12>1</span><span     class=rvts6>    и
+</span><span  class=rvts8>х</span><span class=rvts12>4</span><span class=rvts6>
+и  строками  2  и  4, не ортогональными вектору
+(</span><span    class=rvts9>–</span><span    class=rvts6> 1 0 </span><span
+class=rvts9>–</span><span class=rvts6> 1 1), имеет вид</span></p> 
+<p class=rvps7><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=87   height=79   alt=""   style="padding  :  1px;"
+src="lk17/img5.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p     class=rvps2><span    class=rvts6>Вырожденность    этого
+минора  говорит  о  том, данную единицу можно
+заменить  значением  «</span><span class=rvts9>–</span><span
+class=rvts6>».   Выполнив   такую   замену,   получим
+матрицу,            эквивалентную           исходной
+матрице:</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=232   height=161  alt=""  style="padding  :  1px;"
+src="lk17/img6.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body>
+</html>

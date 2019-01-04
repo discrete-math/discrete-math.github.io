@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Кодирование состояний синхронного автомата</title>
+
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts11
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts15
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts17
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps3
+{
+ text-align: justify;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ margin: 0px 0px 8px 0px;
+}
+--></style>
+</head>
+<body>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<a href="../../../Теория/theory.htm">Теория</a> | <strong>Практика</strong> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+<p><span class=rvts6>Кодирование состояний синхронного автомата</span></p>
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 14.1</span></p>
+<p      class=rvps2><span      class=rvts7>С помощью метода «желательных соседств» закодировать состояния автомата, заданного следующей таблицей переходов:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=199   height=165  alt=""  style="padding  :  1px;"
+src="lb14/img1.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p    class=rvps2><span   class=rvts7>Введем два фиктивных состояния 7 и 8, чтобы довести число состояний до 8 = 2</span><span class="rvts10">3</span><span   class=rvts7>. Значения </span><span class="rvts8">w<span class="rvts13">ij</span></span><span   class=rvts7> = </span><span class="rvts8">w'</span><span class="rvts13">ij </span><span   class=rvts7>+ </span><span class="rvts8">w''<span class="rvts13">ij</span></span><span   class=rvts7>, где </span><span class="rvts8">w''<span class="rvts13">ij</span></span><span   class=rvts7> – число столбцов таблицы переходов, в которых строки </span><span class="rvts8">i</span><span   class=rvts7> и </span><span class="rvts8">j</span><span   class=rvts7> имеют одинаковые элементы, т. е. число значений переменной </span><span class="rvts8">а</span><span   class=rvts7>, при которых </span><span class="rvts8">ψ(a, q</span><span class="rvts13">i</span><span class="rvts8">)</span><span   class=rvts7> = </span><span class="rvts8">ψ(a, q</span><span class="rvts13">j</span><span class="rvts8">)</span><span   class=rvts7>, а <img   width=97   height=57  alt=""  style="padding  :  1px;"
+src="lb14/img2.jpg">, где </span><span class="rvts8">y</span><span   class=rvts7> – число состояний автомата, </span><span class="rvts8">w<span class="rvts13">p</span></span><span   class=rvts7> – число пар вида </span><span class="rvts8">&lt;ψ(a</span><span class="rvts13">s</span><span class="rvts8">, q</span><span class="rvts13">p</span><span class="rvts8">), ψ(a</span><span class="rvts13">t</span><span class="rvts8">, q</span><span class="rvts13">р</span><span class="rvts8">)&gt;</span><span   class=rvts7>, причем </span><span class="rvts8">ψ(a</span><span class="rvts13">s</span><span class="rvts8">, q</span><span class="rvts13">p</span><span class="rvts8">)</span><span   class=rvts7> = </span><span class="rvts8">q<span class="rvts13">i</span></span><span   class=rvts7> и </span><span class="rvts8">ψ(a</span><span class="rvts13">t</span><span class="rvts8">, q</span><span class="rvts13">p</span><span class="rvts8">) </span><span   class=rvts7>= </span><span class="rvts8">q<span class="rvts13">j</span></span><span   class=rvts7>, а входные символы </span><span class="rvts8">a<span class="rvts13">s</span></span><span   class=rvts7> и </span><span class="rvts8">a<span class="rvts13">t</span></span><span   class=rvts7> имеют соседние коды, удобно задать в виде следующей таблицы, где строки и столбцы соответствуют состояниям автомата:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=244   height=175  alt=""  style="padding  :  1px;"
+src="lb14/img3.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>На первом шаге получаем четыре одномерных гиперкуба (рис. 14.1). Максимальное значение имеет вес </span><span class="rvts8">w<span class="rvts13">23</span></span><span     class=rvts7> = 3. Поэтому в первую вводим ребро между вершинами 2 и 3. Затем вводим остальные ребра.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=286   height=73  alt=""  style="padding  :  1px;"
+src="lb14/img4.jpg"></p> 
+<p     class=rvps2><span     class=rvts7><center>Рис. 14.1. Результат первого шага построения гиперкуба.</center></span></p> 
+<p><span class=rvts7><br></span></p>
+<p    class=rvps2><span    class=rvts7>Сначала строится один двухмерный гиперкуб, для которого выбираются два ребра с максимальной суммой весов. Затем точно так же собирается второй гиперкуб. На рис. 14.2 показаны варианты выбора ребер для получения первого двухмерного гиперкуба.</span></p> 
+<p    class=rvps2><span    class=rvts7>Вершины 7 и 8 здесь не участвуют, так как все инцидентные им ребра имеют нулевой вес и сумма их весов заведомо не максимальна. Максимальной суммой весов обладает четвертый вариант. Для второго гиперкуба все варианты одинаковы.</span></p>
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=444   height=181  alt=""  style="padding  :  1px;"
+src="lb14/img5.jpg"></p> 
+<p     class=rvps2><span     class=rvts7><center>Рис. 14.2. Варианты сборки двухмерного гиперкуба.</center></span></p> 
+
+<p class=rvps3><span class=rvts7><br></span></p>
+<p        class=rvps2><span        class=rvts7>На рис. 14.3 изображены два двумерных гиперкуба, из которых надо собрать один трехмерный гиперкуб, добавив четыре ребра. Варианты такой сборки представлены на рис. 14.4. Сумма весов ребер показана ниже каждого изображения варианта сборки.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=258   height=92  alt=""  style="padding  :  1px;"
+src="lb14/img6.jpg"></p> 
+<p     class=rvps2><span     class=rvts7><center>
+Рис. 14.3. Результат сборки двумерных гиперкубов.
+</center></span></p>
+
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=515   height=250  alt=""  style="padding  :  1px;"
+src="lb14/img7.jpg"></p> 
+<p     class=rvps2><span     class=rvts7><center>Рис. 14.4. Варианты сборки трехмерного гиперкуба.</center></span></p>
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Для окончательного решения нашего примера выбран вариант сборки с максимальной суммой весов добавляемых ребер, равной 4. Этот гиперкуб показан отдельно на рис. 14.5, где возле каждой вершины представлен код соответствующего состояния.</span></p> 
+<p     class=rvps2><span     class=rvts7>Булев автомат, соответствующий данному варианту кодирования, представим тремя картами Карно, которые задают не полностью определенные  функции z<span class="rvts13">1</span></span><span class="rvts10">+</span><span     class=rvts7>, z<span class="rvts13">2</span></span><span class="rvts10">+</span><span     class=rvts7> и z<span class="rvts13">3</span></span><span class="rvts10">+</span><span     class=rvts7> и строкам которых соответствуют состояния заданного автомата (рис. 14.6).</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=260   height=187  alt=""  style="padding  :  1px;"
+src="lb14/img8.jpg"></p> 
+<p     class=rvps2><span     class=rvts7><center>Рис. 14.5. Результат сборки гиперкуба с кодами состояний.</center></span></p>
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=534   height=250  alt=""  style="padding  :  1px;"
+src="lb14/img9.jpg"></p> 
+<p     class=rvps2><center>
+  <span class="rvts7">    Рис. 14.6. Представление функций z<span class="rvts13">1</span></span><span class="rvts10">+</span><span class="rvts7">, z<span class="rvts13">2</span></span><span class="rvts10">+</span><span class="rvts7"> и z<span class="rvts13">3</span></span><span class="rvts10">+</span><span class="rvts7"> с помощью карт Карно. </span>
+</center>
+</p>
+<p class=rvps3><span class=rvts7><br></span></p>
+<p     class=rvps5><span    class=rvts7>Соответствующие минимизированные ДНФ представлены матрицами</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=337   height=229  alt=""  style="padding  :  1px;"
+src="lb14/img10.jpg"></p> 
+<p class=rvps4><span class=rvts7><br></span></p> 
+<p><span class=rvts17><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+
+</body></html>

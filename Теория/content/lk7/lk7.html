@@ -1,0 +1,1116 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Раскраска графа</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts10
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts15
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts16
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 8px 0px 8px 0px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps23
+{
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-indent: 216px;
+}
+.rvps25
+{
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-indent: 38px;
+}
+.rvps33
+{
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-indent: 38px;
+}
+.rvps36
+{
+ text-indent: 38px;
+}
+.rvps37
+{
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps41
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps42
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps43
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps44
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps45
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps46
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps47
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps48
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps49
+{
+ text-indent: 38px;
+}
+.rvps50
+{
+ text-indent: 106px;
+ margin: 0px 0px 0px 38px;
+}
+.rvps51
+{
+ text-indent: 106px;
+ margin: 0px 0px 0px 38px;
+}
+.rvps52
+{
+ text-indent: 106px;
+ margin: 0px 0px 0px 38px;
+}
+.rvps53
+{
+ text-indent: 106px;
+ margin: 0px 0px 0px 83px;
+}
+.rvps54
+{
+ text-indent: 106px;
+ margin: 0px 0px 0px 38px;
+}
+.rvps55
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps56
+{
+ text-indent: 38px;
+}
+.rvps57
+{
+ text-indent: 38px;
+}
+.rvps58
+{
+ text-indent: 38px;
+}
+.rvps59
+{
+ text-indent: 38px;
+}
+.rvps60
+{
+ text-indent: 9px;
+ margin: 0px 0px 0px 85px;
+}
+.rvps61
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 189px;
+}
+.rvps62
+{
+ text-indent: 38px;
+}
+.rvps63
+{
+ text-indent: 38px;
+}
+.rvps64
+{
+ text-indent: 38px;
+ margin: 0px 0px 0px 76px;
+}
+.rvps65
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 284px;
+}
+.rvps66
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 7</span></p>
+<p><span class=rvts7>Раскраска графа </span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p         class=rvps3><span        class=rvts7>7.1.        Постановка
+задачи</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p  class=rvps5><span  class=rvts8>Раскраской</span><span class=rvts6>
+некоторого     графа    </span><span    class=rvts8>G</span><span
+class=rvts6> = (</span><span class=rvts8>V</span><span
+class=rvts6>, </span><span       class=rvts8>Е</span><span       class=rvts6>)
+называется     такое     разбиение    множества
+вершин    </span><span    class=rvts8>V</span><span    class=rvts6>   на
+непересекающиеся      подмножества      </span><span
+class=rvts8>V</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>V</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>V</span><span
+class=rvts10>k</span><span    class=rvts6>,    что    никакие   две
+вершины     из     одного,     любого,     из    этих
+подмножеств    не    смежны.    Считается,    что
+вершины,   принадлежащие   одному   и  тому  же
+подмножеству          </span><span         class=rvts8>V</span><span
+class=rvts10>i</span><span  class=rvts6>,  выкрашены при этом в
+один   и   тот   же  цвет  </span><span  class=rvts8>i</span><span
+class=rvts6>.     Задача     состоит    в    том,    чтобы
+раскрасить    вершины    графа</span><span    class=rvts8>
+G</span><span  class=rvts6>  в  минимальное число цветов.
+Оно  называется </span><span class=rvts8>хроматическим
+числом</span><span  class=rvts6>  графа  и  обозначается
+</span><span        class=rvts11>γ</span><span        class=rvts6>(</span><span
+class=rvts8>G</span><span class=rvts6>).</span></p> 
+<p   class=rvps6><span  class=rvts6>Задача  раскраски  графа
+имеет     много     приложений     в     различных
+областях     человеческой    деятельности.    К
+задаче    раскраски    сводятся    составление
+расписания   занятий   в   учебном  заведении,
+распределение             оборудования             на
+предприятии,   выбор   расцветки   проводов  в
+сложных    электрических    схемах   и   многие
+другие  практические  задачи.  Например,  при
+минимизации         числа         ячеек        памяти
+вычислительной      машины      для      хранения
+промежуточных     результатов     в    процессе
+выполнения  программы можно построить граф,
+вершины            которого            соответствуют
+промежуточным    результатам   вычисления   и
+две  вершины  связаны  ребром,  если  и только
+если             соответствующие             величины
+используются    одновременно    и    не    могут
+храниться     в    одной    и    той    же    ячейке.
+Хроматическое       число       данного      графа
+представляет           минимум           упомянутых
+ячеек.</span></p> 
+<p   class=rvps7><span  class=rvts6>Иногда  ставится  задача
+раскраски  ребер графа </span><span class=rvts8>G</span><span
+class=rvts6> = (</span><span class=rvts8>V</span><span
+class=rvts6>, </span><span   class=rvts8>Е</span><span  class=rvts6>),  где
+требуется      получить      такое      разбиение
+множества     ребер     </span><span    class=rvts8>Е</span><span
+class=rvts6>   на   непересекающиеся  подмножества
+</span><span         class=rvts8>Е</span><span        class=rvts9>1</span><span
+class=rvts6>, </span><span class=rvts8>Е</span><span
+class=rvts9>2</span><span class=rvts6>, … , </span><span
+class=rvts8>Е</span><span   class=rvts10>р</span><span   class=rvts6>,  что
+ни   одна   пара   ребер   из  одного  и  того  же
+</span><span  class=rvts8>Е</span><span class=rvts10>i</span><span class=rvts6>
+(</span><span class=rvts8>i</span><span
+class=rvts6> = 1, 2, … , </span><span class=rvts8>р</span><span
+class=rvts6>)  не имеет общей инцидентной вершины.
+Данная  задача  сводится к раскраске вершин.
+Для       этого       надо      построить      </span><span
+class=rvts8>реберный   граф</span><span   class=rvts6>  </span><span
+class=rvts8>L</span><span   class=rvts6>(</span><span  class=rvts8>G</span><span
+class=rvts6>)  графа  </span><span  class=rvts8>G</span><span class=rvts6>.
+Вершины       графа      </span><span      class=rvts8>L</span><span
+class=rvts6>(</span><span         class=rvts8>G</span><span        class=rvts6>)
+соответствуют       ребрам       графа      </span><span
+class=rvts8>G</span><span  class=rvts6>,  и  две  вершины  графа
+</span><span         class=rvts8>L</span><span         class=rvts6>(</span><span
+class=rvts8>G</span><span  class=rvts6>)  связаны  ребром, если
+и  только  если  соответствующие ребра графа
+</span><span   class=rvts8>G</span><span   class=rvts6>   имеют  общую
+инцидентную  вершину в </span><span class=rvts8>G</span><span
+class=rvts6>.     Раскраска    ребер    графа    </span><span
+class=rvts8>G</span><span         class=rvts6>        соответствует
+раскраске          вершин         графа         </span><span
+class=rvts8>L</span><span   class=rvts6>(</span><span  class=rvts8>G</span><span
+class=rvts6>).</span></p> 
+<p class=rvps8><span class=rvts6><br></span></p>
+<p     class=rvps9><span    class=rvts7>7.2.    Метод    раскраски
+графа</span></p> 
+<p class=rvps10><span class=rvts6><br></span></p>
+<p       class=rvps11><span      class=rvts6>Очевидно,      всякое
+множество      одноцветных      вершин      графа
+является   независимым  множеством.  Поэтому
+получить     минимальную     раскраску    можно
+следующим  образом:  найти  все максимальные
+независимые            множества;           получить
+кратчайшее     покрытие     множества    вершин
+графа          максимальными          независимыми
+множествами;  удалить  некоторые  вершины из
+элементов  полученного  покрытия, добившись
+того,  чтобы  каждая вершина входила в одно и
+только   в   одно  из  выделенных  независимых
+множеств.   Для   графов,   число   независимых
+множеств    которых   невелико,   этот   способ
+является        приемлемым.        Однако,        как
+показывает        оценка,        приведенная       в
+предыдущей  главе,  это  число  для некоторых
+графов  может  оказаться  настолько большим,
+что   данный   способ  вообще  не  сможет  быть
+реализован.     Существует    немало    методов
+раскраски,  не использующих задачу покрытия
+и    получающих    точно    минимальное    число
+цветов,   но   и   их   применение   существенно
+ограничено размерностью задачи.</span></p> 
+<p    class=rvps12><span    class=rvts6>Рассмотрим    один    из
+методов     раскраски     графа,     который    не
+гарантирует  получения  минимума  цветов, но
+дает  раскраску,  близкую к минимальной, а во
+многих случаях совпадающую с ней.</span></p> 
+<p  class=rvps13><span  class=rvts6>Процесс раскраски графа
+</span><span       class=rvts8>G</span><span      class=rvts6> = (</span><span
+class=rvts8>V</span><span class=rvts6>, </span><span
+class=rvts8>Е</span><span   class=rvts6>)  представляет  собой
+последовательность    шагов,   на   каждом   из
+которых  выбирается  вершина и окрашивается
+в    определенный    цвет.    Текущая   ситуация
+характеризуется      следующими     объектами:
+</span><span       class=rvts8>k</span><span      class=rvts6>      </span><span
+class=rvts12>–</span><span               class=rvts6>               число
+задействованных             цветов;            </span><span
+class=rvts8>А</span><span               class=rvts6>               </span><span
+class=rvts12>–</span><span   class=rvts6>   множество   еще   не
+раскрашенных  вершин;  </span><span class=rvts8>В</span><span
+class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>В</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>В</span><span
+class=rvts10>k</span><span               class=rvts6>               </span><span
+class=rvts12>–</span><span        class=rvts6>        совокупность
+подмножеств      множества     вершин     </span><span
+class=rvts8>V</span><span    class=rvts6>,   такая,   что   </span><span
+class=rvts8>B</span><span  class=rvts10>i</span><span class=rvts6> (</span><span
+class=rvts8>i</span><span class=rvts6> = 1, 2, … , </span><span
+class=rvts8>k</span><span  class=rvts6>)  содержит  те и только
+те       вершины       из       множества       </span><span
+class=rvts8>А</span><span     class=rvts6>,     которые     нельзя
+раскрасить  в  </span><span class=rvts8>i</span><span class=rvts6>-й
+цвет.   Обратим   внимание   на  следующие  два
+случая:</span></p> 
+<p  class=rvps14><span class=rvts6>1. Имеется вершина </span><span
+class=rvts8>v</span><span class=rvts6> </span><span
+class=rvts13>∈</span><span class=rvts6> </span><span
+class=rvts8>A</span><span    class=rvts6>,   такая,   что   </span><span
+class=rvts8>v</span><span class=rvts6> </span><span
+class=rvts13>∈</span><span class=rvts6> </span><span
+class=rvts8>B</span><span    class=rvts10>i</span><span    class=rvts6>   для
+всех                  </span><span                 class=rvts8>i</span><span
+class=rvts6> = 1, 2, … , </span><span class=rvts8>k</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps15><span class=rvts6>2. Имеется вершина </span><span
+class=rvts8>v</span><span class=rvts6> </span><span
+class=rvts13>∈</span><span class=rvts6> </span><span
+class=rvts8>A</span><span      class=rvts6>     и     цвет     </span><span
+class=rvts8>i</span><span    class=rvts6>,   такие,   что   </span><span
+class=rvts8>v</span><span class=rvts6> </span><span
+class=rvts13>∉</span><span class=rvts6> </span><span
+class=rvts8>B</span><span     class=rvts10>i</span><span     class=rvts6>     и
+</span><span         class=rvts8>N</span><span         class=rvts6>(</span><span
+class=rvts8>v</span><span class=rvts6>) </span><span
+class=rvts13>∩</span><span class=rvts6> </span><span
+class=rvts8>A</span><span class=rvts6> </span><span
+class=rvts13>⊆</span><span class=rvts6> </span><span
+class=rvts8>B</span><span class=rvts10>i</span><span class=rvts6>.</span></p> 
+<p  class=rvps16><span  class=rvts6>В  первом случае вершину
+</span><span  class=rvts8>v</span><span  class=rvts6> надо красить в
+(</span><span    class=rvts8>k</span><span    class=rvts6> + 1)-й   цвет,
+удалить   ее   из   множества   </span><span  class=rvts8>А
+</span><span   class=rvts6>и   из   всех   множеств  </span><span
+class=rvts8>B</span><span    class=rvts10>i</span><span   class=rvts6>,   где
+она   была,   сформировать   множество  </span><span
+class=rvts8>В</span><span class=rvts10>k</span><span
+class=rvts9> + 1</span><span  class=rvts6>  и увеличить </span><span
+class=rvts8>k</span><span  class=rvts6> на единицу. Если таких
+вершин  несколько,  из них выбирается та, для
+которой    множество   </span><span   class=rvts8>В</span><span
+class=rvts10>k</span><span      class=rvts9> + 1</span><span      class=rvts6>
+имеет максимальную мощность.</span></p> 
+<p  class=rvps17><span class=rvts6>Во втором случае вершину
+</span><span  class=rvts8>v</span><span  class=rvts6> надо красить в
+</span><span  class=rvts8>i</span><span class=rvts6>-й цвет, удалить
+ее    из   множества   </span><span   class=rvts8>А   </span><span
+class=rvts6>и       из       всех      множеств      </span><span
+class=rvts8>B</span><span    class=rvts10>j</span><span   class=rvts6>,   где
+она была.</span></p> 
+<p     class=rvps18><span     class=rvts6>Во    всех    остальных
+случаях  из  множества </span><span class=rvts8>А</span><span
+class=rvts6>        выбираются       вершина       </span><span
+class=rvts8>v</span><span      class=rvts6>     и     цвет     </span><span
+class=rvts8>i</span><span    class=rvts6>    такие,   что   </span><span
+class=rvts8>v</span><span class=rvts6> </span><span
+class=rvts13>∉</span><span class=rvts6> </span><span
+class=rvts8>B</span><span     class=rvts10>i</span><span     class=rvts6>     и
+приращение         </span><span         class=rvts13>Δ⎜</span><span
+class=rvts8>B</span><span class=rvts10>i</span><span
+class=rvts13>⎟</span><span  class=rvts6>  мощности  множества
+</span><span  class=rvts8>B</span><span  class=rvts10>i</span><span class=rvts6>
+минимально      среди      всех      пар      </span><span
+class=rvts8>v</span><span  class=rvts6>, </span><span class=rvts8>B</span><span
+class=rvts10>i</span><span  class=rvts6> (</span><span class=rvts8>v</span><span
+class=rvts6> </span><span class=rvts13>∈</span><span
+class=rvts6> </span><span  class=rvts8>A</span><span class=rvts6>, </span><span
+class=rvts8>i</span><span class=rvts6> = 1, 2, … , </span><span
+class=rvts8>k</span><span     class=rvts6>).     Вершина     </span><span
+class=rvts8>v</span><span   class=rvts6>  удаляется  из  </span><span
+class=rvts8>А&nbsp;</span><span  class=rvts6>  и  из  всех  </span><span
+class=rvts8>B</span><span    class=rvts10>j</span><span   class=rvts6>,   где
+она  была,  и красится в </span><span class=rvts8>i</span><span
+class=rvts6>-й цвет.</span></p> 
+<p    class=rvps19><span   class=rvts6>Выполнение   описанных
+действий    повторяется    до   тех   пор,   пока
+множество  </span><span  class=rvts8>А</span><span  class=rvts6>  не
+станет пустым.</span></p> 
+<p   class=rvps20><span   class=rvts6>В   начальной   ситуации
+</span><span       class=rvts8>А</span><span      class=rvts6> = </span><span
+class=rvts8>V</span><span  class=rvts6>,  </span><span class=rvts8>k</span><span
+class=rvts6> = 0      и      рекомендуется      выбирать
+вершину  с  максимальной  степенью и красить
+ее      в      цвет     1,     а     множество     </span><span
+class=rvts8>В</span><span   class=rvts9>1</span><span  class=rvts6>  будет
+представлять ее окрестность.</span></p> 
+<p        class=rvps21><span        class=rvts6>Продемонстрируем
+применение    данного    метода    на    примере
+графа, изображенного на рис. 7.1.</span></p> 
+<p      class=rvps22><span     class=rvts6>Получим     следующие
+результаты  выполнения  последовательности
+шагов.</span></p> 
+<p       class=rvps23><span       class=rvts6>Шаг       1:      {</span><span
+class=rvts8>v</span><span  class=rvts9>1</span><span class=rvts6>}; </span><span
+class=rvts8>B</span><span class=rvts9>1</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>2</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>6</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>8</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>10</span><span              class=rvts6>};              </span><span
+class=rvts8>А</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>2</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>3</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>5</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>6</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>7</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>8</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>9</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts9>10</span><span class=rvts6>}.</span></p> 
+<p  class=rvps24><span  class=rvts6>Шаг  2  (1-й  случай: </span><span
+class=rvts8>v</span><span  class=rvts9>2</span><span  class=rvts6> </span><span
+class=rvts13>∈</span><span class=rvts6> </span><span
+class=rvts8>B</span><span        class=rvts9>1</span><span        class=rvts6>):
+{</span><span         class=rvts8>v</span><span        class=rvts9>1</span><span
+class=rvts6>},              {</span><span              class=rvts8>v</span><span
+class=rvts9>2</span><span  class=rvts6>}; </span><span class=rvts8>B</span><span
+class=rvts9>1</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>6</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>8</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts9>10</span><span       class=rvts6>},
+</span><span         class=rvts8>B</span><span         class=rvts9>2</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>4</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>5</span><span               class=rvts6>};              </span><span
+class=rvts8>А</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>3</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>5</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>6</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>7</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>8</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>9</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts9>10</span><span class=rvts6>}.</span></p> 
+<p  class=rvps25><span  class=rvts6>Шаг  3  (2-й  случай: </span><span
+class=rvts8>N</span><span   class=rvts6>(</span><span  class=rvts8>v</span><span
+class=rvts9>8</span><span class=rvts6>) = </span><span
+class=rvts13>∅</span><span             class=rvts6>):            {</span><span
+class=rvts8>v</span><span        class=rvts9>1</span><span        class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>2</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>8</span><span class=rvts6>};
+</span><span         class=rvts8>B</span><span         class=rvts9>1</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>6</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>10</span><span              class=rvts6>},              </span><span
+class=rvts8>B</span><span class=rvts9>2</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>4</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>5</span><span               class=rvts6>};              </span><span
+class=rvts8>А</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>3</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>5</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>6</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>7</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>9</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts9>10</span><span class=rvts6>}.</span></p> 
+<p    class=rvps26><span    class=rvts6>Шаг    4   (выбор   </span><span
+class=rvts8>v</span><span  class=rvts9>7</span><span  class=rvts6>,  цвет 1,
+</span><span       class=rvts13>Δ|</span><span       class=rvts8>В</span><span
+class=rvts9>1</span><span     class=rvts13>|</span><span    class=rvts6> = 1):
+{</span><span  class=rvts8>v</span><span class=rvts9>1</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>7</span><span class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>2</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>8</span><span class=rvts6>};
+</span><span         class=rvts8>B</span><span         class=rvts9>1</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>3</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>6</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>10</span><span              class=rvts6>},              </span><span
+class=rvts8>B</span><span class=rvts9>2</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>4</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>5</span><span               class=rvts6>};              </span><span
+class=rvts8>А</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>3</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>5</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>6</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>9</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts9>10</span><span class=rvts6>}.</span></p> 
+<p    class=rvps27><span    class=rvts6>Шаг    5   (выбор   </span><span
+class=rvts8>v</span><span  class=rvts9>3</span><span  class=rvts6>,  цвет 2,
+</span><span       class=rvts13>Δ|</span><span       class=rvts8>В</span><span
+class=rvts9>2</span><span     class=rvts13>|</span><span    class=rvts6> = 1):
+{</span><span  class=rvts8>v</span><span class=rvts9>1</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>7</span><span class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>2</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span  class=rvts9>3</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>8</span><span class=rvts6>};
+</span><span         class=rvts8>B</span><span         class=rvts9>1</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>6</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>10</span><span              class=rvts6>},              </span><span
+class=rvts8>B</span><span class=rvts9>2</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>4</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>5</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>6</span><span               class=rvts6>};              </span><span
+class=rvts8>А</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>5</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>6</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>9</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts9>10</span><span class=rvts6>}.</span></p> 
+<p  class=rvps28><span  class=rvts6>Шаг  6  (1-й  случай: </span><span
+class=rvts8>v</span><span  class=rvts9>6</span><span  class=rvts6> </span><span
+class=rvts13>∈</span><span class=rvts6> </span><span
+class=rvts8>B</span><span  class=rvts10>i</span><span class=rvts6>, </span><span
+class=rvts8>i</span><span         class=rvts6> = 1, 2):         {</span><span
+class=rvts8>v</span><span  class=rvts9>1</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts9>7</span><span        class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>2</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span  class=rvts9>3</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>8</span><span class=rvts6>},
+{</span><span         class=rvts8>v</span><span        class=rvts9>6</span><span
+class=rvts6>};  </span><span class=rvts8>B</span><span class=rvts9>1</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>10</span><span              class=rvts6>},              </span><span
+class=rvts8>B</span><span class=rvts9>2</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>4</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>5</span><span  class=rvts6>}, </span><span class=rvts8>B</span><span
+class=rvts9>3</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>9</span><span class=rvts6>}; </span><span
+class=rvts8>А</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>5</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>9</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts9>10</span><span class=rvts6>}.</span></p> 
+<p    class=rvps29><span    class=rvts6>Шаг    7   (выбор   </span><span
+class=rvts8>v</span><span  class=rvts9>5</span><span  class=rvts6>,  цвет 3,
+</span><span       class=rvts13>Δ|</span><span       class=rvts8>В</span><span
+class=rvts9>3</span><span     class=rvts13>|</span><span    class=rvts6> = 1):
+{</span><span  class=rvts8>v</span><span class=rvts9>1</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>7</span><span class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>2</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span  class=rvts9>3</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>8</span><span class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>5</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>6</span><span class=rvts6>};
+</span><span         class=rvts8>B</span><span         class=rvts9>1</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>10</span><span              class=rvts6>},              </span><span
+class=rvts8>B</span><span class=rvts9>2</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>4</span><span  class=rvts6>}, </span><span class=rvts8>B</span><span
+class=rvts9>3</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>9</span><span class=rvts6>}; </span><span
+class=rvts8>А</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>9</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts9>10</span><span class=rvts6>}.</span></p> 
+<p  class=rvps30><span  class=rvts6>Шаг  8  (2-й  случай: </span><span
+class=rvts8>N</span><span   class=rvts6>(</span><span  class=rvts8>v</span><span
+class=rvts9>10</span><span class=rvts6>) </span><span
+class=rvts13>∩</span><span class=rvts6> </span><span
+class=rvts8>A</span><span class=rvts6> </span><span
+class=rvts13>⊆</span><span class=rvts6> </span><span
+class=rvts8>B</span><span        class=rvts9>3</span><span        class=rvts6>):
+{</span><span  class=rvts8>v</span><span class=rvts9>1</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>7</span><span class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>2</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span  class=rvts9>3</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>8</span><span class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>5</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span  class=rvts9>6</span><span class=rvts6>,
+</span><span         class=rvts8>v</span><span        class=rvts9>10</span><span
+class=rvts6>};  </span><span class=rvts8>B</span><span class=rvts9>1</span><span
+class=rvts6> = </span><span     class=rvts13>∅</span><span     class=rvts6>,
+</span><span         class=rvts8>B</span><span         class=rvts9>2</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>4</span><span  class=rvts6>}, </span><span class=rvts8>B</span><span
+class=rvts9>3</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>9</span><span class=rvts6>}; </span><span
+class=rvts8>А</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts9>9</span><span class=rvts6>}.</span></p> 
+<p    class=rvps31><span    class=rvts6>Шаг    9   (выбор   </span><span
+class=rvts8>v</span><span  class=rvts9>4</span><span  class=rvts6>,  цвет 1,
+</span><span       class=rvts13>Δ|</span><span       class=rvts8>В</span><span
+class=rvts9>1</span><span     class=rvts13>|</span><span    class=rvts6> = 1):
+{</span><span  class=rvts8>v</span><span class=rvts9>1</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span  class=rvts9>4</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>7</span><span class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>2</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span  class=rvts9>3</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span class=rvts9>8</span><span class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>5</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span  class=rvts9>6</span><span class=rvts6>,
+</span><span         class=rvts8>v</span><span        class=rvts9>10</span><span
+class=rvts6>};  </span><span class=rvts8>B</span><span class=rvts9>1</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>9</span><span  class=rvts6>}, </span><span class=rvts8>B</span><span
+class=rvts9>2</span><span class=rvts6> = </span><span
+class=rvts13>∅</span><span              class=rvts6>,             </span><span
+class=rvts8>B</span><span class=rvts9>3</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts9>9</span><span               class=rvts6>};              </span><span
+class=rvts8>А</span><span class=rvts6> = {</span><span
+class=rvts8>v</span><span class=rvts9>9</span><span class=rvts6>}.</span></p> 
+<p  class=rvps32><span  class=rvts6>Шаг 10: завершение работы
+с      результатом      {</span><span      class=rvts8>v</span><span
+class=rvts9>1</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>4</span><span  class=rvts6>,  </span><span class=rvts8>v</span><span
+class=rvts9>7</span><span              class=rvts6>},              {</span><span
+class=rvts8>v</span><span  class=rvts9>2</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>3</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts9>8</span><span  class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts9>9</span><span        class=rvts6>},
+{</span><span  class=rvts8>v</span><span class=rvts9>5</span><span class=rvts6>,
+</span><span  class=rvts8>v</span><span  class=rvts9>6</span><span class=rvts6>,
+</span><span         class=rvts8>v</span><span        class=rvts9>10</span><span
+class=rvts6>}
+<center><img src ="lk7/img1.jpg"></center>
+<p class=rvps9><span class=rvts17><br></span></p>
+<p   class=rvps1><span  class=rvts18>Рис. 7.1.  Раскрашиваемый
+граф</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p    class=rvps33><span   class=rvts6>Полученная   раскраска
+для   данного   графа   является  минимальной,
+так как  хроматическое  число  графа  </span><span
+class=rvts11>γ</span><span  class=rvts6>(</span><span class=rvts8>G</span><span
+class=rvts6>)  не  может  быть  меньше  числа вершин
+его   наибольшей   клики,   а  на  рис. 7.1  видны
+клики, состоящие из трех вершин.</span></p> 
+<p   class=rvps34><span   class=rvts6>Описанный  способ  дает
+возможность   иногда   делать   заключение   о
+том,    что   полученная   раскраска   является
+минимальной.   Назовем   шаги,  выполненные  в
+первом   и   втором  случаях,  «хорошими»,  а  в
+остальных   случаях   </span><span  class=rvts12>–</span><span
+class=rvts6>   «сомнительными».   Если   в  процессе
+раскраски  выполнялись только хорошие шаги,
+то,       очевидно,       полученная      раскраска
+является    минимальной.    Если   приходилось
+выполнять  сомнительные шаги, то полученная
+раскраска  может  оказаться  не минимальной,
+но    по    соотношению    между    количествами
+хороших  и  сомнительных  шагов можно судить
+о      близости      полученной     раскраски     к
+минимальной.</span></p> 
+<p   class=rvps35><span   class=rvts6>Иногда  можно  получить
+раскраску  графа,  минимальную или близкую к
+минимальной,    с   помощью   так   называемого
+«</span><span       class=rvts8>жадного</span><span       class=rvts6>»
+алгоритма,   где   на   каждом  шаге  в  текущий
+цвет    раскрашивается    как    можно    больше
+вершин.      Желательно     для     этого     брать
+наибольшее          независимое         множество.
+Раскрашенные   вершины  удаляются  из  графа,
+вводится  новый  цвет, в него раскрашивается
+опять  как  можно  больше  вершин  и так далее
+до  тех  пор,  пока  множество вершин графа не
+станет   пустым.   Однако  есть  пример  графа,
+для  которого  число  цветов,  полученное при
+такой     раскраске,    может    отличаться    от
+минимального    на    сколь    угодно    большую
+величину [8].</span></p> 
+<p              class=rvps36><span              class=rvts6>Рассмотрим
+неограниченную последовательность
+деревьев             </span><span             class=rvts8>Т</span><span
+class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>Т</span><span    class=rvts9>2</span><span    class=rvts6>, … ,
+</span><span        class=rvts8>Т</span><span        class=rvts10>i</span><span
+class=rvts6>, …,   начало   которой   изображено  на
+рис. 7.2.      Дерево      </span><span     class=rvts8>Т</span><span
+class=rvts9>1</span><span     class=rvts6>    состоит    из    трех
+вершин     и     двух     ребер.    Дерево    </span><span
+class=rvts8>T</span><span         class=rvts10>i</span><span        class=rvts6>
+получается       из      </span><span      class=rvts8>T</span><span
+class=rvts10>i</span><span class=rvts9> </span><span
+class=rvts19>–</span><span       class=rvts9> 1</span><span      class=rvts6>
+присоединением   к   каждой   вершине   </span><span
+class=rvts8>T</span><span  class=rvts10>i</span><span class=rvts9> </span><span
+class=rvts19>–</span><span  class=rvts9> 1</span><span  class=rvts6> двух
+смежных       с      ней      вершин.      Наибольшее
+независимое      множество     дерева     </span><span
+class=rvts8>T</span><span  class=rvts10>i</span><span class=rvts9> </span><span
+class=rvts6>      составляют      все      вершины,     не
+принадлежащие         </span><span        class=rvts8>T</span><span
+class=rvts10>i</span><span class=rvts9> </span><span
+class=rvts19>–</span><span      class=rvts9> 1</span><span      class=rvts6>.
+Число    цветов,   получаемое   при   раскраске
+дерева  </span><span  class=rvts8>T</span><span class=rvts10>i</span><span
+class=rvts6>     данным    способом,    равно    </span><span
+class=rvts8>i</span><span    class=rvts6> + 1,   хотя   ясно,   что
+всякое    дерево    можно    раскрасить   в   два
+цвета.</span></p> 
+<center><img src ="lk7/img2.jpg"></center>
+<p class=rvps45><span class=rvts17><br></span></p>
+<p       class=rvps1><span       class=rvts18>Рис. 7.2.      Деревья,
+раскрашиваемые «жадным» алгоритмом</span></p> 
+<p class=rvps46><span class=rvts6><br></span></p>
+<p     class=rvps9><span     class=rvts7>7.3.     Бихроматические
+графы</span></p> 
+<p class=rvps47><span class=rvts6><br></span></p>
+<p          class=rvps48><span         class=rvts6>Граф         </span><span
+class=rvts8>G</span><span    class=rvts6>    называется   </span><span
+class=rvts8>k-хроматическим</span><span    class=rvts6>,   если
+</span><span        class=rvts11>γ</span><span        class=rvts6>(</span><span
+class=rvts8>G</span><span class=rvts6>) = </span><span
+class=rvts8>k</span><span   class=rvts6>.   Очевидно,   пустые  и
+только     пустые    графы    являются    1</span><span
+class=rvts12>‑</span><span class=rvts6>хроматическими.
+Особый         класс         составляют        </span><span
+class=rvts8>бихроматические  графы</span><span class=rvts6>,
+т. е.  такие, у которых </span><span class=rvts11>γ</span><span
+class=rvts6>(</span><span class=rvts8>G</span><span
+class=rvts6>) = 2.</span></p> 
+<p        class=rvps49><span        class=rvts6>Т е о р е м а&nbsp;
+К ё н и г а.      Непустой      граф     является
+бихроматическим    тогда    и    только   тогда,
+когда    он    не    содержит   циклов   нечетной
+длины.</span></p> 
+<p    class=rvps50><span   class=rvts6>Допустим,   что   </span><span
+class=rvts8>G</span><span class=rvts6> = (</span><span
+class=rvts8>V</span><span  class=rvts6>, </span><span class=rvts8>E</span><span
+class=rvts6>)     </span><span     class=rvts12>–</span><span     class=rvts6>
+связный     бихроматический    граф.    Это    не
+нарушает     общности,    так    как    в    случае
+несвязного  графа  последующие  рассуждения
+можно  провести  для каждой его компоненты в
+отдельности.    Пусть   </span><span   class=rvts8>V</span><span
+class=rvts20> </span><span     class=rvts21>1</span><span    class=rvts6>    и
+</span><span        class=rvts8>V</span><span        class=rvts20> </span><span
+class=rvts21>2</span><span               class=rvts6>               </span><span
+class=rvts12>–</span><span    class=rvts6>   множества   вершин
+графа       </span><span       class=rvts8>G</span><span      class=rvts6>,
+раскрашенных  соответственно  в  цвета  1  и 2.
+Всякое  ребро  соединяет  вершину  из  </span><span
+class=rvts8>V</span><span class=rvts20> </span><span
+class=rvts21>1</span><span  class=rvts6>  с  вершиной из </span><span
+class=rvts8>V</span><span class=rvts20> </span><span
+class=rvts21>2</span><span       class=rvts6>.       Следовательно,
+всякая  цепь, начинающаяся и оканчивающаяся
+в     одном     и    том    же    множестве    </span><span
+class=rvts8>V</span><span        class=rvts20> i</span><span       class=rvts6>
+(</span><span   class=rvts8>i</span><span   class=rvts6> = 1, 2),  имеет
+четную      длину.      Пусть      теперь     </span><span
+class=rvts8>G</span><span                class=rvts6>               </span><span
+class=rvts12>–</span><span    class=rvts6>   связный   граф,   не
+имеющий    циклов   нечетной   длины.   Возьмем
+любую  вершину  </span><span  class=rvts8>v</span><span class=rvts6>
+из    графа    </span><span    class=rvts8>G</span><span    class=rvts6>.
+Сформируем  множество  </span><span class=rvts8>V</span><span
+class=rvts20> </span><span    class=rvts21>1</span><span    class=rvts6>   из
+вершин,  отстоящих  от  </span><span  class=rvts8>v</span><span
+class=rvts6>  на  четном расстоянии в графе </span><span
+class=rvts8>G</span><span   class=rvts6>,   и  множество  </span><span
+class=rvts8>V</span><span class=rvts20> </span><span
+class=rvts21>2</span><span   class=rvts6>   из   всех   остальных
+вершин.    Ни   одна   пара   вершин   из   </span><span
+class=rvts8>V</span><span class=rvts20> </span><span
+class=rvts21>2</span><span   class=rvts6>   не   связана  ребром.
+Действительно,     если    имелось    бы    ребро
+</span><span         class=rvts8>v</span><span        class=rvts10>i</span><span
+class=rvts8>v</span><span  class=rvts10>j</span><span class=rvts6> </span><span
+class=rvts13>∈</span><span class=rvts6> </span><span
+class=rvts8>E</span><span   class=rvts6>,   у   которого   </span><span
+class=rvts8>v</span><span  class=rvts10>i</span><span class=rvts6> </span><span
+class=rvts13>∈</span><span class=rvts6> </span><span
+class=rvts8>V</span><span class=rvts20> </span><span
+class=rvts21>2</span><span          class=rvts6>         и         </span><span
+class=rvts8>v</span><span  class=rvts10>j</span><span class=rvts6> </span><span
+class=rvts13>∈</span><span class=rvts6> </span><span
+class=rvts8>V</span><span class=rvts20> </span><span
+class=rvts21>2</span><span          class=rvts6>,         то         цикл,
+составленный   из  цепи,  соединяющей  </span><span
+class=rvts8>v</span><span          class=rvts6>          с         </span><span
+class=rvts8>v</span><span  class=rvts10>i</span><span  class=rvts6>,  ребра
+</span><span         class=rvts8>v</span><span        class=rvts10>i</span><span
+class=rvts8>v</span><span  class=rvts10>j</span><span  class=rvts6> и цепи,
+соединяющей           </span><span          class=rvts8>v</span><span
+class=rvts10>j</span><span          class=rvts6>         с         </span><span
+class=rvts8>v</span><span    class=rvts6>,    имел   бы   нечетную
+длину, что противоречит условию.</span></p> 
+<p       class=rvps51><span      class=rvts6>Очевидно,      всякий
+двудольный    граф,    имеющий   хотя   бы   одно
+ребро,   является   бихроматическим,  так  как
+любая  доля  двудольного графа представляет
+собой независимое множество.</span></p> 
+<p   class=rvps52><span   class=rvts6>Бихроматичность  графа
+легко       установить,      используя      способ
+последовательной     раскраски.    Для    этого
+произвольно    выбирается    вершина    </span><span
+class=rvts8>v</span><span   class=rvts6>  и  красится  в  цвет  1.
+Вершины          ее         окрестности         </span><span
+class=rvts8>N</span><span   class=rvts6>(</span><span  class=rvts8>v</span><span
+class=rvts6>)   красятся   в   цвет   2,   неокрашенные
+вершины         из        окрестностей        вершин,
+принадлежащих         </span><span        class=rvts8>N</span><span
+class=rvts6>(</span><span        class=rvts8>v</span><span        class=rvts6>),
+красятся  в  цвет  1  и  т. д. В результате либо
+граф   раскрашивается  в  два  цвета,  либо  на
+каком-то  шаге  смежные  вершины оказываются
+окрашенными   в   один   и   тот   же   цвет.   Это
+говорит    о    том,    что    граф    не   является
+бихроматическим.</span></p> 
+<p><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body>
+</html>

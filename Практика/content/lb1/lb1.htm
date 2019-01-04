@@ -1,0 +1,974 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Множества</title>
+
+
+<style type="text/css"><!--
+body {
+  
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts11
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts12
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts14
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts15
+{
+ font-size: 9pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ vertical-align: sub;
+}
+span.rvts16
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps3
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps12
+{
+ text-align: justify;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 36px;
+ margin: 0px 2px 0px 0px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps25
+{
+ text-align: justify;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps36
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps37
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps41
+{
+ text-indent: 38px;
+}
+.rvps42
+{
+ text-indent: 36px;
+}
+--></style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<a href="../../../Теория/theory.htm">Теория</a> | <strong>Практика</strong> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+<p><span class=rvts6>Множества</span></p>
+<p><span class=rvts6><br></span></p>
+<p><span class=rvts7>Задача № 1.1</span></p>
+<p  class=rvps2><span  class=rvts7>Опираясь  на определения
+операций       над      множествами,      показать
+справедливость    закона    дистрибутивности
+объединения      относительно     пересечения:
+</span><span        class=rvts8>А</span><span        class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> (</span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7>) </span><span
+class=rvts9>=</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7>) </span><span
+class=rvts9>∩</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7>).</span></p> 
+<p class=rvps3><span class=rvts7>Решение.</span></p>
+<p       class=rvps4><span      class=rvts7>Обозначим      </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> (</span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7>) </span><span
+class=rvts9>=</span><span  class=rvts7> </span><span  class=rvts8>D</span><span
+class=rvts7>         и         (</span><span         class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7>) </span><span class=rvts9>∩</span><span
+class=rvts7> (</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span class=rvts8>С</span><span
+class=rvts7>) </span><span class=rvts9>=</span><span
+class=rvts7> </span><span  class=rvts8>Е</span><span  class=rvts7>. Чтобы
+доказать      совпадение     множеств     </span><span
+class=rvts8>D</span><span          class=rvts7>          и         </span><span
+class=rvts8>Е</span><span   class=rvts7>,   надо  доказать,  что
+</span><span         class=rvts8>D</span><span        class=rvts7> </span><span
+class=rvts9>⊆</span><span class=rvts7> </span><span
+class=rvts8>Е</span><span          class=rvts7>         и         </span><span
+class=rvts8>Е</span><span class=rvts7> </span><span
+class=rvts9>⊆</span><span class=rvts7> </span><span
+class=rvts8>D</span><span   class=rvts7>,   т. е.   любой,  взятый
+наугад     элемент     из     множества     </span><span
+class=rvts8>D</span><span           class=rvts7>          принадлежит
+множеству   </span><span   class=rvts8>Е</span><span  class=rvts7>  и
+любой    элемент    из   </span><span   class=rvts8>Е</span><span
+class=rvts7>  принадлежит  также множеству </span><span
+class=rvts8>D</span><span class=rvts7>.</span></p> 
+<p  class=rvps5><span  class=rvts7>Возьмем любой элемент из
+</span><span      class=rvts8>D</span><span      class=rvts7>      (</span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>D</span><span  class=rvts7>).  Возможны два случая:
+либо   </span><span   class=rvts8>х</span><span  class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>А</span><span       class=rvts7>,       либо       </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7>.</span></p> 
+<p     class=rvps6><span     class=rvts7>1-й     случай:     </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>А</span><span     class=rvts7>,     откуда     следует
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>В</span><span         class=rvts7>)         и         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>С</span><span     class=rvts7>)     по     определению
+операции       объединения.       Следовательно,
+пересечение               множеств              (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>В</span><span         class=rvts7>)         и        (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>С</span><span    class=rvts7>)    содержит   элемент
+</span><span   class=rvts8>х</span><span  class=rvts7>,  т. е.  </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>Е</span><span class=rvts7>.</span></p> 
+<p     class=rvps7><span     class=rvts7>2-й     случай:     </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>А</span><span    class=rvts7>,    но    тогда   </span><span
+class=rvts8>х</span><span          class=rvts7>          принадлежит
+пересечению  множеств </span><span class=rvts8>В</span><span
+class=rvts7>    и    </span><span    class=rvts8>С</span><span   class=rvts7>,
+откуда      следует     </span><span     class=rvts8>х</span><span
+class=rvts7> </span><span class=rvts9>∈</span><span
+class=rvts7> </span><span     class=rvts8>В</span><span     class=rvts7>    и
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>С</span><span     class=rvts7>     (по     определению
+операции       пересечения).      Следовательно,
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>В</span><span         class=rvts7>)         и         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>С</span><span       class=rvts7>),       т. е.      </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>Е</span><span class=rvts7>.</span></p> 
+<p  class=rvps8><span  class=rvts7>Таким  образом, доказано,
+что  любой  элемент  из  </span><span class=rvts8>D</span><span
+class=rvts7>   принадлежит   </span><span  class=rvts8>Е</span><span
+class=rvts7>  (</span><span class=rvts8>D</span><span class=rvts7> </span><span
+class=rvts9>⊆</span><span class=rvts7> </span><span
+class=rvts8>Е</span><span class=rvts7>).</span></p> 
+<p    class=rvps9><span    class=rvts7>Пусть    теперь   </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>Е</span><span    class=rvts7>.    Поскольку   </span><span
+class=rvts8>Е</span><span             class=rvts7>             является
+пересечением   двух   множеств,   имеет  место
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>В</span><span         class=rvts7>)         и         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>С</span><span       class=rvts7>).       Если      </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>А</span><span  class=rvts7>,  то  очевидно,  </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>D</span><span        class=rvts7>.       Если       </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>А</span><span         class=rvts7>,        то        </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>В</span><span          class=rvts7>         и         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>С</span><span     class=rvts7>.     По     определению
+операции  пересечения </span><span class=rvts8>х</span><span
+class=rvts7> </span><span class=rvts9>∈</span><span
+class=rvts7> (</span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts9>∩</span><span
+class=rvts7> </span><span    class=rvts8>С</span><span    class=rvts7>)    и,
+следовательно,        </span><span       class=rvts8>х</span><span
+class=rvts7> </span><span class=rvts9>∈</span><span
+class=rvts7> </span><span  class=rvts8>D</span><span  class=rvts7>.  Таким
+образом,   в   обоих   случаях   взятый   наугад
+элемент   из   </span><span   class=rvts8>Е</span><span   class=rvts7>
+принадлежит    также    и    множеству    </span><span
+class=rvts8>D</span><span  class=rvts7> (</span><span class=rvts8>Е</span><span
+class=rvts7> </span><span class=rvts9>⊆</span><span
+class=rvts7> </span><span class=rvts8>D</span><span class=rvts7>).</span></p> 
+<p        class=rvps10><span       class=rvts7>Из       приведенных
+рассуждений   следует  </span><span  class=rvts8>D</span><span
+class=rvts7> = </span><span class=rvts8>Е</span><span
+class=rvts7>.</span></p> 
+<p class=rvps11><span class=rvts7><br></span></p>
+<p class=rvps12><span class=rvts7>Задача № 1.2</span></p>
+<p           class=rvps13><span           class=rvts7>С          помощью
+использованного     выше     приема    доказать
+</span><img     width=51     height=24    alt=""    style="padding    :    1px;"
+src="lb1/img1.jpg"><span  class=rvts7>=</span><span class=rvts10>&not;</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts10>&not;</span><span
+class=rvts8>В</span><span        class=rvts7>        (правило       де
+Моргана).</span></p> 
+<p class=rvps14><span class=rvts7>Решение.</span></p>
+<p         class=rvps15><span         class=rvts7>Пусть        </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span  class=rvts7> </span><img width=51 height=24 alt=""
+style="padding    :    1px;"   src="lb1/img2.jpg"><span   class=rvts7>.   Это
+значит,        что        </span><span       class=rvts8>х</span><span
+class=rvts7> </span><span class=rvts9>∉</span><span
+class=rvts7> (</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span   class=rvts8>В</span><span   class=rvts7>)   или
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>А</span><span               class=rvts7>,              </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>В</span><span            class=rvts7>.           Последнее
+равносильно          </span><span          class=rvts8>х</span><span
+class=rvts7> </span><span class=rvts9>∈</span><span
+class=rvts10>&not;</span><span       class=rvts8>А</span><span      class=rvts7>,
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts10>&not;</span><span
+class=rvts8>В</span><span       class=rvts7>,       т. е.       </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts10>&not;</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts10>&not;</span><span
+class=rvts8>В</span><span       class=rvts7>.       Следовательно,
+</span><img     width=51     height=24    alt=""    style="padding    :    1px;"
+src="lb1/img3.jpg"><span class=rvts9>⊆</span><span
+class=rvts10>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∩</span><span
+class=rvts10>&not;</span><span class=rvts8>В</span><span
+class=rvts7>.</span></p> 
+<p    class=rvps16><span    class=rvts7>Пусть   теперь   </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts10>&not;</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts10>&not;</span><span
+class=rvts8>В</span><span    class=rvts7>.    Это    значит,    что
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts10>&not;</span><span
+class=rvts8>А</span><span          class=rvts7>         и         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts10>&not;</span><span
+class=rvts8>В</span><span       class=rvts7>,       т. е.       </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>А</span><span          class=rvts7>         и         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>В</span><span     class=rvts7>.     Отсюда     следует
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>В</span><span        class=rvts7>        или        </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span  class=rvts7> </span><img width=51 height=24 alt=""
+style="padding      :      1px;"      src="lb1/img4.jpg"><span     class=rvts7>.
+Следовательно,       </span><span      class=rvts10>&not;</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts10>&not;</span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>⊆</span><span  class=rvts7> </span><img width=51 height=24 alt=""
+style="padding : 1px;" src="lb1/img5.jpg"><span class=rvts7>.</span></p> 
+<p  class=rvps17><span class=rvts7>Таким образом, равенство
+</span><img     width=51     height=24    alt=""    style="padding    :    1px;"
+src="lb1/img6.jpg"><span  class=rvts7>=</span><span class=rvts10>&not;</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts10>&not;</span><span
+class=rvts8>В</span><span class=rvts7> доказано.</span></p> 
+<p class=rvps18><span class=rvts7><br></span></p>
+<p class=rvps19><span class=rvts7>Задача № 1.3</span></p>
+<p     class=rvps20><span     class=rvts7>Доказать    равенство
+</span><span      class=rvts8>А</span><span      class=rvts7> \ (</span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7>) = (</span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>В</span><span class=rvts7>) </span><span
+class=rvts9>∩</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>С</span><span class=rvts7>).</span></p> 
+<p class=rvps21><span class=rvts7>Решение.</span></p>
+<p          class=rvps22><span         class=rvts7>Если         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> \ (</span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>С</span><span        class=rvts7>),        то        </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>А</span><span          class=rvts7>         и         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>В</span><span               class=rvts7>,              </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>С</span><span     class=rvts7>.     Отсюда     следует
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>В</span><span          class=rvts7>         и         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>С</span><span     class=rvts7>,    что    равносильно
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>В</span><span class=rvts7>) </span><span
+class=rvts9>∩</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>С</span><span       class=rvts7>).      Следовательно,
+</span><span      class=rvts8>А</span><span      class=rvts7> \ (</span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7>) </span><span
+class=rvts9>⊆</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>В</span><span class=rvts7>) </span><span
+class=rvts9>∩</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>С</span><span class=rvts7>).</span></p> 
+<p          class=rvps23><span         class=rvts7>Если         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>В</span><span class=rvts7>) </span><span
+class=rvts9>∩</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>С</span><span        class=rvts7>),        то        </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>В</span><span          class=rvts7>         и         </span><span
+class=rvts8>х</span><span class=rvts7> </span><span
+class=rvts9>∈</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>С</span><span            class=rvts7>.           Последнее
+равносильно          </span><span          class=rvts8>х</span><span
+class=rvts7> </span><span class=rvts9>∈</span><span
+class=rvts7> </span><span        class=rvts8>А</span><span       class=rvts7>,
+</span><span        class=rvts8>х</span><span        class=rvts7> </span><span
+class=rvts9>∉</span><span class=rvts7> </span><span
+class=rvts8>В</span><span      class=rvts7>     и</span><span     class=rvts8>
+х</span><span       class=rvts7> </span><span      class=rvts9>∉</span><span
+class=rvts7> </span><span        class=rvts8>С</span><span       class=rvts7>,
+откуда      следует     </span><span     class=rvts8>х</span><span
+class=rvts7> </span><span class=rvts9>∈</span><span
+class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7> \ (</span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span  class=rvts8>С</span><span class=rvts7>). Таким
+образом,    доказано   (</span><span   class=rvts8>А</span><span
+class=rvts7> \ </span><span class=rvts8>В</span><span
+class=rvts7>) </span><span class=rvts9>∩</span><span
+class=rvts7> (</span><span class=rvts8>А</span><span
+class=rvts7> \ </span><span class=rvts8>С</span><span
+class=rvts7>) </span><span class=rvts9>⊆</span><span
+class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7> \ (</span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span   class=rvts8>С</span><span   class=rvts7>),  что
+завершает      доказательство      соотношения
+</span><span      class=rvts8>А</span><span      class=rvts7> \ (</span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7>) = (</span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>В</span><span class=rvts7>) </span><span
+class=rvts9>∩</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> \ </span><span
+class=rvts8>С</span><span class=rvts7>).</span></p> 
+<p class=rvps24><span class=rvts7><br></span></p>
+<p class=rvps25><span class=rvts7>Задача № 1.4</span></p>
+<p    class=rvps26><span    class=rvts7>Существуют   ли   такие
+множества    </span><span    class=rvts8>А</span><span   class=rvts7>,
+</span><span    class=rvts8>В</span><span    class=rvts7>    и    </span><span
+class=rvts8>С</span><span        class=rvts7>,        что       </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>≠</span><span class=rvts7> </span><span
+class=rvts9>∅</span><span              class=rvts7>,              </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7> = </span><span
+class=rvts9>∅</span><span         class=rvts7>         и        (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7>) \ </span><span
+class=rvts8>С</span><span class=rvts7> = </span><span
+class=rvts9>∅</span><span class=rvts7>?</span></p> 
+<p class=rvps27><span class=rvts7>Решение.</span></p>
+<p      class=rvps28><span      class=rvts7>Множества      </span><span
+class=rvts8>А</span><span          class=rvts7>         и         </span><span
+class=rvts8>С</span><span     class=rvts7>     не    имеют    общих
+элементов,  поскольку  </span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∩</span><span
+class=rvts7> </span><span class=rvts8>С</span><span
+class=rvts7> = </span><span      class=rvts9>∅</span><span     class=rvts7>.
+Подавно  не имеют общих элементов множества
+</span><span        class=rvts8>А</span><span        class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts7> </span><span
+class=rvts8>В</span><span          class=rvts7>         и         </span><span
+class=rvts8>С</span><span       class=rvts7>.       Следовательно,
+(</span><span        class=rvts8>А</span><span       class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7>) \ </span><span
+class=rvts8>С</span><span class=rvts7> = </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∩</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>≠</span><span class=rvts7> </span><span
+class=rvts9>∅</span><span  class=rvts7> и не может быть таких
+множеств     </span><span    class=rvts8>А</span><span    class=rvts7>,
+</span><span    class=rvts8>В</span><span    class=rvts7>    и    </span><span
+class=rvts8>С</span><span              class=rvts7>,             которые
+удовлетворяли        бы        указанным        трем
+соотношениям.</span></p> 
+<p class=rvps29><span class=rvts7><br></span></p>
+<p class=rvps30><span class=rvts7>Задача № 1.5</span></p>
+<p            class=rvps31><span            class=rvts7>Равносильные
+преобразования   формул.  Вывести  следующие
+формулы,     пользуясь    основными    законами
+булевой алгебры множеств:</span></p> 
+<p  class=rvps32><span  class=rvts7>1)  </span><span  class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В </span><span
+class=rvts9>=</span><span  class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7>;</span></p> 
+<p  class=rvps33><span  class=rvts7>2)  </span><span  class=rvts8>А</span><span
+class=rvts7> (</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span  class=rvts8>В</span><span class=rvts7>)</span><span
+class=rvts8> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7>;</span></p> 
+<p  class=rvps34><span  class=rvts7>3)  </span><span  class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7>;</span></p> 
+<p  class=rvps35><span  class=rvts7>4)  </span><span  class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>С</span><span
+class=rvts7> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts11>&not;</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7>;</span></p> 
+<p  class=rvps36><span  class=rvts7>5)  </span><span  class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7>.</span></p> 
+<p class=rvps37><span class=rvts7>Решение.</span></p>
+<p  class=rvps38><span  class=rvts7>1)  </span><span  class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В </span><span
+class=rvts9>=</span><span  class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7> </span><span  class=rvts8>U</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>В </span><span class=rvts9>=</span><span
+class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7> (</span><span class=rvts8>U</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span  class=rvts8>В</span><span class=rvts7>)</span><span
+class=rvts8> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>А</span><span        class=rvts7> </span><span       class=rvts8>U
+</span><span       class=rvts9>=</span><span      class=rvts7>      </span><span
+class=rvts8>А</span><span class=rvts7>;</span></p> 
+<p  class=rvps39><span  class=rvts7>2)  </span><span  class=rvts8>А</span><span
+class=rvts7> (</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span  class=rvts8>В</span><span class=rvts7>)</span><span
+class=rvts8> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>В </span><span class=rvts9>=</span><span
+class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В </span><span
+class=rvts9>=</span><span  class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7>;</span></p> 
+<p  class=rvps40><span  class=rvts7>3)  </span><span  class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts11>&not;</span><span
+class=rvts8>А</span><span class=rvts7>) </span><span
+class=rvts9>=</span><span  class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span  class=rvts8>U</span><span class=rvts7> </span><span
+class=rvts9>=</span><span  class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7>;</span></p> 
+<p  class=rvps41><span  class=rvts7>4)  </span><span  class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>С</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts8>С</span><span
+class=rvts7> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts11>&not;</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts8>С </span><span class=rvts7>(</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts11>&not;</span><span
+class=rvts8>А</span><span class=rvts7>) </span><span
+class=rvts9>=</span>
+<span          class=rvts9>=</span><span          class=rvts7> (</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts8>С</span><span class=rvts7>) </span><span
+class=rvts9>∪</span><span class=rvts7> (</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>С</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts8>С</span><span
+class=rvts7>) </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts11>&not;</span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts8>С</span></p> 
+<p  class=rvps42><span  class=rvts7>5)  </span><span  class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>А</span><span  class=rvts7> </span><span class=rvts8>U</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>А</span><span  class=rvts7> </span><span class=rvts8>U</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span  class=rvts8>U</span><span class=rvts7> </span><span
+class=rvts8>В</span><span  class=rvts7> </span><span class=rvts9>=</span><span
+class=rvts7> </span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts11>&not;</span><span class=rvts8>А</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts9>∪</span><span
+class=rvts7> </span><span class=rvts8>В</span><span
+class=rvts7> </span><span  class=rvts9>=</span><span class=rvts7> </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts9>∪</span><span class=rvts7> </span><span
+class=rvts8>В</span><span class=rvts7>.</span></p> 
+<p><span class=rvts12><br></span></p>
+
+<p class=rvps30><span class=rvts7>Задача № 1.6</span></p>
+<p            class=rvps31><span            class=rvts7>Операции над декартовыми произведениями. Доказать равенство:</span></p> 
+<p  class=rvps32><span class=rvts8>(А</span><span class="rvts7">x</span><span class=rvts8>В) </span><span
+class=rvts9>∩</span> <span class=rvts8>(В</span><span class="rvts7">x</span><span class=rvts8>А) = (А ∩ В)</span><span class="rvts7">x</span><span class=rvts8>(А ∩ В) = (А ∩ В)</span><span        class=rvts13>2</span><span class=rvts8>.</span></p>
+<p></p>
+<p class=rvps37><span class=rvts7>Решение.</span></p>
+<p  class=rvps38><span  class=rvts7>Обозначим (А x В) <span class="rvts9">∩</span> (В x А) = C, (А <span class="rvts9">∩</span> В)</span><span class="rvts13">2</span><span  class=rvts7> = D.
+Из (х, у) <span class="rvts9">∈</span> С следует (х, у) <span class="rvts9">∈</span> (А x В) и (х, у) <span class="rvts9">∈</span> (В x А). Отсюда х <span class="rvts9">∈</span> А, у <span class="rvts9">∈</span> В и х <span class="rvts9">∈</span> В, у <span class="rvts9">∈</span> А. Следовательно, х <span class="rvts9">∈</span> (А <span class="rvts9">∩</span> В) и у <span class="rvts9">∈</span> (А <span class="rvts9">∩</span> В), значит, (х, у) <span class="rvts9">∈</span> D.
+Теперь возьмем (х, у) <span class="rvts9">∈</span> D, откуда следует х <span class="rvts9">∈</span> (А <span class="rvts9">∩</span> В) и у <span class="rvts9">∈</span> (А <span class="rvts9">∩</span> В) что равносильно х <span class="rvts9">∈</span> А, х <span class="rvts9">∈</span> В и у <span class="rvts9">∈</span> А, у <span class="rvts9">∈</span> В. Следовательно, (х, у) <span class="rvts9">∈</span> (А x В) и (х, у) <span class="rvts9">∈</span> (В x А), т.е. (х, у) <span class="rvts9">∈</span> С. </span></p>
+<p><span  class=rvts7>
+Для наглядности можно привести рисунок:
+</span></p> 
+<p></p>
+<p   class=rvps1><img   width=370   height=287  alt=""  style="padding  :  1px;"
+src="lb1/img7.jpg"></p> 
+<p><span class=rvts12><br></span></p>
+
+<p class=rvps30><span class=rvts7>Задача № 1.7</span></p>
+<p            class=rvps31><span            class=rvts7>Операции над декартовыми произведениями. Доказать равенство:</span></p> 
+<p  class=rvps32><span class=rvts8>А</span><span class="rvts7">x(</span><span class=rvts8>В \ </span><span class="rvts7"></span><span class=rvts8>А) = (А </span><span class="rvts7">x</span><span class=rvts8> В) \ (А </span><span class="rvts7">x</span> <span class=rvts8>C)</span><span class=rvts8>.</span></p>
+<p  class=rvps32>&nbsp;</p>
+<p class=rvps37><span class=rvts7>Решение.</span></p>
+<p  class=rvps38><span  class=rvts7>Обозначим А x (В \ C) = C, (А x В) \ (А x C) = D.
+Из (х, у) <span class="rvts9">∈</span> С следует х <span class="rvts9">∈</span> А и у <span class="rvts9">∈</span> (В \ C), т.е. х <span class="rvts9">∈</span> А и у <span class="rvts9">∈</span> В, у<img   width=15   height=22  alt=""  style="padding  :  1px;"
+src="lb1/img8.jpg">C. Следовательно, (х, у) <span class="rvts9">∈</span> (А x В) и (х, у)<img   width=15   height=22  alt=""  style="padding  :  1px;"
+src="lb1/img8.jpg">(А x C), т.е. (х, у) <span class="rvts9">∈</span> D.</span></p> <p  class=rvps38><span  class=rvts7>
+Из (х, у) <span class="rvts9">∈</span> D следует (х, у) <span class="rvts9">∈</span> (А x В) и (х, у)<img   width=15   height=22  alt=""  style="padding  :  1px;"
+src="lb1/img8.jpg">(А x C). Тогда х <span class="rvts9">∈</span> А, у <span class="rvts9">∈</span> В и у<img   width=15   height=22  alt=""  style="padding  :  1px;"
+src="lb1/img8.jpg">C, т.е. у <span class="rvts9">∈</span> (В \ C) и, следовательно, (х, у) <span class="rvts9">∈</span> D.</span></p><p  class=rvps38><span  class=rvts7>
+Так же, как в предыдущем решении это можно продемонстрировать на рисунке. </span></p> 
+<p></p>
+<p   class=rvps1>&nbsp;</p> 
+<p><span class=rvts12><br></span></p>
+
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+
+</body></html>

@@ -1,0 +1,1012 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Троичные         векторы         и
+матрицы</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts9
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts10
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts14
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts15
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts17
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+}
+.rvps3
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ page-break-after: avoid;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ page-break-after: avoid;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps18
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps19
+{
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps32
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps35
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps36
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps37
+{
+ text-align: center;
+ text-indent: -1px;
+ margin: 0px 0px 0px 1px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 19px;
+ margin: 0px 0px 0px 95px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 19px;
+ margin: 0px 0px 0px 170px;
+}
+.rvps40
+{
+ text-align: justify;
+ margin: 0px 0px 0px 116px;
+}
+.rvps41
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<h2   class=rvps3><span  class=rvts0><span  class=rvts6>Г  л  а  в  а&nbsp;
+16</span></span></h2> 
+<p><span          class=rvts7>Троичные         векторы         и
+матрицы</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p       class=rvps5><span       class=rvts7>16.1. Отношения      на
+множестве  троичных  векторов.  Операции над
+троичными       векторами.      Эквивалентность
+матриц</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps6><span   class=rvts6>Ранее   было  определено
+понятие   троичного   вектора.  Напомним,  что
+его    компоненты    принимают    значения    из
+множества       {0, 1, </span><span       class=rvts8>–</span><span
+class=rvts6>}.          Троичный         вектор         можно
+рассматривать      как     множество     булевых
+векторов,  получаемых  из  него подстановкой
+нулей    и    единиц    вместо   знаков   «</span><span
+class=rvts8>–</span><span       class=rvts6>».       Так      вектор
+(0 </span><span   class=rvts8>–</span><span  class=rvts6> 1 0 </span><span
+class=rvts8>–</span><span   class=rvts6> 1)  задает  множество
+{(0 0 1 0 0 1),           (0 0 1 0 1 1),           (0 1 1 0 0 1),
+(0 1 1 0 1 1)},  представляющее интервал булева
+пространства.</span></p> 
+<p    class=rvps7><span    class=rvts6>Напомним    также,    что
+троичный    вектор   можно   интерпретировать
+как          характеристическое          множество
+элементарной  конъюнкции.  Например,  вектор
+(0 </span><span   class=rvts8>–</span><span  class=rvts6> 1 0 </span><span
+class=rvts8>–</span><span       class=rvts6> 1)      представляет
+конъюнкцию           </span><span          class=rvts9>&not;</span><span
+class=rvts10>х</span><span class=rvts11>1</span><span
+class=rvts6> </span><span class=rvts10>х</span><span
+class=rvts11>3</span><span class=rvts9>&not;</span><span
+class=rvts10>х</span><span class=rvts11>4</span><span
+class=rvts6> </span><span class=rvts10>х</span><span
+class=rvts11>6</span><span       class=rvts6>.      Тогда      всякую
+троичную       матрицу      (строками      которой
+являются   троичные  векторы)  можно  считать
+представлением     ДНФ     некоторой    булевой
+функции.</span></p> 
+<p     class=rvps8><span    class=rvts6>Определим    следующие
+бинарные  отношения  на  множестве  троичных
+векторов одинаковой размерности.</span></p> 
+<p   class=rvps9><span   class=rvts10>Ортогональность</span><span
+class=rvts6>.         Троичные        векторы        </span><span
+class=rvts12>и</span><span         class=rvts6>         и         </span><span
+class=rvts12>v</span><span     class=rvts6>     ортогональны    по
+</span><span  class=rvts10>i</span><span  class=rvts6>-й  компоненте,
+если   и   только  если  </span><span  class=rvts10>i</span><span
+class=rvts6>-я    компонента   имеет   значение   0   в
+одном     из     этих     векторов    и    1    </span><span
+class=rvts8>–</span><span   class=rvts6>   в  другом.  Троичные
+векторы         ортогональны,         если         они
+ортогональны  хотя  бы  по  одной компоненте.
+Например,  векторы  (0 </span><span  class=rvts8>–</span><span
+class=rvts6> 1 0 </span><span   class=rvts8>–</span><span  class=rvts6> 1)
+и    (0 1 0 </span><span   class=rvts8>–</span><span   class=rvts6> 1 0)
+ортогональны      по      третьей      и      шестой
+компонентам.</span></p> 
+<p       class=rvps10><span      class=rvts10>Пересечение</span><span
+class=rvts6>.  Если  векторы </span><span class=rvts12>и</span><span
+class=rvts6>    и    </span><span    class=rvts12>v</span><span    class=rvts6>
+неортогональны,      то     они     находятся     в
+отношении       пересечения.      Это      понятие
+согласуется      с      понятием      пересечения
+множеств:  пересекающиеся  троичные векторы
+представляют     пересекающиеся    интервалы.
+Примером  пересекающихся векторов являются
+векторы            (0 </span><span           class=rvts8>–</span><span
+class=rvts6> 1 0 </span><span   class=rvts8>–</span><span  class=rvts6> 1)
+и               (0 0 1 </span><span              class=rvts8>–</span><span
+class=rvts6> 1</span><span class=rvts8>–</span><span
+class=rvts6> ).</span></p> 
+<p  class=rvps11><span class=rvts10>Смежность</span><span class=rvts6>.
+Векторы    </span><span   class=rvts12>и</span><span   class=rvts6>   и
+</span><span               class=rvts12>v</span><span              class=rvts6>,
+ортогональные  только  по  одной компоненте,
+являются         смежными.        Соответствующие
+элементарные   конъюнкции  тоже  смежны.  Над
+ними  можно  выполнять операцию обобщенного
+склеивания.               Векторы              (0 </span><span
+class=rvts8>–</span><span class=rvts6> 1 0 </span><span
+class=rvts8>–</span><span     class=rvts6> 1)    и    (0 1 0 </span><span
+class=rvts8>–</span><span class=rvts6> 1 </span><span
+class=rvts8>–</span><span   class=rvts6>)  являются  смежными,
+так  как  они ортогональны только по третьей
+компоненте.</span></p> 
+<p  class=rvps12><span class=rvts10>Соседство</span><span class=rvts6>.
+Векторы    </span><span   class=rvts12>и</span><span   class=rvts6>   и
+</span><span     class=rvts12>v</span><span     class=rvts6>    являются
+соседними,     если     по     некоторой    </span><span
+class=rvts10>i</span><span     class=rvts6>-й    компоненте    они
+ортогональны,       а      значения      остальных
+одноименных   компонент   совпадают.  Такими,
+например,      являются      векторы     (0 </span><span
+class=rvts8>–</span><span class=rvts6> 1 0 </span><span
+class=rvts8>–</span><span       class=rvts6> 1)      и      (0 </span><span
+class=rvts8>–</span><span class=rvts6> 1 0 </span><span
+class=rvts8>–</span><span class=rvts6> 0).</span></p> 
+<p        class=rvps13><span       class=rvts10>Поглощение</span><span
+class=rvts6>.      Вектор     </span><span     class=rvts12>и</span><span
+class=rvts6>         поглощает         вектор        </span><span
+class=rvts12>v</span><span   class=rvts6>,  если  и  только  если
+все          компоненты         вектора         </span><span
+class=rvts12>и</span><span    class=rvts6>,   значения   которых
+отличны  от  «</span><span class=rvts8>–</span><span class=rvts6>»,
+совпадают    с    одноименными    компонентами
+вектора     </span><span     class=rvts12>v</span><span     class=rvts6>.
+Интервал,   представляемый  вектором  </span><span
+class=rvts12>v</span><span             class=rvts6>,            является
+подмножеством   интервала,  представляемого
+вектором    </span><span    class=rvts12>и</span><span    class=rvts6>.
+Например,   вектор   (0 </span><span  class=rvts8>–</span><span
+class=rvts6> 1 0 </span><span class=rvts8>–</span><span
+class=rvts6> </span><span       class=rvts8>–</span><span       class=rvts6>)
+поглощает   вектор  (0 </span><span  class=rvts8>–</span><span
+class=rvts6> 1 0 </span><span class=rvts8>–</span><span
+class=rvts6> 0).</span></p> 
+<p    class=rvps14><span   class=rvts6>Нетрудно   видеть,   что
+отношения    ортогональности,    пересечения,
+смежности  и  соседства  обладают  свойством
+симметричности,    а    отношение   поглощения
+транзитивно.       Кроме       того,      отношения
+пересечения                  и                  поглощения
+рефлексивны.</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p     class=rvps16><span    class=rvts7>16.2.    Эквивалентность
+матриц</span></p> 
+<p><span class=rvts6><br></span></p>
+<p  class=rvps17><span  class=rvts6>Троичная матрица </span><span
+class=rvts12>U</span><span               class=rvts6>               </span><span
+class=rvts10>эквивалентна</span><span   class=rvts6>  булевой
+матрице  </span><span  class=rvts12>W</span><span  class=rvts6>, если
+каждая       из       строк       матрицы       </span><span
+class=rvts12>W</span><span  class=rvts6>  поглощается  хотя  бы
+одной          строкой          матрицы          </span><span
+class=rvts12>U</span><span   class=rvts6>,   а  любой  вектор,  не
+совпадающий   ни   с  одной  из  строк  матрицы
+</span><span         class=rvts12>W</span><span        class=rvts6>,        не
+поглощается    ни    одной    строкой    матрицы
+</span><span class=rvts12>U</span><span class=rvts6>.</span></p> 
+<p  class=rvps17><span  class=rvts6>Троичные матрицы </span><span
+class=rvts12>U</span><span          class=rvts6>         и         </span><span
+class=rvts12>V</span><span               class=rvts6>               </span><span
+class=rvts10>эквивалентны</span><span     class=rvts6>,     если
+существует   булева  матрица,  эквивалентная
+обеим      матрицам     </span><span     class=rvts12>U</span><span
+class=rvts6>    и    </span><span    class=rvts12>V</span><span   class=rvts6>.
+Бинарное  отношение эквивалентности матриц
+рефлексивно,                 симметрично                и
+транзитивно.</span></p> 
+<p  class=rvps17><span  class=rvts6>Ясно,  что эквивалентные
+матрицы  представляют  одну  и  ту же область
+булева  пространства.  Булеву  матрицу можно
+интерпретировать        как        представление
+совершенной       ДНФ.      Две      эквивалентные
+троичные  матрицы  представляют  ДНФ одной и
+той    же    булевой   функции.   Всякая   замена
+троичной    матрицы    </span><span    class=rvts12>U</span><span
+class=rvts6>   эквивалентной   ей  матрицей  </span><span
+class=rvts12>V</span><span           class=rvts6>           называется
+равносильным      преобразованием      матрицы
+</span><span   class=rvts12>U</span><span   class=rvts6>.   Рассмотрим
+некоторые         простейшие         равносильные
+преобразования троичной матрицы.</span></p> 
+<p    class=rvps17><span    class=rvts10>Склеивание   соседних
+строк</span><span   class=rvts6>.   Две   соседние  строки
+можно  заменить  одной строкой, где значения
+компонент  определяются  следующим образом.
+Компонента,    по   которой   исходные   строки
+ортогональны,         приобретает        значение
+«</span><span   class=rvts8>–</span><span   class=rvts6>».  Значения
+остальных        компонент       совпадают       со
+значениями      соответствующих      компонент
+исходных строк. Например,</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=209   height=55   alt=""  style="padding  :  1px;"
+src="lk16/img1.jpg"><span  class=rvts6> = </span><img width=204 height=25 alt=""
+style="padding : 1px;" src="lk16/img2.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p        class=rvps17><span       class=rvts10>Поглощение</span><span
+class=rvts6>.  Строка,  поглощаемая другой строкой
+той     же     матрицы,    может    быть    удалена.
+Например,</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=211   height=55   alt=""  style="padding  :  1px;"
+src="lk16/img3.jpg"><span  class=rvts6> = </span><img width=204 height=25 alt=""
+style="padding : 1px;" src="lk16/img4.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p   class=rvps17><span  class=rvts10>Обобщенное  склеивание
+смежных  строк</span><span  class=rvts6>. Если в матрице
+присутствуют  две  смежных  строки,  то  в эту
+матрицу   можно   добавить   строку,  значения
+компонент  которой  определяются  следующим
+образом.   Компонента,   по  которой  исходные
+строки  ортогональны,  приобретает значение
+«</span><span  class=rvts8>–</span><span  class=rvts6>».  Если  хотя
+бы  одна  из  одноименных  компонент  смежных
+строк      имеет     значение     0     или     1,     то
+соответствующая   компонента   новой  строки
+приобретает   это  же  значение.  В  противном
+случае    она    получает    значение    «</span><span
+class=rvts8>–</span><span class=rvts6>». Например,</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=220   height=55   alt=""  style="padding  :  1px;"
+src="lk16/img5.jpg"><span  class=rvts6> = </span><img width=221 height=76 alt=""
+style="padding : 1px;" src="lk16/img6.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps17><span  class=rvts10>Разложение строки по i-й
+компоненте</span><span    class=rvts6>.    Строку   </span><span
+class=rvts12>и</span><span    class=rvts6>,   имеющую   значение
+«</span><span   class=rvts8>–</span><span   class=rvts6>»   в  </span><span
+class=rvts10>i</span><span   class=rvts6>-й   компоненте,  можно
+заменить    парой    строк,   одна   из   которых
+получается  из </span><span class=rvts12>и</span><span class=rvts6>
+присвоением  </span><span  class=rvts10>i</span><span class=rvts6>-й
+компоненте     значения     0,    другая    </span><span
+class=rvts8>–</span><span        class=rvts6>        значения       1.
+Например,</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=201   height=25   alt=""  style="padding  :  1px;"
+src="lk16/img7.jpg"><span  class=rvts6> = </span><img width=207 height=55 alt=""
+style="padding : 1px;" src="lk16/img8.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p   class=rvps2><span   class=rvts6>Эта   операция  является
+обратной  по  отношению  к операции простого
+склеивания.            Ее           последовательное
+применение  по  всем  компонентам  троичного
+вектора,       имеющим       значение       «</span><span
+class=rvts8>–</span><span       class=rvts6>»,       приводит      к
+множеству    булевых    векторов,   образующих
+интервал,            представляемый           данным
+вектором.</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p    class=rvps18><span    class=rvts7>16.3.    Анализ   троичной
+матрицы на вырожденность</span></p> 
+<p class=rvps19><span class=rvts6><br></span></p>
+<p  class=rvps20><span  class=rvts6>Троичная матрица </span><span
+class=rvts12>U</span><span     class=rvts6>     является    </span><span
+class=rvts10>вырожденной</span><span   class=rvts6>,   если  не
+существует              троичного             вектора,
+ортогонального     каждой     строке    матрицы
+</span><span  class=rvts12>U</span><span class=rvts6>. Такая матрица
+представляет      совокупность     интервалов,
+покрывающую    все   булево   пространство,   и
+если  ее интерпретировать как ДНФ некоторой
+булевой   функции,  то  эта  функция  является
+константой 1.</span></p> 
+<p       class=rvps21><span       class=rvts6>Поставим      задачу
+следующим   образом.  Для  заданной  троичной
+матрицы      </span><span     class=rvts12>U</span><span     class=rvts6>
+требуется   найти   троичный   вектор   </span><span
+class=rvts12>v</span><span        class=rvts6>,       ортогональный
+каждой  ее  строке,  или  убедиться  в том, что
+такого     вектора    не    существует.    Вектор
+</span><span  class=rvts12>v</span><span  class=rvts6>  в этом случае
+представляет   набор   значений   аргументов,
+обращающий    в    нуль    функцию,   задаваемую
+матрицей             </span><span             class=rvts12>U</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps22><span  class=rvts6>Троичную  матрицу  можно
+рассматривать   как   сжатую   форму   булевой
+матрицы,  если  считать,  что всякий троичный
+вектор    представляет    множество    булевых
+векторов,     получаемых    заменой    значений
+«</span><span       class=rvts8>–</span><span       class=rvts6>»       на
+всевозможные   комбинации   нулей   и  единиц.
+Троичный         вектор,        имеющий        </span><span
+class=rvts10>k</span><span       class=rvts6>       компонент      со
+значением  «</span><span  class=rvts8>–</span><span  class=rvts6>»,
+представляет             множество            2</span><span
+class=rvts13>k</span><span    class=rvts6>    булевых   векторов.
+Будем  говорить,  что  любой  из  этих булевых
+векторов   </span><span  class=rvts10>покрывается</span><span
+class=rvts6>  данным  троичным вектором. Например,
+матрица</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=88   height=55   alt=""   style="padding  :  1px;"
+src="lk16/img9.jpg"></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps2><span  class=rvts6>является  сжатой  формой
+следующей   булевой   матрицы   (заметим,  что,
+если          специально          не         оговорено,
+рассматриваются      матрицы,      не     имеющие
+одинаковых строк):</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=83   height=140   alt=""  style="padding  :  1px;"
+src="lk16/img10.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p       class=rvps23><span       class=rvts6>Троичный      вектор
+(0, 0, </span><span          class=rvts8>–</span><span         class=rvts6>)
+ортогонален    обеим    строкам    приведенной
+троичной       матрицы.       Он       представляет
+множество  из  двух  булевых векторов, (0, 0, 0)
+и   (0, 0, 1),   ни  один  из  которых  не  является
+строкой   соответствующей  булевой  матрицы.
+Очевидно,    что    если    некоторая   троичная
+матрица    с   </span><span   class=rvts10>п</span><span   class=rvts6>
+столбцами    является   вырожденной,   то   для
+любого               </span><span              class=rvts10>п</span><span
+class=rvts6>-компонентного     булева    вектора    в
+данной   матрице   имеется   покрывающая   его
+строка.  Если  же существует булев вектор, не
+покрываемый    ни    одной   строкой   троичной
+матрицы,    число    столбцов    которой   равно
+размерности    данного   вектора,   то   данная
+матрица      не     вырождена.     Следовательно,
+решить   задачу   о   вырожденности   троичной
+матрицы    можно    простым    перебором    всех
+2</span><span    class=rvts13>п</span><span   class=rvts6>   различных
+булевых   векторов,  сопровождаемым  поиском
+для     каждого     вектора    покрывающей    его
+строки.  Однако  более  эффективным является
+рассматриваемый               ниже               </span><span
+class=rvts10>редукционный метод</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps24><span  class=rvts6>Данный  метод  опирается
+на   комбинаторный  поиск.  Текущая  ситуация
+характеризуется         двумя         переменными
+величинами:     троичным     вектором     </span><span
+class=rvts12>w</span><span     class=rvts6>,    число    компонент
+которого     фиксировано     и     равно     числу
+столбцов     в     заданной     матрице     </span><span
+class=rvts12>U</span><span  class=rvts6>,  и  троичной матрицей
+</span><span   class=rvts12>Т</span><span   class=rvts6>,  значениями
+которой   будут   служить   некоторые   </span><span
+class=rvts10>миноры</span><span  class=rvts6>  матрицы </span><span
+class=rvts12>U</span><span  class=rvts6>.  Под  минором матрицы
+понимается  ее часть, образованная заданным
+подмножеством         строк         и        заданным
+подмножеством   столбцов.  Перебор  значений
+вектора      </span><span     class=rvts12>w</span><span     class=rvts6>
+должен  привести  к  искомому вектору </span><span
+class=rvts12>v</span><span          class=rvts6>,          если         он
+существует.</span></p> 
+<p   class=rvps25><span  class=rvts6>Положим,  что  в  текущей
+ситуации        уже       определены       значения
+некоторых      компонент      вектора      </span><span
+class=rvts12>w</span><span   class=rvts6>,   т. е.   им  приписаны
+значения   0  или  1,  и  отыскиваются  значения
+остальных   компонент,   такие,  чтобы  вектор
+</span><span        class=rvts12>w</span><span       class=rvts6>       стал
+ортогональным    каждой    из   строк   матрицы
+</span><span  class=rvts12>Т</span><span  class=rvts6>  (ее  текущего
+значения),    столбцы    которой    ставятся    в
+соответствие  этим компонентам. В начальной
+ситуации    матрица    </span><span   class=rvts12>Т</span><span
+class=rvts6>     совпадает     с     матрицей     </span><span
+class=rvts12>U</span><span    class=rvts6>,    а    вектор   </span><span
+class=rvts12>w</span><span            class=rvts6>            полностью
+неопределен,  т. е.  все его компоненты имеют
+значение            «</span><span           class=rvts8>–</span><span
+class=rvts6>».</span></p> 
+<p        class=rvps26><span        class=rvts6>Очередной        шаг
+заключается  в  приписывании значения 0 или 1
+некоторой      компоненте     вектора     </span><span
+class=rvts12>w</span><span    class=rvts6>    или    в    упрощении
+матрицы  </span><span class=rvts12>Т</span><span class=rvts6> путем
+удаления    некоторых   строк   и   столбцов   с
+сохранением        обозначений       остающихся.
+Каждый  раз  в матрице </span><span class=rvts12>Т</span><span
+class=rvts6>  остаются  только  те  строки, которые
+еще   не   являются   ортогональными   вектору
+</span><span   class=rvts12>w</span><span   class=rvts6>,   и   столбцы,
+которые           соответствуют           некоторым
+компонентам  вектора  </span><span  class=rvts12>w</span><span
+class=rvts6>.   Это   те  компоненты,  которые  можно
+использовать              для              обеспечения
+ортогональности            вектора            </span><span
+class=rvts12>w</span><span  class=rvts6> данным строкам. Перед
+выполнением       очередного       шага,       если
+позволяют      условия,      текущая     ситуация
+упрощается         по         следующим        </span><span
+class=rvts10>правилам редукции</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps27><span  class=rvts10>Правило 1</span><span class=rvts6>.
+Из      матрицы      </span><span      class=rvts12>Т     </span><span
+class=rvts6>удаляются  столбцы,  не  содержащие ни
+значений  0,  ни значений 1. (Какое бы значение
+ни     приписывалось     компонентам    вектора
+</span><span               class=rvts12>w</span><span              class=rvts6>,
+соответствующим  таким  столбцам, ни одна из
+строк  матрицы </span><span class=rvts12>Т</span><span class=rvts6>
+не    будет    ортогональной   вектору   </span><span
+class=rvts12>w</span><span          class=rvts6>          по          этим
+компонентам.)</span></p> 
+<p  class=rvps28><span  class=rvts10>Правило 2</span><span class=rvts6>.
+Из   матрицы   </span><span   class=rvts12>Т</span><span  class=rvts6>
+удаляются   строки,   ортогональные   вектору
+</span><span     class=rvts12>w</span><span    class=rvts6>,    а    затем
+столбцы,  которым  соответствуют компоненты
+вектора   </span><span   class=rvts12>w</span><span   class=rvts6>   со
+значением 0 или 1.</span></p> 
+<p  class=rvps29><span  class=rvts10>Правило 3</span><span class=rvts6>.
+Если     в    матрице    </span><span    class=rvts12>Т</span><span
+class=rvts6>    имеется    строка,    где    лишь   одна
+компонента  обладает значением, отличным от
+«</span><span       class=rvts8>–</span><span       class=rvts6>»,      то
+соответствующей  компоненте вектора </span><span
+class=rvts12>w</span><span        class=rvts6>        приписывается
+инверсное  значение.  (Только  таким  образом
+можно     обеспечить     в    текущей    ситуации
+ортогональность    данной    строки    вектору
+</span><span class=rvts12>w</span><span class=rvts6>.)</span></p> 
+<p  class=rvps30><span  class=rvts10>Правило 4</span><span class=rvts6>.
+Если     в    матрице    </span><span    class=rvts12>Т</span><span
+class=rvts6>   существует  столбец,  не  содержащий
+значения     0     (или     1),    то    это    значение
+приписывается  соответствующей  компоненте
+вектора  </span><span  class=rvts12>w</span><span class=rvts6>. (Если
+в   столбце   присутствуют   как   нули,   так  и
+единицы,    то,   приписывая   соответствующей
+компоненте   какое-то   из  этих  значений,  мы
+делаем  одни  строки ортогональными вектору
+</span><span    class=rvts12>w</span><span    class=rvts6>    и    теряем
+возможность           использовать           данную
+компоненту                для                обеспечения
+ортогональности  других строк. Такой потери
+не   происходит,   когда   выполняется  данное
+правило    при   указанном   условии.   Текущая
+ситуация при этом упрощается.)</span></p> 
+<p    class=rvps31><span    class=rvts6>Когда    редуцирование
+становится       невозможным,      производится
+расщепление текущей ситуации.</span></p> 
+<p                 class=rvps32><span                class=rvts10>Правило
+расщепления</span><span     class=rvts6>     предписывает
+перебор  значений  0 и 1 некоторой компоненты
+вектора   </span><span  class=rvts12>w</span><span  class=rvts6>.  При
+этом       рекомендуется       выбирать      такую
+компоненту,          которая         соответствует
+максимально  определенному столбцу матрицы
+</span><span  class=rvts12>Т</span><span class=rvts6>, т. е. столбцу,
+имеющему      минимальное     число     значений
+«</span><span class=rvts8>–</span><span class=rvts6>».</span></p> 
+<p     class=rvps33><span    class=rvts10>Правило    нахождения
+решения</span><span                 class=rvts6>.                Если
+непосредственно  после  удаления  некоторой
+строки   из   матрицы   </span><span  class=rvts12>Т</span><span
+class=rvts6>   по   правилу   2   матрица   становится
+пустой,   текущее   значение   вектора  </span><span
+class=rvts12>w</span><span  class=rvts6> представляет искомое
+решение              </span><span              class=rvts12>v</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps34><span  class=rvts10>Правило возврата</span><span
+class=rvts6>.  Если  матрица </span><span class=rvts12>Т</span><span
+class=rvts6>  становится  пустой  непосредственно
+после  удаления некоторого столбца или если
+она  содержит строку&nbsp; без значений 0 и 1, то
+на    данной    ветви    дерева   поиска   вектор
+</span><span       class=rvts12>v</span><span       class=rvts6>      найти
+невозможно    и    следует   продолжить   обход
+дерева   поиска,  возвратившись  к  последней
+из     точек     ветвления     с     незавершенным
+перебором.</span></p> 
+<p    class=rvps35><span    class=rvts10>Правило   прекращения
+поиска</span><span     class=rvts6>.    Если    при    полном
+обходе     дерева     поиска     вектор     </span><span
+class=rvts12>v</span><span  class=rvts6>  найти  не  удалось, то
+это      свидетельствует     о     вырожденности
+матрицы              </span><span              class=rvts12>U</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps36><span  class=rvts6>Рассмотрим  для  примера
+следующую      троичную      матрицу,     столбцы
+которой   для   удобства   обозначим   теми  же
+буквами     </span><span     class=rvts10>a</span><span     class=rvts6>,
+</span><span      class=rvts10>b</span><span      class=rvts6>,     </span><span
+class=rvts10>c</span><span               class=rvts6>,              </span><span
+class=rvts10>d</span><span               class=rvts6>,              </span><span
+class=rvts10>e</span><span               class=rvts6>,              </span><span
+class=rvts10>f</span><span           class=rvts6>,           что           и
+соответствующие    им    компоненты    вектора
+</span><span      class=rvts12>w</span><span      class=rvts6> = (</span><span
+class=rvts10>a</span><span class=rvts6>, </span><span
+class=rvts10>b</span><span class=rvts6>, </span><span
+class=rvts10>c</span><span class=rvts6>, </span><span
+class=rvts10>d</span><span class=rvts6>, </span><span
+class=rvts10>e</span><span class=rvts6>, </span><span
+class=rvts10>f</span><span class=rvts6>):</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=205   height=385  alt=""  style="padding  :  1px;"
+src="lk16/img11.jpg"></p> 
+<p><span class=rvts6><br></span></p>
+<p     class=rvps17><span     class=rvts6>Начальная    ситуация
+характеризуется           матрицей           </span><span
+class=rvts12>Т</span><span      class=rvts6>,     совпадающей     с
+исходной     матрицей     и    вектором    </span><span
+class=rvts12>w</span><span class=rvts6> = (</span><span
+class=rvts8>–</span><span class=rvts6> </span><span
+class=rvts8>–</span><span class=rvts6> </span><span
+class=rvts8>–</span><span class=rvts6> </span><span
+class=rvts8>–</span><span class=rvts6> </span><span
+class=rvts8>–</span><span class=rvts6> </span><span
+class=rvts8>–</span><span    class=rvts6>).   Непосредственное
+сокращение   матрицы  </span><span  class=rvts12>Т</span><span
+class=rvts6>         невозможно,        поскольку        не
+выполняются    условия    применения    правил
+редукции.   Поэтому  воспользуемся  правилом
+расщепления   и   образуем   точку   ветвления
+процесса         поиска         вектора        </span><span
+class=rvts12>v</span><span      class=rvts6>,     соответствующую
+выбору       значения       компоненты      </span><span
+class=rvts10>а</span><span     class=rvts6>     вектора     </span><span
+class=rvts12>w</span><span     class=rvts6>.     Положим     </span><span
+class=rvts10>а</span><span   class=rvts6> = 1.  Тогда,  согласно
+правилам    2    и    1,    определение   остальных
+значений       компонент       вектора      </span><span
+class=rvts12>w</span><span   class=rvts6>   сведется   к   поиску
+вектора, ортогонального матрице</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><span  class=rvts12>Т</span><span  class=rvts6> =</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><img width=143 height=161 alt=""
+style="padding : 1px;" src="lk16/img12.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps2><span class=rvts6><br></span></p>
+<p    class=rvps2><span    class=rvts6>Обратив    внимание   на
+строку   1   и   применяя   правило   3,  припишем
+компоненте    </span><span   class=rvts10>f</span><span   class=rvts6>
+вектора      </span><span     class=rvts12>w</span><span     class=rvts6>
+значение  1,  после  чего матрица сокращается
+по правилу 2 до следующего вида:</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><span  class=rvts12>Т</span><span  class=rvts6> =</span><span
+class=rvts12>   &nbsp;  &nbsp;  &nbsp;  &nbsp;</span><img  width=115  height=135
+alt=""    style="padding   :   1px;"   src="lk16/img13.jpg"><span   class=rvts6>
+.</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p  class=rvps2><span  class=rvts6>Далее  опять применяется
+правило  3, компонента </span><span class=rvts10>е</span><span
+class=rvts6>   получает   значение   1,   т. е.  теперь
+</span><span     class=rvts12>w</span><span    class=rvts6> = (1 </span><span
+class=rvts8>–</span><span class=rvts6> </span><span
+class=rvts8>–</span><span class=rvts6> </span><span
+class=rvts8>–</span><span  class=rvts6> 1 1), и матрица </span><span
+class=rvts12>Т</span><span          class=rvts6>         сокращается
+до</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><span  class=rvts12>Т</span><span  class=rvts6> =</span><span
+class=rvts12>  &nbsp; &nbsp; &nbsp; &nbsp;</span><img width=87 height=105 alt=""
+style="padding : 1px;" src="lk16/img14.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p     class=rvps2><span     class=rvts6>Согласно    правилу    3
+полагаем  </span><span class=rvts10>с</span><span class=rvts6> = 0 и
+</span><span     class=rvts10>b</span><span     class=rvts6> = 1,     т. е.
+</span><span  class=rvts12>w</span><span class=rvts6> = (1 1 0 </span><span
+class=rvts8>–</span><span            class=rvts6> 1 1).           Далее
+срабатывает   правило   возврата,   поскольку
+матрица     </span><span     class=rvts12>Т</span><span     class=rvts6>
+становится  пустой после удаления столбцов.
+Это   означает,   что,   направляясь   в  дереве
+поиска   по   ветви,   соответствующей  </span><span
+class=rvts10>а</span><span     class=rvts6> = 1,     не    получаем
+искомого    вектора    </span><span    class=rvts12>v</span><span
+class=rvts6>.    При    присвоении    всех   возможных
+значений   оставшимся  компонентам  строка  5
+остается  не  ортогональной  вектору  </span><span
+class=rvts12>w</span><span class=rvts6>.</span></p> 
+<p   class=rvps17><span   class=rvts6>Возвратившись  к  точке
+ветвления,       полагаем       теперь       </span><span
+class=rvts10>а</span><span      class=rvts6> = 0.      Последующее
+редуцирование      приводит     к     следующему
+значению      переменной      матрицы      </span><span
+class=rvts12>Т</span><span class=rvts6>:</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><span  class=rvts12>Т</span><span  class=rvts6> =</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><img width=179 height=247 alt=""
+style="padding : 1px;" src="lk16/img15.jpg"><span class=rvts6>.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p    class=rvps17><span   class=rvts6>Поскольку   дальнейшее
+редуцирование        невозможно,       применяем
+правило   расщепления.   Выберем   компоненту
+</span><span    class=rvts10>е</span><span   class=rvts6>   и   положим
+</span><span   class=rvts10>е</span><span   class=rvts6> = 1.  Матрица
+</span><span   class=rvts12>Т</span><span  class=rvts6>  сокращается
+до</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p  class=rvps37><span  class=rvts12>Т</span><span  class=rvts6> =</span><span
+class=rvts6>  &nbsp; &nbsp; &nbsp; &nbsp;</span><img width=123 height=135 alt=""
+style="padding : 1px;" src="lk16/img16.jpg"><span class=rvts6>.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p    class=rvps2><span    class=rvts6>Далее    по    правилу    3
+компонента    </span><span   class=rvts10>b</span><span   class=rvts6>
+получает    значение    1    и    матрица   </span><span
+class=rvts12>Т</span><span          class=rvts6>         сокращается
+до</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p  class=rvps1><span  class=rvts12>Т</span><span  class=rvts6> =  </span><img
+width=92  height=105  alt=""  style="padding  : 1px;" src="lk16/img17.jpg"><span
+class=rvts6>.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p    class=rvps2><span    class=rvts6>Затем    следует   выбор
+значения       0      для      компоненты      </span><span
+class=rvts10>f</span><span        class=rvts6>       и       получение
+остатка</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p   class=rvps1><span  class=rvts12>Т</span><span  class=rvts6> =</span><span
+class=rvts6>  &nbsp;  &nbsp;  &nbsp; &nbsp;</span><img width=64 height=79 alt=""
+style="padding : 1px;" src="lk16/img18.jpg"><span class=rvts6>,</span></p> 
+<p><span class=rvts6><br></span></p>
+<p     class=rvps2><span    class=rvts6>который    оказывается
+вырожденным:             компонента            </span><span
+class=rvts10>d</span><span     class=rvts6>     должна    получить
+одновременно  значения  0 и 1, что невозможно.
+Опять срабатывает правило возврата.</span></p> 
+<p      class=rvps17><span     class=rvts6>Рассмотрим     теперь
+оставшийся       вариант,      положив      </span><span
+class=rvts10>е</span><span  class=rvts6> = 0. Здесь необходимо
+найти вектор, ортогональный матрице</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p  class=rvps1><span  class=rvts12>Т</span><span  class=rvts6> =  </span><img
+width=120  height=161  alt=""  style="padding : 1px;" src="lk16/img19.jpg"><span
+class=rvts6>.</span></p> 
+<p><span class=rvts6><br></span></p>
+<p     class=rvps17><span     class=rvts6>В     соответствии     с
+правилом     3    последовательно    выбираются
+значения   </span><span  class=rvts10>f</span><span  class=rvts6> = 0,
+</span><span    class=rvts10>b</span><span    class=rvts6> = 0,   </span><span
+class=rvts10>c</span><span      class=rvts6> = 0,      после     чего
+становится   очевидным,  что  нельзя  сделать
+вектор      </span><span      class=rvts12>w</span><span      class=rvts6>
+ортогональным строке 13.</span></p> 
+<p      class=rvps17><span      class=rvts6>Перебор      значений
+вектора      </span><span     class=rvts12>w</span><span     class=rvts6>
+завершен  и  установлено, что вектора </span><span
+class=rvts12>v</span><span  class=rvts6>,  ортогонального всем
+строкам     матрицы     </span><span    class=rvts12>U</span><span
+class=rvts6>,  не  существует,  т. е. матрица </span><span
+class=rvts12>U</span><span          class=rvts6>          оказывается
+вырожденной.</span></p> 
+<p        class=rvps17><span        class=rvts6>Дерево       поиска,
+соответствующее       описанному      процессу,
+изображено      на      рис. 16.1,     где     вершины
+обозначены    символами   компонент   вектора
+</span><span  class=rvts12>w</span><span  class=rvts6>, а дуги </span><span
+class=rvts8>–</span><span class=rvts6> их значениями.</span></p> 
+
+<center><img src="lk16/tree.png"></center>
+
+<p   class=rvps1><span   class=rvts17>Рис. 16.1.  Дерево  поиска
+ортогонального вектора</span></p> 
+<p class=rvps41><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body>
+</html>

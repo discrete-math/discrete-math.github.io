@@ -1,0 +1,2931 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Представления систем булевых функций</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts11
+{
+ font-size: 9pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts12
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts13
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts14
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts15
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts16
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts17
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts18
+{
+ font-size: 9pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ vertical-align: super;
+}
+span.rvts19
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts20
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts21
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts22
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts23
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts24
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts25
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts26
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts27
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts28
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts29
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts30
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts31
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts32
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts33
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts34
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts35
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts36
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts37
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts38
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts39
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts40
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts41
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts42
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts43
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts44
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts45
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts46
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts47
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts48
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts49
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts50
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts51
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts52
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts53
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts54
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts55
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts56
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts57
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts58
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts59
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts60
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts61
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts62
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts63
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts64
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts65
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts66
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts67
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts68
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts69
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts70
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts71
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts72
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts73
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts74
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts75
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts76
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts77
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts78
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts79
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+}
+.rvps3
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ margin: 0px 0px 8px 0px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: right;
+ margin: 8px 0px 8px 0px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+ line-height: 0.92;
+}
+.rvps12
+{
+ text-align: center;
+ margin: 8px 0px 8px 0px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: center;
+ margin: 8px 0px 16px 0px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: center;
+ margin: 0px 0px 8px 0px;
+}
+.rvps23
+{
+ text-align: center;
+ margin: 0px 6px 8px 0px;
+}
+.rvps24
+{
+ text-align: center;
+}
+.rvps25
+{
+ text-align: center;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts14
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts15
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts16
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts17
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts18
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts19
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts20
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts21
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts22
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts23
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts24
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+ vertical-align: super;
+}
+span.rvts25
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts26
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts27
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts28
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts29
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts30
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts31
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts32
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts33
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts34
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts35
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts36
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts37
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts38
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts39
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts40
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts41
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts42
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts43
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts44
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts45
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts46
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts47
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts48
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts49
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts50
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts51
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts52
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts53
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts54
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts55
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts56
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts57
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts58
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts59
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts60
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts61
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts62
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts63
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts64
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts65
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts66
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts67
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts68
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts69
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts70
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts71
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts72
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts73
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts74
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts75
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts76
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts77
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts78
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts79
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts80
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts81
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts82
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts83
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts84
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts85
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts86
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts87
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts88
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts89
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts90
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts91
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts92
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts93
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts94
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts95
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts96
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts97
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts98
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts99
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts100
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts101
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts102
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts103
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts104
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts105
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts106
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts107
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts108
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts109
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts110
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts111
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts112
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts113
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts114
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts115
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts116
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts117
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts118
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts119
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts120
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts121
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts122
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts123
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts124
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts125
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts126
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts127
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts128
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts129
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts130
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts131
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts132
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts133
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts134
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts135
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts136
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts137
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts138
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts139
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts140
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts141
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts142
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts143
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts144
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts145
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts146
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts147
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts148
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts149
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts150
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts151
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts152
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts153
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts154
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts155
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts156
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts157
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts158
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts159
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts160
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts161
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts162
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts163
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts164
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts165
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts166
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts167
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts168
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts169
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts170
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts171
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts172
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts173
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts174
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts175
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts176
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts177
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts178
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts179
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ letter-spacing: -1px;
+}
+span.rvts180
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts181
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts182
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts183
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts184
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts185
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts186
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts187
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts188
+{
+ font-size: 16pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts189
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts190
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts191
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts192
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ letter-spacing: -1px;
+}
+span.rvts193
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+ vertical-align: sub;
+}
+span.rvts194
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ letter-spacing: -1px;
+}
+span.rvts195
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts196
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+}
+.rvps3
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-indent: 19px;
+}
+.rvps9
+{
+ text-indent: 19px;
+}
+.rvps10
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 530px;
+}
+.rvps11
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 530px;
+}
+.rvps12
+{
+ text-align: center;
+ text-indent: 38px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-indent: 19px;
+}
+.rvps22
+{
+ text-align: center;
+ text-indent: 38px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-indent: 19px;
+}
+.rvps29
+{
+ text-align: center;
+ text-indent: 38px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-indent: 19px;
+}
+.rvps36
+{
+ text-align: center;
+ text-indent: 38px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps37
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps41
+{
+ margin: 0px 0px 0px 183px;
+}
+.rvps42
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps43
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps44
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps45
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps46
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps47
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps48
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps49
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps50
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps51
+{
+ text-align: center;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps52
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps53
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps54
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps55
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps56
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps57
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps58
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps59
+{
+ margin: 0px 0px 0px 240px;
+}
+.rvps60
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps61
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps62
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps63
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps64
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps65
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps66
+{
+ margin: 0px 0px 0px 231px;
+}
+.rvps67
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps68
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps69
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts11
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts12
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts13
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts14
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts15
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts16
+{
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts17
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+}
+.rvps3
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: center;
+ margin: 0px 0px 8px 0px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ margin: 8px 0px 0px 0px;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-indent: 19px;
+}
+.rvps35
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 114px;
+}
+.rvps36
+{
+ text-indent: 19px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<h2   class=rvps3><span  class=rvts0><span  class=rvts6>Г  л  а  в  а&nbsp;
+15</span></span></h2> 
+<p><span  class=rvts7>Представления систем булевых функций</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p><span       class=rvts7>15.1. Функциональная
+полнота</span></p> 
+<p><span class=rvts6><br></span></p>
+<p  class=rvps6><span  class=rvts6>Система  булевых функций
+{</span><span         class=rvts8>f</span><span        class=rvts9>1</span><span
+class=rvts6>, </span><span  class=rvts8>f</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>f</span><span
+class=rvts10>т</span><span   class=rvts6>}   называется  </span><span
+class=rvts8>функционально   полной</span><span  class=rvts6>,
+или     просто     </span><span    class=rvts8>полной</span><span
+class=rvts6>,   если   любая   булева  функция  может
+быть  представлена в виде суперпозиции этих
+функций.   Полную   систему   булевых  функций
+называют   еще   </span><span  class=rvts8>базисом</span><span
+class=rvts6>.</span></p> 
+<p              class=rvps7><span             class=rvts8>Минимальным
+базисом</span><span    class=rvts6>    называется    такой
+базис   {</span><span  class=rvts8>f</span><span  class=rvts9>1</span><span
+class=rvts6>, </span><span  class=rvts8>f</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>f</span><span
+class=rvts10>т</span><span      class=rvts6>},      для     которого
+удаление  хотя  бы  одной  из  функций  </span><span
+class=rvts8>f</span><span  class=rvts9>1</span><span class=rvts6>, </span><span
+class=rvts8>f</span><span class=rvts9>2</span><span
+class=rvts6>, … , </span><span class=rvts8>f</span><span
+class=rvts10>т</span><span    class=rvts6>   превращает   его   в
+неполную систему.</span></p> 
+<p      class=rvps8><span      class=rvts6>Функции      от     двух
+переменных,        представляемые       булевыми
+операциями  </span><img  width=13  height=28  alt=""  style="padding :
+1px;"        src="lk15/img1.jpg"><span        class=rvts11>        </span><span
+class=rvts6>(отрицание),    </span><span   class=rvts12>∧</span><span
+class=rvts6>           (конъюнкция)           и          </span><span
+class=rvts12>∨</span><span         class=rvts6>        (дизъюнкция),
+образуют  полную  систему. Действительно, из
+теоремы  Шеннона  следует,  что  любую булеву
+функцию      можно      представить      в      виде
+совершенной     ДНФ,    которая    представляет
+собой  суперпозицию отрицания, конъюнкции и
+дизъюнкции.</span></p> 
+<p  class=rvps9><span  class=rvts6>Базис  {</span><img  width=13  height=28
+alt=""        style="padding       :       1px;"       src="lk15/img2.jpg"><span
+class=rvts6>, </span><span class=rvts12>∧</span><span
+class=rvts6>, </span><span   class=rvts12>∨</span><span   class=rvts6>}  не
+является   минимальным.   Одну   из   операций,
+</span><span   class=rvts12>∧</span><span   class=rvts6>  или  </span><span
+class=rvts12>∨</span><span     class=rvts6>,    из    него    можно
+удалить.  Пользуясь  правилами  де  Моргана и
+законом       двойного       отрицания,       можно
+дизъюнкцию    выразить    через   отрицание   и
+конъюнкцию,         а        конъюнкцию        </span><span
+class=rvts13>–</span><span   class=rvts6>   через  отрицание  и
+дизъюнкцию:</span></p> 
+<p class=rvps10><span class=rvts6><br></span></p>
+<p   class=rvps11><span   class=rvts8>a</span><span   class=rvts6> </span><span
+class=rvts12>∨</span><span class=rvts6> </span><span
+class=rvts8>b</span><span  class=rvts6> </span><span class=rvts12>=</span><span
+class=rvts6> </span><img  width=43  height=28  alt=""  style="padding  :  1px;"
+src="lk15/img3.jpg"><span  class=rvts6>= </span><img  width=43 height=28 alt=""
+style="padding : 1px;" src="lk15/img4.jpg"><span class=rvts6>;</span></p> 
+<p    class=rvps1><span   class=rvts8>a</span><span   class=rvts6> </span><span
+class=rvts12>∧</span><span class=rvts6> </span><span
+class=rvts8>b</span><span  class=rvts6> </span><span class=rvts12>=</span><span
+class=rvts6> </span><img  width=43  height=28  alt=""  style="padding  :  1px;"
+src="lk15/img5.jpg"><span  class=rvts6>= </span><img  width=43 height=28 alt=""
+style="padding : 1px;" src="lk15/img6.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps12><span class=rvts6><br></span></p>
+<p       class=rvps13><span       class=rvts6>Система       {</span><span
+class=rvts12>∧</span><span class=rvts6>, </span><span
+class=rvts12>∨</span><span  class=rvts6>}  не является полной,
+т. к.   операцию   отрицания  нельзя  выразить
+через     операции     </span><span    class=rvts12>∧</span><span
+class=rvts6>         и         </span><span        class=rvts12>∨</span><span
+class=rvts6>.</span></p> 
+<p     class=rvps14><span     class=rvts6>Чтобы    убедиться    в
+полноте       некоторой      системы      функций,
+достаточно    через    эти   функции   выразить
+любую    функцию    из    некоторой    известной
+полной    системы.   Покажем,   что   каждая   из
+операций    </span><span    class=rvts12>|</span><span    class=rvts6>
+(штрих   Шеффера)   и   </span><span   class=rvts12>↑</span><span
+class=rvts6>   (стрелка   Пирса)  составляет  полную
+систему,     использовав    для    этого    базис
+{</span><img     width=13    height=28    alt=""    style="padding    :    1px;"
+src="lk15/img7.jpg"><span class=rvts6>, </span><span
+class=rvts12>|</span><span class=rvts6>}:</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts14>&not;</span><span  class=rvts8>a</span><span
+class=rvts6> </span><span class=rvts12>=</span><span
+class=rvts6> </span><span  class=rvts8>a</span><span class=rvts6> </span><span
+class=rvts12>|</span><span class=rvts6> </span><span
+class=rvts8>a</span><span class=rvts6>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span         class=rvts8>a</span><span        class=rvts6> </span><span
+class=rvts12>|</span><span class=rvts6> </span><span
+class=rvts8>b</span><span  class=rvts6> </span><span class=rvts12>=</span><span
+class=rvts6> </span><img  width=43  height=28  alt=""  style="padding  :  1px;"
+src="lk15/img8.jpg"><span  class=rvts6>= </span><img  width=33 height=27 alt=""
+style="padding   :  1px;"  src="lk15/img9.jpg"><span  class=rvts6> </span><span
+class=rvts12>=</span><span  class=rvts6> (</span><span class=rvts8>a</span><span
+class=rvts6> </span><span class=rvts12>|</span><span
+class=rvts6> </span><span class=rvts8>b</span><span
+class=rvts6>) </span><span class=rvts12>|</span><span
+class=rvts6> (</span><span class=rvts8>a</span><span
+class=rvts6> </span><span class=rvts12>|</span><span
+class=rvts6> </span><span class=rvts8>b</span><span class=rvts6>);</span></p> 
+<p   class=rvps1><span   class=rvts14>&not;</span><span  class=rvts8>a</span><span
+class=rvts6> </span><span class=rvts12>=</span><span
+class=rvts6> </span><span  class=rvts8>a</span><span class=rvts6> </span><span
+class=rvts12>↑</span><span class=rvts6> </span><span
+class=rvts8>a</span><span class=rvts6>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span         class=rvts8>a</span><span        class=rvts6> </span><span
+class=rvts12>∧</span><span class=rvts6> </span><span
+class=rvts8>b</span><span  class=rvts6> </span><span class=rvts12>=</span><span
+class=rvts6> </span><img  width=43  height=28  alt=""  style="padding  :  1px;"
+src="lk15/img10.jpg"><span  class=rvts6>= </span><img width=43 height=28 alt=""
+style="padding  :  1px;"  src="lk15/img11.jpg"><span  class=rvts6> </span><span
+class=rvts12>=</span><span class=rvts14>&not;</span><span
+class=rvts8>a</span><span class=rvts6> </span><span
+class=rvts12>↑</span><span class=rvts14>&not;</span><span
+class=rvts8>b</span><span class=rvts6> = (</span><span
+class=rvts8>a</span><span class=rvts6> </span><span
+class=rvts12>↑</span><span class=rvts6> </span><span
+class=rvts8>a</span><span class=rvts6>) </span><span
+class=rvts12>↑</span><span class=rvts6> (</span><span
+class=rvts8>b</span><span class=rvts6> </span><span
+class=rvts12>↑</span><span class=rvts6> </span><span
+class=rvts8>b</span><span class=rvts6>);</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps16><span  class=rvts6>Примером полной системы
+булевых       функций       является       система,
+содержащая   константу   1,   а  также  функции,
+выражаемые               операцией               </span><span
+class=rvts12>∧</span><span  class=rvts6>  и  операцией  </span><span
+class=rvts12>⊕</span><span  class=rvts6>  (сложение  по модулю
+два). Действительно,</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts14>&not;</span><span  class=rvts8>a</span><span
+class=rvts6> </span><span class=rvts12>=</span><span
+class=rvts6> </span><span class=rvts8>а</span><span
+class=rvts6> </span><span class=rvts12>⊕</span><span
+class=rvts6> 1;</span></p> 
+<p    class=rvps1><span   class=rvts8>a</span><span   class=rvts6> </span><span
+class=rvts12>∨</span><span class=rvts6> </span><span
+class=rvts8>b</span><span  class=rvts6> </span><span class=rvts12>=</span><span
+class=rvts6> </span><img  width=43  height=28  alt=""  style="padding  :  1px;"
+src="lk15/img12.jpg"><span  class=rvts6>= </span><img width=43 height=28 alt=""
+style="padding  :  1px;"  src="lk15/img13.jpg"><span  class=rvts6> </span><span
+class=rvts12>=</span><span class=rvts6> (</span><span
+class=rvts8>а</span><span class=rvts6> </span><span
+class=rvts12>⊕</span><span class=rvts6> 1)(</span><span
+class=rvts8>b</span><span class=rvts6> </span><span
+class=rvts12>⊕</span><span class=rvts6> 1) </span><span
+class=rvts12>⊕</span><span class=rvts6> 1.</span></p> 
+<p class=rvps18><span class=rvts6><br></span></p>
+<p    class=rvps19><span    class=rvts6>Последнее    выражение
+упрощается    с    учетом   коммутативности   и
+ассоциативности&nbsp;        операции        </span><span
+class=rvts12>⊕</span><span  class=rvts6>  и  дистрибутивности
+операции    </span><span    class=rvts12>∧</span><span    class=rvts6>
+относительно        </span><span        class=rvts12>⊕</span><span
+class=rvts6>,  в  чем  можно убедиться, обратившись
+к         табл. 8.3:         </span><span        class=rvts8>a</span><span
+class=rvts6> </span><span class=rvts12>∨</span><span
+class=rvts6> </span><span  class=rvts8>b</span><span class=rvts6> </span><span
+class=rvts12>=</span><span class=rvts6> </span><span
+class=rvts8>а</span><span class=rvts6> </span><span
+class=rvts12>⊕</span><span class=rvts6> </span><span
+class=rvts8>b</span><span class=rvts6> </span><span
+class=rvts12>⊕</span><span             class=rvts8>            аb</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps20><span  class=rvts6>Вопрос о функциональной
+полноте    системы    булевых   функций   имеет
+практический     смысл:     набор     логических
+элементов,         из         которых         строятся
+разнообразные     схемы,    должен    содержать
+элементы,     реализующие    все    функции    из
+заданного базиса.</span></p> 
+<p class=rvps21><span class=rvts6><br></span></p>
+
+
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body>
+</html>

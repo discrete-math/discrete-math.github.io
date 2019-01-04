@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Минимизация ДНФ</title>
+
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts11
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts15
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts17
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps3
+{
+ text-align: justify;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ margin: 0px 0px 8px 0px;
+}
+--></style>
+</head>
+<body>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<a href="../../../Теория/theory.htm">Теория</a> | <strong>Практика</strong> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+<p><span class=rvts6>Минимизация ДНФ</span></p>
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 8.1</span></p>
+<p      class=rvps2><span      class=rvts7>Пользуясь     методом
+Квайна-МакКласки,  получить  кратчайшую  ДНФ
+функции  </span><span class=rvts8>f</span><span class=rvts7>(</span><span
+class=rvts8>x</span><span  class=rvts9>1</span><span class=rvts7>, </span><span
+class=rvts8>x</span><span  class=rvts9>2</span><span class=rvts7>, </span><span
+class=rvts8>x</span><span  class=rvts9>3</span><span class=rvts7>, </span><span
+class=rvts8>x</span><span        class=rvts9>4</span><span        class=rvts7>),
+характеристическое       множество       </span><span
+class=rvts8>М</span><span        class=rvts10>1</span><span        class=rvts7>
+которой задано следующей матрицей:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=127   height=245  alt=""  style="padding  :  1px;"
+src="lb8/img1.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p    class=rvps2><span   class=rvts7>Упорядочим   строки   по
+неубыванию    в    них    количества   единиц   и
+пронумеруем их:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=156   height=245  alt=""  style="padding  :  1px;"
+src="lb8/img2.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Простое     склеивание
+соседних            конъюнкций            выражается
+склеиванием  соседних  векторов.  Например в
+результате  склеивания  строк  1  и  2  получим
+троичный  вектор  (0 0 </span><span class=rvts11>–</span><span
+class=rvts7> 0).       Кроме       этих      двух      строк,
+склеиваются  следующие пары соседних строк:
+(1, 3),  (2, 4),  (3, 5),  (4, 6),  (4, 7),  (5, 7),  (6, 8), (7, 8). В
+результате   выполнения   операции  простого
+склеивания  во  всех  перечисленных  случаях
+получим следующую троичную матрицу:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=155   height=270  alt=""  style="padding  :  1px;"
+src="lb8/img3.jpg"><span class=rvts7>,</span></p> 
+<p><span class=rvts7><br></span></p>
+<p    class=rvps3><span    class=rvts7>которая   эквивалентна
+предыдущей   матрице.  Соседними  строками  в
+полученной  матрице  являются  строки  5 и 9, а
+также    строки    6    и    8.    В    результате   их
+склеивания   получим   один  и  тот  же  вектор
+(</span><span       class=rvts11>–</span><span      class=rvts7> </span><span
+class=rvts11>–</span><span  class=rvts7> 1 1). Сокращенную ДНФ
+представим матрицей</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=127   height=189  alt=""  style="padding  :  1px;"
+src="lb8/img4.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p        class=rvps2><span        class=rvts7>Для       свед</span><span
+class=rvts12>é</span><span     class=rvts7>ния     к     задаче    о
+покрытии             используем             следующие
+обозначения:</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=165   height=245  alt=""  style="padding  :  1px;"
+src="lb8/img5.jpg"><span class=rvts7>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+и&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span><img  width=166  height=189
+alt=""        style="padding        :       1px;"       src="lb8/img6.jpg"><span
+class=rvts7>.</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Требуется     выделить
+минимум   подмножеств  </span><span  class=rvts8>B</span><span
+class=rvts13>i</span><span     class=rvts7>,    покрывающих    все
+множество    </span><span    class=rvts8>А</span><span   class=rvts7>.
+Перейдя     к     матричной    форме    задачи    о
+покрытии, получим следующую матрицу:</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=323   height=189  alt=""  style="padding  :  1px;"
+src="lb8/img7.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps4><span class=rvts7><br></span></p>
+<p     class=rvps5><span    class=rvts7>Здесь    надо    выбрать
+минимальное   количество   строк   так,  чтобы
+каждый  столбец имел единицу хотя бы в одной
+из них.</span></p> 
+<p         class=rvps6><span        class=rvts7>Строка        </span><span
+class=rvts8>В</span><span         class=rvts9>6</span><span        class=rvts7>
+является    единственной    строкой,   которая
+покрывает    столбцы   </span><span   class=rvts8>а</span><span
+class=rvts9>6</span><span          class=rvts7>          и         </span><span
+class=rvts8>а</span><span        class=rvts9>7</span><span        class=rvts7>.
+Поэтому  ее  включаем  в  решение.  Удалив эту
+строку   и  покрываемые  ею  столбцы,  получим
+матрицу</span></p> 
+<p class=rvps7><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=167   height=159  alt=""  style="padding  :  1px;"
+src="lb8/img8.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p         class=rvps8><span        class=rvts7>Строки        </span><span
+class=rvts8>В</span><span     class=rvts9>3</span><span     class=rvts7>     и
+</span><span  class=rvts8>В</span><span  class=rvts9>5</span><span class=rvts7>
+удаляются      по     правилу     редукции,     как
+покрываемые  строками </span><span class=rvts8>В</span><span
+class=rvts9>1</span><span          class=rvts7>          и         </span><span
+class=rvts8>В</span><span         class=rvts9>4</span><span        class=rvts7>
+соответственно.  Из оставшихся строк строки
+</span><span  class=rvts8>В</span><span  class=rvts9>1</span><span class=rvts7>
+и     </span><span     class=rvts8>В</span><span     class=rvts9>4</span><span
+class=rvts7>  покрывают оставшиеся столбцы. Таким
+образом,     искомое     кратчайшее     покрытие
+составляют    строки   </span><span   class=rvts8>В</span><span
+class=rvts9>1</span><span  class=rvts7>, </span><span class=rvts8>В</span><span
+class=rvts9>4</span><span  class=rvts8> </span><span class=rvts7>и </span><span
+class=rvts8>В</span><span     class=rvts9>6</span><span     class=rvts7>,    а
+кратчайшая    ДНФ,   которая   является   также
+минимальной  для  заданной  булевой функции,
+представляется матрицей</span></p> 
+<p class=rvps9><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=131   height=104  alt=""  style="padding  :  1px;"
+src="lb8/img9.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps10><span class=rvts7><br></span></p>
+<p  class=rvps11><span  class=rvts7>В  алгебраической  форме
+это        решение        имеет        вид        </span><span
+class=rvts14>&not;</span><span class=rvts8>х</span><span
+class=rvts9>1</span><span class=rvts14>&not;</span><span
+class=rvts8>х</span><span class=rvts9>2</span><span
+class=rvts14>&not;</span><span class=rvts8>х</span><span
+class=rvts9>4</span><span class=rvts7> </span><span
+class=rvts15>∨</span><span class=rvts7> </span><span
+class=rvts8>х</span><span class=rvts9>1</span><span
+class=rvts14>&not;</span><span class=rvts8>х</span><span
+class=rvts9>2</span><span class=rvts14>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>3</span><span class=rvts7> </span><span
+class=rvts15>∨</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>3</span><span class=rvts7> </span><span
+class=rvts8>х</span><span class=rvts9>4</span><span class=rvts7>.</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 8.2</span></p>
+<p      class=rvps2><span      class=rvts7>Пользуясь     методом
+Блейка-Порецкого,  получить  кратчайшую  ДНФ
+функции  </span><span class=rvts8>f</span><span class=rvts7>(</span><span
+class=rvts8>x</span><span  class=rvts9>1</span><span class=rvts7>, </span><span
+class=rvts8>x</span><span  class=rvts9>2</span><span class=rvts7>, </span><span
+class=rvts8>x</span><span  class=rvts9>3</span><span class=rvts7>, </span><span
+class=rvts8>x</span><span  class=rvts9>4</span><span class=rvts7>, </span><span
+class=rvts8>x</span><span        class=rvts9>5</span><span        class=rvts7>),
+которая  задана  в  виде  ДНФ, представляемой
+следующей троичной матрицей:</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=193   height=189  alt=""  style="padding  :  1px;"
+src="lb8/img10.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p   class=rvps2><span   class=rvts7>Продуктом   обобщенного
+склеивания   смежных   строк   1   и  2  является
+вектор              (</span><span             class=rvts11>–</span><span
+class=rvts7> 1 </span><span  class=rvts11>–</span><span class=rvts7> 1 0).
+Тот  же результат получается при обобщенном
+склеивании   смежных   строк   2  и  3.  Смежными
+являются    строки    2    и    4,    и    продукт   их
+обобщенного             склеивания             </span><span
+class=rvts11>–</span><span    class=rvts7>    вектор    (1 </span><span
+class=rvts11>–</span><span class=rvts7> 0 </span><span
+class=rvts11>–</span><span         class=rvts7> 0).        Продуктом
+обобщенного  склеивания  строк 3 и 4 является
+вектор         (0 1 0 </span><span         class=rvts11>–</span><span
+class=rvts7> 0),   который   поглощается   строкой  1.
+Продолжая  выполнять  операцию  обобщенного
+склеивания  и  операцию простого поглощения
+получим  следующую  матрицу, представляющую
+сокращенную ДНФ заданной функции:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><span  class=rvts16>U</span><span  class=rvts7>  =  </span><img
+width=193  height=270  alt=""  style="padding  : 1px;" src="lb8/img11.jpg"><span
+class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p  class=rvps2><span class=rvts7>Получим множество </span><span
+class=rvts8>Р</span><span  class=rvts7>(</span><span class=rvts16>U</span><span
+class=rvts7>) для этой матрицы:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps12><span   class=rvts8>Р</span><span   class=rvts7>(</span><span
+class=rvts16>U</span><span class=rvts9>1</span><span
+class=rvts7>) = {(1,3,4,5,6,8,9), (2,4,6,7,9)};</span></p> 
+<p   class=rvps12><span   class=rvts8>Р</span><span   class=rvts7>(</span><span
+class=rvts16>U</span><span class=rvts9>2</span><span
+class=rvts7>) = {(1,3,4,5,6,8,9), (2,4,6,7,9), (4,5,8), (2,4,7)};</span></p> 
+<p   class=rvps12><span   class=rvts8>Р</span><span   class=rvts7>(</span><span
+class=rvts16>U</span><span class=rvts9>3</span><span
+class=rvts7>) = {(1,3,4,5,6,8,9),  (2,4,6,7,9), (4,5,8), (2,4,7), (1,3,5,6,8),
+(2,6), (5,8), (2)};</span></p> 
+<p   class=rvps12><span   class=rvts8>Р</span><span   class=rvts7>(</span><span
+class=rvts16>U</span><span class=rvts9>4</span><span
+class=rvts7>) = {(1,3,6,8,9),  (2,6,7,9),  (8),  (2,7), (1,3,6,8), (2,6), (2),
+(1,4,5,9), (4,7,9), (4,5), (4,7), (1,5), (5)};</span></p> 
+<p    class=rvps3><span   class=rvts8>Р</span><span   class=rvts7>(</span><span
+class=rvts16>U</span><span class=rvts9>5</span><span
+class=rvts7>) = </span><span class=rvts8>Р</span><span
+class=rvts7>(</span><span class=rvts16>U</span><span
+class=rvts7>) = {(1,3,6,9),  (2,6,7,9), (2,7), (1,3,6), (2,6), (2), (1,4,5,9),
+(4,7,9), (4,5), (4,7), (1,5), (5), (3,8), (8)}.</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p    class=rvps2><span    class=rvts7>Используем   следующие
+правила редукции.</span></p> 
+<p       class=rvps2><span       class=rvts7>1.       Если      </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts15>∈</span><span class=rvts7> </span><span
+class=rvts8>Р</span><span  class=rvts7>(</span><span class=rvts16>U</span><span
+class=rvts7>),              </span><span              class=rvts8>В</span><span
+class=rvts7> </span><span class=rvts15>∈</span><span
+class=rvts7> </span><span  class=rvts8>Р</span><span class=rvts7>(</span><span
+class=rvts16>U</span><span         class=rvts7>)         и         </span><span
+class=rvts8>А</span><span class=rvts7> </span><span
+class=rvts15>⊆</span><span class=rvts7> </span><span
+class=rvts8>В</span><span         class=rvts7>,        то        </span><span
+class=rvts8>В</span><span  class=rvts7>  удаляется  из  </span><span
+class=rvts8>Р</span><span  class=rvts7>(</span><span class=rvts16>U</span><span
+class=rvts7>).</span></p> 
+<p    class=rvps2><span    class=rvts7>2.   Если   номер   </span><span
+class=rvts8>i</span><span  class=rvts7> присутствует только в
+тех         элементах         множества        </span><span
+class=rvts8>Р</span><span  class=rvts7>(</span><span class=rvts16>U</span><span
+class=rvts7>),    где    присутствует   номер   </span><span
+class=rvts8>k</span><span         class=rvts7>,         то        </span><span
+class=rvts8>i</span><span             class=rvts7>            удаляется
+отовсюду.</span></p> 
+<p     class=rvps2><span    class=rvts7>Применив    правило    1,
+получим              </span><span              class=rvts8>Р</span><span
+class=rvts7>(</span><span class=rvts16>U</span><span
+class=rvts7>) = {(1,3,6),  (2),  (4,7),  (5),  (8)}.  Строки  2,  5 и 8
+составляют ядро.</span></p> 
+<p   class=rvps2><span   class=rvts7>По  правилу  2  удаляются
+номера    3,    6    и    7:    </span><span   class=rvts8>Р</span><span
+class=rvts7>(</span><span   class=rvts16>U</span><span   class=rvts7>) = {(1),
+(2), (4), (5), (8)}.</span></p> 
+<p   class=rvps2><span  class=rvts7>Решение  получим  в  виде
+следующей матрицы:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=159   height=147  alt=""  style="padding  :  1px;"
+src="lb8/img12.jpg"><span class=rvts7>,</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p    class=rvps3><span   class=rvts7>или   в   алгебраической
+форме:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p    class=rvps1><span   class=rvts8>х</span><span   class=rvts9>1</span><span
+class=rvts7> </span><span  class=rvts8>х</span><span class=rvts9>4</span><span
+class=rvts14>&not;</span><span class=rvts8>х</span><span
+class=rvts9>5</span><span class=rvts7> </span><span
+class=rvts15>∨</span><span class=rvts14>&not;</span><span
+class=rvts8>х</span><span class=rvts9>1</span><span
+class=rvts14>&not;</span><span class=rvts8>х</span><span
+class=rvts9>4</span><span class=rvts14>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>5</span><span class=rvts7> </span><span
+class=rvts15>∨</span><span class=rvts14>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>1</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>4</span><span class=rvts7> </span><span
+class=rvts8>х</span><span  class=rvts9>5</span><span class=rvts7> </span><span
+class=rvts15>∨</span><span class=rvts14>&not;</span><span
+class=rvts8>х</span><span  class=rvts9>1</span><span class=rvts7> </span><span
+class=rvts8>х</span><span class=rvts9>2</span><span
+class=rvts14>&not;</span><span class=rvts8>х</span><span
+class=rvts9>5</span><span class=rvts7> </span><span
+class=rvts15>∨</span><span class=rvts14>&not;</span><span
+class=rvts8>х</span><span class=rvts9>3</span><span
+class=rvts14>&not;</span><span class=rvts8>х</span><span
+class=rvts9>4</span><span class=rvts14>&not;</span><span
+class=rvts8>х</span><span class=rvts9>5</span><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps2><span  class=rvts7>Применим  теперь  другой
+способ   получения  минимального  решения,  в
+котором     нахождение     ядра     и     антиядра
+сводится      к     определению     избыточности
+элементарных конъюнкций в ДНФ.</span></p> 
+<p      class=rvps2><span      class=rvts7>Любая      строка     из
+полученной  матрицы  принадлежит  ядру, т. е.
+представляет      элементарную     конъюнкцию,
+входящую  в  состав  любой безызбыточной ДНФ
+заданной  функции,  если  она  не поглощается
+совокупностью     остальных    строк.    Анализ
+строки  на  принадлежность  ядру  сводится  к
+задаче       выявления      избыточных      строк.
+Например,  для  строки 1 надо построить минор
+данной    матрицы,    образованный   столбцами
+</span><span  class=rvts8>х</span><span class=rvts9>3</span><span class=rvts7>,
+</span><span  class=rvts8>х</span><span  class=rvts9>4</span><span class=rvts7>
+(где     эта     строка     имеет    знак    «</span><span
+class=rvts11>–</span><span    class=rvts7>»)    и   строками,   не
+ортогональными    данной   строке.   Он   имеет
+следующий вид:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=87   height=159   alt=""  style="padding  :  1px;"
+src="lb8/img13.jpg"></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p   class=rvps3><span  class=rvts7>и  является  вырожденной
+матрицей.     Следовательно,     строка     1    не
+принадлежит ядру.</span></p> 
+<p  class=rvps2><span  class=rvts7>Получим соответствующие
+миноры для остальных строк:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p  class=rvps1><span  class=rvts7>2)  </span><img  width=87  height=104  alt=""
+style="padding            :            1px;"           src="lb8/img14.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   3)   </span><img
+width=84  height=134  alt=""  style="padding  :  1px;" src="lb8/img15.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   4)   </span><img
+width=87  height=134  alt=""  style="padding  :  1px;" src="lb8/img16.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   5)   </span><img
+width=87  height=104  alt=""  style="padding  :  1px;" src="lb8/img17.jpg"><span
+class=rvts7>,</span></p> 
+<p  class=rvps1><span  class=rvts7>6)  </span><img  width=87  height=159  alt=""
+style="padding            :            1px;"           src="lb8/img18.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   7)   </span><img
+width=87  height=134  alt=""  style="padding  :  1px;" src="lb8/img19.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   8)   </span><img
+width=84  height=51  alt=""  style="padding  :  1px;"  src="lb8/img20.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   9)   </span><img
+width=87  height=215  alt=""  style="padding  :  1px;" src="lb8/img21.jpg"><span
+class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span    class=rvts7>Из    всех    полученных
+миноров  невырожденными матрицами являются
+только  те,  которые соответствуют строкам 2,
+5  и  8.  Эти  строки  составляют ядро. Антиядро
+составляют   строки,   поглощаемые   ядром.   В
+данном  случае  антиядра  нет,  так как нет ни
+одной     строки,     поглощаемой    ядром.    Это
+выясняется     аналогичным     образом,     т. е.
+построением  миноров,  образованных  теми же
+столбцами  и  строками,  принадлежащими ядру
+и      не     ортогональными     соответствующим
+строкам.   Если  минор  оказался  вырожденной
+матрицей,      то      соответствующая     строка
+принадлежит антиядру.</span></p> 
+<p    class=rvps2><span    class=rvts7>Разобьем    строки,    не
+принадлежащие    ядру,    на   булевы   векторы,
+которые     надо    покрыть    интервалами,    не
+принадлежащими    ядру.    Удалим   из   них   те
+векторы,      которые      покрываются      ядром.
+Представим  оставшиеся  векторы и указанные
+интервалы в виде следующих матриц:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=200   height=134  alt=""  style="padding  :  1px;"
+src="lb8/img22.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img    width=262    height=200    alt=""    style="padding    :    1px;"
+src="lb8/img23.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span    class=rvts7>Матрица    покрытия    в
+данном случае имеет следующий вид:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=166   height=189  alt=""  style="padding  :  1px;"
+src="lb8/img24.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p     class=rvps2><span    class=rvts7>Одно    из    кратчайших
+покрытий  данной  матрицы составляют строки
+</span><span  class=rvts8>В</span><span  class=rvts9>1</span><span class=rvts7>
+и     </span><span     class=rvts8>В</span><span     class=rvts9>3</span><span
+class=rvts7>.    Добавив   к   этим   строкам   строки,
+принадлежащие  ядру,  получим окончательное
+решение в виде следующей матрицы:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=165   height=159  alt=""  style="padding  :  1px;"
+src="lb8/img25.jpg"><span class=rvts7>,</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p   class=rvps3><span   class=rvts7>которая   отличается  от
+предыдущего      решения     только     порядком
+строк.</span></p> 
+<p><span class=rvts17><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+
+</body></html>

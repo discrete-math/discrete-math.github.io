@@ -1,0 +1,1655 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Минимизация     не     полностью
+определенных булевых функций</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts14
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts15
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts16
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts17
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts18
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts19
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts20
+{
+ font-size: 14pt;
+ font-family: 'MS Mincho';
+}
+span.rvts21
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts22
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts23
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts24
+{
+ font-size: 9pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ vertical-align: super;
+}
+span.rvts25
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ color: #000000;
+}
+span.rvts26
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+}
+.rvps3
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ page-break-after: avoid;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps10
+{
+ margin: 0px 0px 8px 19px;
+}
+.rvps11
+{
+ text-align: center;
+ margin: 0px 0px 8px 0px;
+}
+.rvps12
+{
+ margin: 0px 0px 0px 132px;
+}
+.rvps13
+{
+ margin: 0px 0px 8px 95px;
+}
+.rvps14
+{
+ text-align: center;
+ margin: 0px 0px 8px 19px;
+}
+.rvps15
+{
+ text-align: center;
+ margin: 0px 0px 0px 19px;
+}
+.rvps16
+{
+ text-align: center;
+ margin: 0px 0px 8px 19px;
+}
+.rvps17
+{
+ margin: 0px 0px 8px 19px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ page-break-after: avoid;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps23
+{
+ margin: 0px 0px 8px 19px;
+}
+.rvps24
+{
+ margin: 0px 0px 8px 95px;
+}
+.rvps25
+{
+ text-align: center;
+ margin: 0px 0px 8px 19px;
+}
+.rvps26
+{
+ text-align: center;
+ margin: 0px 0px 8px 19px;
+}
+.rvps27
+{
+ margin: 0px 0px 8px 19px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 8px 0px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps33
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps36
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps37
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps38
+{
+ page-break-after: avoid;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps41
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps42
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps43
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps44
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps45
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps46
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps47
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps48
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps49
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps50
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps51
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps52
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 0px 152px;
+}
+.rvps53
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 0px 152px;
+}
+.rvps54
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 0px 152px;
+}
+.rvps55
+{
+ text-align: justify;
+ text-indent: 19px;
+ margin: 0px 0px 0px 170px;
+}
+.rvps56
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 0px 152px;
+}
+.rvps57
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps58
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps59
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps60
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps61
+{
+ page-break-after: avoid;
+}
+.rvps62
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps63
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps64
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps65
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps66
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps67
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps68
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps69
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps70
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps71
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps72
+{
+ page-break-after: avoid;
+}
+.rvps73
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps74
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps75
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps76
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps77
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps78
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps79
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps80
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps81
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps82
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps83
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps84
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps85
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps86
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps87
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps88
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps89
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps90
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps91
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps92
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps93
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps94
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps95
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps96
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps97
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps98
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps99
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps100
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps101
+{
+ text-align: center;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps102
+{
+ text-align: justify;
+ text-indent: 38px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps103
+{
+ text-align: justify;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps104
+{
+ text-align: justify;
+}
+.rvps105
+{
+ text-align: justify;
+}
+.rvps106
+{
+ text-align: justify;
+}
+.rvps107
+{
+ text-align: justify;
+}
+.rvps108
+{
+ text-align: justify;
+}
+.rvps109
+{
+ text-align: justify;
+}
+.rvps110
+{
+ text-align: justify;
+}
+.rvps111
+{
+ text-align: left;
+ text-indent: 0px;
+ page-break-after: avoid;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps112
+{
+ text-align: justify;
+}
+.rvps113
+{
+ text-align: justify;
+}
+.rvps114
+{
+ text-align: justify;
+}
+.rvps115
+{
+ text-align: justify;
+}
+.rvps116
+{
+ text-align: justify;
+}
+.rvps117
+{
+ text-align: justify;
+}
+.rvps118
+{
+ text-align: justify;
+}
+.rvps119
+{
+ text-align: justify;
+}
+.rvps120
+{
+ text-align: justify;
+}
+.rvps121
+{
+ text-align: justify;
+}
+.rvps122
+{
+ text-align: justify;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<h2   class=rvps3><span  class=rvts0><span  class=rvts6>Г  л  а  в  а&nbsp;
+19</span></span></h2> 
+<p><span      class=rvts7>Минимизация     не     полностью
+определенных булевых функций</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p           class=rvps5><span           class=rvts7>19.1. Постановка
+задачи</span></p> 
+<p><span class=rvts6><br></span></p>
+<p     class=rvps6><span     class=rvts6>Описание     поведения
+проектируемого  устройства может допускать
+такие   ситуации,  когда  реакция  устройства
+на  некоторые  комбинации  входных  сигналов
+не      определена.      В      частности,      может
+оказаться,   что  некоторые  входные  сигналы
+не      являются      независимыми.      Например,
+некоторые          сигналы          таковы,         что
+соответствующие     им     переменные    </span><span
+class=rvts8>x</span><span      class=rvts9>i</span><span     class=rvts6>     и
+</span><span  class=rvts8>x</span><span  class=rvts9>j</span><span  class=rvts6>
+не  могут принимать одновременно значение 1.
+Значения          функций,         соответствующих
+выходным   сигналам,   на   всех   наборах,  где
+</span><span         class=rvts8>x</span><span         class=rvts9>i</span><span
+class=rvts6> = </span><span class=rvts8>x</span><span
+class=rvts9>j</span><span          class=rvts6> = 1         считаются
+безразличными.   На  таких  наборах  значений
+входных        переменных       функции       можно
+доопределять    как    угодно,    и   желательно
+давать  им  при  этом такие значения, которые
+приводят        к       упрощению       реализующих
+схем.</span></p> 
+<p         class=rvps7><span         class=rvts6>Не         полностью
+определенная    функция    разбивает    булево
+пространство  </span><span  class=rvts8>М</span><span  class=rvts6>
+на  три  подмножества:  </span><span class=rvts8>М</span><span
+class=rvts10>1</span><span               class=rvts6>,              </span><span
+class=rvts8>М</span><span     class=rvts10>0</span><span     class=rvts6>    и
+</span><span       class=rvts8>М</span><span       class=rvts11>–</span><span
+class=rvts6>      </span><span     class=rvts12>–</span><span     class=rvts6>
+области,  где  соответственно  функция имеет
+значения  1,  0  и  не  определена.  Для  задания
+функции          достаточно         задать         два
+подмножества,             например,             </span><span
+class=rvts8>М</span><span     class=rvts10>1</span><span     class=rvts6>    и
+</span><span        class=rvts8>М</span><span        class=rvts10>0</span><span
+class=rvts6>.</span></p> 
+<p         class=rvps8><span         class=rvts6>Не         полностью
+определенную       булеву       функцию      можно
+задавать  картой  Карно, помещая знак </span><span
+class=rvts13>×</span><span  class=rvts6> в клетки, где функция
+не    определена.   Пусть,   например,   функция
+задана     картой    Карно    на    рис. 19.1</span><span
+class=rvts8>а</span><span  class=rvts6>.  Оптимальный вариант
+ее        доопределения        представлен        на
+рис. 19.1</span><span  class=rvts8>б</span><span  class=rvts6>. В этом
+случае      область     </span><span     class=rvts8>М</span><span
+class=rvts10>1</span><span    class=rvts6>   покрывается   двумя
+интервалами       из       объединения      </span><span
+class=rvts8>М</span><span class=rvts10>0</span><span
+class=rvts6> </span><span class=rvts14>∪</span><span
+class=rvts6> </span><span class=rvts8>М</span><span
+class=rvts11>–</span><span  class=rvts6> и на этих интервалах
+функции            придаем           значение           1.
+Соответствующая    ДНФ    имеет    вид    </span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts16>1</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts16>4</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts16>3</span><span class=rvts6>.</span></p> 
+<center><img src="lk19/carno1.png"></center>
+<p   class=rvps15><span  class=rvts17>Рис. 19.1.  Доопределение
+булевой    функции:    </span><span   class=rvts18>а)</span><span
+class=rvts17> задание функции;</span></p> 
+<p    class=rvps16><span    class=rvts18>б)</span><span    class=rvts17>   ее
+доопределение</span></p> 
+<p class=rvps17><span class=rvts17><br></span></p>
+<p  class=rvps18><span class=rvts6>На множестве полностью и
+не  полностью  определенных  функций  введем
+отношение   </span><span   class=rvts8>реализации</span><span
+class=rvts6>,  которое  обозначим  символом </span><span
+class=rvts20>≺</span><span        class=rvts6>       или       </span><span
+class=rvts20>≻</span><span     class=rvts6>    и    положим,    что
+</span><span         class=rvts8>f</span><span        class=rvts6> </span><span
+class=rvts20>≺</span><span class=rvts6> </span><span
+class=rvts8>g</span><span      class=rvts6>     (функция     </span><span
+class=rvts8>f</span><span           class=rvts6>          реализуется
+функцией</span><span  class=rvts8>  g</span><span  class=rvts6>)  или
+</span><span         class=rvts8>g</span><span        class=rvts6> </span><span
+class=rvts20>≻</span><span class=rvts6> </span><span
+class=rvts8>f</span><span      class=rvts6>     (функция     </span><span
+class=rvts8>g</span><span    class=rvts6>    реализует   функцию
+</span><span   class=rvts8>f</span><span  class=rvts6>),  если  </span><span
+class=rvts8>M</span><span  class=rvts10>1</span><span  class=rvts9>f</span><span
+class=rvts6> </span><span class=rvts14>⊆</span><span
+class=rvts6> </span><span  class=rvts8>M</span><span class=rvts10>1</span><span
+class=rvts9>g</span><span          class=rvts6>          и         </span><span
+class=rvts8>M</span><span  class=rvts10>0</span><span  class=rvts9>f</span><span
+class=rvts6> </span><span class=rvts14>⊆</span><span
+class=rvts6> </span><span  class=rvts8>M</span><span class=rvts10>0</span><span
+class=rvts9>g</span><span class=rvts6>.</span></p> 
+<p   class=rvps19><span   class=rvts6>Задача  минимизации  не
+полностью    определенной    функции    </span><span
+class=rvts8>f</span><span   class=rvts6>   ставится   следующим
+образом:  для  функции  </span><span  class=rvts8>f</span><span
+class=rvts6>  найти  минимальную  (или  кратчайшую)
+ДНФ   среди   всех   ДНФ   всех  функций  </span><span
+class=rvts8>g</span><span      class=rvts6>,      удовлетворяющих
+условию               </span><span              class=rvts8>f</span><span
+class=rvts6> </span><span class=rvts20>≺</span><span
+class=rvts6> </span><span class=rvts8>g</span><span class=rvts6>.</span></p> 
+<p class=rvps20><span class=rvts6><br></span></p>
+<p   class=rvps21><span   class=rvts7>19.2. Применение   метода
+Квайна-МакКласки</span></p> 
+<p><span class=rvts21><br></span></p>
+<p    class=rvps22><span    class=rvts6>Любую    не    полностью
+определенную      булеву      функцию      </span><span
+class=rvts8>f</span><span   class=rvts6>  можно  рассматривать
+как     множество     полностью    определенных
+функций,  получаемых  различными вариантами
+доопределения.     Число     таких     вариантов
+</span><img     width=44     height=31    alt=""    style="padding    :    1px;"
+src="lk19/img1.jpg"><span        class=rvts6>.        Однако        нет
+необходимости    перебирать   их   все.   Среди
+вариантов    доопределения   функции   </span><span
+class=rvts8>f</span><span     class=rvts6>     выделим     функции
+</span><span        class=rvts8>f</span><span       class=rvts16>min</span><span
+class=rvts6>          и          </span><span         class=rvts8>f</span><span
+class=rvts16>max</span><span  class=rvts6>,  которые получаются
+соответственно    приданием    значения    0   и
+значения  1,  где </span><span class=rvts8>f</span><span class=rvts6>
+не  определена.  То есть </span><img width=99 height=32 alt=""
+style="padding   :  1px;"  src="lk19/img2.jpg"><span  class=rvts6>,  </span><img
+width=149  height=32  alt=""  style="padding  :  1px;" src="lk19/img3.jpg"><span
+class=rvts6>  и  </span><img  width=152 height=33 alt="" style="padding : 1px;"
+src="lk19/img4.jpg"><span  class=rvts6>,  </span><img width=100 height=33 alt=""
+style="padding    :   1px;"   src="lk19/img5.jpg"><span   class=rvts6>.   Для
+функции      </span><span     class=rvts8>f</span><span     class=rvts6>,
+заданной    картой   Карно   на   рис. 19.1</span><span
+class=rvts8>а</span><span             class=rvts6>,            варианты
+доопределения         </span><span        class=rvts8>f</span><span
+class=rvts16>min</span><span         class=rvts6>         и        </span><span
+class=rvts8>f</span><span        class=rvts16>max</span><span       class=rvts6>
+показаны на рис. 19.2.</span></p> 
+
+<center><img src="lk19/carno2.png"></center>
+
+<p      class=rvps26><span      class=rvts17>Рис. 19.2.     Варианты
+доопределения   функции,   заданной   на   рис.
+19.1</span><span    class=rvts18>а</span><span    class=rvts17>:   </span><span
+class=rvts18>а)</span><span              class=rvts17>             </span><span
+class=rvts18>f</span><span      class=rvts19>min</span><span      class=rvts17>;
+</span><span     class=rvts18>б)</span><span     class=rvts17>     </span><span
+class=rvts18>f</span><span class=rvts19>max</span></p> 
+<p class=rvps27><span class=rvts6><br></span></p>
+<p    class=rvps28><span    class=rvts6>Легко    показать,   что
+искомая  минимальная ДНФ состоит из простых
+импликант    функции    </span><span   class=rvts8>f</span><span
+class=rvts16>max</span><span     class=rvts6>.    Функция    </span><span
+class=rvts8>g</span><span  class=rvts6>,  ДНФ которой является
+решением    поставленной    задачи,   обладает
+свойством             </span><span            class=rvts8>f</span><span
+class=rvts16>min</span><span class=rvts6> </span><span
+class=rvts14>⇒</span><span class=rvts6> </span><span
+class=rvts8>g</span><span class=rvts6> </span><span
+class=rvts14>⇒</span><span class=rvts6> </span><span
+class=rvts8>f</span><span       class=rvts16>max</span><span       class=rvts6>.
+Следовательно,  </span><span class=rvts8>g</span><span class=rvts6>
+имеет   значение   1  везде,  где  это  значение
+имеет  </span><span  class=rvts8>f</span><span class=rvts16>min</span><span
+class=rvts6>,   и  имеет  значение  0  везде,  где  это
+значение      имеет      </span><span     class=rvts8>f</span><span
+class=rvts16>max</span><span class=rvts6>.</span></p> 
+<p  class=rvps29><span  class=rvts6>Процесс  минимизации  не
+полностью    определенной   булевой   функции
+</span><span      class=rvts8>f</span><span      class=rvts6>     методом
+Квайна-МакКласки  состоит  из  двух этапов: 1)
+нахождение       множества       всех      простых
+импликант    функции    </span><span   class=rvts8>f</span><span
+class=rvts16>max</span><span    class=rvts6>;    2)    выделение   из
+этого              множества              минимального
+подмножества,     покрывающего    совершенную
+ДНФ        функции        </span><span       class=rvts8>f</span><span
+class=rvts16>min</span><span class=rvts6>.</span></p> 
+<p  class=rvps30><span  class=rvts6>Рассмотрим  матрицы  для
+функции      </span><span     class=rvts8>f</span><span     class=rvts6>,
+заданной    картой   Карно   на   рис. 19.1</span><span
+class=rvts8>а</span><span class=rvts6>:</span></p> 
+<p class=rvps31><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=128   height=161  alt=""  style="padding  :  1px;"
+src="lk19/img6.jpg"><span
+class=rvts6>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img    width=131    height=135    alt=""    style="padding    :    1px;"
+src="lk19/img7.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps32><span class=rvts6><br></span></p>
+<p        class=rvps33><span        class=rvts6>Левая        матрица
+представляет   множество   </span><img  width=51  height=32
+alt=""    style="padding   :   1px;"   src="lk19/img8.jpg"><span   class=rvts6>,
+правая      </span><span     class=rvts12>–</span><span     class=rvts6>
+совокупность            всех            максимальных
+интервалов,    на    которых    функция   </span><span
+class=rvts8>f</span><span  class=rvts16>max</span><span  class=rvts6> имеет
+значение  1.  Теперь  надо  этими  интервалами
+покрыть   множество   </span><img   width=51   height=32  alt=""
+style="padding  :  1px;"  src="lk19/img9.jpg"><span  class=rvts6>.  Строим
+матрицу  покрытия, где </span><span class=rvts8>а</span><span
+class=rvts16>1</span><span class=rvts6>, </span><span
+class=rvts8>а</span><span class=rvts16>2</span><span
+class=rvts6>, </span><span class=rvts8>а</span><span
+class=rvts16>3</span><span class=rvts6> </span><span
+class=rvts8>а</span><span class=rvts16>4</span><span
+class=rvts6>, </span><span class=rvts8>а</span><span
+class=rvts16>5</span><span               class=rvts6>               </span><span
+class=rvts12>–</span><span  class=rvts6>  элементы  множества
+</span><img     width=51     height=32    alt=""    style="padding    :    1px;"
+src="lk19/img10.jpg"><span         class=rvts6>,         а         </span><span
+class=rvts8>В</span><span class=rvts16>1</span><span
+class=rvts6>, </span><span class=rvts8>В</span><span
+class=rvts16>2</span><span class=rvts6>, </span><span
+class=rvts8>В</span><span class=rvts16>3</span><span
+class=rvts6> </span><span class=rvts8>В</span><span
+class=rvts16>4</span><span               class=rvts6>               </span><span
+class=rvts12>–</span><span        class=rvts6>        максимальные
+интервалы   области   </span><img   width=52   height=33  alt=""
+style="padding : 1px;" src="lk19/img11.jpg"><span class=rvts6>:</span></p> 
+<p class=rvps34><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=204   height=135  alt=""  style="padding  :  1px;"
+src="lk19/img12.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps35><span class=rvts6><br></span></p>
+<p    class=rvps36><span    class=rvts6>Кратчайшее    покрытие
+этой    матрицы    составляют   строки   </span><span
+class=rvts8>В</span><span     class=rvts16>1</span><span     class=rvts6>    и
+</span><span        class=rvts8>В</span><span        class=rvts16>3</span><span
+class=rvts6>.   Окончательное   решение   имеет  вид
+</span><span        class=rvts8>f</span><span        class=rvts6> =</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts16>1</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts16>4</span><span
+class=rvts6> </span><span class=rvts14>∨</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts16>3</span><span    class=rvts6>,    что    совпадает   с
+решением,   полученным   визуально   по  карте
+Карно.</span></p> 
+<p class=rvps37><span class=rvts6><br></span></p>
+<p   class=rvps38><span   class=rvts7>19.3. Минимизация   слабо
+определенной функции</span></p> 
+<p><span class=rvts6><br></span></p>
+<p     class=rvps39><span     class=rvts6>Часто    на    практике
+встречаются      булевы      функции,     область
+определения    которых   занимает   небольшую
+часть   булева  пространства  ее  аргументов,
+т. е.   |</span><span  class=rvts8>М</span><span  class=rvts10>1</span><span
+class=rvts6>| + |</span><span class=rvts8>М</span><span
+class=rvts10>0</span><span class=rvts6>| &lt;&lt; |</span><span
+class=rvts8>М</span><span  class=rvts11>–</span><span class=rvts6>|. Если
+применять  описанный  метод для минимизации
+такой  функции  </span><span class=rvts8>f</span><span class=rvts6>,
+то   многие   из   простых   импликант  функции
+</span><span        class=rvts8>f</span><span       class=rvts16>max</span><span
+class=rvts6>   будут  соответствовать  интервалам,
+которые   целиком   содержатся   в   множестве
+</span><span       class=rvts8>М</span><span       class=rvts11>–</span><span
+class=rvts6>  и бесполезны для выполнения второго
+этапа      минимизации.      Поэтому     ст</span><span
+class=rvts22>ó</span><span  class=rvts6>ит  развивать  методы,
+учитывающие данную специфику.</span></p> 
+<p  class=rvps40><span  class=rvts6>Для  описания  одного  из
+таких       методов,      выполнение      которого
+исключает          рассмотрение          элементов
+множества            </span><span            class=rvts8>М</span><span
+class=rvts11>–</span><span   class=rvts6>,   введем   некоторые
+понятия.</span></p> 
+<p  class=rvps41><span class=rvts8>Интервально поглощаемым
+множеством</span><span        class=rvts6>        называется
+множество          элементов         из         </span><span
+class=rvts8>М</span><span   class=rvts10>1</span><span   class=rvts6>,   для
+которых   существует   интервал,   содержащий
+все   эти   элементы   и   не  пересекающийся  с
+множеством           </span><span           class=rvts8>М</span><span
+class=rvts10>0</span><span          class=rvts6>.         Интервально
+поглощаемое    множество    является    </span><span
+class=rvts8>максимальным</span><span  class=rvts6>,  если оно
+не    содержится    в   качестве   собственного
+подмножества       в       другом      интервально
+поглощаемом множестве.</span></p> 
+<p   class=rvps42><span   class=rvts6>Рассматриваемый  метод
+заключается  в  получении всех максимальных
+интервально    поглощаемых    множеств    и    в
+последующем         получении         кратчайшего
+покрытия   ими   элементов  множества  </span><span
+class=rvts8>М</span><span        class=rvts10>1</span><span       class=rvts6>.
+Интервалы,       соответствующие      элементам
+полученного  покрытия определят кратчайшую
+ДНФ  для заданной функции. Ранги конъюнкций,
+составляющих      полученную     ДНФ     следует
+уменьшить,            максимально           расширив
+соответствующие   интервалы  так,  чтобы  они
+не     пересекались     с    множеством    </span><span
+class=rvts8>М</span><span class=rvts10>0</span><span class=rvts6>.</span></p> 
+<p    class=rvps43><span    class=rvts6>Для    получения    всех
+максимальных      интервально      поглощаемых
+множеств               можно               использовать
+лексико-графический      перебор,      подобный
+перебору,  описанному  в  гл. 4  при изложении
+метода    поиска   максимальных   независимых
+множеств  в  графе.  При  этом  принимается во
+внимание    тот    факт,   что   если   некоторое
+множество       не       является      интервально
+поглощаемым,  то не является таковым и любое
+множество,     содержащее    его    в    качестве
+подмножества.</span></p> 
+<p   class=rvps44><span   class=rvts6>Проверка,   является  ли
+некоторое             подмножество             </span><span
+class=rvts8>M</span><span  class=rvts10>1</span><span  class=rvts9>i</span><span
+class=rvts6>    множества    </span><span    class=rvts8>М</span><span
+class=rvts10>1</span><span          class=rvts6>          интервально
+поглощаемым   множеством,   довольно  проста.
+Надо   построить   </span><span  class=rvts8>минимальный
+покрывающий    интервал</span><span    class=rvts6>    для
+</span><span         class=rvts8>M</span><span        class=rvts10>1</span><span
+class=rvts9>i</span><span   class=rvts6>,   т. е.  наименьший  по
+мощности  интервал, содержащий все элементы
+множества             </span><span            class=rvts8>M</span><span
+class=rvts10>1</span><span     class=rvts9>i</span><span     class=rvts6>,    и
+затем   проверить,  не  пересекается  ли  он  с
+множеством           </span><span           class=rvts8>М</span><span
+class=rvts10>0</span><span class=rvts6>.</span></p> 
+<p     class=rvps45><span    class=rvts6>Компоненты    вектора,
+представляющего   минимальный   покрывающий
+интервал       для       </span><span       class=rvts8>M</span><span
+class=rvts10>1</span><span        class=rvts9>i</span><span        class=rvts6>,
+находятся  следующим образом: если значения
+одноименных   компонент   булевых   векторов,
+принадлежащих         </span><span        class=rvts8>M</span><span
+class=rvts10>1</span><span        class=rvts9>i</span><span        class=rvts6>,
+совпадают,   то  это  значение  присваивается
+соответствующей    компоненте    получаемого
+троичного   вектора,   а  если  нет,  то  данная
+компонента    принимает    значение    «</span><span
+class=rvts12>–</span><span class=rvts6>».</span></p> 
+<p     class=rvps46><span    class=rvts6>Например,    для    трех
+векторов       (1 0 1 1 1 0 0),      (0 0 1 0 1 1 0)      и
+(1 0 1 1 0 1 0)      получим      троичный     вектор
+(</span><span    class=rvts12>–</span><span   class=rvts6> 0 1 </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span           class=rvts6> 0),          который
+представляет      минимальный      покрывающий
+интервал           для           данных          булевых
+векторов.</span></p> 
+<p   class=rvps47><span   class=rvts6>Пусть   булева   функция
+задана следующими матрицами:</span></p> 
+<p class=rvps48><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>М</span><span   class=rvts10>1</span><span
+class=rvts6>  =  </span><img  width=171 height=217 alt="" style="padding : 1px;"
+src="lk19/img13.jpg"><span   class=rvts6>,&nbsp;&nbsp;&nbsp;&nbsp;  </span><span
+class=rvts8>М</span><span     class=rvts10>0</span><span     class=rvts6>     =
+</span><img    width=153    height=161    alt=""    style="padding    :    1px;"
+src="lk19/img14.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps2><span  class=rvts6>Данная  функция является
+слабо   определенной,   так   как   из  всех  64-х
+элементов   булева   пространства   только   12
+составляют            область            определения
+функции.</span></p> 
+<p  class=rvps49><span  class=rvts6>Множество  {1, 2} является
+интервально        поглощаемым,        так       как
+минимальный   покрывающий  интервал  (</span><span
+class=rvts12>–</span><span class=rvts6> 0 1 </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span  class=rvts6> 0)  не пересекается с
+множеством           </span><span           class=rvts8>М</span><span
+class=rvts10>0</span><span   class=rvts6>.   Добавление   к  нему
+элемента    3   превращает   его   в   множество,
+которое        не        является        интервально
+поглощаемым,        так        как       минимальный
+покрывающий    интервал    для    него   (</span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span  class=rvts6> 0)  содержит  векторы
+(0 0 0 1 0 0)     и     (0 1 0 0 1 0),     принадлежащие
+множеству            </span><span            class=rvts8>М</span><span
+class=rvts10>0</span><span       class=rvts6>.      Нельзя      также
+добавлять  к  множеству  {1, 2}  элементов  4 и 5.
+Максимальным      интервально      поглощаемым
+множеством    является   множество   {1, 2, 6, 7},
+так  как  минимальный  покрывающий  интервал
+для         него        (</span><span        class=rvts12>–</span><span
+class=rvts6> </span><span class=rvts12>–</span><span
+class=rvts6> 1 </span><span class=rvts12>–</span><span
+class=rvts6> </span><span  class=rvts12>–</span><span  class=rvts6> 0)  не
+пересекается        с       множеством       </span><span
+class=rvts8>М</span><span     class=rvts10>0</span><span     class=rvts6>    и
+дальнейшее  расширение  этого множества без
+потери              свойства              интервальной
+поглощаемости невозможно.</span></p> 
+<p      class=rvps50><span      class=rvts6>Продолжая      данный
+перебор,   получаем  следующие  максимальные
+интервально      поглощаемые     множества     и
+соответствующие            им            минимальные
+покрывающие интервалы:</span></p> 
+<center><img src="lk19/mt1.png"></center>
+<p  class=rvps58><span  class=rvts6>Множества  {1, 2, 6, 7}, {1, 3}
+и  {2, 4, 5, 7}  составляют  кратчайшее покрытие
+множества            </span><span            class=rvts8>М</span><span
+class=rvts10>1</span><span    class=rvts6>.    После   расширения
+второго      интервала     получаем     троичную
+матрицу</span></p> 
+<p class=rvps59><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=201   height=105  alt=""  style="padding  :  1px;"
+src="lk19/img15.jpg"></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps2><span  class=rvts6>и соответствующую ей ДНФ
+</span><span        class=rvts8>х</span><span        class=rvts16>3</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts16>6</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts6> </span><span
+class=rvts8>х</span><span class=rvts16>4</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts16>5</span><span class=rvts6> </span><span
+class=rvts14>∨</span><span class=rvts15>&not;</span><span
+class=rvts8>х</span><span class=rvts16>2</span><span
+class=rvts15>&not;</span><span class=rvts8>х</span><span
+class=rvts16>4</span><span class=rvts6>.</span></p> 
+<p class=rvps60><span class=rvts6><br></span></p>
+<p           class=rvps61><span          class=rvts7>19.4. Расширение
+интервалов</span></p> 
+<p><span class=rvts6><br></span></p>
+<p     class=rvps62><span     class=rvts6>В     данном     примере
+минимальные         покрывающие         интервалы
+оказались   довольно  широкими,  и  расширить
+удалось  только  один из них и только в одном
+направлении      (заменив      0      на      «</span><span
+class=rvts12>–</span><span        class=rvts6>»       во       втором
+интервале).     Расширять     интервал     можно,
+последовательно  заменяя  единицы  и нули на
+символ   «</span><span   class=rvts12>–</span><span  class=rvts6>»  в
+соответствующем          троичном          векторе
+(двигаясь  слева  направо или справа налево),
+пока    очередное    расширение   не   захватит
+элемент  из  множества </span><span class=rvts8>М</span><span
+class=rvts10>0</span><span  class=rvts6>.  Но  в этом случае нет
+гарантии       получения       минимума      ранга
+интервала.      Например,      надо      расширить
+интервал,          представляемый         вектором
+(0 1 </span><span   class=rvts12>–</span><span   class=rvts6> 1 0),   но
+так,  чтобы  он  не  пересекался  с множеством
+булевых векторов, заданном матрицей</span></p> 
+<p class=rvps63><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=113   height=76   alt=""  style="padding  :  1px;"
+src="lk19/img16.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps64><span class=rvts6><br></span></p>
+<p      class=rvps65><span      class=rvts6>Если     по     порядку
+расположения  компонент  пытаться  заменять
+единицы  и  нули  на  «</span><span  class=rvts12>–</span><span
+class=rvts6>»,    то    получим    не    самый   широкий
+интервал            (</span><span           class=rvts12>–</span><span
+class=rvts6> 1 </span><span  class=rvts12>–</span><span class=rvts6> 1 0),
+в    то    время    как   можно   получить   лучше:
+(0 1 </span><span    class=rvts12>–</span><span   class=rvts6> </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span class=rvts6>).</span></p> 
+<p     class=rvps66><span     class=rvts6>Поставим    следующую
+задачу.      В      троичном      векторе     </span><span
+class=rvts23>и</span><span  class=rvts6>,  ортогональном  всем
+строкам        троичной        матрицы        </span><span
+class=rvts23>U</span><span             class=rvts6>,            заменить
+максимальное  число значений 0 и 1 на «</span><span
+class=rvts12>–</span><span     class=rvts6>»    так,    чтобы    он
+оставался     ортогональным     всем    строкам
+матрицы              </span><span              class=rvts23>U</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps67><span  class=rvts6>Можно  решать эту задачу
+следующим        образом.        Строим       </span><span
+class=rvts8>матрицу       различий</span><span       class=rvts6>
+вектора   </span><span   class=rvts23>и</span><span   class=rvts6>  по
+отношению     к     строкам     матрицы     </span><span
+class=rvts23>U</span><span     class=rvts6>.     Строки     матрицы
+различий    соответствуют   строкам   матрицы
+</span><span   class=rvts23>U</span><span  class=rvts6>,  и  каждая  из
+них     показывает,    по    каким    компонентам
+вектор      </span><span      class=rvts23>и</span><span     class=rvts6>
+отличается     от     соответствующей    строки
+матрицы   </span><span  class=rvts23>U</span><span  class=rvts6>.  Для
+этого  строка  матрицы  различий  получается
+путем  покомпонентного  сложения  по  модулю
+два  соответствующей  строки матрицы </span><span
+class=rvts23>U</span><span   class=rvts6>   с   сектором   </span><span
+class=rvts23>и</span><span  class=rvts6>.  При  этом считается,
+что  0 </span><span  class=rvts14>⊕</span><span class=rvts6> </span><span
+class=rvts12>–</span><span class=rvts6> = 1 </span><span
+class=rvts14>⊕</span><span class=rvts6> </span><span
+class=rvts12>–</span><span     class=rvts6> = 0.    Для    матрицы
+различий        надо        найти        минимальную
+совокупность  столбцов  такую,  чтобы каждая
+строка   матрицы   различий   имела   в  данной
+совокупности  хотя  бы  одну единицу. То есть
+надо   покрыть   строки   минимальным   числом
+столбцов.  В  векторе  </span><span  class=rvts23>и</span><span
+class=rvts6>      оставляются     прежние     значения
+только      для      тех      компонент,     которые
+соответствуют     столбцам     из    полученной
+совокупности.         Остальные        компоненты
+принимают  значение «</span><span class=rvts12>–</span><span
+class=rvts6>».</span></p> 
+<p   class=rvps68><span   class=rvts6>Для   приведенной   выше
+матрицы   и   вектора   </span><span  class=rvts23>и</span><span
+class=rvts6> = (0 1 </span><span class=rvts12>–</span><span
+class=rvts6> 1 0)       матрица       различий       имеет
+вид</span></p> 
+<p class=rvps69><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=113   height=76   alt=""  style="padding  :  1px;"
+src="lk19/img17.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p      class=rvps70><span     class=rvts6>Кратчайшее     </span><span
+class=rvts8>столбцовое</span><span    class=rvts6>    покрытие
+этой    матрицы   составляют   ее   первые   два
+столбца.  Следовательно,  решением  является
+вектор           (0 1 </span><span          class=rvts12>–</span><span
+class=rvts6> </span><span class=rvts12>–</span><span
+class=rvts6> </span><span class=rvts12>–</span><span
+class=rvts6>).</span></p> 
+<p class=rvps71><span class=rvts6><br></span></p>
+<p  class=rvps72><span  class=rvts7>19.5. Метод конкурирующих
+интервалов</span></p> 
+<p class=rvps73><span class=rvts6><br></span></p>
+<p  class=rvps74><span  class=rvts6>При большой размерности
+задачи        точные       метода       оказываются
+негодными     из-за     большого     времени    их
+выполнения.   Поэтому,  как  отмечалось  выше,
+для    практики    важно   иметь   приближенные
+методы,   которые  получают  не  самые  плохие
+результаты,   затрачивая  на  это  приемлемое
+машинное    время.   Таким   методом   является
+метод  упрощения  булевой  функции с помощью
+карты  Карно.  Можно  отнести к таким методам
+метод     упрощения     ДНФ     путем     удаления
+избыточных     элементарных     конъюнкций    и
+литералов.   Рассмотрим   метод   минимизации
+слабо  определенной  булевой  функции, также
+получающий  близкое  к минимальному решение
+за   приемлемое   время,   называемый  методом
+конкурирующих интервалов [7].</span></p> 
+<p  class=rvps75><span  class=rvts6>В  данном  случае  задача
+ставится   следующим  образом.  Задана  слабо
+определенная    булева    функция   с   помощью
+характеристических        множеств        </span><span
+class=rvts8>М</span><span     class=rvts10>0</span><span     class=rvts6>    и
+</span><span        class=rvts8>М</span><span        class=rvts10>1</span><span
+class=rvts6>.    Требуется   найти   по   возможности
+минимальную       (или       близкую       к       ней)
+совокупность     интервалов     из    множества
+</span><span        class=rvts8>М</span><span        class=rvts10>0</span><span
+class=rvts6> </span><span class=rvts14>∪</span><span
+class=rvts6> </span><span class=rvts8>М</span><span
+class=rvts10>1</span><span   class=rvts6>,  покрывающую  </span><span
+class=rvts8>М</span><span class=rvts10>1</span><span class=rvts6>.</span></p> 
+<p  class=rvps76><span  class=rvts6>Текущая  ситуация (после
+</span><span      class=rvts8>i</span><span      class=rvts6>-го      шага
+итерации)  характеризуется следующим. Пусть
+имеется    совокупность   интервалов   </span><span
+class=rvts8>V</span><span         class=rvts9>i</span><span         class=rvts6>
+множества             </span><span            class=rvts8>M</span><span
+class=rvts10>1</span><span               class=rvts6>               </span><span
+class=rvts14>∪</span><span              class=rvts6>              </span><span
+class=rvts8>M</span><span    class=rvts24>−</span><span   class=rvts6>,   не
+обязательно      максимальных,     покрывающих
+некоторую        часть       множества       </span><span
+class=rvts8>M</span><span     class=rvts10>1</span><span     class=rvts6>,    а
+также       имеется      </span><span      class=rvts8>M</span><span
+class=rvts9>i</span><span               class=rvts6>*               </span><span
+class=rvts12>–</span><span   class=rvts6>  некоторый  остаток,
+образуемый     теми     элементами    множества
+</span><span  class=rvts8>M</span><span class=rvts10>1</span><span class=rvts6>,
+которые    не    принадлежат    ни    одному    из
+интервалов  множества  </span><span class=rvts8>V</span><span
+class=rvts9>i</span><span  class=rvts6>.  На очередном, (</span><span
+class=rvts8>i </span><span   class=rvts6>+ 1)-м  шаге  множество
+</span><span  class=rvts8>V</span><span  class=rvts9>i</span><span  class=rvts6>
+преобразуется   в   новое  частичное  решение
+</span><span        class=rvts8>V</span><span        class=rvts9>i </span><span
+class=rvts16>+ 1</span><span   class=rvts6>,  причем  так,  чтобы
+непокрытый   остаток   </span><span   class=rvts8>M</span><span
+class=rvts9>i</span><span      class=rvts6>*      сократился,     по
+крайней мере, на один элемент.</span></p> 
+<p        class=rvps77><span        class=rvts6>Очередной        шаг
+выбирается        на        основе       информации,
+заключенной    в    булевой    матрице    </span><span
+class=rvts23>С</span><span        class=rvts9>i</span><span        class=rvts6>
+отношения </span><span
+class=rvts8>совместимости</span><span class=rvts6>
+элементов          из         множества         </span><span
+class=rvts8>M</span><span     class=rvts9>i</span><span     class=rvts6>*     с
+интервалами        из        множества        </span><span
+class=rvts8>V</span><span         class=rvts9>i</span><span        class=rvts6>.
+Элемент      </span><span     class=rvts8>т</span><span     class=rvts6>
+считается    совместимым    с    интервалом&nbsp;
+</span><span     class=rvts23>и</span><span     class=rvts6>,    если    в
+множестве             </span><span            class=rvts8>M</span><span
+class=rvts10>1</span><span               class=rvts6>               </span><span
+class=rvts14>∪</span><span              class=rvts6>              </span><span
+class=rvts8>M</span><span        class=rvts24>−</span><span       class=rvts6>
+существует  интервал  </span><span  class=rvts23>v</span><span
+class=rvts6>,         поглощающий         как         </span><span
+class=rvts8>m</span><span      class=rvts6>,      так     и     </span><span
+class=rvts23>u</span><span              class=rvts6>.             Строкам
+матрицы</span><span              class=rvts23>             С</span><span
+class=rvts9>i</span><span         class=rvts6>        соответствуют
+элементы   множества   </span><span   class=rvts8>M</span><span
+class=rvts9>i</span><span   class=rvts6>*,   а   столбцам  </span><span
+class=rvts12>–</span><span      class=rvts6>      интервалы      из
+множества             </span><span            class=rvts8>V</span><span
+class=rvts9>i</span><span        class=rvts6>.        Единица        на
+пересечении   строки   и  столбца  показывает
+совместимость    соответствующих    элемента
+булева пространства и интервала.</span></p> 
+<p   class=rvps78><span   class=rvts6>Если  в  матрице  </span><span
+class=rvts23>С</span><span        class=rvts9>i</span><span        class=rvts6>
+существует    строка    без    единиц,    то   это
+означает,   что  соответствующий  ей  элемент
+</span><span   class=rvts8>m</span><span  class=rvts6>  из  множества
+</span><span  class=rvts8>M</span><span  class=rvts9>i</span><span class=rvts6>*
+не   совместим   ни   с   одним   из  интервалов,
+составляющих             множество             </span><span
+class=rvts8>V</span><span  class=rvts9>i</span><span  class=rvts6>.  В этом
+случае     множество    </span><span    class=rvts8>V</span><span
+class=rvts9>i</span><span    class=rvts6>    дополняется   новым
+интервалом,  содержащий лишь элемент </span><span
+class=rvts8>m</span><span      class=rvts6>.      Данная      строка
+удаляется  из матрицы </span><span class=rvts23>С</span><span
+class=rvts9>i</span><span class=rvts6>.</span></p> 
+<p   class=rvps79><span   class=rvts6>Если  в  матрице  </span><span
+class=rvts23>C</span><span         class=rvts9>i</span><span        class=rvts6>
+существует    столбец    без   единиц,   то   это
+означает,  что  соответствующий  интервал из
+множества             </span><span            class=rvts8>V</span><span
+class=rvts9>i</span><span      class=rvts6>     не     может     быть
+расширен  так,  чтобы  покрыть  какой-либо  из
+элементов   множества  </span><span  class=rvts8>M</span><span
+class=rvts9>i</span><span   class=rvts6>*</span><span  class=rvts8>.</span><span
+class=rvts6>    В    этом    случае    он    произвольно
+расширяется,      если      это     возможно,     на
+множестве             </span><span            class=rvts8>M</span><span
+class=rvts10>1</span><span class=rvts6> </span><span
+class=rvts14>∪</span><span class=rvts6> </span><span
+class=rvts8>M</span><span     class=rvts24>−</span><span    class=rvts6>    и
+принимается  в качестве одного из элементов
+окончательного    решения.    Данный   столбец
+удаляется  из матрицы </span><span class=rvts23>С</span><span
+class=rvts9>i</span><span class=rvts6>.</span></p> 
+<p   class=rvps80><span   class=rvts6>Если  в  матрице  </span><span
+class=rvts23>C</span><span         class=rvts9>i</span><span        class=rvts6>
+существует      столбец,      содержащий     одну
+единственную  единицу,  то  это означает, что
+соответствующий           интервал           </span><span
+class=rvts23>u</span><span        class=rvts6>        может        быть
+использован  для  покрытия  только одного из
+элементов   множества</span><span  class=rvts8>  M</span><span
+class=rvts9>i</span><span     class=rvts6>*.    Интервал    </span><span
+class=rvts23>u</span><span       class=rvts6>       соответственно
+расширяется       (чтобы      покрыть      элемент
+множества             </span><span            class=rvts8>M</span><span
+class=rvts9>i</span><span     class=rvts6>*,     поставленный     в
+соответствие        указанной        строке)       и
+включается      в      окончательное     решение.
+Соответствующие        строка       и       столбец
+удаляются  из матрицы </span><span class=rvts23>С</span><span
+class=rvts9>i</span><span class=rvts6>.</span></p> 
+<p  class=rvps81><span  class=rvts6>Если  не  выполняется  ни
+одно      из      перечисленных      условий,     то
+производится выбор.</span></p> 
+<p            class=rvps82><span            class=rvts6>Отыскивается
+минимальный   по   числу  элементов  интервал
+</span><span       class=rvts23>u</span><span       class=rvts6>      среди
+интервалов         из         множества        </span><span
+class=rvts8>V</span><span  class=rvts9>i</span><span class=rvts6>, а затем
+среди      совместимых      с     ним     элементов
+множества             </span><span            class=rvts8>M</span><span
+class=rvts9>i</span><span  class=rvts6>* выбирается ближайший
+к  нему элемент </span><span class=rvts8>m</span><span class=rvts6>.
+Расстояние     определяется     по     Хэммингу.
+Расстояние         до         интервала        </span><span
+class=rvts12>–</span><span   class=rvts6>   это  расстояние  до
+ближайшего    входящего    в    него   элемента,
+которое    определяется    как   расстояние   в
+графе  гиперкуба  или длина кратчайшей цепи.
+Оно     измеряется     числом     компонент,    по
+которым      ортогональны      вектор      </span><span
+class=rvts8>т</span><span   class=rvts6>   и   троичный  вектор,
+представляющий            интервал            </span><span
+class=rvts23>и</span><span    class=rvts6>.    Интервал    </span><span
+class=rvts23>u</span><span       class=rvts6>       соответственно
+расширяется  (чтобы  покрыть  элемент </span><span
+class=rvts8>т</span><span     class=rvts6>)    и    включается    в
+решение.  Соответствующая  строка удаляется
+из        матрицы        </span><span       class=rvts23>С</span><span
+class=rvts9>i</span><span    class=rvts6>,    и    корректируется
+столбец,  соответствующий  интервалу </span><span
+class=rvts23>и</span><span class=rvts6>.</span></p> 
+<p    class=rvps83><span    class=rvts6>В   исходной   ситуации
+можно       принять       в      качестве      </span><span
+class=rvts8>V</span><span    class=rvts16>0</span><span    class=rvts6>   два
+одноэлементных    интервала,    состоящих   из
+элементов   множества  </span><span  class=rvts8>M</span><span
+class=rvts10>1</span><span       class=rvts6>,       для       которых
+минимальный      покрывающий     их     интервал
+пересекается        с       множеством       </span><span
+class=rvts8>M</span><span   class=rvts10>0</span><span   class=rvts6>,   а   в
+качестве      элементов     множества     </span><span
+class=rvts8>M</span><span  class=rvts16>0</span><span class=rvts6>* </span><span
+class=rvts12>–</span><span  class=rvts6>  остальные  элементы
+множества             </span><span            class=rvts8>M</span><span
+class=rvts10>1</span><span class=rvts6>.</span></p> 
+<p   class=rvps84><span   class=rvts6>Применим  данный  метод
+минимизации   к  следующей  булевой  функции,
+рассмотренной      при     изложении     точного
+метода (разд. 19.3):</span></p> 
+<p class=rvps85><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>М</span><span   class=rvts10>1</span><span
+class=rvts6>  =  </span><img  width=171 height=217 alt="" style="padding : 1px;"
+src="lk19/img18.jpg"><span   class=rvts6>,&nbsp;&nbsp;&nbsp;&nbsp;  </span><span
+class=rvts8>М</span><span     class=rvts10>0</span><span     class=rvts6>     =
+</span><img    width=153    height=161    alt=""    style="padding    :    1px;"
+src="lk19/img19.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps86><span class=rvts6><br></span></p>
+<p     class=rvps87><span     class=rvts6>В    качестве    </span><span
+class=rvts8>V</span><span         class=rvts16>0</span><span        class=rvts6>
+возьмем    несовместимые    элементы    1    и   2.
+Матрица              </span><span             class=rvts23>С</span><span
+class=rvts16>0</span><span    class=rvts6>   и   соответствующая
+матрица  расстояний  (для  несовместимых пар
+вместо  расстояния  используем знак «</span><span
+class=rvts12>–</span><span   class=rvts6>»)  примут  следующий
+вид,         где        интервалы        обозначаются
+множествами    покрываемых    ими    элементов
+множества            </span><span            class=rvts8>М</span><span
+class=rvts10>1</span><span class=rvts6>:</span></p> 
+<p class=rvps88><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts23>С</span><span  class=rvts16>0</span><span
+class=rvts6>  =  </span><img  width=72  height=143 alt="" style="padding : 1px;"
+src="lk19/img20.jpg"><span class=rvts6>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img     width=72    height=143    alt=""    style="padding    :    1px;"
+src="lk19/img21.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps89><span class=rvts6><br></span></p>
+<p   class=rvps90><span   class=rvts6>Выбираем   пару   {1},   7  с
+минимальным         расстоянием,        формируем
+множество        {1, 7}        и       соответствующий
+интервал&nbsp;    (1 0 1 </span><span    class=rvts12>–</span><span
+class=rvts6> 1 0).    Представленная   ниже   матрица
+</span><span        class=rvts23>С</span><span       class=rvts16>1</span><span
+class=rvts6>     имеет    нулевую    строку,    поэтому
+следующим  шагом  является удаление нулевой
+строки   из   матрицы   </span><span  class=rvts23>С</span><span
+class=rvts16>1</span><span      class=rvts6>,     соответствующей
+множеству  {3},  и  добавление к ней столбца {3},
+который   не   имеет   единиц.   Таким  образом,
+получаем  элемент  решения в виде интервала,
+содержащего    элемент   3   множества   </span><span
+class=rvts8>М</span><span  class=rvts10>1</span><span  class=rvts6>. После
+допустимого     расширения     этот    интервал
+представит   вектор  (</span><span  class=rvts12>–</span><span
+class=rvts6> </span><span class=rvts12>–</span><span
+class=rvts6> </span><span class=rvts12>–</span><span
+class=rvts6> 1 1 </span><span   class=rvts12>–</span><span   class=rvts6>).
+Последовательность      матриц      вместе      с
+матрицей       расстояний,      соответствующей
+матрице              </span><span             class=rvts23>С</span><span
+class=rvts16>3</span><span            class=rvts6>,           приведена
+ниже.</span></p> 
+<p class=rvps91><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts23>С</span><span  class=rvts16>1</span><span
+class=rvts6>  =</span><img  width=87  height=119  alt=""  style="padding : 1px;"
+src="lk19/img22.jpg"><span      class=rvts6>,&nbsp;&nbsp;&nbsp;     </span><span
+class=rvts23>С</span><span        class=rvts16>2</span><span       class=rvts6>
+=</span><img    width=117    height=97    alt=""    style="padding    :    1px;"
+src="lk19/img23.jpg"><span      class=rvts6>.&nbsp;&nbsp;&nbsp;     </span><span
+class=rvts23>С</span><span     class=rvts16>3</span><span     class=rvts6>    =
+</span><img     width=87     height=97    alt=""    style="padding    :    1px;"
+src="lk19/img24.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps92><span class=rvts6><br></span></p>
+<p     class=rvps93><span    class=rvts6>Матрица    расстояний,
+соответствующая            матрице            </span><span
+class=rvts23>С</span><span  class=rvts16>3</span><span class=rvts6>, имеет
+следующий вид:</span></p> 
+<p class=rvps94><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=87   height=97   alt=""   style="padding  :  1px;"
+src="lk19/img25.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps95><span class=rvts6>&nbsp; </span></p>
+<p   class=rvps96><span   class=rvts6>Поскольку  минимальным
+расстоянием    является    расстояние    между
+элементами    булева    пространства    2    и   6,
+формируем  множество {2, 6} и соответствующий
+интервал&nbsp;       (0 </span><span       class=rvts12>–</span><span
+class=rvts6> 1 0 0 0).    Получаем    матрицу    </span><span
+class=rvts23>С</span><span    class=rvts16>4</span><span   class=rvts6>,   из
+которой    видно,   что   процесс   завершается
+образованием         множества        {2, 4, 6}        с
+соответствующим         интервалом        (</span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span class=rvts6> 0 0 </span><span
+class=rvts12>–</span><span  class=rvts6>) и множества {1, 5, 7} с
+соответствующим         интервалом        (</span><span
+class=rvts12>–</span><span class=rvts6> 0 </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts12>–</span><span class=rvts6> 1 </span><span
+class=rvts12>–</span><span class=rvts6>):</span></p> 
+<p class=rvps97><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts23>С</span><span  class=rvts16>4</span><span
+class=rvts6>  =</span><img  width=101  height=73  alt=""  style="padding : 1px;"
+src="lk19/img26.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps98><span class=rvts6><br></span></p>
+<p  class=rvps99><span class=rvts6>Окончательный результат
+представим в виде троичной матрицы</span></p> 
+<h2 class=rvps100><span class=rvts0><span class=rvts6><br></span></span></h2>
+<h2   class=rvps101><img  width=155  height=95  alt=""  style="padding  :  1px;"
+src="lk19/img27.jpg"><span class=rvts0><span class=rvts6>,</span></span></h2> 
+<p><span class=rvts6><br></span></p>
+<p><span              class=rvts6>что              соответствует
+дизъюнктивной    нормальной    форме    </span><span
+class=rvts8>х</span><span class=rvts16>4</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts16>5</span><span class=rvts6> </span><span
+class=rvts14>∨&not;</span><span class=rvts8>х</span><span
+class=rvts16>4</span><span class=rvts14>&not;</span><span
+class=rvts8>х</span><span class=rvts16>5</span><span
+class=rvts6> </span><span class=rvts14>∨&not;</span><span
+class=rvts8>х</span><span class=rvts16>2</span><span
+class=rvts6> </span><span class=rvts8>х</span><span
+class=rvts16>5</span><span class=rvts6>.</span></p> 
+
+<p class=rvps2><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body>
+</html>

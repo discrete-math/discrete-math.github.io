@@ -1,0 +1,409 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Планарные графы</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts11
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts12
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts13
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts15
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-align: justify;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 36px;
+ margin: 8px 0px 8px 0px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 36px;
+ margin: 8px 0px 8px 0px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 9</span></p>
+<p><span class=rvts7>Планарные графы </span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p class=rvps3><span class=rvts7>9.1. Определения</span></p>
+<p class=rvps4><span class=rvts6><br></span></p>
+<p          class=rvps5><span          class=rvts6>Граф         </span><span
+class=rvts8>укладывается</span><span        class=rvts6>        на
+некоторой  поверхности,  если  его  можно так
+нарисовать     на     этой     поверхности,    что
+никакие   два   ребра   не   будут  иметь  общей
+точки,   кроме,   возможно,  общей  вершины.  На
+таком   рисунке   ребра   графа   изображаются
+линиями,   а   вершины  </span><span  class=rvts9>–</span><span
+class=rvts6>    точками.   Граф   называется   </span><span
+class=rvts8>планарным</span><span    class=rvts6>,    если   его
+можно уложить на плоскости.</span></p> 
+<p     class=rvps5><span     class=rvts8>Плоский     граф</span><span
+class=rvts6>   </span><span   class=rvts9>–</span><span   class=rvts6>  это
+граф,    уложенный   на   плоскости.   Очевидно,
+каждый        планарный        граф        изоморфен
+некоторому плоскому графу.</span></p> 
+<p     class=rvps5><span     class=rvts6>При     проектировании
+печатного   монтажа   для  электронной  схемы
+возникают  задачи  определения  планарности
+графа,     разложения    графа    на    планарные
+подграфы,  а  также укладки планарного графа
+на плоскости.</span></p> 
+<p     class=rvps5><span    class=rvts8>Гранью</span><span    class=rvts6>
+плоского       графа       называется      область
+плоскости,  ограниченная  ребрами, любые две
+точки  которой  могут быть соединены линией,
+не     пересекающей     ребра     графа.    Каждый
+плоский        граф        имеет        единственную
+неограниченную   грань,  которая  называется
+</span><span    class=rvts8>внешней</span><span    class=rvts6>.   Все
+остальные     его     грани    являются    </span><span
+class=rvts8>внутренними</span><span    class=rvts6>.   Плоский
+граф,   изображенный   на   рис. 9.1,   имеет  три
+грани:  </span><span  class=rvts8>f</span><span  class=rvts10>1</span><span
+class=rvts6>          и          </span><span         class=rvts8>f</span><span
+class=rvts10>2</span><span               class=rvts6>               </span><span
+class=rvts9>–</span><span    class=rvts6>   внутренние   грани,
+</span><span         class=rvts8>f</span><span        class=rvts10>3</span><span
+class=rvts6> </span><span        class=rvts9>–</span><span       class=rvts6>
+внешнюю.
+<center><img src ="lk9/img1.jpg"></center>
+<p class=rvps5><span class=rvts11><br></span></p>
+<p       class=rvps1><span       class=rvts11>Рис. 9.1.       Плоский
+граф</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p         class=rvps6><span        class=rvts6>Т е о р е м а&nbsp;
+Э й л е р а.</span><span           class=rvts8>          </span><span
+class=rvts6>Для  всякого связного плоского графа,
+имеющего         </span><span         class=rvts8>п        </span><span
+class=rvts6>вершин,</span><span      class=rvts8>      т     </span><span
+class=rvts6>ребер     и</span><span     class=rvts8>     f    </span><span
+class=rvts6>граней,     имеет    место    соотношение
+</span><span        class=rvts8>п</span><span        class=rvts6> </span><span
+class=rvts9>–</span><span class=rvts6> </span><span
+class=rvts8>т</span><span class=rvts6> </span><span
+class=rvts14>+</span><span  class=rvts6> </span><span class=rvts8>f</span><span
+class=rvts6> </span><span class=rvts14>=</span><span
+class=rvts6> 2.</span></p> 
+<p      class=rvps5><span     class=rvts6>Действительно,     для
+дерева       имеем       </span><span      class=rvts8>т</span><span
+class=rvts6> = </span><span class=rvts8>п</span><span
+class=rvts6> </span><span    class=rvts9>–</span><span   class=rvts6> 1   и
+</span><span            class=rvts8>f</span><span            class=rvts6> = 1.
+Следовательно,   данная  формула  для  дерева
+верна.   Увеличивая  число  ребер  в  графе  на
+некоторую   величину   при  сохранении  числа
+вершин,  мы  увеличиваем  число  граней  на ту
+же    величину.   Следовательно,   соотношение
+сохраняется.       Оно      называется      </span><span
+class=rvts8>формулой Эйлера</span><span class=rvts6>.</span></p> 
+<p   class=rvps5><span  class=rvts8>Максимальным  планарным
+графом</span><span  class=rvts6>  называется  планарный
+граф    с    числом    вершин   не   меньше   пяти,
+который    перестает    быть    планарным    при
+добавлении    любого   нового   ребра.   Пример
+такого графа дан на рис. 9.2</span></p> 
+<p    class=rvps7><span    class=rvts6>Легко    показать,    что
+каждая    грань   в   таком   графе   ограничена
+тремя ребрами.</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p><span class=rvts7><br></span></p>
+<p><span     class=rvts7>9.2.     Простейшие    непланарные
+графы</span></p> 
+<p class=rvps8><span class=rvts6><br></span></p>
+<p     class=rvps5><span    class=rvts6>Полный    граф    </span><span
+class=rvts8>K</span><span     class=rvts10>5</span><span     class=rvts6>     и
+полный          двудольный         граф         </span><span
+class=rvts8>K</span><span        class=rvts10>3,3</span><span       class=rvts6>
+(рис. 9.3)  являются простейшими непланарными
+графами.  Нетрудно  убедиться,  что  удаление
+любой  вершины  или  любого ребра превращает
+их в планарные графы.
+<center><img src = "lk9/img2.jpg"></center>
+<p class=rvps5><span class=rvts6><br></span></p>
+<p    class=rvps1><span    class=rvts11>Рис. 9.2.   Максимальный
+планарный граф</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p          class=rvps5><span          class=rvts6>Граф         </span><span
+class=rvts8>K</span><span  class=rvts10>3,3</span><span  class=rvts6> можно
+использовать        для        решения        </span><span
+class=rvts8>задачи      о     трех     домах     и     трех
+колодцах</span><span   class=rvts6>,   которая   ставится
+следующим    образом.    Имеются   три   дома   и
+расположенные     неподалеку    три    колодца.
+Можно  ли  проложить от каждого дома дорожки
+во    всем    трем    колодцам   так,   чтобы   эти
+дорожки не пересекались?</span></p> 
+<p       class=rvps5><span       class=rvts6>Приводимое       ниже
+утверждение   дает   отрицательный  ответ  на
+этот вопрос.</span></p> 
+<p         class=rvps9><span        class=rvts6>Т е о р е м а&nbsp;
+П о н т р я г и н а </span><span
+class=rvts9>–</span><span
+class=rvts6> К у р а т о в с к о г о.
+Необходимым      и      достаточным      условием
+непланарности    графа    является   любое   из
+следующих  условий: 1) в графе можно выделить
+пять   вершин,   каждая   из   которых   связана
+цепью  с  любой  другой из них, причем все эти
+цепи  не  пересекаются  по  ребрам;  2)  в графе
+можно  выделить  два множества, состоящие из
+трех  вершин  каждое, так, что каждая вершина
+одного   множества   связана  цепью  со  всеми
+вершинами   другого   множества,   причем  все
+эти цепи не пересекаются по ребрам.</span></p> 
+<p       class=rvps5><span       class=rvts6>Другими      словами,
+планарный  граф  не  должен  иметь подграфов,
+изображенных   на  рис. 9.3,  где  каждое  ребро
+может быть заменено простой цепью.
+<center><img src = "lk9/img3.jpg"></center>
+<p class=rvps1><span class=rvts11><br></span></p>
+<p     class=rvps1><span     class=rvts11>Рис. 9.3.     Простейшие
+непланарные графы</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p class=rvps10><span class=rvts6><br></span></p>
+<p><span       class=rvts7>9.3.       Раскраска      планарных
+графов</span></p> 
+<p class=rvps11><span class=rvts6><br></span></p>
+<p       class=rvps5><span      class=rvts8>Двойственный</span><span
+class=rvts6>        граф        </span><span       class=rvts8>G</span><span
+class=rvts15>*</span><span     class=rvts6>     по    отношению    к
+плоскому  графу </span><span class=rvts8>G</span><span class=rvts6>
+строится  следующим  образом.  Внутри каждой
+грани   графа   </span><span   class=rvts8>G</span><span  class=rvts6>
+поместим          вершину         графа         </span><span
+class=rvts8>G</span><span     class=rvts15>*</span><span     class=rvts6>     и
+каждому     ребру     </span><span    class=rvts8>е    </span><span
+class=rvts6>графа   </span><span   class=rvts8>G</span><span   class=rvts6>
+отнесем   ребро  графа  </span><span  class=rvts8>G</span><span
+class=rvts15>*</span><span   class=rvts6>,   которое   соединяет
+его  вершины,  помещенные  на гранях, имеющих
+общее  ребро  </span><span  class=rvts8>е</span><span class=rvts6> в
+графе  </span><span  class=rvts8>G</span><span  class=rvts6>.  Пример
+двойственного  графа  дан  на рис. 9.4, где его
+ребра показаны тонкими линиями.</span></p> 
+<p       class=rvps5><span      class=rvts6>Раскраска      граней
+плоского  графа,  при которой соседние грани
+раскрашиваются       в       различные       цвета,
+эквивалентна       раскраске       вершин      его
+двойственного    графа.    Таким    образом,    к
+раскраске  вершин  графа сводится известная
+задача   о  раскраске  географической  карты,
+при   решении   которой  территории  соседних
+государств           требуется           окрашивать
+различными   цветами,  минимизируя  при  этом
+число последних.
+<center><img src ="lk9/img4.jpg"></center>
+<p class=rvps1><span class=rvts11><br></span></p>
+<p   class=rvps1><span  class=rvts11>Рис. 9.4.  Плоский  граф  и
+его двойственный граф</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p    class=rvps5><span    class=rvts6>Доказано,   что   всякий
+планарный  граф  можно  раскрасить  не  более
+чем     в     пять     цветов,    и    долгое    время
+существовала        </span><span        class=rvts8>гипотеза
+четырех  красок</span><span class=rvts6>, утверждавшая,
+что  всякий планарный граф можно раскрасить
+не   более   чем   в  четыре  цвета.  Было  много
+безуспешных   попыток   ее  доказать.  В  1976  г.
+появилось    сообщение    о   том,   что   данная
+гипотеза           доказана           с          помощью
+вычислительной    машины.   Для   этого   ранее
+были    найдены    1 482    конфигурации   и   дано
+доказательство    утверждения,   что   если   в
+максимальном  планарном  графе подграф вида
+такой      конфигурации     раскрашивается     в
+четыре  цвета,  то  и сам граф раскрашивается
+в      четыре      цвета.     С     помощью     мощной
+вычислительной        машины        все       графы,
+изоморфные            таким           конфигурациям,
+приблизительно  за  2 000  ч машинного времени
+были   раскрашены  в  четыре  цвета.  Однако  в
+связи   со   сложностью  проверки  упомянутых
+доказательств   не   все  специалисты  с  ними
+согласны.</span></p> 
+<p><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body>
+</html>

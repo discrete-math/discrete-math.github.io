@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Декомпозиция булевых функций</title>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts10
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts15
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts16
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts17
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts18
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps3
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+}
+.rvps10
+{
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 17px;
+ margin: 0px 0px 0px 78px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 36px;
+ margin: 0px 0px 0px 59px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 36px;
+ margin: 0px 0px 0px 59px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 36px;
+ margin: 0px 0px 0px 59px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 36px;
+ margin: 0px 0px 0px 59px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 36px;
+ margin: 0px 0px 0px 59px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<a href="../../../Теория/theory.htm">Теория</a> | <strong>Практика</strong> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+<p><span class=rvts6>Декомпозиция булевых функций</span></p>
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 11.1</span></p>
+<p  class=rvps2><span class=rvts7>Для функции </span><span    class=rvts8>f(х</span><span class=rvts13>1</span><span  class=rvts8>, х</span><span class=rvts13>2</span><span  class=rvts8>, х</span><span class=rvts13>3</span><span  class=rvts8>, х</span><span class=rvts13>4</span><span  class=rvts8>, х</span><span class=rvts13>5</span><span  class=rvts8>) = х</span><span class=rvts13>1</span><span  class=rvts8> х</span><span class=rvts13>3</span><span  class=rvts8><span class="rvts10">&not;</span>х</span><span class=rvts13>4</span><span  class=rvts8> <span class="rvts9">∨</span><span class="rvts10">&not;</span>х</span><span class=rvts13>1</span><span  class=rvts8> х</span><span class=rvts13>2</span><span  class=rvts8><span class="rvts10">&not;</span>х</span><span class=rvts13>4</span><span  class=rvts8> <span class="rvts9">∨</span><span class="rvts10">&not;</span>х</span><span class=rvts13>1</span><span  class=rvts8><span class="rvts10">&not;</span>х</span><span class=rvts13>2</span><span  class=rvts8> х</span><span class=rvts13>4</span><span  class=rvts8> <span class="rvts9">∨</span> х</span><span class=rvts13>1</span><span  class=rvts8><span class="rvts10">&not;</span>х</span><span class=rvts13>3</span><span  class=rvts8> х</span><span class=rvts13>4</span><span  class=rvts8> <span class="rvts9">∨</span> х</span><span class=rvts13>4</span><span  class=rvts8> х</span><span class=rvts13>5</span><span  class=rvts7> найти функции g(х</span><span class=rvts13>1</span><span  class=rvts8>, х</span><span class=rvts13>2</span><span  class=rvts8>, х</span><span class=rvts13>3</span><span  class=rvts7>) и <span class="rvts8">φ</span>(g, х</span><span class=rvts13>4</span><span  class=rvts8>, х</span><span class=rvts13>5</span><span  class=rvts8>)</span><span    class=rvts7> в суперпозиции</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p    class=rvps1><span    class=rvts8>f(х</span><span class=rvts13>1</span><span  class=rvts8>, х</span><span class=rvts13>2</span><span  class=rvts8>, х</span><span class=rvts13>3</span><span  class=rvts8>, х</span><span class=rvts13>4</span><span  class=rvts8>, х</span><span class=rvts13>5</span><span  class=rvts8>) = φ(g, х</span><span class=rvts13>4</span><span  class=rvts8>, х</span><span class=rvts13>5</span><span  class=rvts8>)</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p  class=rvps2><span class=rvts7>Представленная ниже карта декомпозиции говорит о том,  что нетривиальное решение существует.</span></p>
+<p  class=rvps2><span class=rvts7>
+  По крайнему левому столбцу данной карты определим  функцию</span></p>
+<p  class=rvps2>&nbsp;</p>
+<p    class=rvps1><span    class=rvts8>g(х</span><span class=rvts13>1</span><span  class=rvts8>, х</span><span class=rvts13>2</span><span  class=rvts8>, х</span><span class=rvts13>3</span><span  class=rvts8>) =<span class="rvps2">х<span class=rvts13>1</span> х<span class=rvts13>3</span> <span class="rvts9">∨</span> <span class="rvts10">&not;</span>х<span class=rvts13>1 </span>х<span class=rvts13>2</span></span></span></p>
+<p    class=rvps1>&nbsp;</p> 
+  <p  class=rvps2><span class=rvts7>
+  Рядом с картой декомпозиции построим карту Карно для функции </span><span    class=rvts8>φ(g, х4, х5) </span><span    class=rvts7>и получим ее ДНФ</span></p>
+<p  class=rvps2>&nbsp;</p>
+<center>  <img src="lb11/img1.jpg"></center>
+<p class=rvps2><span class=rvts7><br></span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 11.2</span></p>
+<p  class=rvps2><span class=rvts7>Пусть система полностью определенных булевых функций y = f(x) задана парой матриц X, Y </span></p>
+<p  class=rvps2>&nbsp;</p> 
+<center>  <img src="lb11/img2.jpg"></center>
+<p  class=rvps2>&nbsp;</p> 
+<p  class=rvps2><span class=rvts7>Сначала попытаемся найти суперпозицию <span class=rvts8>y = φ (w, z</span></span><span class="rvts13">2</span><span class=rvts7><span class=rvts8>), w = g (z</span></span><span class="rvts13">1</span><span class=rvts7><span class=rvts8>)</span> для векторов <span class=rvts8>z</span></span><span class="rvts13">1</span><span class=rvts7><span class=rvts8> = (х</span></span><span class="rvts13">1</span><span class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">2</span><span class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">3</span><span class=rvts7><span class=rvts8>)</span> и <span class=rvts8>z</span></span><span class="rvts13">1</span><span class=rvts7><span class=rvts8> = (х</span></span><span class="rvts13">4</span><span class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">5</span><span class=rvts7><span class=rvts8>)</span>. </span></p> 
+<p class=rvps2><span class=rvts7><br>
+</span></p>
+<p class=rvps2><span class=rvts7>Решение 1.</span></p>
+<p  class=rvps2><span class=rvts7>Карта декомпозиции имеет следующий вид:</span></p> 
+<center>  <img src="lb11/img3.jpg"></center>
+<p>&nbsp;</p>
+<p  class=rvps2><span class=rvts7>Имеем 7 различных строк, при которых вектор w требует три компоненты, т.е суперпозиция тривиальна.</span></p>
+<p  class=rvps2>&nbsp;</p>
+<p  class=rvps2>&nbsp;</p> 
+<p class=rvps2><span class=rvts7>Решение 2.</span></p>
+<p  class=rvps2><span class=rvts7>Найдем теперь суперпозицию <span class=rvts8>y = <span class="rvts8">φ</span> (w, z<span class=rvts13>2</span>), w = g (z<span class=rvts13>1</span>), где z<span class=rvts13>1</span> = (х<span class=rvts13>1</span>, х<span class=rvts13>3</span>, х<span class=rvts13>5</span>)</span> и<span class=rvts7> z<span class=rvts13>1</span> = (х<span class=rvts13>2</span>, х<span class=rvts13>4</span></span>), такую, чтобы число компонент вектора w было минимально, а сумма чисел компонент векторов<span class=rvts8> w</span> и <span class=rvts8>z<span class=rvts13>2</span></span> была меньше длины вектора х.</span></p> 
+<p  class=rvps2><span class=rvts7>Для удобства построения карты декомпозиции переставим столбцы матрицы X:</span></p>
+<p  class=rvps2>&nbsp;</p> 
+<center>  <img src="lb11/img4.jpg"></center>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p  class=rvps2><span class=rvts7>Карта декомпозиции имеет следующий вид:</span></p>
+<p  class=rvps2>&nbsp;</p> 
+<center>  <img src="lb11/img5.jpg"></center>
+<p>&nbsp;</p>
+<p></p>
+<p></p>
+<p  class=rvps2><span class=rvts7>В построенной таблице только четыре вида строк, которые можно закодировать значениями двух переменных. В результате кодирования получаем систему булевых функций в матричной форме и результат ее минимизации:</span></p>
+<p  class=rvps2>&nbsp;</p> 
+<center>  <img src="lb11/img6.jpg"></center>
+<p>&nbsp;</p>
+<p  class=rvps2><span class=rvts7>Векторная функция <span class="rvts8">φ(w, z<span class=rvts13>2</span>) </span>задается следующей таблицей:</span></p>
+<p  class=rvps2>&nbsp;</p> 
+<center>  <img src="lb11/img7.jpg"></center>
+<p>&nbsp;</p>
+<p  class=rvps2><span class=rvts7>Ниже представлена эта система и ее минимальная форма в матричном виде:</span></p>
+<p  class=rvps2>&nbsp;</p> 
+<center>  <img src="lb11/img8.jpg"></center>
+<p></p>
+<p class=rvps1><span class=rvts7><br></span><span class=rvts7><br>
+</span></p>
+<p><span class=rvts7>Задача № 11.3</span></p>
+<p   class=rvps2><span   class=rvts7>Пусть система не полностью определенных булевых функций <span class=rvts8>y = f (x), где у = (у</span></span><span class="rvts13">1</span><span   class=rvts7><span class=rvts8>, у</span></span><span class="rvts13">2</span><span   class=rvts7><span class=rvts8>) </span>и<span class=rvts8> х = (х</span></span><span class="rvts13">1</span><span   class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">2</span><span   class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">3</span><span   class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">4</span><span   class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">5</span><span   class=rvts7><span class=rvts8>)</span> задана следующей парой матриц:</span></p> 
+<br>
+<center><img src="lb11/img9.jpg"></center>
+<p   class=rvps1>&nbsp;</p> 
+<p   class=rvps2><span   class=rvts7>Найти суперпозицию <span class=rvts8>y = <span class="rvts8">φ</span> (w, z</span></span><span class="rvts13">2</span><span   class=rvts7><span class=rvts8>), w = g (z</span></span><span class="rvts13">1</span><span   class=rvts7><span class=rvts8>), где z</span></span><span class="rvts13">1</span><span   class=rvts7><span class=rvts8> = (х</span></span><span class="rvts13">1</span><span   class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">2</span><span   class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">3</span><span   class=rvts7><span class=rvts8>) </span></span><span class="rvts8">и</span><span   class=rvts7><span class=rvts8> z</span></span><span class="rvts13">1</span><span   class=rvts7><span class=rvts8> = (х</span></span><span class="rvts13">3</span><span   class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">4</span><span   class=rvts7><span class=rvts8>, х</span></span><span class="rvts13">5</span><span   class=rvts7><span class=rvts8>)</span>, такую, чтобы число компонент вектора w было минимально, а сумма чисел компонент векторов<span class=rvts8> w</span> и<span class=rvts8> z<span class="rvts13">2</span></span> была меньше длины вектора х.</span></p>
+<p class=rvps3>&nbsp;</p>
+<p class=rvps4><span class=rvts7>Решение.</span></p>
+<p   class=rvps2><span   class=rvts7>Карта декомпозиции имеет следующий вид:</span></p> <br>
+<center><img src="lb11/img10.jpg"></center>
+<p   class=rvps1>&nbsp;</p> 
+
+<p   class=rvps2><span   class=rvts7>Граф ортогональности строк представим на рисунке:</span></p> <br>
+<center><img src="lb11/img11.jpg"></center>
+<p   class=rvps1>&nbsp;</p> 
+
+<p   class=rvps2><span   class=rvts7>Раскрасим вершины 1, 5, 6, 7 в цвет 0, а вершины 2, 3, 4 – в цвет 1. Тем самым получим однокомпонентный вектор </span><span class="rvts8">w</span><span   class=rvts7> – функцию </span><span class="rvts8">g(х</span><span class="rvts13">1</span><span class="rvts8">, х</span><span class="rvts13">2</span><span class="rvts8">, х</span><span class="rvts13">3</span><span class="rvts8">),</span><span   class=rvts7> множество М1 которой представляется матрицей:</span></p> 
+<br>
+<center><img src="lb11/img12.jpg"></center>
+<p>&nbsp;</p>
+<p><span   class=rvts7>а на наборе (1 0 1) функция не определена</span></p>
+<p   class=rvps1>&nbsp;</p> 
+
+<p   class=rvps2><span   class=rvts7>Функцию </span><span class="rvts8">φ (w, z</span><span class="rvts13">2</span><span class="rvts8">)</span><span   class=rvts7> можно задать таблицей, подобной той, что представляет карту декомпозиции, заменив в ней наборы значений переменных</span><span class="rvts8"> х</span><span class="rvts13">1</span><span class="rvts8">, х<span class="rvts13">2</span></span><span   class=rvts7> и </span><span class="rvts8">х3</span><span   class=rvts7> соответствующими значениями функции </span><span class="rvts8">g</span><span   class=rvts7>:</span></p> <br>
+<center><img src="lb11/img13.jpg"></center>
+<p   class=rvps1>&nbsp;</p> 
+
+<p   class=rvps2><span   class=rvts7>Объединив неортогональные строки, получим:</span></p> <br>
+<center><img src="lb11/img14.jpg"></center>
+<p   class=rvps1>&nbsp;</p> 
+
+<p       class=rvps5><span      class=rvts7>Выполнив минимизацию, получим следующие ДНФ:</span></p>
+<br>
+<p        class=rvps5>
+<span class="rvts8"><span class="rvts8">φ</span></span></span><span class="rvts13">1</span><span      class=rvts7><span class="rvts8">(w, х</span></span><span class="rvts13">3</span><span      class=rvts7><span class="rvts8">, х</span></span><span class="rvts13">4</span><span      class=rvts7><span class="rvts8">, х</span></span><span class="rvts13">5</span><span      class=rvts7><span class="rvts8">) = х</span></span><span class="rvts13">3</span><span      class=rvts7><span class="rvts8"> х</span></span><span class="rvts13">4</span><span      class=rvts7><span class="rvts8"> <span class="rvts9">∨</span> w; <br>	</span></span></p>				
+<p        class=rvps5>
+<span class="rvts8">w = g(х</span></span><span class="rvts13">1</span><span      class=rvts7><span class="rvts8">, х</span></span><span class="rvts13">2</span><span      class=rvts7><span class="rvts8">, х</span></span><span class="rvts13">3</span><span      class=rvts7><span class="rvts8">) =&not;х</span></span><span class="rvts13">1</span><span      class=rvts7><span class="rvts8"> х</span></span><span class="rvts13">2</span><span      class=rvts7><span class="rvts8"> х</span></span><span class="rvts13">3</span><span      class=rvts7><span class="rvts8"> <span class="rvts9">∨</span> х<span class="rvts13">1</span>&not;х</span></span><span class="rvts13">3</span><span      class=rvts7><span class="rvts8">;<br></span></span></p>
+<p        class=rvps5>
+<span class="rvts8">
+<span class="rvts8">φ</span></span></span><span class="rvts13">2</span><span      class=rvts7><span class="rvts8">(w, х</span></span><span class="rvts13">3</span><span      class=rvts7><span class="rvts8">, х</span></span><span class="rvts13">4</span><span      class=rvts7><span class="rvts8">, х</span></span><span class="rvts13">5</span><span      class=rvts7><span class="rvts8">) = х<span class="rvts13">3</span>&not;х</span></span><span class="rvts13">4</span><span      class=rvts7><span class="rvts8"> <span class="rvts9">∨</span> w х</span></span><span class="rvts13">4</span><span      class=rvts7><span class="rvts8"> <span class="rvts9">∨</span>&not;х</span></span><span class="rvts13">5</span><span      class=rvts7><span class="rvts8">. </span></span></p>
+<p       class=rvps5>&nbsp;</p> 
+<p><span class=rvts18><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+
+</body></html>

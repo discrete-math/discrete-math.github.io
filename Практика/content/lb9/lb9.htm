@@ -1,0 +1,469 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Минимизация слабо определенных булевых функций</title>
+
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts10
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts13
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts14
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts15
+{
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts16
+{
+ font-size: 7pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts17
+{
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps3
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 0px 152px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 0px 152px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 0px 152px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 19px;
+ margin: 0px 0px 0px 170px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 0px 0px 0px 152px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<a href="../../../Теория/theory.htm">Теория</a> | <strong>Практика</strong> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+
+<p><span  class=rvts6>Минимизация слабо определенных
+булевых функций</span></p> 
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 9.1</span></p>
+<p  class=rvps2><span  class=rvts7>Получить  кратчайшую ДНФ
+функции,   реализующей   слабо   определенную
+функцию,               заданную              следующими
+матрицами:</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p    class=rvps1><span   class=rvts8>М</span><span   class=rvts9>1</span><span
+class=rvts7>  =  </span><img  width=169 height=215 alt="" style="padding : 1px;"
+src="lb9/img1.jpg"><span    class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;   </span><span
+class=rvts8>М</span><span  class=rvts9>0</span><span class=rvts7> = </span><img
+width=153  height=159  alt=""  style="padding  :  1px;" src="lb9/img2.jpg"><span
+class=rvts7>.</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p class=rvps4><span class=rvts7>Решение.</span></p>
+<p      class=rvps5><span      class=rvts7>Находим     следующие
+максимальные      интервально      поглощаемые
+множества         и         соответствующие        им
+минимальные покрывающие интервалы:</span></p> 
+<center><img src="lb9/matr1.png"></center>
+<p    class=rvps13><span    class=rvts7>Кратчайшее    покрытие
+множества            </span><span            class=rvts8>М</span><span
+class=rvts9>1</span><span           class=rvts7>          полученными
+подмножествами  получается  довольно легко.
+Заметим,  что  элемент  3  содержится только в
+подмножестве     {1, 3}.     Следовательно,     это
+подмножество     должно     войти    в    искомое
+покрытие.    Удалив   покрытый   элемент   1   из
+подмножеств,      получим&nbsp;      {2, 6, 7},     {5, 7},
+{2, 4, 5, 7},  {2, 4, 6},  откуда  надо  удалить  {5, 7},
+как        поглощаемое        подмножество.       Из
+совокупности   {2, 6, 7},  {2, 4, 5, 7},  {2, 4, 6}  надо
+взять        {2, 4, 5, 7},        как        единственное
+подмножество      в      данной     совокупности,
+содержащее  элемент  5.  Остается  непокрытым
+только   элемент   6.   Таким  образом,  искомое
+покрытие  составляют подмножества {1, 2, 6, 7},
+{1, 3},    {2, 4, 5, 7}.    Соответственно,   получаем
+кратчайшую   ДНФ,  представляемую  следующей
+матрицей:</span></p> 
+<p class=rvps14><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=201   height=104  alt=""  style="padding  :  1px;"
+src="lb9/img3.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p      class=rvps15><span      class=rvts7>После      расширения
+второго    интервала    имеем    окончательное
+решение в виде матрицы</span></p> 
+<p class=rvps15><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=201   height=104  alt=""  style="padding  :  1px;"
+src="lb9/img4.jpg"></p> 
+<p class=rvps15><span class=rvts7><br></span></p>
+<p   class=rvps15><span   class=rvts7>и  соответствующей  ДНФ
+</span><span        class=rvts8>х</span><span        class=rvts11>3</span><span class=rvts12>&not;</span><span class=rvts8>х</span><span
+class=rvts11>6</span><span class=rvts7> </span><span
+class=rvts13>∨</span><span class=rvts7> </span><span
+class=rvts8>х</span><span class=rvts11>4</span><span
+class=rvts7> </span><span class=rvts8>х</span><span
+class=rvts11>5</span><span class=rvts7> </span><span
+class=rvts13>∨</span><span class=rvts12>&not;</span><span
+class=rvts8>х</span><span class=rvts11>2</span><span class=rvts12>&not;</span><span class=rvts8>х</span><span
+class=rvts11>4</span><span class=rvts7>.</span></p> 
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 9.2</span></p>
+<p  class=rvps2><span  class=rvts7>Получить  кратчайшую ДНФ
+функции,   реализующей   слабо   определенную
+функцию,               заданную              следующими
+матрицами:</span></p> 
+<p class=rvps16><span class=rvts7><br></span></p>
+<p    class=rvps1><span   class=rvts8>М</span><span   class=rvts9>1</span><span
+class=rvts7>  =</span><img  width=263  height=270  alt="" style="padding : 1px;"
+src="lb9/img5.jpg"><span    class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;   </span><span
+class=rvts8>М</span><span  class=rvts9>0</span><span  class=rvts7> =</span><img
+width=236  height=215  alt=""  style="padding  :  1px;" src="lb9/img6.jpg"><span
+class=rvts7>.</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.</span></p>
+<p      class=rvps17><span     class=rvts7>Находим     следующие
+максимальные      интервально      поглощаемые
+множества         и         соответствующие        им
+минимальные покрывающие интервалы:</span></p> 
+<p class=rvps18><span class=rvts7><br></span></p>
+<p   class=rvps1><span   class=rvts7>{1,   3,   5,   9},&nbsp;&nbsp;&nbsp;&nbsp;
+(</span><span     class=rvts10>–</span><span     class=rvts7>     </span><span
+class=rvts10>–</span><span         class=rvts7>         1         </span><span
+class=rvts10>–</span><span              class=rvts7>              </span><span
+class=rvts10>–</span><span         class=rvts7>         0         </span><span
+class=rvts10>–</span><span class=rvts7>);</span></p> 
+<p                       class=rvps1><span                       class=rvts7>{1,
+4},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(</span><span     class=rvts10>–</span><span     class=rvts7>     </span><span
+class=rvts10>–</span><span              class=rvts7>              </span><span
+class=rvts10>–</span><span class=rvts7> 1 1 0 0);</span></p> 
+<p                       class=rvps1><span                       class=rvts7>{1,
+6},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(</span><span    class=rvts10>–</span><span    class=rvts7>   0   </span><span
+class=rvts10>–</span><span              class=rvts7>              </span><span
+class=rvts10>–</span><span       class=rvts7>       1      0      </span><span
+class=rvts10>–</span><span class=rvts7>);</span></p> 
+<p                       class=rvps1><span                       class=rvts7>{1,
+8},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1
+0   1  </span><span  class=rvts10>–</span><span  class=rvts7>  1  </span><span
+class=rvts10>–</span><span class=rvts7> 0);</span></p> 
+<p   class=rvps1><span  class=rvts7>{2,  3,  7,  9},&nbsp;&nbsp;&nbsp;&nbsp;  (0
+</span><span   class=rvts10>–</span><span  class=rvts7>  1  0  0  </span><span
+class=rvts10>–</span><span              class=rvts7>              </span><span
+class=rvts10>–</span><span class=rvts7>);</span></p> 
+<p                       class=rvps1><span                       class=rvts7>{4,
+7},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (0
+1    </span><span    class=rvts10>–</span><span    class=rvts7>   </span><span
+class=rvts10>–</span><span              class=rvts7>              </span><span
+class=rvts10>–</span><span              class=rvts7>              </span><span
+class=rvts10>–</span><span class=rvts7> 0);</span></p> 
+<p               class=rvps1><span               class=rvts7>{5,              6,
+9},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (</span><span
+class=rvts10>–</span><span         class=rvts7>         0         </span><span
+class=rvts10>–</span><span         class=rvts7>         0         </span><span
+class=rvts10>–</span><span class=rvts7> 0 1).</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps2><span   class=rvts7>Элемент   2   принадлежит
+только  одному подмножеству {2, 3, 7, 9}. Поэтому
+данное   подмножество   включаем   в   искомое
+покрытие.      Удалив      покрытые      элементы,
+получим  подмножества  {1,  5},  {1, 4}, {1, 6}, {1, 8}, {4},
+{5,  6}.  Затем  выбираем  {1,  4}, как единственное
+подмножество,   содержащее   элемент  4  после
+удаления   поглощаемого   {4}.  После  покрытия
+элементов  5,  6  и 8 подмножествами {1, 8} и {5, 6, 9}
+получаем</span></p> 
+<p class=rvps19><span class=rvts7><br></span></p>
+<p                       class=rvps1><span                       class=rvts7>{1,
+4},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(</span><span     class=rvts10>–</span><span     class=rvts7>     </span><span
+class=rvts10>–</span><span              class=rvts7>              </span><span
+class=rvts10>–</span><span class=rvts7> 1 1 0 0);</span></p> 
+<p                       class=rvps1><span                       class=rvts7>{1,
+8},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1
+0   1  </span><span  class=rvts10>–</span><span  class=rvts7>  1  </span><span
+class=rvts10>–</span><span class=rvts7> 0);</span></p> 
+<p   class=rvps1><span  class=rvts7>{2,  3,  7,  9},&nbsp;&nbsp;&nbsp;&nbsp;  (0
+</span><span   class=rvts10>–</span><span  class=rvts7>  1  0  0  </span><span
+class=rvts10>–</span><span              class=rvts7>              </span><span
+class=rvts10>–</span><span class=rvts7>);</span></p> 
+<p               class=rvps1><span               class=rvts7>{5,              6,
+9},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (</span><span
+class=rvts10>–</span><span         class=rvts7>         0         </span><span
+class=rvts10>–</span><span         class=rvts7>         0         </span><span
+class=rvts10>–</span><span class=rvts7> 0 1).</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p        class=rvps2><span        class=rvts7>Для       расширения
+интервалов      строим      матрицы      различия
+каждого  из  полученных  векторов с матрицей
+</span><span         class=rvts8>М</span><span        class=rvts9>0</span><span
+class=rvts7>:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=236   height=215  alt=""  style="padding  :  1px;"
+src="lb9/img7.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img    width=236    height=215    alt=""    style="padding    :    1px;"
+src="lb9/img8.jpg"><span class=rvts7>,</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=236   height=215  alt=""  style="padding  :  1px;"
+src="lb9/img9.jpg"><span
+class=rvts7>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><img    width=236    height=215    alt=""    style="padding    :    1px;"
+src="lb9/img10.jpg"><span class=rvts7>.</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps2><span  class=rvts7>Столбцовыми  покрытиями
+этих      матриц     являются     соответственно
+{</span><span        class=rvts8>х</span><span       class=rvts11>4</span><span
+class=rvts7>, </span><span class=rvts8>х</span><span
+class=rvts11>5</span><span              class=rvts7>},             {</span><span
+class=rvts8>х</span><span class=rvts11>1</span><span
+class=rvts7>, </span><span class=rvts8>х</span><span
+class=rvts11>2</span><span class=rvts7>, </span><span
+class=rvts8>х</span><span       class=rvts11>5</span><span       class=rvts7>},
+{</span><span        class=rvts8>х</span><span       class=rvts11>1</span><span
+class=rvts7>, </span><span class=rvts8>х</span><span
+class=rvts11>3</span><span class=rvts7>, </span><span
+class=rvts8>х</span><span     class=rvts11>5</span><span    class=rvts7>}    и
+{</span><span        class=rvts8>х</span><span       class=rvts11>2</span><span
+class=rvts7>, </span><span class=rvts8>х</span><span
+class=rvts11>4</span><span class=rvts7>, </span><span
+class=rvts8>х</span><span    class=rvts11>6</span><span    class=rvts7>}.    В
+результате получаем матрицу</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img   width=235   height=134  alt=""  style="padding  :  1px;"
+src="lb9/img11.jpg"><span class=rvts7>,</span></p> 
+<p class=rvps1><span class=rvts7><br></span></p>
+<p><font size="4"><span   class=rvts14>Что  соответствует  ДНФ  </span><span
+class=rvts15>х</span><span class=rvts16>4</span><span
+class=rvts14> </span><span class=rvts15>х</span><span
+class=rvts16>5</span><span class=rvts14> </span><span
+class=rvts17>∨</span><span class=rvts14> </span><span
+class=rvts15>х</span><span class=rvts16>1</span><span
+class=rvts12>&not;</span><span class=rvts15>х</span><span
+class=rvts16>2</span><span              class=rvts14>              </span><span
+class=rvts15>х</span><span class=rvts16>5</span><span
+class=rvts14> </span><span class=rvts17>∨</span><span
+class=rvts12>&not;</span><span class=rvts15>х</span><span
+class=rvts16>1</span><span class=rvts14> </span><span
+class=rvts15>х</span><span class=rvts16>3</span><span
+class=rvts12>&not;</span><span class=rvts15>х</span><span
+class=rvts16>5</span><span class=rvts14> </span><span
+class=rvts17>∨</span><span class=rvts12>&not;</span><span
+class=rvts15>х</span><span class=rvts16>2</span><span
+class=rvts12>&not;</span><span class=rvts15>х</span><span
+class=rvts16>4</span><span class=rvts12>&not;</span><span
+class=rvts15>х</span><span class=rvts16>6</span><span
+class=rvts14>.</span></font></p> 
+
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+
+
+</body></html>

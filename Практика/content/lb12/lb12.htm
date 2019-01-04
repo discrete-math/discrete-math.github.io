@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Минимизация числа состояний полного автомата</title>
+
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts10
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts11
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 12pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts15
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ font-weight: bold;
+}
+span.rvts17
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps3
+{
+ text-align: justify;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ margin: 0px 0px 8px 0px;
+}
+--></style>
+</head>
+<body>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle"></td>
+  <tr> 
+    <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<a href="../../../Теория/theory.htm">Теория</a> | <strong>Практика</strong> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+<p><span class=rvts6>Минимизация числа состояний полного автомата</span></p>
+<p><span class=rvts7><br></span></p>
+<p><span class=rvts7>Задача № 12.1</span></p>
+<p      class=rvps2><span      class=rvts7>Построить автомат с минимальным числом состояний, эквивалентный автомату, заданному следующей таблицей переходов и выходов:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img     alt=""  style="padding  :  1px;"
+src="lb12/img1.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p class=rvps2><span class=rvts7>Решение.&lt;1, 4&gt;</span></p>
+<p    class=rvps2><span   class=rvts7>Пары явно неэквивалентных состояний представлены нулями в следующей матрице:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img     alt=""  style="padding  :  1px;"
+src="lb12/img2.jpg"></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Часть цепи, порождаемой парой &lt;1, 5&gt;, изображена на следующем рисунке:</span></p> 
+<p class=rvps2><span class=rvts7><br></span></p>
+<p   class=rvps1><img     alt=""  style="padding  :  1px;"
+src="lb12/img3.jpg"></p> 
+<p><span class=rvts7><br></span></p>
+<p    class=rvps3><span    class=rvts7>Она содержит пару явно неэквивалентных состояний &lt;2, 7&gt;. Дальше цепь можно не строить, так как ясно, что пара &lt;1, 5&gt; оказалась неэквивалентной и, кроме нее, неэквивалентными оказались пары &lt;4, 9&gt; и &lt;2, 6&gt;, лежащие на пути из вершины &lt;1, 5&gt; к вершине &lt;2, 7&gt;.</span></p> 
+<p    class=rvps3><span    class=rvts7>Таким образом, матрица дополняется нулями в виде значений элементов, соответствующих парам &lt;1, 5&gt;, &lt;2, 6&gt; и &lt;4, 9&gt;:</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img     alt=""  style="padding  :  1px;"
+src="lb12/img4.jpg"></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p        class=rvps2><span        class=rvts7>Состояния, принадлежащие паре &lt;1, 7&gt;, также оказались неэквивалентными. Цепь, порождаемая парой &lt;1, 8&gt;, на приведенном ниже рисунке не содержит пар неэквивалентных состояний.</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img     alt=""  style="padding  :  1px;"
+src="lb12/img5.jpg"></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p     class=rvps2><span     class=rvts7>Поэтому любая из пар, принадлежащих этому множеству, является парой эквивалентных состояний. Окончательно получим следующую матрицу эквивалентности:</span></p> 
+<p class=rvps3><span class=rvts7><br></span></p>
+<p   class=rvps1><img    alt=""  style="padding  :  1px;"
+src="lb12/img6.jpg"></p> 
+<p class=rvps4><span class=rvts7><br></span></p>
+<p     class=rvps5><span    class=rvts7>Классы {1, 3, 8}, {2, 4}, {5, 7}, {6} и {9} определяются по строкам матрицы эквивалентности с учетом свойства транзитивности и симметричности отношения эквивалентности. Полученным классам эквивалентности ставим в соответствие состояния нового автомата 1, 2, 3, 4 и 5, в результате чего получим следующую таблицу, представляющую минимальный автомат, эквивалентный заданному.<span class=rvts7><br></span></p>
+<p class=rvps4><span class=rvts7><br></span></p>
+<p   class=rvps1><img    alt=""  style="padding  :  1px;"
+src="lb12/img7.jpg"></p> 
+
+<p><span class=rvts17><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+
+</body></html>

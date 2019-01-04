@@ -1,0 +1,324 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Основные модели автоматов</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts14
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts15
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+}
+
+
+--></style>
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 22</span></p>
+<p><span class=rvts7>Основные модели автоматов</span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p         class=rvps3><span         class=rvts7>22.1.         Автомат с памятью</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>До сих пор рассматривались устройства, не обладающие памятью. Такие устройства в любой момент времени на любую комбинацию входных двоичных сигналов реагируют однозначно, т. е. каждой комбинации двоичных сигналов на входе устройства соответствует определенная комбинация двоичных сигналов на выходе независимо от того, какие сигналы приходили на вход раньше. Отсюда происходят названия «</span><span class="rvts8">комбинационный автомат</span><span     class=rvts6>» или «</span><span class="rvts8">комбинационная схема</span><span     class=rvts6>».</span></p>
+<p      class=rvps5><span     class=rvts6>Как отмечено выше, общепринятой моделью поведения такого устройства является система булевых функций. Комбинации двоичных сигналов иногда удобно обозначать абстрактными символами или буквами некоторого заданного алфавита. Пусть имеется входной алфавит </span><span class="rvts8">А = {a</span><span class="rvts12">1</span><span class="rvts8">, a</span><span class="rvts12">2</span><span class="rvts8">, … , a<span class="rvts9"><span class="rvts12">α</span></span>}</span><span     class=rvts6> и выходной алфавит </span><span class="rvts8">В = {b</span><span class="rvts12">1</span><span class="rvts8">, b</span><span class="rvts12">2</span><span class="rvts8">, … , b</span><span class="rvts12">β</span><span class="rvts8">}</span><span     class=rvts6>. Тогда общий вид описания поведения комбинационного автомата можно представить табл. 22.1, где  <span class="rvts10"><span class="rvts8">b</span></span></span><span class="rvts12">ij</span><span     class=rvts6><span class="rvts10">∈</span> В. Эта таблица является аналогом таблицы истинности. Она полностью определяет алгоритм функционирования заданного устройства. </span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img1.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Часто алгоритм функционирования устройства бывает таким, что простым соответствием вида табл. 22.1 его задать невозможно. Для его описания необходимо ввести время, и работа устройства рассматривается во времени. Время носит дискретный характер, т. е. течение времени представляется как последовательность моментов. В любой момент времени устройство принимает сигнал на входе и выдает сигнал на выходе. В различные моменты устройство может реагировать на один и тот же входной сигнал по-разному. Пусть, например, на вход устройства с входным и выходным алфавитами </span><span class="rvts8">А = {a</span><span class="rvts12">1</span><span class="rvts8">, a</span><span class="rvts12">2</span><span class="rvts8">, а</span><span class="rvts12">3</span><span class="rvts8">, a</span><span class="rvts12">4</span><span class="rvts8">}</span><span     class=rvts6> и </span><span class="rvts8">В = {b</span><span class="rvts12">1</span><span class="rvts8">, b</span><span class="rvts12">2</span><span class="rvts8">, b</span><span class="rvts12">3</span><span class="rvts8">}</span><span     class=rvts6> пришла последовательность сигналов. </span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><center>
+<span class="rvts8">a</span><span class="rvts12">1</span><span class="rvts8">a</span><span class="rvts12">1</span><span class="rvts8">а</span><span class="rvts12">3</span><span class="rvts8">a</span><span class="rvts12">2</span><span class="rvts8">a</span><span class="rvts12">2</span><span class="rvts8">а</span><span class="rvts12">4</span><span class="rvts8">a<span class="rvts12">3</span></span>
+</center></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p><span     class=rvts6>а на выходе наблюдается последовательность сигналов. </span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><center><span class="rvts8">b</span><span class="rvts12">2</span><span class="rvts8">b</span><span class="rvts12">3</span><span class="rvts8">b</span><span class="rvts12">2</span><span class="rvts8">b</span><span class="rvts12">1</span><span class="rvts8">b</span><span class="rvts12">3</span><span class="rvts8">b</span><span class="rvts12">2</span><span class="rvts8">b</span><span class="rvts12">1</span><span class="rvts8">.</span>
+</center></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p class=rvps5><span     class=rvts6>В первый момент времени устройство на входной сигнал </span><span class="rvts8">а<span class="rvts12">1</span></span><span     class=rvts6> реагировало выходным сигналом </span><span class="rvts8">b<span class="rvts12">2</span></span><span     class=rvts6>, а во второй момент на тот же сигнал – сигналом </span><span class="rvts8">b<span class="rvts12">3</span></span><span     class=rvts6>. На сигналы </span><span class="rvts8">а<span class="rvts12">2</span></span><span     class=rvts6> и </span><span class="rvts8">а<span class="rvts12">3</span></span><span     class=rvts6> в разные моменты оно реагировало также по-разному, т. е. поведение устройства нельзя описать тем же способом, что использовался для описания поведения комбинационного автомата.</span></p>
+<p class=rvps5><span     class=rvts6>Эта неоднозначность устраняется, если ввести понятие </span><span class="rvts8">внутреннего состояния</span><span     class=rvts6> или просто </span><span class="rvts8">состояния</span><span     class=rvts6>. Тогда то, что устройство реагирует на один и тот же сигнал в разные моменты по-разному, можно объяснить так, что оно находится при этом в разных состояниях. Приняв входной сигнал, устройство выдает выходной сигнал и может перейти в другое состояние.</span></p>
+<p class=rvps5><span     class=rvts6>Состояния образуют множество </span><span class="rvts8">Q = {q</span><span class="rvts12">1</span><span class="rvts8">, q</span><span class="rvts12">2</span><span class="rvts8">, … , q<span class="rvts12">y</span></span><span     class=rvts6>}. Тогда алгоритм функционирования устройства можно представить совокупностью строк вида</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p class=rvps5><center><span class="rvts8">(a</span><span class="rvts12">i</span><span class="rvts8">, q</span><span class="rvts12">j</span><span class="rvts8">) → (q</span><span class="rvts12">s</span><span class="rvts8">, b</span><span class="rvts12">t</span><span class="rvts8">)</span><span     class=rvts6>,</span></center></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p><span     class=rvts6>где</span><span class="rvts8"> a</span><span class="rvts12">i</span><span class="rvts8"> ∈ А, b</span><span class="rvts12">t</span><span class="rvts8"> ∈ В, q</span><span class="rvts12">j</span><span class="rvts8">, q</span><span class="rvts12">s</span><span class="rvts8"> ∈ Q</span><span     class=rvts6>. Устройство, поведение которого можно задать в таком виде, носит название «</span><span class="rvts8">автомат с памятью</span><span     class=rvts6>» или «</span><span class="rvts8">последовательностный автомат</span><span     class=rvts6>». Последний термин заключает в себе смысл отображения одной последовательности в другую.</span></p>
+<p class=rvps5><span     class=rvts6>Соответствие <span class="rvts8">(a</span><span class="rvts12">i</span><span class="rvts8">, q</span><span class="rvts12">j</span><span class="rvts8">) → (q</span><span class="rvts12">s</span><span class="rvts8">, b</span><span class="rvts12">t</span><span class="rvts8">)</span> можно задать таблицей, подобной табл. 22.1, где фактически представлены две функции, определенные на множестве A </span><span class="rvps7">x</span><span     class=rvts6> Q. Областью значений одной функции является множество Q, другой функции – множество В</span>.</p>
+<p class=rvps5><span     class=rvts6>Моделью описанного устройства является </span><span class="rvts8">конечный автомат</span><span     class=rvts6>, представляющий собой совокупность следующих объектов:</span>.</p>
+<p class=rvps5><span     class=rvts6><span class="rvts8">А = {a</span><span class="rvts12">1</span><span class="rvts8">, a</span><span class="rvts12">2</span><span class="rvts8">, … , a<span class="rvts9"><span class="rvts12">α</span></span>}</span> – множество входных символов, или входной алфавит;</span></p>
+<p class=rvps5><span     class=rvts6><span class="rvts8">В = {b</span><span class="rvts12">1</span><span class="rvts8">, b</span><span class="rvts12">2</span><span class="rvts8">, … , b</span><span class="rvts12">β</span><span class="rvts8">}</span> – множество выходных символов, или выходной алфавит;</span></p>
+<p class=rvps5><span class="rvts8">Q = {q</span><span class="rvts12">1</span><span class="rvts8">, q</span><span class="rvts12">2</span><span class="rvts8">, … , q</span><span class="rvts12">y</span><span class="rvts8">}</span><span     class=rvts6> – множество состояний, или внутренний алфавит;</span></p>
+<p class=rvps5><span     class=rvts6><span class="rvts9">ψ</span> : A x Q <span class="rvts8">→</span> Q – функция переходов;</span></p>
+<p class=rvps5><span     class=rvts6><span class="rvts9">φ</span> : A x Q <span class="rvts8">→</span> В – функция выходов.</span></p>
+<p class=rvps5><span     class=rvts6>Для конечного автомата используется обозначение (A, B, Q, <span class="rvts9">ψ</span>, <span class="rvts9">φ</span>). Слово «конечный» подчеркивает, что все три множества, входящие в состав данной модели, конечны. В том виде, в каком эта модель здесь представлена, она носит название «</span><span class="rvts8">автомат Мили</span><span     class=rvts6>». Другой разновидностью данной модели является </span><span class="rvts8">автомат Мура</span><span     class=rvts6>, отличающийся от автомата Мили только тем, что функция выходов не зависит от входного символа, т. е. представляет собой отображение <span class="rvts9">φ</span> : Q <span class="rvts8">→</span> В</span>.</p>
+<p class=rvps5><span     class=rvts6>Значением функции <span class="rvts9">ψ</span></span><span class="rvts8">(a, q)</span><span     class=rvts6> является состояние q</span><span class="rvts14">+</span><span     class=rvts6>, в которое переходит автомат из состояния q, если на вход его подан символ </span><span class="rvts8">а</span><span     class=rvts6>. Значением функции <span class="rvts9">φ</span></span><span class="rvts8">(a, q)</span><span     class=rvts6> является выходной символ, выдаваемый автоматом в состоянии q при поступлении на его вход символа </span><span class="rvts8">а</span><span     class=rvts6>, а значением функции <span class="rvts9">φ</span><span class="rvts8">(q)</span> автомата Мура – выходной символ </span><span class="rvts8">b</span><span     class=rvts6>, который выдает автомат, находясь в состоянии </span><span class="rvts8">q</span><span     class=rvts6>. Если значения функций<span class="rvts9">ψ</span><span class="rvts8">(a, q)</span> и <span class="rvts9">φ</span><span class="rvts8">(a, q)</span> определены для любой пары значений аргументов </span><span class="rvts8">а </span><span     class=rvts6>и </span><span class="rvts8">q</span><span     class=rvts6>, а в модели Мура функция <span class="rvts9">φ</span><span class="rvts8">(q)</span> определена для всех значений </span><span class="rvts8">q</span><span     class=rvts6>, то автомат является </span><span class="rvts8">полностью определенным</span><span     class=rvts6>, или </span><span class="rvts8">полным </span><span     class=rvts6>автоматом. Иногда приходится иметь дело с </span><span class="rvts8">не полностью определенным</span><span     class=rvts6>, или </span><span class="rvts8">частичным</span><span     class=rvts6> автоматом, у которого эти функции могут быть определены не везде</span>.</p>
+<p class=rvps5><span     class=rvts6>Конечный автомат является абстрактной математической моделью дискретного устройства. Поведение, описанное данной моделью, может быть по-разному реализовано в дискретном устройстве. При синхронной реализации моменты времени, когда определяется состояние, в которое переходит устройство, а в случае автомата Мили и выходной символ, зафиксированы. Технически это осуществляется введением генератора синхронизирующих сигналов, которые инициируют соответствующие действия. Период следования таких сигналов не должен быть меньше чем время, необходимое для завершения переходных процессов в устройстве. Реализованный таким образом конечный автомат называется </span><span class="rvts8">синхронным автоматом</span><span     class=rvts6>.</span></p>
+<p class=rvps5><span     class=rvts6>При </span><span class="rvts8">асинхронной реализации</span><span     class=rvts6> указанные моменты времени не фиксированы. Они связаны с моментами, в которые происходит изменение входного сигнала. Реализованный таким образом автомат называется </span><span class="rvts8">асинхронным автоматом</span><span     class=rvts6>. Если синхронный автомат различает последовательности разной длины из одинаковых входных символов, т. е. может реагировать на них различными выходными последовательностями, то асинхронный автомат воспринимает последовательность одинаковых входных символов любой длины как один символ. В схеме такого устройства генератор синхронизирующих сигналов отсутствует.</span></p>
+<p class=rvps5><span     class=rvts6>В асинхронном автомате переход из состояния в состояние происходит за некоторый конечный промежуток времени, в течение которого не должен меняться входной сигнал. При действии любого входного сигнала автомат приходит в некоторое устойчивое состояние, из которого он не выходит до конца действия данного сигнала. При этом должно выполняться требование прямого перехода, которое формально выражается следующим образом: если <span class="rvts9">ψ</span><span class="rvts8">(a, q</span></span><span class="rvts12">i</span><span     class=rvts6><span class="rvts8">) = q<span class="rvts12">j</span></span>, то <span class="rvts9">ψ</span></span><span class="rvts8">(a, q</span><span class="rvts12">j</span><span class="rvts8">) = q<span class="rvts12">j</span></span><span     class=rvts6>. Иногда допускается выполнение следующей цепочки переходов: <span class="rvts9">ψ</span><span class="rvts8">(a, q</span></span><span class="rvts12">i</span><span     class=rvts6><span class="rvts8">) = q<span class="rvts12">r</span></span>, <span class="rvts9">ψ</span></span><span class="rvts8">(a, q</span><span class="rvts12">r</span><span class="rvts8">) = q<span class="rvts12">s</span></span><span     class=rvts6>, … , <span class="rvts9">ψ</span></span><span class="rvts8">(a, q</span><span class="rvts12">t</span><span class="rvts8">) = q<span class="rvts12">j</span></span><span     class=rvts6>, <span class="rvts9">ψ</span><span class="rvts8">(a, q</span></span><span class="rvts12">j</span><span     class=rvts6><span class="rvts8">) = q<span class="rvts12">j</span></span>.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p><span    class=rvts7>22.2.   Представления автомата</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Конечный автомат удобно представлять таблицей переходов и таблицей выходов. Строкам этих таблиц соответствуют состояния автомата, столбцам – входные символы. На пересечении строки, соответствующей состоянию q, и столбца, соответствующего входному символу а, в таблице переходов записывается значение </span><span class="rvts9">ψ</span><span class="rvts8">(a, q)</span><span     class=rvts6>, а в таблице выходов – значение </span><span class="rvts9">φ</span><span class="rvts8">(a, q)</span><span     class=rvts6>. Другими словами, в первом случае в клетке таблицы указывается состояние, в которое автомат переходит из состояния q при поступлении на его вход символа </span><span class="rvts8">а</span><span     class=rvts6>, а во втором случае – выходной символ, который при этом выдает автомат. Табл. 22.2 и табл. 22.3 представляют собой пример описанного представления автомата Мили, у которого </span><span class="rvts8">А = {a</span><span class="rvts12">1</span><span class="rvts8">, a</span><span class="rvts12">2</span><span class="rvts8">, a</span><span class="rvts12">3</span><span class="rvts8">, a</span><span class="rvts12">4</span><span class="rvts8">}, В = {b</span><span class="rvts12">1</span><span class="rvts8">, b</span><span class="rvts12">2</span><span class="rvts8">} и Q = {q</span><span class="rvts12">1</span><span class="rvts8">, q</span><span class="rvts12">2</span><span class="rvts8">, q</span><span class="rvts12">3</span><span class="rvts8">}</span><span     class=rvts6>.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img2.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Зная начальное состояние автомата и входную последовательность, нетрудно получить по этим таблицам соответствующую последовательность выходных символов. Приведем пример такого соответствия для автомата, заданного табл. 22.2 и 22.3, на вход которого поступила последовательность символов </span><span class="rvts8">а</span><span class="rvts12">1</span><span class="rvts8">, а</span><span class="rvts12">2</span><span class="rvts8">, а</span><span class="rvts12">2</span><span class="rvts8">, а</span><span class="rvts12">1</span><span class="rvts8">, а</span><span class="rvts12">3</span><span class="rvts8">, а</span><span class="rvts12">4</span><span class="rvts8">, а</span><span class="rvts12">1</span><span class="rvts8">, а<span class="rvts12">4</span></span><span     class=rvts6> при начальном состоянии </span><span class="rvts8">q<span class="rvts12">1</span></span><span     class=rvts6>. Покажем также состояния, которые проходит автомат:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img3.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Автомат Мура представляется одной таблицей переходов, к которой добавлен один столбец со значениями функции выходов (табл. 22.4). </span></p>
+<p      class=rvps5><span class="rvts6">Можно свести таблицу переходов и таблицу выходов автомата Мили в одну таблицу, которую называют </span><span class="rvts8">таблицей переходов и выходов</span><span class="rvts6">. Такая таблица для автомата, заданного в виде табл. 22.2 и табл. 22.3, имеет вид табл. 22.5</span>
+</p>
+<p     class=rvps5><span     class=rvts6>Более наглядным при небольшом числе состояний является представление автомата в виде </span><span class="rvts8">графа поведения автомата</span><span     class=rvts6>, который представляет собой ориентированный граф. Его вершины соответствуют состояниям автомата, а дуги – переходам между состояниями. При этом дуга помечается всеми входными символами, которые вызывают соответствующий переход, и выходными символами, сопровождающими данный переход (в случае автомата Мили). В случае автомата Мура выходными символами помечаются вершины, соответствующие состояниям, в которых находится автомат при выдаче данных символов. На рис. 22.1 изображены графы переходов автоматов, заданных табл. 22.4 и 22.5</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img4.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span>
+<center><img src ="lk22/img5.jpg"></center>
+<p     class=rvps12><span     class=rvts6><center>
+Рис. 22.1. Примеры графов поведения: а) автомата Мура; б) автомата Мили.
+</center></span></p> 
+
+<p class=rvps7><span class=rvts6><br></span></p>
+<p class=rvps5><span     class=rvts6>Еще одним способом представления автомата является </span><span class="rvts8">матрица поведения</span><span     class=rvts6>, представляющая собой квадратную матрицу, строки и столбцы которой помечаются состояниями автомата. В случае автомата Мура на пересечении строки </span><span class="rvts8">q<span class="rvts12">i</span></span><span     class=rvts6> и столбца </span><span class="rvts8">q<span class="rvts12">j</span></span><span     class=rvts6> матрицы поведения записываются входные символы, переводящие автомат из состояния <span class="rvts8">q<span class="rvts12">i</span></span> в состояние <span class="rvts8">q<span class="rvts12">j</span></span>, а строки помечаются также и выходными символами. В случае автомата Мили элементы матрицы поведения, кроме входных символов, вызывающих соответствующие переходы, содержат выходные символы, которые сопровождают эти переходы. Если из состояния <span class="rvts8">q<span class="rvts12">i</span></span> нет перехода в состояние <span class="rvts8">q<span class="rvts12">j</span></span>, то на пересечении строки <span class="rvts8">q<span class="rvts12">i</span></span> и столбца <span class="rvts8">q<span class="rvts12">j</span></span> ставится прочерк. Для рассмотренных автоматов ниже представлены матрицы поведения, причем первая из них – матрица поведения автомата Мура, вторая – матрица поведения автомата Мили.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img6.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p><span    class=rvts7>22.3.   Связь между моделями Мили и Мура</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Всякое отображение входных последовательностей в выходные может быть реализовано как с помощью модели Мили, так и с помощью модели Мура. Определим преобразование, переводящее любой автомат Мили в эквивалентный ему автомат Мура, а также преобразование, переводящее любой автомат Мура в эквивалентный ему автомат Мили.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть задан автомат Мура М = (A, B, Q, </span><span class="rvts9">ψ</span><span     class=rvts6>, </span><span class="rvts9">φ</span><span     class=rvts6>) и требуется получить эквивалентный ему автомат Мили М</span><span class="rvts14">*</span><span     class=rvts6> = (A<span class="rvts14">*</span>, B<span class="rvts14">*</span>, Q<span class="rvts14">*</span>, </span><span class="rvts9">ψ</span><span     class=rvts6><span class="rvts14">*</span>, </span><span class="rvts9">φ</span><span     class=rvts6><span class="rvts14">*</span>).</span></p>
+<p      class=rvps5><span     class=rvts6>Очевидно, А</span><span class="rvts14">*</span><span     class=rvts6> = А и В</span><span class="rvts14">*</span><span     class=rvts6> = В. Положим Q</span><span class="rvts14">*</span><span     class=rvts6> = Q и </span><span class="rvts9">ψ</span><span class="rvts14">*</span><span     class=rvts6> = </span><span class="rvts9">ψ</span><span     class=rvts6>, а </span><span class="rvts9">φ</span><span     class=rvts6><span class="rvts14">*</span> определим следующим образом. Пусть </span><span class="rvts9">ψ</span><span     class=rvts6>(a, q) = q' и </span><span class="rvts9">φ</span><span     class=rvts6>(q') = b, где q, q' ∈ Q, a ∈ А и b ∈ В. Это означает, что автомат, будучи в состоянии </span><span class="rvts8">q</span><span     class=rvts6>, отвечает на входной символ а выходным символом b, который выдается в следующий момент времени, когда автомат окажется в состоянии q'. Следовательно, можно считать, что </span><span class="rvts9">φ</span><span class="rvts14">*</span><span class="rvts8">(а, q)</span><span     class=rvts6> = b. Автомат Мура и эквивалентный ему автомат Мили представлены в табл. 22.6 и 22.7 соответственно. </span></p>
+<p      class=rvps5><span class="rvts6">Пусть теперь задан автомат Мили М = (A, B, Q, ψ, φ) и требуется получить эквивалентный ему автомат Мура М* = (A*, B*, Q*, ψ*, φ*). Как и в предыдущем случае, имеем А* = А и В* = В. Определим Q* следующим образом. Рассмотрим все такие пары вида (q, b), где q ∈ Q, b ∈ B, что для каждой (q, b) имеется такая пара (a, q’), что </span><span class="rvts9">ψ</span><span class="rvts6">(a, q’) = q и </span><span class="rvts9">φ</span><span class="rvts6">(a, q’) = b (a ∈ A, q’ ∈ Q). Каждой паре (q, b) поставим в соответствие состояние q* ∈ Q* и определим функции </span><span class="rvts9">ψ</span><span class="rvts6">* и </span><span class="rvts9">φ</span><span class="rvts6">* следующим образом:</span></p>
+<p      class=rvps5>&nbsp; </p>
+<p      class=rvps5><center><span class="rvts9">ψ</span><span class="rvts6">*(a, q*) = <span class="rvts9">ψ</span>*(a, (q, b)) = (<span class="rvts9">ψ</span>(a, q), <span class="rvts9">φ</span>(a, q));  <span class="rvts9">φ</span>*(q*) = <span class="rvts9">φ</span>*((q, b)) = b.</span></center>
+</p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img7.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p     class=rvps5><span     class=rvts6>Если автомат имеет состояние, в которое он никогда не переходит (это может быть начальное состояние), то всякому такому состоянию ставится в соответствие состояние автомата Мура, переходы из него определяются аналогично, а выходной символ при нем не определен.</span></p>
+<p     class=rvps5><span     class=rvts6>Если автомат является частичным, то достаточно ввести новое состояние, соответствующее неопределенному состоянию, и новый выходной символ, соответствующий неопределенному выходному символу, и после описанных преобразований вернуться к неопределенному состоянию и неопределенному выходному символу. Переходы из такого состояния не определены. Автомат Мили и эквивалентный ему автомат Мура представлены в табл. 22.8 и 22.9 соответственно.</span></p>
+
+
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img8.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p><span    class=rvts7>22.4.   Автомат с абстрактным состоянием. Булев автомат</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Широко распространенным типом автомата является модель, описываемая одной многозначной внутренней переменной q и многими входными и выходными булевыми переменными </span><span class="rvts8">х</span><span class="rvts12">1</span><span class="rvts8">, х</span><span class="rvts12">2</span><span class="rvts8">, … , х<span class="rvts12">п</span></span><span     class=rvts6> и </span><span class="rvts8">у</span><span class="rvts12">1</span><span class="rvts8">, у</span><span class="rvts12">2</span><span class="rvts8">, … , у<span class="rvts12">т</span></span><span     class=rvts6>. Поведение такого автомата задается системой уравнений.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img10.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p><span     class=rvts6>более компактно представляемой в векторной форме</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img11.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+
+<p      class=rvps5><span     class=rvts6>Функции ψ и φ отличаются от введенных ранее ψ и φ только тем, что многозначные входная и выходная переменные оказались замененными на соответствующие булевы векторы, но внутренняя переменная осталась многозначной. </span></p>
+<p      class=rvps5><span class="rvts6">Описанная модель называется </span><span class="rvts8">автоматом с абстрактным состоянием</span><span class="rvts6">. Ею удобно пользоваться на начальных этапах логического проектирования дискретных устройств, когда вход и выход устройства описываются как некоторые множества булевых переменных, имеющих конкретную техническую интерпретацию, в то время как множество внутренних переменных представляется пока в простейшей форме, в виде одной многозначной переменной </span><span class="rvts8">q</span><span class="rvts6">. Число значений переменной </span><span class="rvts8">q</span><span class="rvts6"> полагается равным числу различных состояний автомата, при котором он может реализовать заданное функциональное отношение между входом и выходом.</span></p>
+<p      class=rvps5><span class="rvts6">Если заменить внутреннюю переменную </span><span class="rvts8">q</span><span class="rvts6"> на соответствующий булев вектор</span><span class="rvts8"> z = (z</span><span class="rvts12">1</span><span class="rvts8">, z</span><span class="rvts12">2</span><span class="rvts8">, … , z</span><span class="rvts12">k</span><span class="rvts8">)</span><span class="rvts6">, то получится система уравнений, в которой все переменные и все функции оказываются булевыми:</span></p>
+<p      class=rvps5><center></center>
+</p>
+<center><img src ="lk22/img12.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p     class=rvps5><span     class=rvts6>Эта модель называется </span><span class="rvts8">булевым автоматом</span><span     class=rvts6>. Ее также можно представить в компактной векторной форме:</span></p>
+<p      class=rvps5><center></center>
+</p>
+<center><img src ="lk22/img13.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p
+
+><p     class=rvps5><span     class=rvts6>Булев автомат в определенном смысле ближе к реальным дискретным устройствам, поскольку его переменные непосредственно реализуются физическими переменными устройства, в частности, на типичных для современной техники элементах с двумя устойчивыми состояниями. Векторы х, у и z показывают структуру абстрактных символов а и b и состояния q. Приведенная выше система функций соответствует структуре, изображенной на рис. 22.2, где КС – комбинационная схема, реализующая приведенную выше систему, а П – блок памяти, осуществляющий задержку на период между соседними моментами времени.</span></p>
+<p     class=rvps5><span     class=rvts6>Переменная </span><span class="rvts8">z<span class="rvts12">i</span></span><span     class=rvts6> представляет состояние </span><span class="rvts8">i</span><span     class=rvts6>-го двоичного элемента памяти, а выражение</span></p>
+
+
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img14.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p><span     class=rvts6>надо понимать так, что состояние i-го элемента памяти определяется значениями входных символов и состояниями элементов памяти в предыдущий момент времени.</span></p>
+
+
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk22/img9.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p class=rvps7>&nbsp;</p>
+
+<p class=rvps15>&nbsp;</p> 
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body></html>

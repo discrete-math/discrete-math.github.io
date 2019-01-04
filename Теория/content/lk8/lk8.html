@@ -1,0 +1,935 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Обходы графа</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts10
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts14
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts15
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts16
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps9
+{
+ text-align: justify;
+ text-indent: 38px;
+ margin: 8px 0px 8px 0px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps23
+{
+ text-indent: 38px;
+}
+.rvps24
+{
+ text-indent: 216px;
+}
+.rvps25
+{
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-indent: 38px;
+}
+.rvps32
+{
+ text-indent: 38px;
+}
+.rvps33
+{
+ text-indent: 38px;
+}
+.rvps34
+{
+ text-indent: 38px;
+}
+.rvps35
+{
+ text-indent: 38px;
+}
+.rvps36
+{
+ text-indent: 38px;
+}
+.rvps37
+{
+ text-indent: 38px;
+}
+.rvps38
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps39
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps40
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps41
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps42
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps43
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps44
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps45
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps46
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps47
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps48
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps49
+{
+ text-indent: 38px;
+}
+.rvps50
+{
+ text-indent: 106px;
+ margin: 0px 0px 0px 38px;
+}
+.rvps51
+{
+ text-indent: 106px;
+ margin: 0px 0px 0px 38px;
+}
+.rvps52
+{
+ text-indent: 106px;
+ margin: 0px 0px 0px 38px;
+}
+.rvps53
+{
+ text-indent: 106px;
+ margin: 0px 0px 0px 83px;
+}
+.rvps54
+{
+ text-indent: 106px;
+ margin: 0px 0px 0px 38px;
+}
+.rvps55
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps56
+{
+ text-indent: 38px;
+}
+.rvps57
+{
+ text-indent: 38px;
+}
+.rvps58
+{
+ text-indent: 38px;
+}
+.rvps59
+{
+ text-indent: 38px;
+}
+.rvps60
+{
+ text-indent: 9px;
+ margin: 0px 0px 0px 85px;
+}
+.rvps61
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 189px;
+}
+.rvps62
+{
+ text-indent: 38px;
+}
+.rvps63
+{
+ text-indent: 38px;
+}
+.rvps64
+{
+ text-indent: 38px;
+ margin: 0px 0px 0px 76px;
+}
+.rvps65
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 284px;
+}
+.rvps66
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 8</span></p>
+<p><span class=rvts7>Обходы графа </span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p    class=rvps3><span    class=rvts7>8.1.    Эйлеровы    цепи   и
+циклы</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p   class=rvps5><span   class=rvts6>Началом   теории  графов
+считается  работа Л. Эйлера, опубликованная
+в    1736    г.,    в    которой    он    решил    </span><span
+class=rvts8>задачу             о             кёнигсбергских
+мостах</span><span  class=rvts6>.  На  протекающей через
+город  Кёнигсберг  реке Прегель расположены
+два  острова,  которые  были  соединены семью
+мостами   между   собой   и   с   берегами   реки
+(рис. 8.1, </span><span      class=rvts8>а</span><span      class=rvts6>).
+Эйлер  задался  целью  определить,  можно  ли,
+гуляя   по   городу,  обойти  все  семь  мостов,
+пройдя   каждый  из  них  ровно  один  раз.  Для
+этого  он  сформулировал следующую задачу: в
+заданном   связном   графе  (или  мультиграфе)
+выделить     цикл,     содержащий     все    ребра
+данного  графа.  В  исходной задаче острова и
+берега    соответствуют   вершинам   графа,   а
+проходы   по   мостам   представлены  ребрами.
+Соответствующий   мультиграф   изображен  на
+рис. 8.1, </span><span  class=rvts8>б</span><span class=rvts6>. Эйлер
+показал,  что в данном случае задача решения
+не имеет.</span></p> 
+<p class=rvps6><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=370   height=122  alt=""  style="padding  :  1px;"
+src="lk8/img1.jpg"></p> 
+<p  class=rvps1><span  class=rvts9>а)</span><span  class=rvts9>  &nbsp;  &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts9> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts9>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts9> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts9> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts9>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts9> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts9> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts9>  &nbsp; &nbsp; &nbsp; &nbsp;</span><span class=rvts9> &nbsp; &nbsp;
+&nbsp;  &nbsp;</span><span  class=rvts9> &nbsp; &nbsp; &nbsp; &nbsp;</span><span
+class=rvts9>б)</span></p> 
+<p class=rvps1><span class=rvts9><br></span></p>
+<p   class=rvps1><span   class=rvts10>Рис. 8.1.  Задача  Эйлера:
+</span><span       class=rvts9>а)</span><span       class=rvts10>      план
+кёнигсбергских мостов;</span></p> 
+<p       class=rvps1><span       class=rvts9>б)</span><span       class=rvts10>
+соответствующий мультиграф</span></p> 
+<p class=rvps7><span class=rvts6><br></span></p>
+<p    class=rvps8><span    class=rvts6>Цикл,   содержащий   все
+ребра      графа,     носит     название     </span><span
+class=rvts8>эйлерова   цикла</span><span   class=rvts6>.  Цепь,
+содержащая    все   ребра   графа,   называется
+</span><span        class=rvts8>эйлеровой        цепью</span><span
+class=rvts6>.</span></p> 
+<p         class=rvps9><span        class=rvts6>Т е о р е м а&nbsp;
+Э й л е р а.</span><span           class=rvts8>          </span><span
+class=rvts6>Связный      неориентированный      граф
+имеет   эйлеров  цикл  тогда  и  только  тогда,
+когда   степени   всех   его   вершин   четны.  В
+связном           неориентированном           графе
+существует   эйлерова   цепь  тогда  и  только
+тогда,  когда он имеет не более двух вершин с
+нечетной степенью.</span></p> 
+<p   class=rvps10><span   class=rvts6>Граф,   имеющий  эйлеров
+цикл,   называется   </span><span   class=rvts8>эйлеровым
+графом</span><span class=rvts6>. </span></p> 
+<p  class=rvps11><span class=rvts6>Эйлеров цикл можно найти
+в  эйлеровом  графе </span><span class=rvts8>алгоритмом
+Флёри</span><span  class=rvts6>,  который  заключается в
+построении       последовательности      ребер,
+определяющей  искомый  цикл. При этом должны
+выполняться следующие правила.</span></p> 
+<p    class=rvps12><span   class=rvts6>1.   Идем   из   некоторой
+вершины     по     ребру     и     удаляем    каждое
+пройденное  ребро,  помещая его в получаемую
+последовательность.      Начальная     вершина
+выбирается произвольно.</span></p> 
+<p     class=rvps13><span     class=rvts6>2.     Отправляясь     из
+очередной    вершины,    никогда   не   идем   по
+ребру,     удаление    которого    делает    граф
+несвязным.</span></p> 
+<p    class=rvps14><span   class=rvts6>Если   граф   имеет   две
+вершины  с  нечетной степенью, то в нем можно
+найти  эйлерову  цепь,  начиная поиск с одной
+из   этих   вершин,  и  заканчивая  другой.  При
+этом  следует  выполнять те же правила, что и
+при поиске эйлерова цикла.</span></p> 
+<p      class=rvps15><span     class=rvts6>Обобщением     задачи
+Эйлера        является       известная       </span><span
+class=rvts8>задача  китайского  почтальона</span><span
+class=rvts6>,  которая имеет приложение, например,
+при     проверке     электрических     сетей     и
+ставится  следующим  образом.  Каждому ребру
+</span><span  class=rvts8>e</span><span  class=rvts11>i</span><span class=rvts6>
+графа       </span><span       class=rvts8>G</span><span       class=rvts6>
+приписывается    положительный   вес   </span><span
+class=rvts8>с</span><span  class=rvts6>(</span><span  class=rvts8>e</span><span
+class=rvts11>i</span><span         class=rvts6>)         (расстояние).
+Требуется  найти  маршрут,  проходящий через
+каждое   ребро   графа   </span><span  class=rvts8>G</span><span
+class=rvts6>  по крайней мере один раз и такой, что
+сумма       величин      </span><span      class=rvts8>n</span><span
+class=rvts11>i</span><span  class=rvts8>c</span><span  class=rvts6>(</span><span
+class=rvts8>e</span><span   class=rvts11>i</span><span   class=rvts6>),   где
+</span><span  class=rvts8>n</span><span  class=rvts11>i</span><span class=rvts6>
+</span><span      class=rvts12>–</span><span      class=rvts6>      число
+прохождений    ребра   </span><span   class=rvts8>е</span><span
+class=rvts11>i</span><span    class=rvts6>,    минимальна.    Если
+граф   является   эйлеровым,   то  любой  такой
+маршрут  представляет  собой эйлеров цикл, а
+данная  сумма  одинакова  для всех эйлеровых
+циклов    и    является    суммой    весов    всех
+ребер.</span></p> 
+<p class=rvps16><span class=rvts6><br></span></p>
+<p><span      class=rvts7>8.2.      Гамильтоновы     цепи     и
+циклы</span></p> 
+<p class=rvps17><span class=rvts6><br></span></p>
+<p  class=rvps18><span  class=rvts6>Цикл  называется  </span><span
+class=rvts8>гамильтоновым</span><span  class=rvts6>,  если он
+проходит  каждую  вершину  графа  ровно  один
+раз.   Другими   словами,   это   остовный  цикл
+графа.          </span><span         class=rvts8>Гамильтоновой
+цепью</span><span      class=rvts6>      называется     цепь,
+проходящая  каждую вершину графа ровно один
+раз.    Граф,   содержащий   гамильтонов   цикл,
+называется     </span><span     class=rvts8>гамильтоновым
+графом</span><span class=rvts6>.</span></p> 
+<p  class=rvps19><span  class=rvts6>На  первый взгляд задача
+нахождения    гамильтонова    цикла   в   графе
+сходна    с    задачей    нахождения    эйлерова
+цикла.     На    самом    же    деле    эти    задачи
+принципиально  различны.  Для распознавания
+гамильтоновости      графа     не     существует
+такого       простого      способа,      как      для
+распознавания    эйлеровости    графа.   Поиск
+гамильтонова  цикла  или гамильтоновой цепи
+в   графе  значительно  более  трудоемок,  чем
+поиск   эйлерова  цикла  или  эйлеровой  цепи.
+</span></p> 
+<p    class=rvps20><span    class=rvts6>Рассмотрим    один    из
+способов  построения  гамильтонова  цикла  в
+графе.</span></p> 
+<p  class=rvps21><span  class=rvts6>Пусть вершины заданного
+графа                 </span><span                class=rvts8>G</span><span
+class=rvts6> = (</span><span class=rvts8>V</span><span
+class=rvts6>, </span><span        class=rvts8>E</span><span       class=rvts6>)
+пронумерованы     в    произвольном    порядке:
+</span><span         class=rvts8>v</span><span        class=rvts13>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>2</span><span class=rvts6>, … , </span><span
+class=rvts8>v</span><span    class=rvts11>n</span><span   class=rvts6>.   Для
+каждой      вершины      </span><span     class=rvts8>v</span><span
+class=rvts11>i</span><span    class=rvts6>   сформируем   список
+смежных  с  ней  вершин, расположив вершины в
+списке     в    произвольном    порядке.    Будем
+представлять             цикл             в            виде
+последовательности          вершин          </span><span
+class=rvts8>С</span><span  class=rvts6>. В качестве отправной
+возьмем  первую в порядке нумерации вершину
+</span><span  class=rvts8>v</span><span  class=rvts13>1</span><span class=rvts6>
+и  объявим  ее  первым  элементом  получаемой
+последовательности   </span><span   class=rvts8>С</span><span
+class=rvts6>.    К    вершине   </span><span   class=rvts8>v</span><span
+class=rvts13>1</span><span    class=rvts6>    припишем    вершину
+</span><span  class=rvts8>v</span><span class=rvts11>j</span><span class=rvts6>,
+первую     в    списке    </span><span    class=rvts8>v</span><span
+class=rvts13>1</span><span   class=rvts6>,   в   результате  чего
+получим              </span><span              class=rvts8>С</span><span
+class=rvts6> = (</span><span class=rvts8>v</span><span
+class=rvts13>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts11>j</span><span       class=rvts6>).
+Обратимся   к   списку   </span><span  class=rvts8>v</span><span
+class=rvts11>j</span><span    class=rvts6>,    выберем    из   него
+первую      вершину      </span><span     class=rvts8>v</span><span
+class=rvts11>k</span><span  class=rvts6>,  не  присутствующую в
+последовательности   </span><span   class=rvts8>С</span><span
+class=rvts6>,     и,     присоединив     ее     к    </span><span
+class=rvts8>С</span><span     class=rvts6>,     получим     </span><span
+class=rvts8>С</span><span class=rvts6> = (</span><span
+class=rvts8>v</span><span class=rvts13>1,</span><span
+class=rvts6> </span><span  class=rvts8>v</span><span class=rvts11>j</span><span
+class=rvts13>,</span><span  class=rvts6> </span><span class=rvts8>v</span><span
+class=rvts11>k</span><span   class=rvts6>).   Затем  обратимся  к
+списку  </span><span  class=rvts8>v</span><span class=rvts11>k</span><span
+class=rvts6>,  проделаем  то  же  самое и т. д. Пусть
+получена        последовательность        </span><span
+class=rvts8>С</span><span class=rvts6> = (</span><span
+class=rvts8>v</span><span class=rvts13>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>j</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts11>k</span><span
+class=rvts6>, … , </span><span class=rvts8>v</span><span
+class=rvts11>q</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span    class=rvts11>r</span><span    class=rvts6>),   не
+содержащая      всех      вершин      из      </span><span
+class=rvts8>V</span><span   class=rvts6>,   но  в  списке  </span><span
+class=rvts8>v</span><span    class=rvts11>r</span><span    class=rvts6>   нет
+вершин,       не      содержащихся      в      </span><span
+class=rvts8>С</span><span    class=rvts6>.   Тогда   делаем   шаг
+назад    и    в   списке   </span><span   class=rvts8>v</span><span
+class=rvts11>q</span><span     class=rvts6>     выбираем    вместо
+вершины               </span><span              class=rvts8>v</span><span
+class=rvts11>r</span><span  class=rvts6>  следующую по порядку
+вершину.   Если   и   там   такой   вершины   нет,
+делаем  еще  шаг  назад и обращаемся к списку
+предшествующей  вершины и т. д. В результате
+либо  получаем  искомую последовательность,
+когда  все  вершины  из  </span><span class=rvts8>V</span><span
+class=rvts6>     вошли     в    </span><span    class=rvts8>С</span><span
+class=rvts6>,  либо,  возвращаясь  к  списку  </span><span
+class=rvts8>v</span><span        class=rvts13>1</span><span        class=rvts6>,
+обнаруживаем,        что        он       оказывается
+исчерпанным.   В   последнем   случае  граф  не
+имеет гамильтонова цикла.</span></p> 
+<p        class=rvps22><span        class=rvts6>Продемонстрируем
+описанный     процесс     на     примере    графа,
+изображенного  на  рис. 8.2. Данный граф можно
+задать  перечислением списков окрестностей
+вершин:</span></p> 
+<p class=rvps23><span class=rvts6><br></span></p>
+<p   class=rvps24><span   class=rvts8>v</span><span   class=rvts13>1</span><span
+class=rvts6>:  </span><span class=rvts8>v</span><span class=rvts13>2</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>4</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>5</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>6</span><span
+class=rvts6>;</span></p> 
+<p   class=rvps24><span   class=rvts8>v</span><span   class=rvts13>2</span><span
+class=rvts6>:  </span><span class=rvts8>v</span><span class=rvts13>1</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>3</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>4</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>5</span><span
+class=rvts6>;</span></p> 
+<p   class=rvps24><span   class=rvts8>v</span><span   class=rvts13>3</span><span
+class=rvts6>:  </span><span class=rvts8>v</span><span class=rvts13>2</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>4</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>5</span><span
+class=rvts6>;</span></p> 
+<p   class=rvps24><span   class=rvts8>v</span><span   class=rvts13>4</span><span
+class=rvts6>:  </span><span class=rvts8>v</span><span class=rvts13>1</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>2</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>3</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>6</span><span
+class=rvts6>;</span></p> 
+<p   class=rvps24><span   class=rvts8>v</span><span   class=rvts13>5</span><span
+class=rvts6>:  </span><span class=rvts8>v</span><span class=rvts13>1</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>2</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>3</span><span
+class=rvts6>;</span></p> 
+<p   class=rvps24><span   class=rvts8>v</span><span   class=rvts13>6</span><span
+class=rvts6>:  </span><span class=rvts8>v</span><span class=rvts13>1</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts13>4</span><span
+class=rvts6>.</span></p> 
+<p class=rvps25><span class=rvts6><br></span></p>
+<p      class=rvps26><span      class=rvts6>Сначала      получаем
+последовательность   </span><span   class=rvts8>С</span><span
+class=rvts6> = (</span><span class=rvts8>v</span><span
+class=rvts13>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts13>2</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>3</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts13>4</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>6</span><span   class=rvts6>)   и   в  списке  </span><span
+class=rvts8>v</span><span    class=rvts13>6</span><span    class=rvts6>   нет
+вершин,      не     присутствующих     в     данной
+последовательности.   Шаг  назад  приводит  к
+последовательности   </span><span   class=rvts8>С</span><span
+class=rvts6> = (</span><span class=rvts8>v</span><span
+class=rvts13>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts13>2</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>3</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span     class=rvts13>4</span><span    class=rvts6>).    В
+списке      вершины      </span><span     class=rvts8>v</span><span
+class=rvts13>4</span><span  class=rvts6>  также  нет  вершин, не
+присутствующих       в       последовательности
+</span><span  class=rvts8>С</span><span  class=rvts6>. Возвращаемся
+к    </span><span   class=rvts8>С</span><span   class=rvts6> = (</span><span
+class=rvts8>v</span><span class=rvts13>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>2</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span     class=rvts13>3</span><span     class=rvts6>)    и
+получаем        последовательность        </span><span
+class=rvts8>С</span><span class=rvts6> = (</span><span
+class=rvts8>v</span><span class=rvts13>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>2</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts13>3</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>5</span><span     class=rvts6>).     Затем    получаем
+последовательности  с тупиковыми вершинами
+</span><span      class=rvts8>С</span><span      class=rvts6> = (</span><span
+class=rvts8>v</span><span class=rvts13>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>2</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts13>4</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>3</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts13>5</span><span       class=rvts6>),
+</span><span      class=rvts8>С</span><span      class=rvts6> = (</span><span
+class=rvts8>v</span><span class=rvts13>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>2</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts13>4</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>6</span><span        class=rvts6>)        и,       наконец,
+последовательность   </span><span   class=rvts8>С</span><span
+class=rvts6> = (</span><span class=rvts8>v</span><span
+class=rvts13>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts13>2</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>5</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts13>3</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>4</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts13>6</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts13>1</span><span             class=rvts6>),             которая
+представляет  искомый  гамильтонов  цикл. На
+рис. 8.2     выделены     ребра,     принадлежащие
+полученному   гамильтонову  циклу.  Таким  же
+способом    можно    построить    гамильтонову
+цепь.</span></p> 
+<center><img src="lk8/img8.2.jpg"></center>
+<p       class=rvps1><span      class=rvts10>Рис. 8.2.      Граф      с
+гамильтоновым циклом</span></p> 
+<p class=rvps38><span class=rvts6><br></span></p>
+<p class=rvps39><span class=rvts6><br></span></p>
+<p      class=rvps40><span     class=rvts6>Обобщением     задачи
+поиска      гамильтонова      цикла      является
+известная             </span><span             class=rvts8>задача
+коммивояжера</span><span         class=rvts6>,        которая
+состоит   в   том,   что   в   заданном   графе   с
+взвешенными   ребрами   надо   найти  маршрут,
+проходящий  через  каждую  вершину  не  менее
+одного    раза    и    обладающий    минимальной
+суммой    весов    ребер    среди    всех    таких
+маршрутов.</span></p> 
+<p class=rvps41><span class=rvts6><br></span></p>
+<p><span class=rvts7><br></span></p>
+<p><span       class=rvts7>8.3.       Кратчайшие      пути      в
+графе</span></p> 
+<p class=rvps42><span class=rvts6><br></span></p>
+<p    class=rvps43><span    class=rvts6>Задан    связный    граф
+</span><span       class=rvts8>G</span><span      class=rvts6> = (</span><span
+class=rvts8>V</span><span  class=rvts6>, </span><span class=rvts8>E</span><span
+class=rvts6>)          с         ребрами,         взвешенными
+действительными  положительными  числами. В
+данном       случае       вес       ребра       </span><span
+class=rvts8>e</span><span class=rvts6> = </span><span
+class=rvts8>v</span><span  class=rvts11>i</span><span  class=rvts8>v</span><span
+class=rvts11>j</span><span   class=rvts6>   будем   считать   его
+длиной  </span><span  class=rvts8>l</span><span  class=rvts6>(</span><span
+class=rvts8>e</span><span class=rvts6>) = </span><span
+class=rvts8>l</span><span   class=rvts6>(</span><span  class=rvts8>v</span><span
+class=rvts11>i</span><span  class=rvts8>v</span><span class=rvts11>j</span><span
+class=rvts6>).     Требуется     найти    цепь    </span><span
+class=rvts8>с</span><span   class=rvts6>   минимальной   длины,
+соединяющую  две  заданные  вершины  в  графе
+</span><span   class=rvts8>G</span><span   class=rvts6>,   т. е.   такую
+цепь,  для которой величина </span><img width=45 height=39
+alt=""    style="padding    :    1px;"   src="lk8/img2.jpg"><span   class=rvts6>
+минимальна.</span></p> 
+<p  class=rvps44><span  class=rvts6>Для  решения этой задачи
+можно  применить  </span><span  class=rvts8>алгоритм&nbsp;
+Форда</span><span  class=rvts6>,  который  заключается в
+следующем.</span></p> 
+<p   class=rvps45><span   class=rvts6>Пусть   в   графе  </span><span
+class=rvts8>G</span><span   class=rvts6>   надо   найти  путь  от
+вершины               </span><span              class=rvts8>v</span><span
+class=rvts13>1</span><span    class=rvts6>    к   вершине   </span><span
+class=rvts8>v</span><span  class=rvts11>n</span><span class=rvts6>. Каждой
+вершине               </span><span              class=rvts8>v</span><span
+class=rvts11>i</span><span class=rvts6> </span><span
+class=rvts15>∈</span><span class=rvts6> </span><span
+class=rvts8>V</span><span     class=rvts6>     припишем     индекс
+</span><span        class=rvts16>λ</span><span        class=rvts6>(</span><span
+class=rvts8>v</span><span   class=rvts11>i</span><span   class=rvts6>).   При
+этом       положим      </span><span      class=rvts16>λ</span><span
+class=rvts6>(</span><span  class=rvts8>v</span><span  class=rvts13>1</span><span
+class=rvts6>) </span><span    class=rvts15>=</span><span   class=rvts6> 0   и
+</span><span        class=rvts16>λ</span><span        class=rvts6>(</span><span
+class=rvts8>v</span><span class=rvts11>i</span><span
+class=rvts6>) </span><span class=rvts15>=</span><span
+class=rvts6> + </span><span  class=rvts15>∞</span><span  class=rvts6> для
+</span><span         class=rvts8>i</span><span        class=rvts6> </span><span
+class=rvts15>≠</span><span class=rvts6> 1.</span></p> 
+<p  class=rvps46><span class=rvts6>На каждом шаге алгоритма
+отыскивается   ребро   </span><span   class=rvts8>v</span><span
+class=rvts11>i</span><span  class=rvts8>v</span><span class=rvts11>j</span><span
+class=rvts6>,  для  которого </span><span class=rvts16>λ</span><span
+class=rvts6>(</span><span  class=rvts8>v</span><span  class=rvts11>i</span><span
+class=rvts6>) </span><span class=rvts12>–</span><span
+class=rvts6> </span><span class=rvts16>λ</span><span
+class=rvts6>(</span><span  class=rvts8>v</span><span  class=rvts11>j</span><span
+class=rvts6>) </span><span class=rvts15>&gt;</span><span
+class=rvts6> </span><span  class=rvts8>l</span><span  class=rvts6>(</span><span
+class=rvts8>v</span><span  class=rvts11>i</span><span  class=rvts8>v</span><span
+class=rvts11>j</span><span    class=rvts6>),    и   индекс   </span><span
+class=rvts16>λ</span><span  class=rvts6>(</span><span class=rvts8>v</span><span
+class=rvts11>i</span><span  class=rvts6>) заменяется на </span><span
+class=rvts16>λ′</span><span class=rvts6>(</span><span
+class=rvts8>v</span><span class=rvts11>i</span><span
+class=rvts6>) = </span><span class=rvts16>λ</span><span
+class=rvts6>(</span><span  class=rvts8>v</span><span  class=rvts11>j</span><span
+class=rvts6>) + </span><span class=rvts8>l</span><span
+class=rvts6>(</span><span  class=rvts8>v</span><span  class=rvts11>i</span><span
+class=rvts8>v</span><span        class=rvts11>j</span><span       class=rvts6>).
+Повторение  таких  шагов  продолжается, пока
+находятся   ребра,  для  которых  выполняется
+данное неравенство.</span></p> 
+<p  class=rvps47><span  class=rvts6>В результате выполнения
+данной      процедуры     определяется     длина
+кратчайшего         пути,        равная        </span><span
+class=rvts16>λ</span><span  class=rvts6>(</span><span class=rvts8>v</span><span
+class=rvts11>п</span><span     class=rvts6>).    Сам    путь    надо
+строить,      начиная      с      вершины     </span><span
+class=rvts8>v</span><span     class=rvts11>п</span><span     class=rvts6>    и
+двигаясь      обратно      к     вершине     </span><span
+class=rvts8>v</span><span    class=rvts13>1</span><span   class=rvts6>.   При
+этом    всякий    раз    надо    выбирать    такую
+вершину               </span><span              class=rvts8>v</span><span
+class=rvts11>j</span><span  class=rvts6>  после вершины </span><span
+class=rvts8>v</span><span  class=rvts11>i</span><span  class=rvts6>,  чтобы
+выполнялось              равенство              </span><span
+class=rvts16>λ</span><span  class=rvts6>(</span><span class=rvts8>v</span><span
+class=rvts11>i</span><span class=rvts6>) </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts16>λ</span><span  class=rvts6>(</span><span class=rvts8>v</span><span
+class=rvts11>j</span><span class=rvts6>) = </span><span
+class=rvts8>l</span><span   class=rvts6>(</span><span  class=rvts8>v</span><span
+class=rvts11>i</span><span  class=rvts8>v</span><span class=rvts11>j</span><span
+class=rvts6>).</span></p> 
+<p  class=rvps48><span  class=rvts6>Пусть  в  графе на рис. 8.3
+требуется  найти кратчайший путь из вершины
+</span><span  class=rvts8>v</span><span  class=rvts13>1</span><span class=rvts6>
+к         вершине         </span><span         class=rvts8>v</span><span
+class=rvts13>8</span><span  class=rvts6>.  Возле  каждого ребра
+дана  его  длина. Покажем изменение индексов
+вершин:</span></p> 
+<center><img src ="lk8/img8.3.jpg"></center>
+<p      class=rvps1><span      class=rvts10>Рис. 8.3.      Граф     со
+взвешенными        ребрами       и       выделенным
+кратчайшим путем</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p  class=rvps66><span  class=rvts6>Длина  кратчайшей цепи в
+данном  графе  равна  15.  Двигаясь  от вершины
+</span><span  class=rvts8>v</span><span  class=rvts13>8</span><span class=rvts6>
+к         вершине         </span><span         class=rvts8>v</span><span
+class=rvts13>1</span><span   class=rvts6>,  подходим  сначала  к
+вершине               </span><span              class=rvts8>v</span><span
+class=rvts13>6</span><span     class=rvts6>,     так как     </span><span
+class=rvts16>λ</span><span  class=rvts6>(</span><span class=rvts8>v</span><span
+class=rvts13>8</span><span class=rvts6>) </span><span
+class=rvts12>–</span><span class=rvts6> </span><span
+class=rvts16>λ</span><span  class=rvts6>(</span><span class=rvts8>v</span><span
+class=rvts13>6</span><span class=rvts6>) = </span><span
+class=rvts8>l</span><span   class=rvts6>(</span><span  class=rvts8>v</span><span
+class=rvts13>6</span><span  class=rvts8>v</span><span class=rvts13>8</span><span
+class=rvts6>) = 2.      Следуя     тому     же     правилу,
+проходим     вершину    </span><span    class=rvts8>v</span><span
+class=rvts13>5</span><span    class=rvts6>    и    затем    вершину
+</span><span  class=rvts8>v</span><span class=rvts13>2</span><span class=rvts6>.
+На   рис. 8.3   выделены   ребра,  принадлежащие
+найденному пути.</span></p> 
+<p><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Кодирование состояний синхронного автомата</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts14
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts15
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+}
+
+
+--></style>
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 25</span></p>
+<p><span class=rvts7>Кодирование состояний синхронного автомата </span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p         class=rvps3><span         class=rvts7>25.1.         Задача кодирования состояний</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>В абстрактной модели автомата M = (A, B, Q, ψ, φ) элементами множеств А, В и Q являются абстрактные символы. Как было сказано выше, для реализации заданного поведения в виде логической сети надо перейти от функций φ и ψ к системе булевых функций, т. е. от абстрактной модели автомата надо перейти к структурной модели. При этом переменные а, b и q заменяются векторными переменными:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img1.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Различным значениям многозначных переменных а, b и q должны быть поставлены в соответствие различные значения векторных переменных х, у и z. Векторы х, у и z показывают структуру абстрактных символов </span><span class="rvts8">а</span><span     class=rvts6> и </span><span class="rvts8">b</span><span     class=rvts6> и состояния q. Элементами этой структуры являются соответственно двоичные сигналы и состояния двоичных элементов памяти. Функции φ и ψ преобразуются соответственно в векторные функции φ(x, z) = у и ψ(x, z) = z</span><span class="rvts14">+</span><span     class=rvts6>, а те, в свою очередь, – в систему булевых функций, число которых m + k:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img2.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Числа п, т и k должны удовлетворять соотношениям <span class="rvts8">α</span> ≤ 2</span><span class="rvts14">п</span><span     class=rvts6>, <span class="rvts8">β</span> ≤ 2</span><span class="rvts14">т</span><span     class=rvts6> и </span><span class="rvts8">y</span><span     class=rvts6> ≤ 2</span><span class="rvts14">k</span><span     class=rvts6>, где <span class="rvts8">α</span>, <span class="rvts8">β</span> и <span class="rvts8">y</span> – числа абстрактных входных и выходных символов и состояний соответственно. Минимальные значения этих величин определяются как </span><span class="rvts8">п</span><span     class=rvts6> = |log</span><span class="rvts12">2</span><span     class=rvts6> <span class="rvts8">α</span>|, т =  |log</span><span class="rvts12">2</span><span     class=rvts6> <span class="rvts8">β</span> | и k =  |log</span><span class="rvts12">2</span><span     class=rvts6> y |, где |а| означает минимальное целое число, не меньшее а.</span></p>
+<p      class=rvps5><span     class=rvts6>Векторы, приписываемые различным абстрактным символам и состояниям в случае синхронного автомата, могут быть выбраны произвольно с одним лишь ограничением на число компонент, указанным выше, но если принимать во внимание простоту комбинационной схемы, реализующей заданное поведение, то различные варианты кодирования неравнозначны. Часто на практике используется модель автомата с абстрактным состоянием, где векторы х и у заданы и остается только закодировать многозначную переменную q. В дальнейшем будем считать, что структура входных и выходных сигналов задана, т. е. векторы х и у заданы, и будем рассматривать только кодирование состояний, т. е. замену значений многозначной переменной q значениями вектора z..</span></p>
+<p      class=rvps5><span     class=rvts6>Чтобы показать неравнозначность выбора вариантов кодирования, приведем следующий простой пример из работы [20]. Пусть табл. 25.1 представляет собой таблицу переходов и выходов заданного автомата, а табл. 25.2 – два варианта кодирования его состояний.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img3.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Соответствующие системы булевых функций представлены матрицами U</span><span class="rvts12">1</span><span     class=rvts6>, V</span><span class="rvts12">1</span><span     class=rvts6> для варианта 1 и U</span><span class="rvts12">2</span><span     class=rvts6>, V</span><span class="rvts12">2</span><span     class=rvts6> для варианта 2:.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img4.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>После минимизации данных систем булевых функций получим следующие системы ДНФ в матричном представлении:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img5.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Отсюда ясно видно, что, выбрав вариант 2 для кодов состояний заданного автомата, получим более простую систему ДНФ.</span></p>
+<p      class=rvps5><span     class=rvts6>Можно подсчитать, сколько всего различных и неравнозначных вариантов кодирования существует для конкретного автомата. Пусть </span><span class="rvts8">y</span><span     class=rvts6> – число состояний автомата и k – минимальная длина булева вектора, кодирующего состояние. Тогда число различных вариантов кодирования равно числу размещений 2</span><span class="rvts14">k</span><span     class=rvts6> элементов по </span><span class="rvts8">y</span><span     class=rvts6> позициям, т. е. <img src ="lk25/f1.jpg"> . Если учесть то, что перестановка столбцов дает равнозначные варианты, то получим  <img src ="lk25/f2.jpg">. Можно считать равнозначными варианты, получаемые друг из друга путем инвертирования значений внутренних переменных. Тогда получим   <img src ="lk25/f3.jpg">или  <img src ="lk25/f4.jpg">. Ясно, что перебрать все варианты реально только при небольшом числе состояний автомата. Если же число состояний достаточно велико, то для выбора не самого плохого варианта кодирования необходимо применять более изощренный способ, чем полный перебор.</span></p>
+
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p><span    class=rvts7>25.2.  Метод «желательных соседств»</span></p> 
+<p class=rvps15><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Рассмотрим задачу упрощения только функций состояний памяти при кодировании состояний автомата, хотя при некотором усложнении используемого критерия можно добиваться упрощения и выходных функций.</span></p>
+<p      class=rvps5><span     class=rvts6>Каждой паре состояний q</span><span class="rvts12">i</span><span     class=rvts6>, q</span><span class="rvts12">j</span><span     class=rvts6> автомата с множеством состояний Q = {q</span><span class="rvts12">1</span><span     class=rvts6>, q</span><span class="rvts12">2</span><span     class=rvts6>, … , q</span><span class="rvts12">y</span><span     class=rvts6>} припишем вес w</span><span class="rvts12">ij</span><span     class=rvts6> = w’<span class="rvts12">ij</span> + w’’<span class="rvts12">ij</span>, где w’’<span class="rvts12">ij</span> – число столбцов таблицы переходов, в которых строки q<span class="rvts12">i</span> и q<span class="rvts12">j</span> имеют одинаковые элементы, т. е. число значений переменной </span><span class="rvts8">а</span><span     class=rvts6>, при которых ψ(a, q<span class="rvts12">i</span>) = ψ(a, q<span class="rvts12">j</span>), а w’<span class="rvts12">ij</span> определяется следующим образом. Пусть w</span><span class="rvts12">p</span><span     class=rvts6> – число пар вида &lt;ψ(a</span><span class="rvts12">s</span><span     class=rvts6>, q</span><span class="rvts12">p</span><span     class=rvts6>), ψ(a</span><span class="rvts12">t</span><span     class=rvts6>, q<span class="rvts12">p</span>)&gt;, где входные символы a</span><span class="rvts12">s</span><span     class=rvts6> и a</span><span class="rvts12">t</span><span     class=rvts6> имеют соседние коды, ψ(a<span class="rvts12">s</span>, q<span class="rvts12">p</span>) = q</span><span class="rvts12">i</span><span     class=rvts6> и ψ(a<span class="rvts12">t</span>, q</span><span class="rvts12">p</span><span     class=rvts6>) = q<span class="rvts12">j</span>. Тогда w’<span class="rvts12">ij</span> = <img src ="lk25/f5.jpg"> .</span></p>
+<p      class=rvps5><span     class=rvts6>Желательно, чтобы коды состояний q</span><span class="rvts12">i</span><span     class=rvts6> и q</span><span class="rvts12">j</span><span     class=rvts6> были тем ближе друг к другу, чем больше величина w</span><span class="rvts12">ij</span><span     class=rvts6>. Здесь имеется в виду расстояние в гиперкубе, представляющем пространство кодирующих переменных, между вершинами, соответствующими данным кодам. Для объяснения такого правила приведем следующие соображения..</span></p>
+<p      class=rvps5><span     class=rvts6>Общий вид матриц U и V, задающих систему булевых функций z</span><span class="rvts12">j</span><span class="rvts14">+</span><span     class=rvts6> (j = 1, 2, … , k), представим следующим образом:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img6.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p><span     class=rvts6>где (x</span><span class="rvts12">s1</span><span     class=rvts6>, x</span><span class="rvts12">s2</span><span     class=rvts6>, … , x</span><span class="rvts12">sn</span><span     class=rvts6>) и (x</span><span class="rvts12">t1</span><span     class=rvts6>, x</span><span class="rvts12">t2</span><span     class=rvts6>, … , x</span><span class="rvts12">tn</span><span     class=rvts6>) – соседние векторы, являющиеся кодами входных символов a</span><span class="rvts12">s</span><span     class=rvts6> и a</span><span class="rvts12">t</span><span     class=rvts6> и представляющие совокупности входных двоичных сигналов, а (z</span><span class="rvts12">p1</span><span     class=rvts6>, z</span><span class="rvts12">p2</span><span     class=rvts6>, … , z</span><span class="rvts12">pk</span><span     class=rvts6>), (z</span><span class="rvts12">i1</span><span     class=rvts6>, z</span><span class="rvts12">i2</span><span     class=rvts6>, … , z</span><span class="rvts12">ik</span><span     class=rvts6>) и (z</span><span class="rvts12">j1</span><span     class=rvts6>, z</span><span class="rvts12">j2</span><span     class=rvts6>, … , z</span><span class="rvts12">jk</span><span     class=rvts6>) – коды состояний q</span><span class="rvts12">p</span><span     class=rvts6>, q</span><span class="rvts12">i</span><span     class=rvts6> и q</span><span class="rvts12">j</span><span     class=rvts6> соответственно.</span></p>
+<p      class=rvps5><span     class=rvts6>Здесь отражена ситуация, которая учитывается при подсчете значения w’</span><span class="rvts12">ij</span><span     class=rvts6>. Пара вектор-строк (x<span class="rvts12">s1</span>, x<span class="rvts12">s2</span>, … , x<span class="rvts12">sn</span>, z<span class="rvts12">p1</span>, z<span class="rvts12">p2</span>, … , z<span class="rvts12">pk</span>) и (z<span class="rvts12">i1</span>, z<span class="rvts12">i2</span>, … , z<span class="rvts12">ik</span>) матриц U и V представляет переход автомата из состояния q</span><span class="rvts12">p</span><span     class=rvts6> в состояние q</span><span class="rvts12">i</span><span     class=rvts6> при входном символе a</span><span class="rvts12">s</span><span     class=rvts6>, выражаемый формулой ψ(a</span><span class="rvts12">s</span><span     class=rvts6>, q</span><span class="rvts12">p</span><span     class=rvts6>) = q</span><span class="rvts12">i</span><span     class=rvts6>. Точно так же пара строк (x<span class="rvts12">t1</span>, x<span class="rvts12">t2</span>, … , x<span class="rvts12">tn</span>, z<span class="rvts12">p1</span>, z<span class="rvts12">p2</span>, … , z<span class="rvts12">pk</span>), (z<span class="rvts12">j1</span>, z<span class="rvts12">j2</span>, … , z<span class="rvts12">jk</span>) представляет переход, выражаемый формулой ψ(a</span><span class="rvts12">t</span><span     class=rvts6>, q</span><span class="rvts12">p</span><span     class=rvts6>) = q</span><span class="rvts12">j</span><span     class=rvts6>. Отсюда видно, что чем больше одноименных компонент векторов (z<span class="rvts12">i1</span>, z<span class="rvts12">i2</span>, … , z<span class="rvts12">ik</span>) и (z<span class="rvts12">j1</span>, z<span class="rvts12">j2</span>, … , z<span class="rvts12">jk</span>), являющихся кодами состояний q</span><span class="rvts12">i</span><span     class=rvts6> и q</span><span class="rvts12">j</span><span     class=rvts6>, совпадают и равны единице, тем больше, возможно, будет условий для простого склеивания элементарных конъюнкций в получаемой системе ДНФ.</span></p>
+<p      class=rvps5><span     class=rvts6>Ситуация, учитываемая при подсчете значения w’’</span><span class="rvts12">ij</span><span     class=rvts6>, представляется следующими матрицами:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img7.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Здесь пары строк (x</span><span class="rvts12">u1</span><span     class=rvts6>, x</span><span class="rvts12">u2</span><span     class=rvts6>, … , x</span><span class="rvts12">un</span><span     class=rvts6>, z</span><span class="rvts12">i1</span><span     class=rvts6>, z</span><span class="rvts12">i2</span><span     class=rvts6>, … , z</span><span class="rvts12">ik</span><span     class=rvts6>), (z</span><span class="rvts12">v1</span><span     class=rvts6>, z</span><span class="rvts12">v2</span><span     class=rvts6>, … , z</span><span class="rvts12">vk</span><span     class=rvts6>) и (x</span><span class="rvts12">u1</span><span     class=rvts6>, x</span><span class="rvts12">u2</span><span     class=rvts6>, … , x</span><span class="rvts12">un</span><span     class=rvts6>, z</span><span class="rvts12">j1</span><span     class=rvts6>, z</span><span class="rvts12">j2</span><span     class=rvts6>, … , z</span><span class="rvts12">jk</span><span     class=rvts6>), (z<span class="rvts12">v1</span>, z<span class="rvts12">v2</span>, … , z<span class="rvts12">vk</span>) представляют переходы в одно и то же состояние q</span><span class="rvts12">v</span><span     class=rvts6> при одном и том же значении a</span><span class="rvts12">u</span><span     class=rvts6> переменной </span><span class="rvts8">а</span><span     class=rvts6>, т. е. ψ(a</span><span class="rvts12">u</span><span     class=rvts6>, q</span><span class="rvts12">i</span><span     class=rvts6>) = ψ(a<span class="rvts12">u</span>, q</span><span class="rvts12">j</span><span     class=rvts6>) = q</span><span class="rvts12">v</span><span     class=rvts6>. Ясно, что желательно иметь соседними коды тех состояний qi и qj, для которых переменная </span><span class="rvts8">а</span><span     class=rvts6> принимает много значений а</span><span class="rvts8"><span class="rvts12">и</span></span><span     class=rvts6>, удовлетворяющих  ψ(a</span><span class="rvts12">u</span><span     class=rvts6>, q</span><span class="rvts12">i</span><span     class=rvts6>) = ψ(a<span class="rvts12">u</span>, q</span><span class="rvts12">j</span><span     class=rvts6>). Тогда возможно простое склеивание элементарных конъюнкций, представленных показанными строками матрицы U.</span></p>
+<p      class=rvps5><span     class=rvts6>Одна из реализаций метода «желательных соседств» представляется как процесс построение k-мерного гиперкуба, напоминающий сборку некоторой простой механической конструкции. При этом вершины гиперкуба, являющиеся первоначально вершинами некоторого пустого графа (без ребер), заранее поставлены в соответствие состояниям автомата и на парах этих вершин заданы величины w</span><span class="rvts12">ij</span><span     class=rvts6>.</span></p>
+<p      class=rvps5><span     class=rvts6>Исходными данными для построения k-мерного гиперкуба являются величины w</span><span class="rvts12">ij</span><span     class=rvts6> и число состояний автомата y. Предполагается, что это число минимально или по каким-то причинам не подлежит минимизации. Если y  не представляет собой целой степени двойки, то оно увеличивается до y‘ = 2</span><span class="rvts14">k</span><span     class=rvts6> и считается, что w</span><span class="rvts12">rs</span><span     class=rvts6> = 0, если хотя бы одно из q</span><span class="rvts12">r</span><span     class=rvts6> и q</span><span class="rvts12">s</span><span     class=rvts6> является дополнительно введенным таким образом состоянием.</span></p>
+<p      class=rvps5><span     class=rvts6>Построение k-мерного гиперкуба представляется как последовательность k шагов. На p-м шаге рассматривается множество (p – 1) мерных гиперкубов, они объединяются в пары, и из каждой пары получается один p-мерный гиперкуб путем соответствующего добавления ребер. При этом по возможности для соединения ребрами выбираются те вершины, которым соответствуют наибольшие из оставшихся значения w</span><span class="rvts12">ij</span><span     class=rvts6>. Вершинам полученного гиперкуба приписываем k компонентные булевы векторы с соблюдением отношения соседства, представленного ребрами гиперкуба.</span></p>
+<p      class=rvps5><span     class=rvts6>На первом шаге из <span class="rvts8">y</span>‘ изолированных вершин, или 0-мерных гиперкубов, строятся одномерные гиперкубы в виде </span><span class="rvts8">y</span><span     class=rvts6>‘ / 2 попарно несмежных ребер. На последнем k-м шаге из двух (k – 1)-мерных гиперкубов собирается один k-мерный гиперкуб путем добавления 2k-1 ребер.</span></p>
+<p      class=rvps5><span     class=rvts6>Продемонстрируем этот процесс на примере автомата, таблицей переходов которого является табл. 25.3. Введем два фиктивных состояния q</span><span class="rvts12">7</span><span     class=rvts6> и q</span><span class="rvts12">8</span><span     class=rvts6>, чтобы довести число состояний до 8 = 2</span><span class="rvts14">3</span><span     class=rvts6>. Значения w</span><span class="rvts12">ij</span><span     class=rvts6> удобно задать в виде табл. 25.4, где строки и столбцы соответствуют состояниям автомата.</span></p>
+<p      class=rvps5><span     class=rvts6>На первом шаге получаем четыре одномерных гиперкуба, изображенных на рис. 25.1. Максимальное значение имеет вес w</span><span class="rvts12">23</span><span     class=rvts6> = 3. Поэтому в первую очередь ребром соединяются вершины q</span><span class="rvts12">2</span><span     class=rvts6> и q</span><span class="rvts12">3</span><span     class=rvts6>. Затем ребрами соединяются вершины q</span><span class="rvts12">1</span><span     class=rvts6> с q</span><span class="rvts12">6</span><span     class=rvts6>, q</span><span class="rvts12">4</span><span     class=rvts6> с q</span><span class="rvts12">5</span><span     class=rvts6> и q</span><span class="rvts12">7</span><span     class=rvts6> с q</span><span class="rvts12">8</span><span     class=rvts6>.</span></p>
+<p      class=rvps5><span     class=rvts6>Чтобы из четырех одномерных гиперкубов получить два двухмерных, надо добавить четыре ребра. Для этого выбираются такие ребра, чтобы сумма их весов была максимальна. Сначала строится один гиперкуб, для которого выбираются два ребра с максимальной суммой весов. Затем точно так же собирается второй гиперкуб. На рис. 25.2 показаны варианты выбора ребер для получения первого двухмерного гиперкуба.</span></p>
+<p      class=rvps5><span     class=rvts6>Вершины q</span><span class="rvts12">7</span><span     class=rvts6> и q</span><span class="rvts12">8</span><span     class=rvts6> здесь не участвуют, так как все инцидентные им ребра имеют нулевой вес и сумма их весов заведомо не максимальна. Максимальной суммой весов обладает четвертый вариант. Для второго гиперкуба все варианты одинаковы.</span></p>
+<p      class=rvps5><span     class=rvts6>На рис. 25.3 изображены два двумерных гиперкуба, из которых надо собрать один трехмерный гиперкуб, добавив четыре ребра. Варианты такой сборки представлены на рис. 25.4. Сумма весов ребер показана ниже каждого изображения варианта сборки.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img8.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img9.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img10.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Для окончательного решения нашего примера выбран вариант сборки с максимальной суммой весов добавляемых ребер, равной 4. Этот гиперкуб показан отдельно на рис. 25.5, где возле каждой вершины представлен код соответствующего состояния.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img11.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img12.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Булев автомат, соответствующий данному варианту кодирования, представим тремя картами Карно, которые задают не полностью определенные  функции z<span class="rvts12">1</span></span><span class="rvts14">+</span><span     class=rvts6>, z<span class="rvts12">2</span><span class="rvts14">+</span> и z<span class="rvts12">3</span><span class="rvts14">+</span> и строкам которых соответствуют состояния заданного автомата (рис. 25.6).</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img13.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img14.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Минимизированная система булевых функций, описывающая заданное поведение, представляется следующими матрицами:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img15.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Для сравнения приведем минимизированную систему булевых функций, получаемую при произвольном кодировании, например, путем приписывания состояниям чисел от 0 до 5 в двоичной системе счисления согласно порядку номеров состояний. Матрица кодирования и матрицы, представляющие данную систему булевых функций, имеют следующий вид:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk25/img16.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Последняя система ДНФ оказалась сложнее – число различных элементарных конъюнкций в ней на две больше, чем в предыдущей системе.</span></p>
+<p class=rvps7><span class=rvts6><br></span><span class=rvts6><br>
+</span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body></html>

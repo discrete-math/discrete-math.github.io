@@ -1,0 +1,265 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Минимизация системы булевых функций</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts13
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts14
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts15
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps6
+{
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+}
+
+
+--></style>
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+
+
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 20</span></p>
+<p><span class=rvts7>Минимизация системы булевых функций </span></p>
+<p class=rvps1><span class=rvts6><br></span></p>
+<p         class=rvps3><span         class=rvts7>20.1.         Минимизация системы ДНФ</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Задача минимизации системы ДНФ формулируется следующим образом: для заданной системы булевых функций получить такую систему ДНФ, в которой общее число различных элементарных конъюнкций было бы минимальным.</span></p>
+<p      class=rvps5><span     class=rvts6>Если минимизировать каждую функцию по отдельности, то число различных элементарных конъюнкций во всех ДНФ может оказаться больше, чем при совместной минимизации функций. Рассмотрим систему из двух функций, представленную картами Карно на рис. 20.1</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img1.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Если минимизировать каждую функцию по отдельности, то получим следующие ДНФ:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img2.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Общее число различных элементарных конъюнкций в этой системе равно шести. Совместная минимизация данных функций дает следующий результат:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img3.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>В полученных ДНФ присутствует одна общая элементарная конъюнкция x</span><span class="rvts12">2</span><span     class=rvts6> x<span class="rvts12">3</span>&not;x</span><span class="rvts12">4</span><span     class=rvts6>, и за счет этого их число снизилось на единицу.</span></p>
+<p      class=rvps5><span     class=rvts6>Посмотрим, как метод Квайна-МакКласки можно распространить на случай системы булевых функций.</span></p>
+<p      class=rvps5><span     class=rvts6>Пусть F – некоторая система булевых функций. Элементарная конъюнкция является </span><span class="rvts8">обобщенной простой импликантой</span><span     class=rvts6> для множества булевых функций F’ ⊆ F, если она является импликантой для любой функции из F’ и перестает быть импликантой при удалении из нее любого литерала и не является импликантой ни для какой функции, не принадлежащей F’.</span></p>
+<p      class=rvps5><span     class=rvts6>Процесс минимизации системы ДНФ по данному методу состоит из двух этапов: 1) нахождение множества всех обобщенных простых импликант для заданной системы; 2) выделение из этого множества минимального подмножества, удовлетворяющего условию, что для всякой функции, принадлежащей заданной системе, можно из этого подмножества получить задающую ее ДНФ.</span></p>
+<p      class=rvps5><span     class=rvts6>Исходная система булевых функций должна быть представлена в виде системы совершенных ДНФ, которую будем задавать парой булевых матриц –  матрицей аргументов и матрицей функций.</span></p>
+<p      class=rvps5><span     class=rvts6>Первый этап выполняется с помощью простого склеивания. При этом учитываются </span><span class="rvts8">характеристики</span><span     class=rvts6> импликант. Под характеристикой понимается множество функций, для которого данная конъюнкция является импликантой. Начальные значения характеристик задаются строками матрицы функций. Результату склеивания приписывается в качестве характеристики пересечение характеристик склеиваемых конъюнкций, которое получается поразрядной конъюнкцией соответствующих векторов. Естественно, что если результатом поразрядной конъюнкции является вектор, все компоненты которого нули, то результат склеивания не рассматривается.</span></p>
+<p      class=rvps5><span     class=rvts6>Так же, как при минимизации одной функции, склеиваемым конъюнкциям приписывается знак «*», но приписывается он только тем конъюнкциям, характеристика которых совпадает с характеристикой результата склеивания.</span></p>
+<p      class=rvps5><span     class=rvts6>Рассмотрим процесс получения обобщенных простых импликант на примере системы функций, заданных картами Карно на рис. 20.1. Получаем следующую последовательность пар матриц:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img4.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Полученную </span><span class="rvts8">сокращенную систему</span><span     class=rvts6> ДНФ, которая содержит все обобщенные простые импликанты представим следующей парой матриц, где собраны строки, не отмеченные знаком «*»:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img5.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Строки матрицы X представляют интервалы булева пространства аргументов. В матрице Y единица в столбце f</span><span class="rvts12">i</span><span     class=rvts6> и j-й строке показывает, что на всем j-м интервале функция f<span class="rvts12">i</span> имеет значение 1 (j-я конъюнкция входит в ДНФ функции f<span class="rvts12">i</span>). Такая форма названа ранее матричным представлением системы ДНФ.</span></p>
+<p      class=rvps5><span     class=rvts6>Рассмотрим теперь выполнение второго этапа минимизации, который сводится к задаче покрытия. Пара одноименных строк матриц X и Y представляет множество пар вида (m<span class="rvts12">i</span>, f</span><span class="rvts12">j</span><span     class=rvts6>), где m<span class="rvts12">i</span> – элемент булева пространства аргументов, а f<span class="rvts12">j</span> – функция, принимающая значение 1 на этом элементе. Интервал и его характеристика являются сомножителями декартова произведения, результат которого представляет собой множество с элементами вида (m<span class="rvts12">i</span>, f<span class="rvts12">j</span>). Очевидно, всего пар вида (m</span><span class="rvts12">i</span><span     class=rvts6>, f<span class="rvts12">j</span>) в задании системы булевых функций столько, сколько единиц в исходной матрице функций. Необходимо из полученной совокупности интервалов выбрать минимум так, чтобы выбранные интервалы со своими характеристиками покрыли все множество пар (m<span class="rvts12">i</span>, f<span class="rvts12">j</span>) в задании исходной системы.</span></p>
+<p      class=rvps5><span     class=rvts6>Для решения рассматриваемого примера построим следующую матрицу, строкам которой соответствуют пары строк матриц X и Y, а столбцам – пары вида(m<span class="rvts12">i</span>, f<span class="rvts12">j</span>):</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img6.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Кратчайшее строчное покрытие приведенной матрицы соответствует кратчайшей системе ДНФ, представляемой следующими матрицами:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img7.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Этот результат совпадает с тем, что был получен ранее для данной системы булевых функций.</span></p>
+<p      class=rvps5><span     class=rvts6>Решение задачи минимизации системы ДНФ ведет к получению оптимальной структуры программируемой логической матрицы.</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p         class=rvps3><span         class=rvts7>20.2.         Минимизация системы слабо определенных булевых функций</span></p> 
+<p class=rvps4><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Булева функция является слабо определенной, если |М</span><span class="rvts14">1</span><span     class=rvts6>| + |М</span><span class="rvts14">0</span><span     class=rvts6>| &lt;&lt; |М</span><span class="rvts14">–</span><span     class=rvts6>|. Пусть F = {f</span><span class="rvts12">1</span><span     class=rvts6>, f</span><span class="rvts12">2</span><span     class=rvts6>, … , f</span><span class="rvts12">m</span><span     class=rvts6>} – система слабо определенных булевых функций, где любая f</span><span class="rvts12">i</span><span     class=rvts6> задана с помощью множеств M</span><span class="rvts14">1</span><span     class=rvts6><span class="rvts12">i</span> – область единичных значений и M</span><span class="rvts14">0</span><span     class=rvts6><span class="rvts12">i</span> – область нулевых значений функции f</span><span class="rvts12">i</span><span     class=rvts6>. Очевидно, кратчайшая система ДНФ для системы F сводится к нахождению такого минимального множества интервалов булева пространства М, чтобы каждое из множеств M<span class="rvts14">1</span><span class="rvts12">i</span> покрывалось теми из них, которые не пересекаются с множеством M<span class="rvts14">0</span><span class="rvts12">i</span>.</span></p>
+<p      class=rvps5><span     class=rvts6>Рассматриваемый метод минимизации привлекает понятие </span><span class="rvts8">интервально поглощаемого множества</span><span     class=rvts6>. В данном случае это множество элементов вида (m</span><span class="rvts12">j</span><span     class=rvts6>, f<span class="rvts12">k</span>), где m<span class="rvts12">j</span> – элемент булева пространства М, а f</span><span class="rvts12">k</span><span     class=rvts6> – функция, которая имеет значение 1 на этом интервале, т. е. m<span class="rvts12">j</span> ∈ M<span class="rvts14">1</span><span class="rvts12">k</span>. Множество элементов такого вида является интервально поглощаемым, если существует такой интервал пространства М, который для каждой пары (m<span class="rvts12">j</span>, f<span class="rvts12">k</span>) из этого множества содержит m<span class="rvts12">j</span> и не пересекается с множеством M</span><span class="rvts14">0</span><span class="rvts12">k</span><span     class=rvts6>. Интервально поглощаемое множество называется максимальным, если оно не является подмножеством никакого другого интервально поглощаемого множества.</span></p>
+<p      class=rvps5><span     class=rvts6>Задача состоит в том, чтобы для заданной системы булевых функций F найти минимальную совокупность интервально поглощаемых множеств, покрывающую все пары вида (m<span class="rvts12">j</span>, f<span class="rvts12">k</span>). При этом достаточно рассматривать только </span><span class="rvts8">максимальные</span><span     class=rvts6> интервально поглощаемые множества. Для каждого множества из полученного покрытия надо взять соответствующий ему интервал и максимально расширить его так, чтобы он не пересекался ни с одним из множеств M</span><span class="rvts14">0</span><span class="rvts12">k</span><span     class=rvts6> тех функций f<span class="rvts12">k</span>, которые принадлежат парам (m<span class="rvts12">j</span>, f<span class="rvts12">k</span>), входящим в данное множество.</span></p>
+<p      class=rvps5><span     class=rvts6>В качестве примера рассмотрим систему слабо определенных булевых функций, заданную следующей парой матриц:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img8.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Эти матрицы можно интерпретировать как задание поведения некоторого устройства. На каждый набор двоичных входных сигналов, представленный матрицей Х, устройство реагирует набором выходных сигналов, представленный соответствующей строкой матрицы Y. Поведение устройства не определено на всех наборах входных сигналов, которые не представлены матрицей Х. Очевидно, столбец f</span><span class="rvts12">i</span><span     class=rvts6> матрицы Y представляет множества M<span class="rvts14">1</span><span class="rvts12">i</span> и M<span class="rvts14">0</span><span class="rvts12">i</span> функции f<span class="rvts12">i</span>.</span></p>
+<p      class=rvps5><span     class=rvts6>Всякое интервально поглощаемое множество является декартовым произведением М</span><span class="rvts12">р</span><span     class=rvts6> × F<span class="rvts12">р</span>, где М<span class="rvts12">р</span> – множество некоторых элементов булева пространства, а F<span class="rvts12">р</span> – множество функций, принимающих значение 1 на этих элементах. Поэтому для компактности интервально поглощаемые множества будем представлять парами сомножителей. Используя лексико-графический перебор, получим следующие максимальные интервально поглощаемые множества и соответствующие им интервалы:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img9.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Построим матрицу покрытия, строкам которой соответствуют полученные максимальные интервально поглощаемые множества, а столбцам пары (1, f</span><span class="rvts12">1</span><span     class=rvts6>), (4, f<span class="rvts12">1</span>), (1, f</span><span class="rvts12">2</span><span     class=rvts6>), (2, f<span class="rvts12">2</span>), (3, f<span class="rvts12">2</span>), (5, f<span class="rvts12">2</span>), (2, f</span><span class="rvts12">3</span><span     class=rvts6>), (3, f<span class="rvts12">3</span>), (6, f<span class="rvts12">3</span>), (1, f</span><span class="rvts12">4</span><span     class=rvts6>), (2, f<span class="rvts12">4</span>), (4, f<span class="rvts12">4</span>), (6, f<span class="rvts12">4</span>), (1, f</span><span class="rvts12">5</span><span     class=rvts6>), (4, f<span class="rvts12">5</span>), (5, f<span class="rvts12">5</span>), (2, f</span><span class="rvts12">6</span><span     class=rvts6>), (6, f<span class="rvts12">6</span>), определяемые по единицам матрицы Y:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img10.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+<p      class=rvps5><span     class=rvts6>Строчное покрытие этой матрицы составляют четвертая, шестая, восьмая и десятая строки. После расширения соответствующих интервалов получим следующую систему ДНФ:</span></p>
+<p class=rvps7><span class=rvts6><br></span></p>
+<center><img src ="lk20/img11.jpg"></center>
+<p class=rvps7><span class=rvts6><br></span></p>
+
+<p class=rvps7>&nbsp;</p>
+<p class=rvps7><span class=rvts6><br></span><span class=rvts6><br>
+</span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
+</body></html>

@@ -1,0 +1,1244 @@
+<!-- (C) 2010 Nesterenkov Sergey, BSUIR -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//RU">
+<HTML>
+<HEAD>
+<LINK rel=stylesheet href="../../../Оболочка/css/style.css" type=text/css>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;>
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<title>Доминирующие    и    независимые
+множества</title>
+<base target="_top">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</HEAD><BODY>
+<table width="100%" border="0" cellpadding="0" cellspacing="3" background="../../../Оболочка/images/background.jpg">
+  <tr> 
+    <td width="13%" rowspan=3 align="center" ><img src="../../../Оболочка/images/logo_new.jpg" width=117 align="middle">
+	</td>
+  <tr> 
+     <td width="70%" colspan=2 align="center" valign="middle"> <H1 align="center" >электронный 
+        ресурс по учебной дисциплине<BR>
+        "ДИСКРЕТНАЯ МАТЕМАТИКА"<BR> 
+        для специальности: </H1>
+	  1-40 02 01 «Вычислительные машины, системы и сети»
+    </td>
+    <td width="12%" rowspan=3 align="center" >&nbsp;</td>
+  <Tr>
+    <td align=center colspan=2><var class="normal">
+	<A HREF="../../../index.htm">Оглавление</A> | 
+	<A HREF="../../../Программа/program.htm" TITLE="Программа курса (Откроется в новом окне)">Программа</A> | 
+	<strong>Теория</strong> | 
+	<A HREF="../../../Практика/practice.htm">Практика</A> | 
+	<A HREF="../../../Контроль_знаний/test.htm">Контроль знаний</A> | 
+	<A HREF="../../../Об авторах/author.htm">Об авторах</A></var></var> </td>
+  <tr>
+</table>
+<P class="margined"><FONT SIZE=4><CENTER>
+</CENTER>
+</FONT>
+<style type="text/css"><!--
+body {
+  background-color: #ffffff;
+}
+/* ========== Text Styles ========== */
+hr { color: #000000}
+body, table, span.rvts0 /* Normal text */
+{
+ font-size: 10pt;
+ font-family: 'Arial', 'Helvetica', sans-serif;
+ font-style: normal;
+ font-weight: normal;
+ color: #000000;
+ text-decoration: none;
+}
+span.rvts1 /* Heading */
+{
+ font-weight: bold;
+ color: #0000ff;
+}
+span.rvts2 /* Subheading */
+{
+ font-weight: bold;
+ color: #000080;
+}
+span.rvts3 /* Keywords */
+{
+ font-style: italic;
+ color: #800000;
+}
+a.rvts4, span.rvts4 /* Jump 1 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+a.rvts5, span.rvts5 /* Jump 2 */
+{
+ color: #008000;
+ text-decoration: underline;
+}
+span.rvts6
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts7
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-weight: bold;
+}
+span.rvts8
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts9
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+}
+span.rvts10
+{
+ font-size: 14pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ font-style: italic;
+}
+span.rvts11
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts12
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts13
+{
+ font-size: 11pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts14
+{
+ font-size: 7pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+}
+span.rvts15
+{
+ font-size: 8pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts16
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts17
+{
+ font-size: 12pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+}
+span.rvts18
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts19
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: sub;
+}
+span.rvts20
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ vertical-align: super;
+}
+span.rvts21
+{
+ font-size: 9pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ vertical-align: sub;
+}
+span.rvts22
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts23
+{
+ font-size: 9pt;
+font-family:  'Arial  Unicode  MS', 'Lucida Sans Unicode', 'Arial', 'Helvetica',
+sans-serif; 
+ vertical-align: super;
+}
+span.rvts24
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: super;
+}
+span.rvts25
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+}
+span.rvts26
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ text-decoration: underline;
+}
+span.rvts27
+{
+ font-size: 14pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ font-style: italic;
+ text-decoration: underline;
+}
+span.rvts28
+{
+ font-size: 9pt;
+ font-family: 'Times New Roman', 'Times', serif;
+ vertical-align: sub;
+ text-decoration: underline;
+}
+span.rvts29
+{
+ font-family: 'Times New Roman', 'Times', serif;
+}
+/* ========== Para Styles ========== */
+p,ul,ol /* Paragraph Style */
+{
+ text-align: left;
+ text-indent: 0px;
+ padding: 0px 0px 0px 0px;
+ margin: 0px 0px 0px 0px;
+}
+.rvps1 /* Centered */
+{
+ text-align: center;
+}
+.rvps2
+{
+ margin: 0px 0px 8px 0px;
+}
+.rvps3
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps4
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps5
+{
+ text-align: justify;
+ text-indent: 36px;
+}
+.rvps6
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps7
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps8
+{
+ text-align: justify;
+}
+.rvps9
+{
+ text-indent: 19px;
+ margin: 0px 0px 0px 284px;
+}
+.rvps10
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps11
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps12
+{
+ text-align: justify;
+ page-break-after: avoid;
+}
+.rvps13
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps14
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps15
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps16
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps17
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps18
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps19
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps20
+{
+ text-align: justify;
+ text-indent: 12px;
+}
+.rvps21
+{
+ text-align: justify;
+ text-indent: -10px;
+ margin: 0px 0px 0px 142px;
+}
+.rvps22
+{
+ text-align: justify;
+ text-indent: -10px;
+ margin: 0px 0px 0px 142px;
+}
+.rvps23
+{
+ text-align: justify;
+ text-indent: -10px;
+ margin: 0px 0px 0px 142px;
+}
+.rvps24
+{
+ text-align: justify;
+ text-indent: 19px;
+ margin: 0px 0px 0px 114px;
+}
+.rvps25
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps26
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps27
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps28
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps29
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps30
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+.rvps31
+{
+ text-align: justify;
+ text-indent: 38px;
+}
+--></style>
+</head>
+<body>
+<p class=rvps2><span class=rvts6><br></span></p>
+<p class=rvps2><span class=rvts6>Г л а в а&nbsp;&nbsp;&nbsp; 6</span></p>
+<p><span    class=rvts7>Доминирующие    и    независимые
+множества </span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p       class=rvps3><span       class=rvts7>6.1.       Доминирующие
+множества графа</span></p> 
+<p><span class=rvts7><br></span></p>
+<p     class=rvps4><span    class=rvts6>Подмножество    </span><span
+class=rvts8>S</span><span     class=rvts6>    множества    вершин
+</span><span   class=rvts8>V</span><span  class=rvts6>  графа  </span><span
+class=rvts8>G</span><span    class=rvts6>    называется   </span><span
+class=rvts8>доминирующим множеством</span><span
+class=rvts6>  графа  </span><span  class=rvts8>G</span><span  class=rvts6>,
+если        выполняется        условие        </span><span
+class=rvts8>S</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>N</span><span   class=rvts6>(</span><span  class=rvts8>S</span><span
+class=rvts6>) </span><span class=rvts9>=</span><span
+class=rvts6> </span><span    class=rvts8>V</span><span   class=rvts6>,   где
+</span><span         class=rvts8>N</span><span         class=rvts6>(</span><span
+class=rvts8>S</span><span  class=rvts6>) </span><span  class=rvts9>=</span><img
+width=63   height=41  alt=""  style="padding  :  1px;"  src="lk6/img1.jpg"><span
+class=rvts6>,          а         </span><span         class=rvts8>N</span><span
+class=rvts6>(</span><span  class=rvts8>v</span><span  class=rvts6>) </span><span
+class=rvts9>−</span><span    class=rvts6>   множество   вершин,
+смежных   с   вершиной   </span><span  class=rvts8>v</span><span
+class=rvts6>.     Другими     словами,&nbsp;    множество
+</span><span     class=rvts8>S</span><span     class=rvts6>     является
+доминирующим,     если    каждая    вершина    из
+множества             </span><span            class=rvts8>V</span><span
+class=rvts6> \ </span><span       class=rvts8>S</span><span       class=rvts6>
+смежна    с   некоторой   вершиной   из   </span><span
+class=rvts8>S</span><span        class=rvts6>.       Если       </span><span
+class=rvts8>S</span><span              class=rvts6>             является
+доминирующим  множеством  некоторого  графа
+</span><span    class=rvts8>G</span><span    class=rvts6>,   то   всякое
+множество     вершин    </span><span    class=rvts8>S</span><span
+class=rvts10>′</span><span class=rvts6> </span><span
+class=rvts9>⊇</span><span class=rvts6> </span><span
+class=rvts8>S</span><span    class=rvts6>   этого   графа   также
+является             доминирующим.            Поэтому
+представляет    интерес   задача   нахождения
+</span><span     class=rvts8>минимальных</span><span     class=rvts6>
+доминирующих     множеств,     т. е.    таких,    у
+которых  ни  одно  собственное  подмножество
+не    является    доминирующим.   Доминирующее
+множество,    имеющее   наименьшую   мощность,
+принято                   называть                   </span><span
+class=rvts8>наименьшим</span><span         class=rvts6>.        Эта
+мощность   называется   </span><span  class=rvts8>числом
+доминирования</span><span   class=rvts6>   графа  </span><span
+class=rvts8>G</span><span      class=rvts6>      и     обозначается
+символом             </span><span            class=rvts10>β</span><span
+class=rvts6>(</span><span class=rvts8>G</span><span class=rvts6>).</span></p> 
+<p     class=rvps5><span     class=rvts6>Наглядным     примером
+задачи        о       наименьшем       доминирующем
+множестве  является  одна  из задач о ферзях,
+где   надо   расставить   на   шахматной  доске
+наименьшее  число  ферзей  так,  чтобы каждая
+клетка  была  под  ударом  хотя  бы  одного  из
+них.  Для  этого достаточно найти наименьшее
+доминирующее   множество   в   графе,  вершины
+которого  соответствуют  клеткам  шахматной
+доски  и  две  вершины  связаны ребром, если и
+только   если   они  взаимно  достижимы  ходом
+ферзя.       Найденное       множество       вершин
+указывает,  куда  надо поставить ферзей, а их
+число,  которое  в  данном  случае равно пяти,
+есть        число       доминирования       данного
+графа.</span></p> 
+<p    class=rvps6><span    class=rvts6>Задача    о   наименьшем
+доминирующем       множестве       сводится      к
+известной            задаче            о            </span><span
+class=rvts8>кратчайшем    покрытии</span><span   class=rvts6>,
+которая  подробно  будет рассмотрена ниже. В
+данном  случае ее можно поставить следующим
+образом.  Матрицу смежности заданного графа
+</span><span     class=rvts8>G</span><span     class=rvts6>     дополним
+единицами    на    главной    диагонали.   Тогда
+требуется  найти  минимальную  совокупность
+строк  полученной матрицы, такую, что каждый
+столбец  имел  бы  единицу  по  крайней мере в
+одной    из   строк   найденной   совокупности.
+Говорят,      что     строка     матрицы     </span><span
+class=rvts8>покрывает</span><span      class=rvts6>     столбец,
+если  данный  столбец  имеет  единицу  в  этой
+строке.</span></p> 
+<p    class=rvps7><span    class=rvts6>Нетрудно   видеть,   что
+наименьшими     доминирующими     множествами
+графа  </span><span  class=rvts8>G</span><span  class=rvts6> (рис. 6.1)
+являются             {</span><span             class=rvts8>v</span><span
+class=rvts11>3</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>7</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span  class=rvts11>5</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span     class=rvts11>7</span><span     class=rvts6>}    и
+{</span><span        class=rvts8>v</span><span        class=rvts11>6</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts11>7</span><span
+class=rvts6>}.  Его матрица смежности, дополненная
+единицами    на    главной    диагонали,   имеет
+вид</span></p> 
+<p><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=269   height=217  alt=""  style="padding  :  1px;"
+src="lk6/img2.jpg"></p> 
+<p class=rvps8><span class=rvts6><br></span></p>
+<p           class=rvps8><span           class=rvts6>Каждое           из
+соответствующих            множеств            строк
+рассматриваемой  матрицы  покрывает  все  ее
+столбцы.</span></p>
+<center><img src="lk6/img6.1.jpg"></center>
+<p    class=rvps1><span    class=rvts16>Рис. 6.1.    Граф   </span><span
+class=rvts17>G</span></p> 
+<p class=rvps10><span class=rvts6><br></span></p>
+<p class=rvps11><span class=rvts6><br></span></p>
+<p        class=rvps12><span       class=rvts7>6.2.       Независимые
+множества графа</span></p> 
+<p class=rvps13><span class=rvts6><br></span></p>
+<p    class=rvps14><span    class=rvts6>Подмножество    </span><span
+class=rvts8>S</span><span     class=rvts6>    множества    вершин
+</span><span   class=rvts8>V</span><span  class=rvts6>  графа  </span><span
+class=rvts8>G</span><span    class=rvts6>    называется   </span><span
+class=rvts8>независимым множеством</span><span
+class=rvts6>  графа  </span><span  class=rvts8>G</span><span  class=rvts6>,
+если        выполняется        условие        </span><span
+class=rvts8>S</span><span class=rvts6> </span><span
+class=rvts9>∩</span><span class=rvts6> </span><span
+class=rvts8>N</span><span   class=rvts6>(</span><span  class=rvts8>S</span><span
+class=rvts6>) </span><span class=rvts9>=</span><span
+class=rvts6> </span><span  class=rvts9>∅</span><span  class=rvts6>,  т. е.
+любые  две  вершины  из  </span><span class=rvts8>S</span><span
+class=rvts6>  не смежны. Если </span><span class=rvts8>S</span><span
+class=rvts6>      </span><span     class=rvts18>–</span><span     class=rvts6>
+независимое     множество,     то     любое    его
+подмножество   также  является  независимым.
+Поэтому      представляет     интерес     задача
+нахождения            в            графе            </span><span
+class=rvts8>максимальных независимых
+множеств</span><span  class=rvts6>,  т. е. таких, которые
+не   являются   собственными  подмножествами
+никаких                других                независимых
+множеств.</span></p> 
+<p   class=rvps15><span  class=rvts6>Независимое  множество,
+имеющее   наибольшую   мощность   среди   всех
+независимых       множеств       графа      </span><span
+class=rvts8>G</span><span     class=rvts6>,     называют    </span><span
+class=rvts8>наибольшим независимым
+множеством</span><span   class=rvts6>,   а   его  мощность
+называют              </span><span              class=rvts8>числом
+независимости</span><span   class=rvts6>   графа  </span><span
+class=rvts8>G</span><span  class=rvts6> и обозначают символом
+</span><span        class=rvts10>α</span><span        class=rvts6>(</span><span
+class=rvts8>G</span><span class=rvts6>).</span></p> 
+<p       class=rvps16><span       class=rvts6>Примером      задачи
+нахождения       наибольшего       независимого
+множества  является  другая задача о ферзях,
+в   которой   надо   расставить   на  шахматной
+доске  наибольшее число ферзей так, чтобы ни
+один    из    них    не    находился   под   ударом
+другого.  Наибольшее  независимое множество
+графа,    представляющего   шахматную   доску,
+как    определено   выше,   покажет,   на   какие
+клетки   надо  поставить  ферзей.  Наибольшее
+число  ферзей,  расставленных  при указанном
+условии,   которое   в   данном   случае   равно
+восьми,   есть  число  независимости  данного
+графа.</span></p> 
+<p    class=rvps17><span    class=rvts6>Рассмотрим    один    из
+способов      нахождения      в      графе      всех
+максимальных независимых множеств.</span></p> 
+<p         class=rvps18><span         class=rvts6>Пусть        </span><span
+class=rvts8>G</span><span                class=rvts6>               </span><span
+class=rvts18>–</span><span    class=rvts6>    заданный   граф   с
+произвольно      упорядоченным      множеством
+вершин  </span><span  class=rvts8>V</span><span class=rvts6> </span><span
+class=rvts9>=</span><span  class=rvts6> {</span><span class=rvts8>v</span><span
+class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts11>2</span><span
+class=rvts6>, … , </span><span class=rvts8>v</span><span
+class=rvts19>n</span><span          class=rvts6>}.          Рассмотрим
+последовательность       подграфов       </span><span
+class=rvts8>G</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts8>G</span><span
+class=rvts11>2</span><span class=rvts6>, … , </span><span
+class=rvts8>G</span><span        class=rvts19>n</span><span        class=rvts6>,
+порожденных         подмножествами         </span><span
+class=rvts8>V</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts8>V</span><span
+class=rvts11>2</span><span class=rvts6>, … , </span><span
+class=rvts8>V</span><span    class=rvts19>n</span><span   class=rvts6>,   где
+</span><span         class=rvts8>V</span><span        class=rvts19>i</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts11>2</span><span
+class=rvts6>, … , </span><span class=rvts8>v</span><span
+class=rvts19>i</span><span              class=rvts6>}              (</span><span
+class=rvts8>i</span><span class=rvts6> = 1, 2, … , </span><span
+class=rvts8>n</span><span       class=rvts6>).      Пусть      </span><span
+class=rvts8>S</span><span class=rvts20> i</span><span
+class=rvts6> = {</span><span class=rvts8>S</span><span
+class=rvts11>1</span><span class=rvts20>i</span><span
+class=rvts6>, </span><span class=rvts8>S</span><span
+class=rvts11>2</span><span class=rvts20>i</span><span
+class=rvts6>, … ,</span><img  width=27  height=33  alt=""  style="padding  :
+1px;"         src="lk6/img3.jpg"><span         class=rvts6>}        </span><span
+class=rvts18>–</span><span   class=rvts6>   совокупность  всех
+максимальных   независимых   множеств  графа
+</span><span  class=rvts8>G</span><span class=rvts19>i</span><span class=rvts6>.
+Преобразуем           </span><span          class=rvts8>S</span><span
+class=rvts20> i</span><span   class=rvts6>  следующим  образом.
+Для        каждого        </span><span       class=rvts8>S</span><span
+class=rvts19>j</span><span        class=rvts20>i</span><span        class=rvts6>
+(</span><span class=rvts8>j</span><span
+class=rvts6> = 1, 2, … , </span><span class=rvts8>k</span><span
+class=rvts19>i</span><span              class=rvts6>)             получим
+множество</span></p> 
+<p class=rvps19><span class=rvts6><br></span></p>
+<p   class=rvps1><span   class=rvts8>S</span><span  class=rvts10>′</span><span
+class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> (</span><span class=rvts8>S</span><span
+class=rvts19>j</span><span class=rvts20>i</span><span
+class=rvts6> \ </span><span class=rvts8>N</span><span
+class=rvts6>(</span><span  class=rvts8>v</span><span  class=rvts19>i</span><span
+class=rvts11> </span><span class=rvts21>+</span><span
+class=rvts11> 1</span><span class=rvts6>)) </span><span
+class=rvts9>∪</span><span class=rvts6> {</span><span
+class=rvts8>v</span><span class=rvts19>i</span><span
+class=rvts11> </span><span class=rvts21>+</span><span
+class=rvts11> 1</span><span class=rvts6>}.</span></p> 
+<p class=rvps8><span class=rvts6><br></span></p>
+<p       class=rvps8><span       class=rvts6>Если       в      </span><span
+class=rvts8>S</span><span        class=rvts20> i</span><span       class=rvts6>
+найдется          такой         элемент         </span><span
+class=rvts8>S</span><span  class=rvts19>l</span><span class=rvts20>i</span><span
+class=rvts6>,        что        </span><span        class=rvts8>S</span><span
+class=rvts19>l</span><span class=rvts20>i</span><span
+class=rvts6> </span><span class=rvts9>⊂</span><span
+class=rvts6> </span><span class=rvts8>S</span><span
+class=rvts10>′</span><span        class=rvts6>,        то       </span><span
+class=rvts8>S</span><span  class=rvts19>l</span><span class=rvts20>i</span><span
+class=rvts6>          в          </span><span         class=rvts8>S</span><span
+class=rvts20> i</span><span              class=rvts8>              </span><span
+class=rvts6>заменяем    на    </span><span   class=rvts8>S</span><span
+class=rvts10>′</span><span  class=rvts6>. Если найдется такой
+элемент               </span><span              class=rvts8>S</span><span
+class=rvts19>l</span><span     class=rvts20>i</span><span     class=rvts6>    в
+множестве             </span><span            class=rvts8>S</span><span
+class=rvts20> i</span><span   class=rvts6>,   что</span><span   class=rvts8>
+S</span><span       class=rvts10>′</span><span      class=rvts6> </span><span
+class=rvts9>⊆</span><span class=rvts6> </span><span
+class=rvts8>S</span><span  class=rvts19>l</span><span class=rvts20>i</span><span
+class=rvts6>,         то         </span><span        class=rvts8>S</span><span
+class=rvts20> i</span><span     class=rvts6>    не    изменяем.    В
+остальных    случаях    </span><span   class=rvts8>S</span><span
+class=rvts10>′</span><span      class=rvts6>       добавляем      в
+множество             </span><span            class=rvts8>S</span><span
+class=rvts20> i</span><span   class=rvts6>   в  качестве  нового
+элемента.</span></p> 
+<p  class=rvps5><span class=rvts6>Нетрудно убедиться, что в
+результате  таких преобразований множество
+</span><span        class=rvts8>S</span><span       class=rvts20> i</span><span
+class=rvts6>  превращается в </span><span class=rvts8>S</span><span
+class=rvts20> i</span><span class=rvts22> </span><span
+class=rvts23>+</span><span       class=rvts22> 1</span><span       class=rvts6>
+</span><span  class=rvts18>–</span><span class=rvts6> совокупность
+всех    максимальных   независимых   множеств
+графа   </span><span  class=rvts8>G</span><span  class=rvts19>i</span><span
+class=rvts11> </span><span class=rvts21>+</span><span
+class=rvts11> 1</span><span  class=rvts6>.  Действительно,  все
+</span><span         class=rvts8>S</span><span        class=rvts11>1</span><span
+class=rvts20>i</span><span class=rvts6>, </span><span
+class=rvts8>S</span><span  class=rvts11>2</span><span class=rvts20>i</span><span
+class=rvts6>, … ,</span><img  width=27  height=33  alt=""  style="padding  :
+1px;"        src="lk6/img4.jpg"><span        class=rvts6>       являются
+независимыми      множествами     для     </span><span
+class=rvts8>G</span><span class=rvts19>i</span><span
+class=rvts11> </span><span class=rvts21>+</span><span
+class=rvts11> 1</span><span   class=rvts6>.   Множество   </span><span
+class=rvts8>S</span><span        class=rvts10>′</span><span       class=rvts6>
+является         также        независимым.        Все
+поглощаемые   множества  удаляются,  так  что
+остаются    только    максимальные.    То,    что
+</span><span        class=rvts8>S</span><span       class=rvts20> i</span><span
+class=rvts22> </span><span class=rvts23>+</span><span
+class=rvts22> 1</span><span      class=rvts6>      содержит      все
+максимальные  независимые  множества  графа
+</span><span         class=rvts8>G</span><span        class=rvts19>i</span><span
+class=rvts11> </span><span class=rvts21>+</span><span
+class=rvts11> 1</span><span  class=rvts6>,  легко доказывается
+от  противного.  Пусть  </span><span  class=rvts8>S</span><span
+class=rvts10>′′</span><span             class=rvts6>            </span><span
+class=rvts18>–</span><span        class=rvts6>        максимальное
+независимое      множество      графа      </span><span
+class=rvts8>G</span><span class=rvts19>i</span><span
+class=rvts11> </span><span class=rvts21>+</span><span
+class=rvts11> 1</span><span    class=rvts6>,   не   полученное   в
+результате   описанных   преобразований.   Но
+тогда                 </span><span                class=rvts8>S</span><span
+class=rvts10>′′</span><span class=rvts6> \ {</span><span
+class=rvts8>v</span><span class=rvts19>i</span><span
+class=rvts11> </span><span class=rvts21>+</span><span
+class=rvts11> 1</span><span            class=rvts6>}           является
+максимальным  независимым множеством графа
+</span><span  class=rvts8>G</span><span class=rvts19>i</span><span class=rvts6>,
+которого     нет     в     </span><span    class=rvts8>S</span><span
+class=rvts20> i</span><span   class=rvts6>,   что   противоречит
+определению              множества              </span><span
+class=rvts8>S</span><span class=rvts20> i</span><span
+class=rvts6>.</span></p> 
+<p     class=rvps5><span     class=rvts6>Начиная     от    </span><span
+class=rvts8>S</span><span class=rvts20> </span><span
+class=rvts22>1</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {{</span><span class=rvts8>v</span><span
+class=rvts11>1</span><span   class=rvts6>}},   выполним   цепочку
+таких   преобразований,   в   результате  чего
+получим               </span><span              class=rvts8>S</span><span
+class=rvts20> п</span><span class=rvts6> </span><span
+class=rvts9>=</span><span  class=rvts6> </span><span  class=rvts8>S</span><span
+class=rvts6>      </span><span     class=rvts18>–</span><span     class=rvts6>
+совокупность            всех            максимальных
+независимых       множеств       графа      </span><span
+class=rvts8>G</span><span  class=rvts19>n</span><span class=rvts6> </span><span
+class=rvts9>=</span><span  class=rvts6> </span><span  class=rvts8>G</span><span
+class=rvts6>.</span></p> 
+<p  class=rvps5><span  class=rvts6>Для графа, изображенного
+на            рис. 6.1,            имеем           следующую
+последовательность результатов
+применения  описанного  преобразования, где
+</span><span        class=rvts8>S</span><span        class=rvts20> </span><span
+class=rvts22>7</span><span         class=rvts6>         представляет
+совокупность            всех            максимальных
+независимых множеств:</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps20><span   class=rvts8>S</span><span  class=rvts20> </span><span
+class=rvts22>2</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {{</span><span class=rvts8>v</span><span
+class=rvts11>1</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span class=rvts11>2</span><span
+class=rvts6>}};</span></p> 
+<p   class=rvps20><span   class=rvts8>S</span><span  class=rvts20> </span><span
+class=rvts22>3</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {{</span><span class=rvts8>v</span><span
+class=rvts11>1</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>3</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span class=rvts11>2</span><span
+class=rvts6>}};</span></p> 
+<p   class=rvps20><span   class=rvts8>S</span><span  class=rvts20> </span><span
+class=rvts22>4</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {{</span><span class=rvts8>v</span><span
+class=rvts11>1</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>3</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span  class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts11>4</span><span       class=rvts6>},
+{</span><span        class=rvts8>v</span><span        class=rvts11>2</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts11>4</span><span
+class=rvts6>}};</span></p> 
+<p   class=rvps20><span   class=rvts8>S</span><span  class=rvts20> </span><span
+class=rvts22>5</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {{</span><span class=rvts8>v</span><span
+class=rvts11>1</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>3</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span  class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts11>4</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts11>5</span><span       class=rvts6>},
+{</span><span        class=rvts8>v</span><span        class=rvts11>2</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts11>4</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts11>5</span><span
+class=rvts6>}};</span></p> 
+<p   class=rvps20><span   class=rvts8>S</span><span  class=rvts20> </span><span
+class=rvts22>6</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {{</span><span class=rvts8>v</span><span
+class=rvts11>1</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>3</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>6</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span  class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts11>4</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts11>5</span><span       class=rvts6>},
+{</span><span        class=rvts8>v</span><span        class=rvts11>1</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts11>4</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts11>6</span><span
+class=rvts6>},              {</span><span              class=rvts8>v</span><span
+class=rvts11>2</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>4</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>5</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span  class=rvts11>2</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts11>4</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts11>6</span><span
+class=rvts6>}};</span></p> 
+<p   class=rvps20><span   class=rvts8>S</span><span  class=rvts20> </span><span
+class=rvts22>7</span><span  class=rvts6> </span><span class=rvts9>=</span><span
+class=rvts6> {{</span><span class=rvts8>v</span><span
+class=rvts11>1</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>3</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>6</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span  class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts11>4</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts11>5</span><span       class=rvts6>},
+{</span><span        class=rvts8>v</span><span        class=rvts11>1</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts11>4</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts11>6</span><span
+class=rvts6>},              {</span><span              class=rvts8>v</span><span
+class=rvts11>2</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>4</span><span  class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>5</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span  class=rvts11>2</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts11>4</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span        class=rvts11>6</span><span       class=rvts6>},
+{</span><span        class=rvts8>v</span><span        class=rvts11>5</span><span
+class=rvts6>,  </span><span class=rvts8>v</span><span class=rvts11>7</span><span
+class=rvts6>}}.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps5><span  class=rvts6>Иногда  требуется  найти
+одно,  но  наибольшее независимое множество.
+Можно  для  этого  получить все максимальные
+независимые   множества   и   из   них  выбрать
+наибольшее.  Тогда  интересно  знать верхнюю
+границу    числа   максимальных   независимых
+множеств   в   графе  с  </span><span  class=rvts8>п</span><span
+class=rvts6>     вершинами.     Известно,     что     она
+выражается     следующими     формулами,     где
+</span><span       class=rvts8>k</span><span      class=rvts6>      </span><span
+class=rvts18>–</span><span           class=rvts6>           некоторое
+положительное целое число:</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p              class=rvps21><span              class=rvts6>2 · 3</span><span
+class=rvts20>k</span><span class=rvts22> </span><span
+class=rvts24>–</span><span      class=rvts22> 1</span><span     class=rvts6>,
+если  </span><span class=rvts8>п</span><span class=rvts6> = 3</span><span
+class=rvts8>k</span><span class=rvts6> </span><span
+class=rvts18>–</span><span class=rvts6> 1;</span></p> 
+<p              class=rvps22><span              class=rvts6>3 · 3</span><span
+class=rvts20>k</span><span class=rvts22> </span><span
+class=rvts24>–</span><span      class=rvts22> 1</span><span     class=rvts6>,
+если  </span><span class=rvts8>п</span><span class=rvts6> = 3</span><span
+class=rvts8>k</span><span class=rvts6>;</span></p> 
+<p              class=rvps23><span              class=rvts6>4 · 3</span><span
+class=rvts20>k</span><span class=rvts22> </span><span
+class=rvts24>–</span><span      class=rvts22> 1</span><span     class=rvts6>,
+если  </span><span class=rvts8>п</span><span class=rvts6> = 3</span><span
+class=rvts8>k</span><span class=rvts6> + 1.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p    class=rvps5><span   class=rvts6>Экстремальным   графом,
+т. е.      графом,     в     котором     достигается
+указанная     граница,    для    случая    </span><span
+class=rvts8>п</span><span class=rvts6> = 3</span><span
+class=rvts8>k</span><span   class=rvts6>  является  показанный
+на   рис. 6.2   несвязный   граф,   состоящий   из
+</span><span  class=rvts8>k</span><span  class=rvts6> компонент. Для
+случая               </span><span               class=rvts8>п</span><span
+class=rvts6> = 3</span><span class=rvts8>k</span><span
+class=rvts6> </span><span  class=rvts18>–</span><span  class=rvts6> 1 или
+</span><span      class=rvts8>п</span><span      class=rvts6> = 3</span><span
+class=rvts8>k</span><span         class=rvts6> + 1        один        из
+треугольников   заменяется   соответственно
+на      изолированное      ребро     или     полный
+четырехвершинный граф.</span></p> 
+<center><img src="lk6/img6.2.jpg"></center>
+<p   class=rvps1><span   class=rvts16>Рис. 6.2.   Экстремальный
+граф       для       максимальных      независимых
+множеств</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p   class=rvps5><span   class=rvts6>Из   приведенных  формул
+видно,       что      верхняя      граница      числа
+максимальных  независимых  множеств  растет
+во   много   раз   быстрее,   чем   число  вершин
+графа.  Поэтому представляет интерес способ
+получения        максимальных        независимых
+множеств,   не  требующий  их  одновременного
+представления.    Рассмотрим   такой   способ,
+получающий            эти           множества           в
+лексикографическом порядке.</span></p> 
+<p         class=rvps5><span         class=rvts6>Пусть         </span><span
+class=rvts8>V</span><span  class=rvts6> </span><span  class=rvts9>=</span><span
+class=rvts6> {</span><span class=rvts8>v</span><span
+class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts11>2</span><span
+class=rvts6>, … , </span><span class=rvts8>v</span><span
+class=rvts19>n</span><span               class=rvts6>}              </span><span
+class=rvts18>–</span><span    class=rvts6>   множество   вершин
+графа   </span><span   class=rvts8>G</span><span   class=rvts6>.   Весь
+процесс           нахождения           максимальных
+независимых    множеств    можно   разбить   на
+</span><span  class=rvts8>п</span><span class=rvts6> этапов, каждый
+из  которых  связан  с определенной вершиной
+</span><span         class=rvts8>v</span><span        class=rvts19>i</span><span
+class=rvts6> </span><span class=rvts9>∈</span><span
+class=rvts6> </span><span    class=rvts8>V</span><span    class=rvts6>.    На
+</span><span      class=rvts8>i</span><span      class=rvts6>-м      этапе
+находятся    все   максимальные   независимые
+множества,     содержащие     вершину     </span><span
+class=rvts8>v</span><span   class=rvts19>i</span><span   class=rvts6>   и  не
+содержащие    вершин   с   меньшими   номерами,
+т. е.         таких        </span><span        class=rvts8>v</span><span
+class=rvts19>j</span><span   class=rvts6>,  для  которых  </span><span
+class=rvts8>j</span><span class=rvts6> </span><span
+class=rvts9>&lt;</span><span class=rvts6> </span><span
+class=rvts8>i</span><span class=rvts6>.</span></p> 
+<p         class=rvps5><span         class=rvts6>Пусть         </span><span
+class=rvts8>S</span><span  class=rvts19>i</span><span  class=rvts6> </span><span
+class=rvts18>–</span><span  class=rvts6>  одно из независимых
+множеств      графа      </span><span     class=rvts8>G</span><span
+class=rvts6>,          формируемых          на         </span><span
+class=rvts8>i</span><span  class=rvts6>-м  этапе.  За начальное
+значение   множества   </span><span   class=rvts8>S</span><span
+class=rvts19>i</span><span          class=rvts6>          принимается
+множество,     состоящее     из     единственной
+вершины               </span><span              class=rvts8>v</span><span
+class=rvts19>i</span><span    class=rvts6>.    Множество   </span><span
+class=rvts8>S</span><span         class=rvts19>i</span><span        class=rvts6>
+расширяется        за       счет       поочередного
+включения      в      него     элементов     </span><span
+class=rvts8>v</span><span  class=rvts19>j</span><span class=rvts6> </span><span
+class=rvts9>∈</span><span class=rvts6> </span><span
+class=rvts8>V</span><span      class=rvts6>,      удовлетворяющих
+следующим условиям:</span></p> 
+<p class=rvps8><span class=rvts6><br></span></p>
+<p    class=rvps1><span   class=rvts8>i</span><span   class=rvts6> </span><span
+class=rvts9>&lt;</span><span class=rvts6> </span><span
+class=rvts8>j</span><span class=rvts6> </span><span
+class=rvts9>≤</span><span class=rvts6> </span><span
+class=rvts8>n</span><span   class=rvts6>&nbsp;&nbsp;&nbsp;  и&nbsp;&nbsp;&nbsp;
+</span><span         class=rvts8>v</span><span        class=rvts19>j</span><span
+class=rvts6> </span><span    class=rvts9>∈</span><img   width=105   height=44
+alt=""        style="padding        :       1px;"       src="lk6/img5.jpg"><span
+class=rvts6>.</span></p> 
+<p class=rvps1><span class=rvts6><br></span></p>
+<p       class=rvps5><span      class=rvts6>Каждый      раз      при
+соблюдении  этих  условий выбирается </span><span
+class=rvts8>v</span><span     class=rvts19>j</span><span     class=rvts6>     с
+минимальным   </span><span   class=rvts8>j</span><span  class=rvts6>.
+Это        расширение        множества        </span><span
+class=rvts8>S</span><span         class=rvts19>i</span><span        class=rvts6>
+продолжается   до   тех   пор,  пока  множество
+</span><img     width=105    height=44    alt=""    style="padding    :    1px;"
+src="lk6/img6.jpg"><span          class=rvts6>         не         станет
+пустым.</span></p> 
+<p    class=rvps5><span    class=rvts6>Результат   расширения
+</span><span  class=rvts8>S</span><span  class=rvts19>i</span><span class=rvts6>
+проверяется    на   максимальность   согласно
+следующему           свойству:          независимое
+множество     </span><span    class=rvts8>S</span><span    class=rvts6>
+является  максимальным  в  том и только в том
+случае,       когда       </span><span      class=rvts8>S</span><span
+class=rvts6> </span><span class=rvts9>∪</span><span
+class=rvts6> </span><span  class=rvts8>N</span><span  class=rvts6>(</span><span
+class=rvts8>S</span><span class=rvts6>) = </span><span
+class=rvts8>V</span><span class=rvts6>.</span></p> 
+<p  class=rvps5><span  class=rvts6>Действительно,  если  это
+равенство    не    выполняется,    то   найдется
+вершина   в  множестве  </span><span  class=rvts8>V</span><span
+class=rvts6> \ </span><span   class=rvts8>S</span><span   class=rvts6>,   не
+смежная   ни   с   одной   вершиной   из   </span><span
+class=rvts8>S</span><span    class=rvts6>.    Присоединив   ее   к
+</span><span      class=rvts8>S</span><span     class=rvts6>,     получим
+независимое   множество,  содержащее  </span><span
+class=rvts8>S</span><span         class=rvts6>        в        качестве
+собственного    подмножества,    т. е.   </span><span
+class=rvts8>S</span><span  class=rvts6>  не  максимально.  Если
+же     это    равенство    выполняется,    то    не
+существует      вершины      в     графе     </span><span
+class=rvts8>G</span><span   class=rvts6>,   которая  была  бы  не
+смежна    ни    с   одной   вершиной   из   </span><span
+class=rvts8>S</span><span   class=rvts6>   и   ее  можно  было  бы
+добавить  к  </span><span  class=rvts8>S</span><span class=rvts6>, не
+нарушая              независимости              </span><span
+class=rvts8>S</span><span class=rvts6>.</span></p> 
+<p    class=rvps5><span    class=rvts6>Множество,    прошедшее
+такую  проверку, включается в решение. Чтобы
+построить         следующее         по        порядку
+независимое     множество,    из    полученного
+</span><span  class=rvts8>S</span><span  class=rvts19>i</span><span class=rvts6>
+(включенного  или  не  включенного в решение)
+удаляется    вершина    </span><span   class=rvts8>v</span><span
+class=rvts19>p</span><span    class=rvts6>,    присоединенная   к
+</span><span  class=rvts8>S</span><span  class=rvts19>i</span><span class=rvts6>
+последней,  и  выполняется  та же процедура с
+вершинами             </span><span            class=rvts8>v</span><span
+class=rvts19>q</span><span        class=rvts6>,        где       </span><span
+class=rvts8>q</span><span class=rvts6> &gt; </span><span
+class=rvts8>p</span><span class=rvts6>.</span></p> 
+<p  class=rvps5><span  class=rvts6>За  </span><span class=rvts8>п</span><span
+class=rvts6>      этапов      можно      получить      все
+максимальные        независимые        множества
+заданного    графа.   Однако   данный   процесс
+можно   прекратить  на  </span><span  class=rvts8>k</span><span
+class=rvts6>-м   этапе,   где   </span><span  class=rvts8>k</span><span
+class=rvts6> &lt; </span><span     class=rvts8>п</span><span    class=rvts6>,
+если    видно,    что    из    оставшихся   </span><span
+class=rvts8>п</span><span class=rvts6> </span><span
+class=rvts18>–</span><span class=rvts6> </span><span
+class=rvts8>k</span><span   class=rvts6>  вершин  не  получится
+максимального  независимого  множества. Для
+этого    надо    для    каждой   вершины   </span><span
+class=rvts8>v</span><span         class=rvts19>i</span><span        class=rvts6>
+сформировать             множества             </span><span
+class=rvts8>A</span><span class=rvts19>i</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts19>i</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts19>i+</span><span
+class=rvts11>1</span><span class=rvts6>, … , </span><span
+class=rvts8>v</span><span     class=rvts19>n</span><span     class=rvts6>}&nbsp;
+и&nbsp;   </span><span   class=rvts8>B</span><span   class=rvts19>i</span><span
+class=rvts6> = </span><img  width=71  height=57  alt="" style="padding : 1px;"
+src="lk6/img7.jpg"><span  class=rvts6>  и  на очередном </span><span
+class=rvts8>i</span><span    class=rvts6>-м    этапе    проверить
+условие               </span><span              class=rvts8>A</span><span
+class=rvts19>i</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>B</span><span class=rvts19>i</span><span
+class=rvts6> = </span><span  class=rvts8>V</span><span  class=rvts6>. Если
+оно  не  выполняется,  то данный процесс надо
+прекратить.</span></p> 
+<p    class=rvps5><span    class=rvts6>Для   графа   на   рис. 6.1
+множества             </span><span            class=rvts8>S</span><span
+class=rvts19>i</span><span  class=rvts6> (</span><span class=rvts8>i</span><span
+class=rvts6> = 1, 2, 3, 4, 5, 6)       будут      принимать
+следующие    значения    (этап,    связанный    с
+вершиной              </span><span             class=rvts8>v</span><span
+class=rvts11>7</span><span     class=rvts6>,     не    выполняется,
+так как              </span><span              class=rvts8>А</span><span
+class=rvts11>7</span><span class=rvts6> </span><span
+class=rvts9>∪</span><span class=rvts6> </span><span
+class=rvts8>В</span><span class=rvts11>7</span><span
+class=rvts6> = {</span><span class=rvts8>v</span><span
+class=rvts11>7</span><span class=rvts6>} </span><span
+class=rvts9>∪</span><span class=rvts6> {</span><span
+class=rvts8>v</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>2</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts11>3</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>4</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts11>6</span><span
+class=rvts6>} </span><span class=rvts9>≠</span><span
+class=rvts6> </span><span class=rvts8>V</span><span class=rvts6>):</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p    class=rvps5><span   class=rvts8>S</span><span   class=rvts11>1</span><span
+class=rvts6>:               {</span><span              class=rvts8>v</span><span
+class=rvts11>1</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>3</span><span              class=rvts6>},              </span><span
+class=rvts26>{</span><span class=rvts27>v</span><span
+class=rvts28>1</span><span class=rvts26>, </span><span
+class=rvts27>v</span><span class=rvts28>3</span><span
+class=rvts26>, </span><span class=rvts27>v</span><span
+class=rvts28>6</span><span        class=rvts26>}</span><span       class=rvts6>,
+{</span><span        class=rvts8>v</span><span        class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>4</span><span              class=rvts6>},              </span><span
+class=rvts26>{</span><span class=rvts27>v</span><span
+class=rvts28>1</span><span class=rvts26>, </span><span
+class=rvts27>v</span><span class=rvts28>4</span><span
+class=rvts26>, </span><span class=rvts27>v</span><span
+class=rvts28>5</span><span        class=rvts26>}</span><span       class=rvts6>,
+</span><span        class=rvts26>{</span><span        class=rvts27>v</span><span
+class=rvts28>1</span><span class=rvts26>, </span><span
+class=rvts27>v</span><span class=rvts28>4</span><span
+class=rvts26>, </span><span class=rvts27>v</span><span
+class=rvts28>6</span><span        class=rvts26>}</span><span       class=rvts6>,
+{</span><span        class=rvts8>v</span><span        class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>5</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>6</span><span class=rvts6>};</span></p> 
+<p    class=rvps5><span   class=rvts8>S</span><span   class=rvts11>2</span><span
+class=rvts6>:               {</span><span              class=rvts8>v</span><span
+class=rvts11>2</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span class=rvts11>2</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>4</span><span              class=rvts6>},              </span><span
+class=rvts26>{</span><span class=rvts27>v</span><span
+class=rvts28>2</span><span class=rvts26>, </span><span
+class=rvts27>v</span><span class=rvts28>4</span><span
+class=rvts26>, </span><span class=rvts27>v</span><span
+class=rvts28>5</span><span        class=rvts26>}</span><span       class=rvts6>,
+</span><span        class=rvts26>{</span><span        class=rvts27>v</span><span
+class=rvts28>2</span><span class=rvts26>, </span><span
+class=rvts27>v</span><span class=rvts28>4</span><span
+class=rvts26>, </span><span class=rvts27>v</span><span
+class=rvts28>6</span><span        class=rvts26>}</span><span       class=rvts6>,
+{</span><span        class=rvts8>v</span><span        class=rvts11>2</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>5</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span class=rvts11>2</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>6</span><span class=rvts6>};</span></p> 
+<p    class=rvps5><span   class=rvts8>S</span><span   class=rvts11>3</span><span
+class=rvts6>:               {</span><span              class=rvts8>v</span><span
+class=rvts11>3</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span class=rvts11>3</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>6</span><span class=rvts6>};</span></p> 
+<p    class=rvps5><span   class=rvts8>S</span><span   class=rvts11>4</span><span
+class=rvts6>:               {</span><span              class=rvts8>v</span><span
+class=rvts11>4</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span class=rvts11>4</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>5</span><span              class=rvts6>},             {</span><span
+class=rvts8>v</span><span class=rvts11>4</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>6</span><span class=rvts6>};</span></p> 
+<p    class=rvps5><span   class=rvts8>S</span><span   class=rvts11>5</span><span
+class=rvts6>:               {</span><span              class=rvts8>v</span><span
+class=rvts11>5</span><span              class=rvts6>},              </span><span
+class=rvts26>{</span><span class=rvts27>v</span><span
+class=rvts28>5</span><span class=rvts26>, </span><span
+class=rvts27>v</span><span class=rvts28>7</span><span
+class=rvts26>}</span><span class=rvts6>;</span></p> 
+<p    class=rvps5><span   class=rvts8>S</span><span   class=rvts11>6</span><span
+class=rvts6>:               {</span><span              class=rvts8>v</span><span
+class=rvts11>6</span><span class=rvts6>}.</span></p> 
+<p class=rvps5><span class=rvts6><br></span></p>
+<p    class=rvps5><span   class=rvts6>Здесь   подчеркнуты   те
+значения              </span><span             class=rvts8>S</span><span
+class=rvts19>i</span><span    class=rvts6>,    которые    вошли   в
+решение.</span></p> 
+<p    class=rvps5><span   class=rvts6>Для   получения   одного
+наибольшего        независимого        множества
+рассмотренный       способ       удобнее,       чем
+предыдущий.     Хранить     все     максимальные
+независимые    множества    одновременно    не
+надо.   Они   получаются   последовательно,   и
+каждый  раз  надо оставлять только то из них,
+которое  обладает наибольшей мощностью. Как
+показано   выше,   число   их  может  оказаться
+слишком       большим,      и      поэтому      менее
+трудоемким       представляется       следующий
+способ     нахождения     одного    наибольшего
+независимого     множества,     не     требующий
+получения   всех   максимальных  независимых
+множеств.</span></p> 
+<p     class=rvps5><span    class=rvts8>Вершинным    покрытием
+</span><span   class=rvts6>графа   </span><span   class=rvts8>G</span><span
+class=rvts6> = (</span><span class=rvts8>V</span><span
+class=rvts6>, </span><span        class=rvts8>E</span><span       class=rvts6>)
+называется       такое       множество      </span><span
+class=rvts8>В</span><span class=rvts6> </span><span
+class=rvts9>⊆</span><span class=rvts6> </span><span
+class=rvts8>V</span><span  class=rvts6>,  что  каждое  ребро  из
+</span><span    class=rvts8>Е</span><span   class=rvts6>   инцидентно
+хотя      бы      одной      вершине     из     </span><span
+class=rvts8>В</span><span   class=rvts6>.   Очевидно,  что  если
+</span><span      class=rvts8>В</span><span      class=rvts6>      </span><span
+class=rvts18>–</span><span  class=rvts6>  вершинное покрытие,
+то    </span><span   class=rvts8>V</span><span   class=rvts6> \ </span><span
+class=rvts8>B</span><span class=rvts6> </span><span
+class=rvts18>–</span><span         class=rvts6>         независимое
+множество.          </span><span         class=rvts8>Вершинное
+покрытие</span><span  class=rvts6> наименьшей мощности
+в     графе     </span><span     class=rvts8>G</span><span    class=rvts6>
+является     его     </span><span    class=rvts8>наименьшим
+вершинным    покрытием</span><span   class=rvts6>.   Ясно,
+что    если    </span><span    class=rvts8>В</span><span    class=rvts6>
+</span><span   class=rvts18>–</span><span   class=rvts6>  наименьшее
+вершинное          покрытие,          то         </span><span
+class=rvts8>V</span><span class=rvts6> \ </span><span
+class=rvts8>B</span><span                class=rvts6>               </span><span
+class=rvts18>–</span><span          class=rvts6>          наибольшее
+независимое множество.</span></p> 
+<p   class=rvps5><span  class=rvts6>Чтобы  найти  наименьшее
+вершинное      покрытие      в     графе     </span><span
+class=rvts8>G</span><span   class=rvts6>,   достаточно  покрыть
+столбцы       его       матрицы      инцидентности
+минимальным  количеством  ее  строк. Матрица
+инцидентности     графа     на    рис. 6.1    имеет
+следующий вид:</span></p> 
+<p class=rvps8><span class=rvts6><br></span></p>
+<p   class=rvps1><img   width=369   height=217  alt=""  style="padding  :  1px;"
+src="lk6/img8.jpg"><span class=rvts6>.</span></p> 
+<p class=rvps8><span class=rvts6><br></span></p>
+<p        class=rvps25><span        class=rvts6>Строки        </span><span
+class=rvts8>v</span><span  class=rvts11>1</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span  class=rvts11>3</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span     class=rvts11>5</span><span     class=rvts6>     и
+</span><span  class=rvts8>v</span><span  class=rvts11>7</span><span class=rvts6>
+составляют      кратчайшее     покрытие     этой
+матрицы.        Множество       вершин       {</span><span
+class=rvts8>v</span><span class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>3</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts11>5</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>7</span><span  class=rvts6>}  является наименьшим
+вершинным       покрытием      данного      графа.
+Следовательно,        {</span><span       class=rvts8>v</span><span
+class=rvts11>2</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts11>4</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>6</span><span class=rvts6>} </span><span
+class=rvts18>–</span><span  class=rvts6>  одно  из  наибольших
+независимых   множеств.  Оно  присутствует  в
+решении предыдущего примера.</span></p> 
+<p  class=rvps26><span  class=rvts6>Нахождение  наибольшего
+независимого             множества             </span><span
+class=rvts18>–</span><span  class=rvts6> довольно трудоемкая
+задача.     Поэтому    иногда    довольствуются
+получением     максимального     независимого
+множества,      по      мощности      близкого     к
+наибольшему.    Одним   из   способов   решения
+такой       задачи       является      чередование
+следующих  двух  операций:  выбора  вершины с
+наименьшей   степенью   в  качестве  элемента
+искомого   множества   и  удаления  выбранной
+вершины  из  графа  вместе  с  окрестностью. В
+результате    может   получиться   наибольшее
+независимое  множество, однако, как видно на
+примере  графа,  приведенного  на рис. 6.3, это
+бывает не всегда.</span></p> 
+<center><img src = "lk6/img6.3.jpg"></center>
+<p      class=rvps1><span     class=rvts16>Рис. 6.3.     Граф     для
+демонстрации       получения       независимого
+множества</span></p> 
+<p class=rvps29><span class=rvts6><br></span></p>
+<p       class=rvps30><span      class=rvts6>Действительно,      в
+качестве   первой   вершины  для  включения  в
+решение  может  быть  выбрана вершина </span><span
+class=rvts8>v</span><span  class=rvts11>5</span><span  class=rvts6>.  Тогда
+вслед  за  ней  в  решение включаются вершины
+</span><span  class=rvts8>v</span><span  class=rvts11>3</span><span class=rvts6>
+и     </span><span     class=rvts8>v</span><span     class=rvts11>7</span><span
+class=rvts6>.  Мощность полученного таким образом
+множества    на    единицу    меньше    мощности
+наибольшего        независимого        множества
+{</span><span        class=rvts8>v</span><span        class=rvts11>1</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>4</span><span class=rvts6>, </span><span
+class=rvts8>v</span><span class=rvts11>6</span><span
+class=rvts6>, </span><span class=rvts8>v</span><span
+class=rvts11>9</span><span class=rvts6>}.</span></p> 
+<p   class=rvps31><span   class=rvts6>Подграф   графа   </span><span
+class=rvts8>G</span><span     class=rvts6>,     порождаемый    его
+независимым   множеством,   является   </span><span
+class=rvts8>пустым  подграфом</span><span  class=rvts6>, т. е.
+множество   его  ребер  пусто.  В  графе</span><span
+class=rvts10>&not;</span><span       class=rvts8>G</span><span       class=rvts6>,
+который  является  дополнением графа </span><span
+class=rvts8>G</span><span  class=rvts6>,&nbsp;  это  же  множество
+порождает             </span><span             class=rvts8>полный
+подграф</span><span       class=rvts6>,      т. е.      подграф
+графа</span><span   class=rvts10>&not;</span><span  class=rvts8>G</span><span
+class=rvts6>,    в    котором   все   вершины   попарно
+смежны      в     графе</span><span     class=rvts10>&not;</span><span
+class=rvts8>G</span><span      class=rvts6>.     Полный     подграф
+называют    еще   </span><span   class=rvts8>кликой</span><span
+class=rvts6>.   Таким   образом,  задача  нахождения
+полных    подграфов,    или    клик,    и    задача
+нахождения       независимых       множеств      в
+некотором  графе  являются двойственными по
+отношению друг к другу.</span></p> 
+<p><span class=rvts6><br></span></p>
+<table width="100%" height=25px border="0" cellpadding="0" cellspacing="3" bordercolor="#316AC5" background="../../../Оболочка/images/background.jpg">
+  <tr >
+  <td align=center><var><b>(С)  БГУИР</b></var></td>
+  </tr>
+</table>
